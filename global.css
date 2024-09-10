@@ -1,0 +1,31 @@
+.heroHeading {
+    font-family: Montserrat, sans-serif;
+    font-weight: bold;
+    font-size: 2.5rem; /* Default size for larger screens */
+}
+
+.subHeroheading {
+    font-size: 1rem; /* Default size for larger screens */
+}
+
+@media (max-width: 767px) {
+    .heroHeading {
+        font-size: 10px; /* Smaller font size on mobile */
+        white-space: normal; /* Allow text to wrap normally */
+    }
+
+    .subHeroheading {
+        font-size: 0.875rem; /* Smaller font size on mobile */
+        white-space: normal; /* Allow text to wrap normally */
+    }
+}
+
+@media (max-width: 576px) {
+    .heroHeading {
+        font-size: 1.5rem; /* Even smaller font size on very small screens */
+    }
+
+    .subHeroheading {
+        font-size: 0.75rem; /* Even smaller font size on very small screens */
+    }
+}
