@@ -9,7 +9,23 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="/global.css">
 </head>
+<style>
+    .feature-icon {
+      font-size: 3rem;
+      color: #007bff;
+    }
 
+    .btn-group-toggle .btn {
+        border-radius: 0.5rem;
+        padding: 0.5rem 0;
+        transition: all 0.15s ease-in-out;
+        font-size: 14px;
+        color: rgba(51, 65, 85, 1);
+      }
+      .conversation {
+        display: none; /* Hidden initially */
+    }
+  </style>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="border-style: none;">
         <div class="container">
@@ -69,123 +85,212 @@
     </div>
     
 
-
+    <!--  ALL SECTION  -->
     <section id="allContent" class="py-5">
         <div class="container align-items-center">
             <p class="text-center pb-5" style="font-weight: 600;font-size: 48px; line-height: 1">Your <br> complete solar journey <br> with us.</p>
 
-            <div class="container p-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
+            <!-- design container -->
+            <div class="container p-3 p-md-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
                 <div class="row">
-                    <div class=""><h5><span class="badge rounded-pill text-bg-light fw-semibold">Design</span></h5></div>
-                    <div class="col-8"><h4 class="py-2">Custom system designs for every home or business types.</h4>
+                    <div><h5><span class="badge rounded-pill bg-white fw-semibold text-dark">Design</span></h5></div>
+                    
+                    <div class="col-md-8 col-12">
+                        <h4 class="py-2">Custom system designs for every home or business type.</h4>
                         <img id="" src="assets/img/design.jpg" alt="Solar Image" class="img-fluid rounded-4">
                     </div>
-                    <div class="col-4 d-flex flex-column align-items-center">
-                        <div class="d-flex flex-column align-items-start">
-                            <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3" style="border: 1px solid #0B5ED7; overflow: hidden; width: 200px;">
-                                <span class="text-start">Homes</span>
-                                <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                    <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                </svg>
-                            </button>
-                            
-                            <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3" style="border: 1px solid #0B5ED7; overflow: hidden; width: 200px;">
-                                <span class="text-start">Offices</span>
-                                <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                    <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                </svg>
-                            </button>
-                            
-                            <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3" style="border: 1px solid #0B5ED7; overflow: hidden; width: 200px;">
-                                <span class="text-start">Hospitality & Resorts</span>
-                                <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                    <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                </svg>
-                            </button>
-                            
-                            <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3" style="border: 1px solid #0B5ED7; overflow: hidden; width: 200px;">
-                                <span class="text-start">Manufacturer</span>
-                                <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                    <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                </svg>
-                            </button>
-                            
-                            <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold" style=" outline-style: none; box-shadow: none; overflow: hidden; width: 120px;">
-                                <span class="text-start" style="color: #0B5ED7;">All Others</span>
-                                <svg fill="#0B5ED7" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                </svg>
-                            </button>
-                        </div>
+            
+                    <div class="col-md-4 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4" style="overflow: auto;
+                    white-space: nowrap;">
+
+                        <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3 mx-1" 
+                                style="border: 1px solid #0B5ED7; width: 200px;">
+                            <span class="text-start me-2">Homes</span>
+                            <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px;">
+                                <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
+                            </svg>
+                        </button>                        
+                        <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3 mx-1" 
+                                style="border: 1px solid #0B5ED7; width: 200px;">
+                            <span class="text-start me-2">Offices</span>
+                            <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px;">
+                                <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
+                            </svg>
+                        </button>                       
+                        <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3 mx-1" 
+                                style="border: 1px solid #0B5ED7; width: 200px;">
+                            <span class="text-start me-2">Hospitality & Resorts</span>
+                            <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px;">
+                                <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
+                            </svg>
+                        </button>                      
+                        <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3 mx-1" 
+                                style="border: 1px solid #0B5ED7; width: 200px;">
+                            <span class="text-start me-2">Manufacturer</span>
+                            <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px;">
+                                <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
+                            </svg>
+                        </button>                        
+                        <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3 mx-1" 
+                                style="outline-style: none; box-shadow: none; width: 200px;">
+                            <span class="text-start me-2" style="color: #0B5ED7;">All Others</span>
+                            <svg fill="#0B5ED7" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; margin-right: 80px;">
+                                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
+                            </svg>
+                        </button>
+                        
                     </div>
-                    
 
-                  </div>                
+                </div>                
             </div>
-
-            <div class="container p-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
+            
+            <!-- supply&installation container -->
+            <div class="container p-3 p-md-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
                 <div class="row">
-                    <div class=""><h5><span class="badge rounded-pill text-bg-light fw-semibold">Supply & Installation</span></h5></div>
-                        <div class="col-8"><h4 class="py-2">Get the best products & workmanships with our partners & trained team members.</h4>
-                            <img id="" src="assets/img/brands.png" alt="Brands Image" class="img-fluid rounded-4">
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center">
-                            <div class="d-flex flex-column align-items-start">
-                                
-                                <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3" style="border: 1px solid #0B5ED7; overflow: hidden; width: 200px;">
-                                    <span class="text-start">Workmanship</span>
-                                    <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                        <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                    </svg>
-                                </button>
-                                
-                                <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold" style=" outline-style: none; box-shadow: none; overflow: hidden; width: 120px;">
-                                    <span class="text-start" style="color: #0B5ED7;">All Others</span>
-                                    <svg fill="#0B5ED7" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                    </svg>
-                                </button>
+                    <div class=""><h5><span class="badge rounded-pill bg-white fw-semibold text-dark">Supply & Installation</span></h5></div>
+                    <div class="container my-2">
+                        <div class="row text-left">
+                          <!-- Column 1 -->
+                          <div class="col-lg-4 col-md-6">
+                            <div class="card h-100 bg-transparent border-0">
+                              <div class="card-body">
+                                <div class="feature-icon mb-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield">
+                                        <path d="M12 2l7 4v5c0 5.25-3.92 10.74-7 12-3.08-1.26-7-6.75-7-12V6z"></path>
+                                      </svg>
+                                </div>
+                                <h5 class="card-title small">Direct to Manufacturer</h5>
+                                <p class="card-text small" style="line-height: normal; min-height: 75px;">Get the best product & warranty from our direct partnerships with top manufacturers at a better deal.</p>
+                              </div>
                             </div>
-                        </div>                   
+                          </div>
+                    
+                          <!-- Column 2 -->
+                          <div class="col-lg-4 col-md-6">
+                            <div class="card h-100 bg-transparent border-0">
+                              <div class="card-body">
+                                <div class="feature-icon mb-1">
+                                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6A8.38 8.38 0 0 1 12.5 3a8.5 8.5 0 0 1 8.5 8.5z"></path>
+                                      </svg>
+                                </div>
+                                <h5 class="card-title small">Experienced installers</h5>
+                                <p class="card-text small" style="line-height: normal; min-height: 75px;">Over 1000+ panels installed team members leading your project.</p>
+                              </div>
+                            </div>
+                          </div>
+                    
+                          <!-- Column 3 -->
+                          <div class="col-lg-4 col-md-6">
+                            <div class="card h-100 bg-transparent border-0">
+                              <div class="card-body">
+                                <div class="feature-icon mb-1">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
+                                        <path d="M4 4H16L20 8V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
+                                        <polyline points="14 2 14 8 20 8"></polyline>
+                                        <path d="M9 15l2 2 4-4"></path>
+                                      </svg>
+                                </div>
+                                <h5 class="card-title small">Longest Leading Warranties</h5>
+                                <p class="card-text small" style="line-height: normal; min-height: 75px;">Our direct partnerships + In-house team gives you one of the highest warranties in the market.</p>
+                                <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-0 bg-white fw-semibold shadow-sm">
+                                    <span class="small">Learn more</span>
+                                </button>
+                              </div>
+                            </div>
+                          </div>
+
+                        </div>
+                      </div>                 
                 </div>                
             </div>
 
-            <div class="container p-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
+            <!-- after service container -->
+            <div class="container p-3 p-md-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
                 <div class="row">
-                    <div class=""><h5><span class="badge rounded-pill text-bg-light fw-semibold">After Service Monitoring</span></h5></div>
-                        <!-- <div class="col-8"><h4 class="py-2">Get the best products & workmanships with our partners & trained team members.</h4>
-                            <img id="" src="assets/img/brands.png" alt="Brands Image" class="img-fluid rounded-4">
-                        </div>
-                        <div class="col-4 d-flex flex-column align-items-center">
-                            <div class="d-flex flex-column align-items-start">
-                                
-                                <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mb-3" style="border: 1px solid #0B5ED7; overflow: hidden; width: 200px;">
-                                    <span class="text-start">Workmanship</span>
-                                    <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                        <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                    </svg>
-                                </button>
-                                
-                                <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold" style=" outline-style: none; box-shadow: none; overflow: hidden; width: 120px;">
-                                    <span class="text-start" style="color: #0B5ED7;">All Others</span>
-                                    <svg fill="#0B5ED7" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px; transition: all 0.3s ease-in-out;">
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                    </svg>
-                                </button>
+                    <div class=""><h5><span class="badge rounded-pill bg-white fw-semibold text-dark">After Service Monitoring</span></h5></div>
+
+                    <div class="col-md-7 col-12">
+                        <div class="container p-2 bg-light rounded shadow-sm" style="width: 100%;">
+                            <div class="btn-group-toggle d-flex" data-toggle="buttons">
+                              <label class="btn btn-outline-secondary flex-fill text-center m-2">
+                                <input type="radio" id="disconnected" name="radio" checked> System Disconnected
+                              </label>
+                              <label class="btn btn-outline-secondary flex-fill text-center m-2">
+                                <input type="radio" id="derating" name="radio"> System Derating
+                              </label>
+                              <label class="btn btn-outline-secondary flex-fill text-center m-2">
+                                <input type="radio" id="string-performance" name="radio"> String Performance
+                              </label>
                             </div>
-                        </div>                    -->
+                            <h4 class="pt-4 pb-3">Power output then all of the sudden no output</h4>
+                            <div class="container-xl border" style="height: 200px; width: 100%; display: flex; align-items: center; justify-content: center;">
+                                <p class="text-center mb-0">graph</p>
+                              </div>
+                        </div>
+
+                          
+                    </div>
+            
+                    <div class="col-md-5 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4">
+
+                        <div class="container mx-auto bg-white shadow-md rounded-lg overflow-hidden rounded-3">
+                            <div class="d-flex flex-column" style="height: 400px;">
+
+                                <div class="d-flex justify-content-between align-items-center px-4 py-3 border-bottom">
+                                </div>
+
+                                <div id="conversation-disconnected" class="flex-grow-1 p-3 overflow-auto conversation">
+                                    <div class="bg-primary text-white rounded-4 px-3 py-2 m-2 small" style="max-width: 85%; float: right;">
+                                        Hi Oliver, it seems like your system has been disconnected online, is the wifi working normally?
+                                    </div>
+                                    <div class="bg-secondary text-white rounded-4 px-3 py-2 m-2 small" style="max-width: 85%; clear: both;">
+                                        We changed the wifi password
+                                    </div>
+                                    <div class="bg-primary text-white rounded-4 px-3 py-2 m-1 small" style="max-width: 85%; float: right;">
+                                        Okay I'll help you adjust the inverter to work with the new password
+                                    </div>
+                                </div>
+
+                              <div id="conversation-derating" class="flex-grow-1 p-3 overflow-auto space-y-2 conversation">
+                                    
+                                    <div class="align-self-end bg-primary text-white rounded-4 px-3 py-2 m-2 small" style="max-width: 85%; float: right;">
+                                        Hey Oliver, we detected your system to be limiting power due to temperature. Our technician mentioned you have a ventilation fan. Is that turned on?
+                                    </div>
+                                    <div class="align-self-start bg-secondary text-white rounded-4 px-3 py-2 m-2 small" style="max-width: 85%; clear: both;">
+                                        Oh hey someone accidentally turned it off. I'll turn it back on. Thanks for noticing
+                                    </div>
+                                    
+                              </div>
+                              
+                              <div id="conversation-string-performance" class="flex-grow-1 p-3 overflow-auto space-y-2 conversation">
+                                    
+                                    <div class="align-self-end bg-primary text-white rounded-4 px-3 py-2 m-2 small" style="max-width: 85%; float: right;">
+                                    Hey Oliver, one set of your panels seem to not be turned on would you like us to send a technician?
+                                    </div>
+                                    <div class="align-self-start bg-secondary text-white rounded-4 px-3 py-2 m-2 small" style="max-width: 85%; clear: both;">
+                                    Hi, we just turned it off as they are doing roof work in that area. Thanks.
+                                    </div>
+                                    
+                              </div>  
+
+                              <div class="px-3 py-2 border-top"></div>
+                            </div>
+                        </div>
+                          
+                    </div>
+
                 </div>                
             </div>
 
         </div>
     </section>
 
+    <!--  HOMES SECTION  -->
     <section id="homesContent" class="py-5" style="display: none;">
         <div class="container align-items-center">
             <p class="text-center pb-5" style="font-weight: 600;font-size: 48px; line-height: 1">Solar <br> made easy for your <br> home.</p>
@@ -209,6 +314,7 @@
         </div>
     </section>
 
+    <!--  COMMERCIAL SECTION  -->
     <section id="commercialContent" class="py-5" style="display: none;">
         <div class="container align-items-center">
             <p class="text-center pb-5" style="font-weight: 600;font-size: 48px; line-height: 1">End to end <br> solar solution for your  <br> business.</p>
@@ -276,6 +382,77 @@
             });
         });
     </script>
+    
+    <script>
+        // Function to handle displaying the conversation based on the selected radio button
+        function updateConversation() {
+            // Get all conversation divs
+            const conversations = document.querySelectorAll('.conversation');
+
+            // Hide all conversations
+            conversations.forEach(function(conv) {
+                conv.style.display = 'none';
+            });
+
+            // Show the corresponding conversation based on the selected radio button
+            if (document.getElementById('disconnected').checked) {
+                document.getElementById('conversation-disconnected').style.display = 'block';
+            } else if (document.getElementById('derating').checked) {
+                document.getElementById('conversation-derating').style.display = 'block';
+            } else if (document.getElementById('string-performance').checked) {
+                document.getElementById('conversation-string-performance').style.display = 'block';
+            }
+        }
+
+        // Add event listeners to the radio buttons
+        document.getElementById('disconnected').addEventListener('change', updateConversation);
+        document.getElementById('derating').addEventListener('change', updateConversation);
+        document.getElementById('string-performance').addEventListener('change', updateConversation);
+
+        // Call the function once to display the initial state
+        updateConversation();
+    </script>
+
+    <script>
+        function switchServiceContent(selectedService) {
+      
+          // Hide all content sections initially
+          $('#systemDisconnected').hide();
+          $('#systemDerating').hide();
+          $('#stringPerformance').hide();
+      
+          // Switch content based on the selected service category
+          switch (selectedService) {
+            case 'System Disconnected':
+              $('h4.pt-4.pb-3').text("System is currently disconnected from the network");
+              $('#systemDisconnected').show();
+              break;
+            case 'System Derating':
+              $('h4.pt-4.pb-3').text("System is derating due to high temperature");
+              $('#systemDerating').show();
+              break;
+            case 'String Performance':
+              $('h4.pt-4.pb-3').text("One string is underperforming, might need inspection");
+              $('#stringPerformance').show();
+              break;
+            default:
+              break;
+          }
+        }
+      
+        // Add event listener for radio button clicks
+        $(document).ready(function() {
+          $('input[name="radio"]').on('change', function() {
+            const selectedService = $(this).closest('label').text().trim(); // Get the selected service text
+            switchServiceContent(selectedService);
+          });
+      
+          // Initialize with default checked radio button
+          const selectedService = $('input[name="radio"]:checked').closest('label').text().trim();
+          switchServiceContent(selectedService);
+        });
+      </script>
+      
 </body>
 
 </html>

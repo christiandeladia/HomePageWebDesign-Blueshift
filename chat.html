@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Monitoring</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+        }
+        .container {
+            display: flex;
+            width: 100%;
+        }
+        .left, .right {
+            width: 45%;
+        }
+        .radio-group {
+            margin-bottom: 20px;
+        }
+        .radio-group input {
+            margin-right: 10px;
+        }
+        .bubble {
+            border-radius: 15px;
+            padding: 10px;
+            margin: 10px 0;
+            display: inline-block;
+        }
+        .bubble.left {
+            background-color: #007bff;
+            color: white;
+            align-self: flex-start;
+            border-radius: 15px 15px 15px 0;
+        }
+        .bubble.right {
+            background-color: #f1f1f1;
+            color: black;
+            align-self: flex-end;
+            border-radius: 15px 15px 0 15px;
+        }
+        .graph-placeholder {
+            height: 100px;
+            background-color: #ccc;
+            margin-top: 10px;
+            text-align: center;
+            line-height: 100px;
+        }
+        .conversation {
+            display: none; /* Hidden initially */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <!-- Left side: Radio buttons -->
+        <div class="left">
+            <h3>After Service Monitoring</h3>
+
+            <div class="radio-group">
+                <input type="radio" id="disconnected" name="monitoring" checked>
+                <label for="disconnected">System Disconnected</label>
+                <p>Power output then all of a sudden no output.</p>
+            </div>
+
+            <div class="radio-group">
+                <input type="radio" id="derating" name="monitoring">
+                <label for="derating">System Derating</label>
+                <p>Power output increasing but is flat-lining throughout the day.</p>
+                <div class="graph-placeholder">Graph - Derating</div>
+            </div>
+
+            <div class="radio-group">
+                <input type="radio" id="string-performance" name="monitoring">
+                <label for="string-performance">String Performance</label>
+                <p>3 power outputs, then 1 suddenly turns off.</p>
+                <div class="graph-placeholder">Graph - String Performance</div>
+            </div>
+        </div>
+
+        <!-- Right side: Chat bubbles -->
+        <div class="right">
+            <div id="conversation-disconnected" class="conversation">
+                <h3>PV Disconnect</h3>
+                <div class="bubble right">
+                    Hi Oliver, it seems like your system has been disconnected online, is the wifi working normally?
+                </div>
+                <div class="bubble left">
+                    We changed the wifi password.
+                </div>
+                <div class="bubble right">
+                    Okay I’ll help you adjust the inverter to work with the new password.
+                </div>
+            </div>
+
+            <div id="conversation-derating" class="conversation">
+                <h3>Derating</h3>
+                <div class="bubble right">
+                    Hey Oliver, we detected your system is limiting power due to temperature. Is the ventilation fan turned on?
+                </div>
+                <div class="bubble left">
+                    Oh hey, someone accidentally turned it off. I’ll turn it back on. Thanks for noticing!
+                </div>
+            </div>
+
+            <div id="conversation-string-performance" class="conversation">
+                <h3>String Performance</h3>
+                <div class="bubble right">
+                    Hey Oliver, one set of your panels seems to be turned off. Would you like us to send a technician?
+                </div>
+                <div class="bubble left">
+                    Hi, we just turned it off as they are doing roof work in that area. Thanks.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Function to handle displaying the conversation based on the selected radio button
+        function updateConversation() {
+            // Get all conversation divs
+            const conversations = document.querySelectorAll('.conversation');
+
+            // Hide all conversations
+            conversations.forEach(function(conv) {
+                conv.style.display = 'none';
+            });
+
+            // Show the corresponding conversation based on the selected radio button
+            if (document.getElementById('disconnected').checked) {
+                document.getElementById('conversation-disconnected').style.display = 'block';
+            } else if (document.getElementById('derating').checked) {
+                document.getElementById('conversation-derating').style.display = 'block';
+            } else if (document.getElementById('string-performance').checked) {
+                document.getElementById('conversation-string-performance').style.display = 'block';
+            }
+        }
+
+        // Add event listeners to the radio buttons
+        document.getElementById('disconnected').addEventListener('change', updateConversation);
+        document.getElementById('derating').addEventListener('change', updateConversation);
+        document.getElementById('string-performance').addEventListener('change', updateConversation);
+
+        // Call the function once to display the initial state
+        updateConversation();
+    </script>
+
+</body>
+</html>
