@@ -1,0 +1,78 @@
+.feature-icon {
+    font-size: 3rem;
+    color: #007bff;
+  }
+
+.btn-group-toggle .btn {
+    border-radius: 0.5rem;
+    padding: 0.5rem 0;
+    transition: all 0.15s ease-in-out;
+    font-size: 14px;
+    color: rgba(51, 65, 85, 1);
+}
+.conversation {
+    display: none; /* Hidden initially */
+}
+
+
+/* OUR PRODUCTS SECTION */
+.product-img {
+    width: 100%;
+    max-width: 180px; 
+    height: auto;
+    filter: grayscale(100%);
+    transition: filter 0.3s ease-in-out;
+}
+
+.product-img:hover {
+    filter: grayscale(0%);
+}
+
+.row-cols-2 .col,
+.row-cols-md-3 .col,
+.row-cols-lg-5 .col {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-icon-prev, .custom-icon-next {
+    filter: invert(0%) sepia(0%) saturate(0%) hue-rotate(0deg) brightness(0%) contrast(100%);
+}
+
+
+
+.carousel-item img {
+    width: 100%;
+    height: 500px;
+    object-fit: cover;
+    border-radius: 25px;
+}
+
+.thumbnails {
+    margin-top: 20px;
+}
+
+.thumbnails img {
+    height: 100px;
+    width: 180px;
+    object-fit: cover;
+    margin: 0 10px;
+    cursor: pointer;
+    margin-bottom: 10px;
+    border-radius: 10px;
+}
+
+.thumbnails img.active {
+    box-shadow: 0 0 5px 2px #007bff;
+}
+
+
+/* Styling for medium screens (768px to 992px) */
+@media (min-width: 768px) and (max-width: 991.98px) {
+    .thumbnails img {
+        height: 80px; /* Adjusted height for medium screens */
+        width: 140px;  /* Adjusted width for medium screens */
+        margin: 0 5px; /* Adjusted margin for medium screens */
+    }
+}

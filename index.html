@@ -7,26 +7,14 @@
     <title>Blueshift Energy Inc.</title>
     <meta name="description" content="Clean energy can start with you. Get solar panels installed today in the Philippines. ">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="/global.css">
-</head>
-<style>
-    .feature-icon {
-      font-size: 3rem;
-      color: #007bff;
-    }
+    <link rel="stylesheet" href="/index.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
 
-    .btn-group-toggle .btn {
-        border-radius: 0.5rem;
-        padding: 0.5rem 0;
-        transition: all 0.15s ease-in-out;
-        font-size: 14px;
-        color: rgba(51, 65, 85, 1);
-      }
-      .conversation {
-        display: none; /* Hidden initially */
-    }
-  </style>
+</head>
+
 <body>
+    <!-- Navbar -->
     <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="border-style: none;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
@@ -45,6 +33,7 @@
         </div>
     </nav>
 
+    <!-- header -->
     <section class="d-flex flex-column" style="padding: 50px 0;">
         <div class="container px-4">
             <div class="row align-items-center">
@@ -64,7 +53,7 @@
         </div>
     </section>
 
-
+    <!-- Call To Action -->
     <div id="customizedClientToolBar" class="py-4">
         <div class="container text-left">
             <p class="mb-0" style="color:#464646;">Learn More</p>
@@ -83,7 +72,6 @@
             </div>
         </div>
     </div>
-    
 
     <!--  ALL SECTION  -->
     <section id="allContent" class="py-5">
@@ -91,7 +79,7 @@
             <p class="text-center pb-5" style="font-weight: 600;font-size: 48px; line-height: 1">Your <br> complete solar journey <br> with us.</p>
 
             <!-- design container -->
-            <div class="container p-3 p-md-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
+            <div class="container p-3 p-md-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 100%; border-radius: 15px;">
                 <div class="row">
                     <div><h5><span class="badge rounded-pill bg-white fw-semibold text-dark">Design</span></h5></div>
                     
@@ -149,7 +137,7 @@
             </div>
             
             <!-- supply&installation container -->
-            <div class="container p-3 p-md-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
+            <div class="container p-3 p-md-5 mb-5" style="background-color:#f4f4f4; height: auto; width: 100%; border-radius: 15px;">
                 <div class="row">
                     <div class=""><h5><span class="badge rounded-pill bg-white fw-semibold text-dark">Supply & Installation</span></h5></div>
                     <div class="container my-2">
@@ -158,9 +146,10 @@
                           <div class="col-lg-4 col-md-6">
                             <div class="card h-100 bg-transparent border-0">
                               <div class="card-body">
-                                <div class="feature-icon mb-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-shield">
-                                        <path d="M12 2l7 4v5c0 5.25-3.92 10.74-7 12-3.08-1.26-7-6.75-7-12V6z"></path>
+                                <div class="feature-icon mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
+                                        <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
+                                        
                                       </svg>
                                 </div>
                                 <h5 class="card-title small">Direct to Manufacturer</h5>
@@ -173,9 +162,10 @@
                           <div class="col-lg-4 col-md-6">
                             <div class="card h-100 bg-transparent border-0">
                               <div class="card-body">
-                                <div class="feature-icon mb-1">
-                                      <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                        <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6A8.38 8.38 0 0 1 12.5 3a8.5 8.5 0 0 1 8.5 8.5z"></path>
+                                <div class="feature-icon mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
+                                        <circle cx="32" cy="32" r="30" stroke="#0B5ED7" stroke-width="4"/>
+                                        
                                       </svg>
                                 </div>
                                 <h5 class="card-title small">Experienced installers</h5>
@@ -188,11 +178,10 @@
                           <div class="col-lg-4 col-md-6">
                             <div class="card h-100 bg-transparent border-0">
                               <div class="card-body">
-                                <div class="feature-icon mb-1">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" viewBox="0 0 24 24">
-                                        <path d="M4 4H16L20 8V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2z"></path>
-                                        <polyline points="14 2 14 8 20 8"></polyline>
-                                        <path d="M9 15l2 2 4-4"></path>
+                                <div class="feature-icon mb-2">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
+                                        <circle cx="32" cy="32" r="30" stroke="#fbbc05" stroke-width="4"/>
+                                        
                                       </svg>
                                 </div>
                                 <h5 class="card-title small">Longest Leading Warranties</h5>
@@ -210,26 +199,22 @@
             </div>
 
             <!-- after service container -->
-            <div class="container p-3 p-md-5" style="background-color:#f4f4f4; height: auto; width: 80%; border-radius: 15px;">
+            <div class="container p-3 p-md-5" style="background-color:#f4f4f4; height: auto; width: 100%; border-radius: 15px;">
                 <div class="row">
                     <div class=""><h5><span class="badge rounded-pill bg-white fw-semibold text-dark">After Service Monitoring</span></h5></div>
 
                     <div class="col-md-7 col-12">
-                        <div class="container p-2 bg-light rounded shadow-sm" style="width: 100%;">
-                            <div class="btn-group-toggle d-flex" data-toggle="buttons">
-                              <label class="btn btn-outline-secondary flex-fill text-center m-2">
-                                <input type="radio" id="disconnected" name="radio" checked> System Disconnected
-                              </label>
-                              <label class="btn btn-outline-secondary flex-fill text-center m-2">
-                                <input type="radio" id="derating" name="radio"> System Derating
-                              </label>
-                              <label class="btn btn-outline-secondary flex-fill text-center m-2">
-                                <input type="radio" id="string-performance" name="radio"> String Performance
-                              </label>
+                        <div class="container p-3 bg-light rounded shadow-sm" style="width: 100%;">
+                            <div id="AfterServiceBtnGroup" class="d-flex flex-wrap justify-content-center">
+                                <button id="disconnected" class="btn active btn-outline-primary rounded-pill me-1 btn-sm" style="min-width: 75px;">System Disconnected</button>
+                                <button id="derating" class="btn btn-outline-primary rounded-pill me-1 btn-sm" style="min-width: 75px;">System Derating</button>
+                                <button id="string-performance" class="btn btn-outline-primary rounded-pill btn-sm" style="min-width: 75px;">String Performance</button>
                             </div>
-                            <h4 class="pt-4 pb-3">Power output then all of the sudden no output</h4>
-                            <div class="container-xl border" style="height: 200px; width: 100%; display: flex; align-items: center; justify-content: center;">
-                                <p class="text-center mb-0">graph</p>
+                            
+                            <div class="container-xl border mt-3" style="height: 255px; width: 100%; display: flex; align-items: center; justify-content: center;">
+                                <canvas id="systemDisconnectedChart" class="conversation" width="400" height="200"></canvas>
+                                <canvas id="systemDeratingChart" width="400" height="200"></canvas>
+                                <canvas id="stringPerformanceChart" width="400" height="200"></canvas>
                               </div>
                         </div>
 
@@ -239,7 +224,7 @@
                     <div class="col-md-5 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4">
 
                         <div class="container mx-auto bg-white shadow-md rounded-lg overflow-hidden rounded-3">
-                            <div class="d-flex flex-column" style="height: 400px;">
+                            <div class="d-flex flex-column" style="height: 350px;">
 
                                 <div class="d-flex justify-content-between align-items-center px-4 py-3 border-bottom">
                                 </div>
@@ -338,9 +323,332 @@
         </div>
     </section>
 
+
+    <!-- OUR PRODUCTS SECTION -->
+    <div class="container px-4 py-5" id="custom-cards">
+        <h2 class="pb-2 border-bottom">Our Products</h2>
+
+        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 align-items-center g-4 py-5">
+            <div class="col d-flex justify-content-center">
+                <img src="/assets/img/products/Canadian-Solar-logo.webp" alt="solar" class="product-img">
+            </div>
+            <div class="col d-flex justify-content-center">
+                <img src="/assets/img/products/Dyness-logo.png" alt="solar" class="product-img">
+            </div>
+            <div class="col d-flex justify-content-center">
+                <img src="/assets/img/products/Solis-logo.png" alt="solar" class="product-img">
+            </div>
+            <div class="col d-flex justify-content-center">
+                <img src="/assets/img/products/Deye-logo.png" alt="solar" class="product-img">
+            </div>
+            <div class="col d-flex justify-content-center">
+                <img src="/assets/img/products/Goodwe-logo.png" alt="solar" class="product-img">
+            </div>
+        </div>
+    </div>
+
+ <!-- SOLAR 101 SECTION -->
+ <div class="container px-4 py-5" id="featured-3">
+    <div class="d-flex justify-content-between align-items-center pb-2 border-bottom mb-0">
+        <h2 class="mb-0">Solar 101</h2>
+        <button class="btn d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold mx-1">
+            <span class="text-start" style="color: #0B5ED7;">View all</span>
+            <svg fill="#0B5ED7" viewBox="0 0 24 24" class="ms-auto" style="width: 24px; height: 24px;">
+                <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
+            </svg>
+        </button>
+    </div>
+
+    <!-- Bootstrap Carousel -->
+    <!-- <div id="solarCarousel" class="carousel slide" data-bs-ride="carousel"> -->
+    <div id="solarCarousel" class="carousel slide">
+        <div class="carousel-inner" style="width: 90%; margin: 0 auto;">
+            <div class="carousel-item active">
+                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                    <div class="feature col">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3 rounded-3">
+                            <img src="/assets/img/backgrounds/banners/residential-main.webp" style="width: 100%; height:auto;" alt="Feature Icon">
+                        </div>
+                        <h5 class="fs-5 text-body-emphasis">Hybrid vs On-Grid System. What is it and which is right for me?</h5>
+                        <p class="small">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <a href="#" class="icon-link">
+                            Learn more
+                            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                        </a>
+                    </div>
+                    <div class="feature col">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3 rounded-3">
+                            <img src="/assets/img/backgrounds/banners/residential-main.webp" style="width: 100%; height:auto;" alt="Feature Icon">
+                        </div>
+                        <h5 class="fs-5 text-body-emphasis">How does solar work with the power utility?</h5>
+                        <p class="small">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <a href="#" class="icon-link">
+                            Learn more
+                            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                        </a>
+                    </div>
+                    <div class="feature col">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3 rounded-3">
+                            <img src="/assets/img/backgrounds/banners/residential-main.webp" style="width: 100%; height:auto;" alt="Feature Icon">
+                        </div>
+                        <h5 class="fs-5 text-body-emphasis">What will be my systems return on investment?</h5>
+                        <p class="small">Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                        <a href="#" class="icon-link">
+                            Learn more
+                            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="carousel-item">
+                <div class="row g-4 py-5 row-cols-1 row-cols-lg-3">
+                    <div class="feature col">
+                        <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2 mb-3 rounded-3">
+                            <img src="/assets/img/backgrounds/banners/residential-main.webp" style="width: 100%; height:auto;" alt="Feature Icon">
+                        </div>
+                        <h3 class="fs-2 text-body-emphasis">Featured title 4</h3>
+                        <p>Paragraph of text beneath the heading to explain the heading.</p>
+                        <a href="#" class="icon-link">
+                            Call to action
+                            <svg class="bi"><use xlink:href="#chevron-right"/></svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Carousel Controls -->
+        <button class="carousel-control-prev" type="button" data-bs-target="#solarCarousel" data-bs-slide="prev" style="width: 60px;">
+            <span class="carousel-control-prev-icon custom-icon-prev" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#solarCarousel" data-bs-slide="next" style="width: 60px;">
+            <span class="carousel-control-next-icon custom-icon-next" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+
+
+ <!-- RESULTS FROM OUR CUSTOMER SECTION -->
+ <div class="container px-4 py-5" id="featured-3">
+    <div class="d-flex justify-content-between align-items-center mb-0">
+        <h2 class="mb-0">Results from our customers</h2>
+        
+        <div class=" d-flex align-items-center justify-content-between rounded-pill px-2 fw-semibold mx-1">
+            <div class=""><a class="text-primary link-underline link-underline-opacity-0" href="https://www.google.com/maps/place/Blueshift+Energy/@14.6461658,121.021752,17z/data=!3m1!4b1!4m6!3m5!1s0x9e14dabb7c017c5:0xc2b3d70a4706f085!8m2!3d14.6461658!4d121.0243269!16s%2Fg%2F11k3c_hbhm?entry=ttu" target="&quot;_blank">Blueshift Energy Inc.</a>
+                <div class="d-flex align-items-center"><span class="text-warning" style="margin-right: 10px;">5.0</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
+                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
+                    </svg><img src="assets/img/icons/google_logo.webp" style="width: 20px;margin-left: 10px;height: 20px;" width="20" height="16" loading="lazy"></div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="container thumbnail_slider mt-5">
+        <div class="row">
+            <!-- Primary Carousel Start -->
+            <div class="col-lg-9">
+                <div id="primaryCarousel" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img class="d-block w-100" src="/assets/img/projects/blueshift.webp" alt="Slide 2">
+                            <div class="carousel-caption text-overlay">
+                                <div style="background: rgba(255,255,255,0.46);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255,255,255,0.39);border-radius: 10px;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding: 8px;">
+                                    <p class="h5 text-white" style="margin: 0px;">The residential project has achieved a completely zero peso bill with Meralco through Solar.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/assets/img/projects/rectangle.png" alt="Slide 2" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0;">
+                                <div class="text-center">
+                                    <img src="assets/img/companies/swanlake.webp" class="mb-3" style="width: 80px; height: auto;" loading="lazy">
+                                    <p class="text-white h3">This restaurant is saving P2,000 per month without having to maintain anything from the system.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/assets/img/projects/hotel_kimberly.webp" alt="Slide 2">
+                            <div class="carousel-caption text-overlay">
+                                <div style="background: rgba(255,255,255,0.46);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255,255,255,0.39);border-radius: 10px;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding: 8px;">
+                                    <p class="h5 text-white" style="margin: 0px;">Learn more about Hotel Kimberly Tagaytay's energy mix.</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="carousel-item">
+                            <img class="d-block w-100" src="/assets/img/projects/rectangle.png" alt="Slide 2" style="object-fit: cover;">
+                            <div class="carousel-caption d-flex flex-column align-items-center justify-content-center" style="top: 0; bottom: 0;">
+                                <div class="text-center">
+                                    <p class="text-white h3">"Our bill from Meralco of 20k per month is now down to 3k per month. This has helped improve our cashflow as a business."</p>
+                                    <p class="text-white" style="margin-top: 15px;">- Orex Health Solutions</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#primaryCarousel" role="button" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <!-- <span class="sr-only">Previous</span> -->
+                    </a>
+                    <a class="carousel-control-next" href="#primaryCarousel" role="button" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <!-- <span class="sr-only">Next</span> -->
+                    </a>
+                </div>
+            </div>
+            <!-- Primary Carousel End -->
+
+            <!-- Thumbnails for large screens (column layout) -->
+<div class="col-lg-3">
+    <div class="">
+        <div class="thumbnails d-none d-lg-flex flex-column">
+            <img src="/assets/img/projects/blueshift.webp" alt="Image 1" data-bs-target="#primaryCarousel" data-bs-slide-to="0" class="active">
+            <img src="/assets/img/projects/rectangle2.png" alt="Image 2" data-bs-target="#primaryCarousel" data-bs-slide-to="1">
+            <img src="/assets/img/projects/hotel_kimberly.webp" alt="Image 3" data-bs-target="#primaryCarousel" data-bs-slide-to="2">
+            <img src="/assets/img/projects/rectangle1.png" alt="Image 4" data-bs-target="#primaryCarousel" data-bs-slide-to="3">
+        </div>
+    </div>
+</div>
+
+<!-- Thumbnails for medium screens (row layout) -->
+<div class="col-12 d-none d-md-flex d-lg-none mt-4 justify-content-center">
+    <div class="thumbnails">
+        <img src="/assets/img/projects/blueshift.webp" alt="Image 1" data-bs-target="#primaryCarousel" data-bs-slide-to="0" class="mx-2">
+        <img src="/assets/img/projects/rectangle2.png" alt="Image 2" data-bs-target="#primaryCarousel" data-bs-slide-to="1" class="mx-2">
+        <img src="/assets/img/projects/hotel_kimberly.webp" alt="Image 3" data-bs-target="#primaryCarousel" data-bs-slide-to="2" class="mx-2">
+        <img src="/assets/img/projects/rectangle1.png" alt="Image 4" data-bs-target="#primaryCarousel" data-bs-slide-to="3" class="mx-2">
+    </div>
+</div>
+        </div>
+        <!-- Thumbnail Slider End -->
+    </div>
+
+</div>
+
+<div class="container py-5"></div>
+
+<!-- BLUESHIFT BY THE NUMBERS SECTION -->
+<div class="container col-xxl-8 px-4 py-5">
+    <div class="row flex-lg-row align-items-center g-5 py-5">
+      
+      <div class="col-lg-7 my-0">
+        <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><span style="color: #377ab0;">Blueshift</span> by the numbers</h1>
+        <p class="">Discover the impressive impact of Blueshift through key statistics that highlight our success and commitment. From the number of solar panels installed to the millions saved in energy costs, our achievements speak for themselves. Explore how our data-driven approach translates into real-world benefits for our customers and the environment.</p>
+      </div>
+      <div class="col-10 col-sm-8 col-lg-5 mt-5">
+        <div class="row mb-5">
+            <div class="col-md-12">
+              <div class="about__skills">
+                <div class="row no-gutters mb-0 mb-sm-4">
+                  <div class="mb-4 mb-sm-0 pr-sm-3 col-sm-6">
+                    <div class="media">
+                        <div class="feature-icon me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
+                              </svg>
+                        </div>
+                      <div class="media-body">
+                        <h5>10,000+</h5>
+                        <p class="m-0 lh-1">Solar Panels Installed</p>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-4 mb-sm-0 pl-sm-3 col-sm-6 ">
+                    <div class="media">
+                        <div class="feature-icon me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
+                              </svg>
+                        </div>
+                      <div class="media-body">
+                        <h5>1,000+</h5>
+                        <p class="m-0 lh-1"> satisfied customers</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row no-gutters mb-0 mb-sm-4">
+                  <div class="mb-4 mb-sm-0 pr-sm-3 col-sm-6">
+                    <div class="media">
+                        <div class="feature-icon me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
+                              </svg>
+                        </div>
+                      <div class="media-body">
+                        <h5>$10M+</h5>
+                        <p class="m-0 lh-1">invested in renewable energy projects</p>
+
+                      </div>
+                    </div>
+                  </div>
+                  <div class="mb-0 pl-sm-3 col-sm-6">
+                    <div class="media">
+                        <div class="feature-icon me-3">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
+                                <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
+                              </svg>
+                        </div>
+                      <div class="media-body">
+                        <h5>$2M+</h5>
+                        <p class="m-0 lh-1">tons of CO2 emissions saved annually</p>
+
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+ <!-- FREE SECTION -->
+  <div class="px-4 py-5 my-5 text-center">
+    <img class="d-block mx-auto" src="/assets/img/cleaning-service.jpg" alt="" width="100" height="auto">
+    <h1 class="display-5 fw-bold text-body-emphasis">Get 3x Free Cleaning for your first 3 years with us.</h1>
+    <div class="col-lg-6 mx-auto">
+      <p class="lead mb-4">At Blueshift, we’re dedicated to providing you with not only the best solar solutions but also exceptional customer care. As part of our commitment to ensuring your solar system operates at peak performance, we’re offering three complimentary cleanings during your first three years with us.</p>
+      <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+        <button type="button" class="btn btn-primary btn-lg px-4 gap-3">Design studio</button>
+      </div>
+    </div>
+  </div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script> -->
+    <!-- <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script> -->
+    <script src="/chart.js"></script>
+    <script src="/index.js"></script>
     <script>
+        // Update active thumbnail on carousel slide
+        $('#primaryCarousel').on('slide.bs.carousel', function (e) {
+            var index = $(e.relatedTarget).index();
+            $('.thumbnails img').removeClass('active');
+            $('.thumbnails img').eq(index).addClass('active');
+        });
+
+        // Add click event to thumbnail to change carousel slide
+        $('.thumbnails img').on('click', function () {
+            $('.thumbnails img').removeClass('active');
+            $(this).addClass('active');
+        });
+    </script>
+
+    <!-- <script>
         document.addEventListener('DOMContentLoaded', function () {
             const allBtn = document.getElementById('allBtn');
             const homesBtn = document.getElementById('homesBtn');
@@ -381,9 +689,9 @@
                 showSection(commercialContent);
             });
         });
-    </script>
+    </script> -->
     
-    <script>
+    <!-- <script>
         // Function to handle displaying the conversation based on the selected radio button
         function updateConversation() {
             // Get all conversation divs
@@ -411,9 +719,9 @@
 
         // Call the function once to display the initial state
         updateConversation();
-    </script>
+    </script> -->
 
-    <script>
+    <!-- <script>
         function switchServiceContent(selectedService) {
       
           // Hide all content sections initially
@@ -424,15 +732,15 @@
           // Switch content based on the selected service category
           switch (selectedService) {
             case 'System Disconnected':
-              $('h4.pt-4.pb-3').text("System is currently disconnected from the network");
+              $('h4.pt-4.pb-3').text("");
               $('#systemDisconnected').show();
               break;
             case 'System Derating':
-              $('h4.pt-4.pb-3').text("System is derating due to high temperature");
+              $('h4.pt-4.pb-3').text("power output increasing but is flat lining throughout the day");
               $('#systemDerating').show();
               break;
             case 'String Performance':
-              $('h4.pt-4.pb-3').text("One string is underperforming, might need inspection");
+              $('h4.pt-4.pb-3').text("3 power output then 1 suddenly turns off");
               $('#stringPerformance').show();
               break;
             default:
@@ -451,8 +759,7 @@
           const selectedService = $('input[name="radio"]:checked').closest('label').text().trim();
           switchServiceContent(selectedService);
         });
-      </script>
-      
+      </script> -->
 </body>
 
 </html>
