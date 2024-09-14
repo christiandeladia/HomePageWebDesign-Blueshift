@@ -25,7 +25,6 @@ document.addEventListener('DOMContentLoaded', function () {
     homesBtn.addEventListener('click', () => showSection(homesContent));
     commercialBtn.addEventListener('click', () => showSection(commercialContent));
 
-
     // Function to handle displaying the conversation
     function updateConversation(conversationId, buttonId, canvasId) {
         // Hide all conversations
@@ -33,10 +32,11 @@ document.addEventListener('DOMContentLoaded', function () {
         conversations.forEach(function(conv) {
             conv.style.display = 'none';
         });
-    
+
         // Show the selected conversation
-        document.getElementById(conversationId).style.display = 'block';
-    
+        const conversationToShow = document.getElementById(conversationId);
+        conversationToShow.style.display = 'block';
+
         // Hide all canvases
         const canvases = document.querySelectorAll('canvas');
         canvases.forEach(function(canvas) {
@@ -53,7 +53,7 @@ document.addEventListener('DOMContentLoaded', function () {
         buttons.forEach(function(btn) {
             btn.classList.remove('active');
         });
-    
+
         // Add 'active' class to the clicked button
         document.getElementById(buttonId).classList.add('active');
 
@@ -69,24 +69,34 @@ document.addEventListener('DOMContentLoaded', function () {
                 createChartStringPerformance();
                 break;
         }
+
+        // Delay the display of each conversation message
+        delayConversationMessages(conversationToShow);
     }
-    
+
+    // Function to add delay to the display of conversation messages
+    function delayConversationMessages(conversationElement) {
+        const messages = conversationElement.querySelectorAll('.message');
+        messages.forEach((message, index) => {
+            setTimeout(() => {
+                message.style.opacity = 1;
+            }, index * 1500);
+        });
+    }
+
     // Event listeners for buttons
     document.getElementById('disconnected').addEventListener('click', function() {
         updateConversation('conversation-disconnected', 'disconnected', 'systemDisconnectedChart');
     });
-    
+
     document.getElementById('derating').addEventListener('click', function() {
         updateConversation('conversation-derating', 'derating', 'systemDeratingChart');
     });
-    
+
     document.getElementById('string-performance').addEventListener('click', function() {
         updateConversation('conversation-string-performance', 'string-performance', 'stringPerformanceChart');
     });
-    
+
     // Set "Disconnected" as the default conversation when the page loads
     updateConversation('conversation-disconnected', 'disconnected', 'systemDisconnectedChart');
-    
-
-
 });
