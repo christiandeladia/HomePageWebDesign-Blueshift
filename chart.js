@@ -1,6 +1,8 @@
+// Disconnected
 function createChartDisconnected() {
   const ctx = document.getElementById('systemDisconnectedChart').getContext('2d');
   let chartInitialized = false;
+  let chart;
 
   // Function to generate a bell curve (normal distribution) data
   function generateBellCurveData(numPoints, mean, stdDev) {
@@ -51,8 +53,8 @@ function createChartDisconnected() {
   // Function to create time labels with 3-hour intervals from 6 AM to 6 PM
   const labelsPerHour = ['6am', '9am', '12pm', '3pm', '6pm'];
 
-  if (!chartInitialized) {
-    new Chart(ctx, {
+  function initializeChart() {
+    chart = new Chart(ctx, {
       type: 'line',
       data: {
         labels: labelsPerHour,  // Use formatted labels with 3-hour intervals
@@ -125,9 +127,40 @@ function createChartDisconnected() {
         }
       }
     });
-    chartInitialized = true;
   }
+
+  function enableChartAnimation() {
+    if (chart) {
+      chart.options.animation = {
+        duration: 1000 // Animation duration in milliseconds
+      };
+      chart.update(); // Update the chart to apply the new animation settings
+    }
+  }
+
+  // Intersection Observer setup
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (!chartInitialized) {
+          initializeChart();
+          chartInitialized = true;
+        }
+        enableChartAnimation(); // Trigger animation when in view
+        observer.unobserve(entry.target); // Optionally stop observing once animated
+      }
+    });
+  }, {
+    threshold: 0.1 // Adjust the threshold as needed
+  });
+
+  // Start observing the chart container
+  const chartContainer = document.querySelector('.canvas-container');
+  observer.observe(chartContainer);
 }
+// Call the function to set up the chart
+createChartDisconnected();
+
 
 // Derating
 function createChartDerating() {
@@ -268,7 +301,6 @@ function createChartDerating() {
     chartInitialized = true;
   }
 }
-
 
 
 //string performance

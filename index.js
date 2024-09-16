@@ -41,7 +41,6 @@ document.addEventListener('DOMContentLoaded', function () {
         const canvases = document.querySelectorAll('canvas');
         canvases.forEach(function(canvas) {
             canvas.style.display = 'none';
-            // Reset canvas filter in case it was previously modified
             canvas.style.filter = 'none';
         });
 
@@ -53,13 +52,10 @@ document.addEventListener('DOMContentLoaded', function () {
         if (canvasId) {
             const canvasElement = document.getElementById(canvasId);
             canvasElement.style.display = 'block';
-    
-            // Show disconnected text for specific chart with a 4-second delay
+
+            // Observe canvas visibility
             if (canvasId === 'systemDisconnectedChart') {
-                setTimeout(() => {
-                    disconnectedText.style.display = 'block';
-                    canvasElement.style.filter = 'grayscale(100%)';
-                }, 2500); // 4 seconds delay
+                observeCanvasVisibility(canvasElement, disconnectedText);
             }
         }
 
@@ -97,6 +93,23 @@ document.addEventListener('DOMContentLoaded', function () {
                 message.style.opacity = 1;
             }, index * 1500);
         });
+    }
+
+    // Function to observe canvas visibility
+    function observeCanvasVisibility(canvasElement, disconnectedText) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        disconnectedText.style.display = 'block';
+                        canvasElement.style.filter = 'grayscale(100%)';
+                    }, 2500); // 4 seconds delay after becoming visible
+                    observer.unobserve(entry.target); // Stop observing once animation starts
+                }
+            });
+        });
+
+        observer.observe(canvasElement);
     }
 
     // Event listeners for buttons
