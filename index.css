@@ -95,3 +95,45 @@
         padding-top: 0.5rem;
     }
 }
+
+
+/* @media (max-width: 768px) {
+    .container {
+        width: 100%;
+    }
+    .col-md-7,
+    .col-md-5 {
+        width: 100%;
+        padding: 0;
+    }
+    .container-xl {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+    }
+    .conversation {
+        height: auto;
+    }
+} */
+
+
+.canvas-container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.text-overlay {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: black; /* You can change the color */
+    font-size: 20px; /* Adjust font size as needed */
+    font-weight: bold; /* Make the text bold if desired */
+    background: rgba(255, 255, 255, 0.8); /* Optional: Add a background with some transparency for better readability */
+    padding: 10px; /* Optional: Add padding */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}

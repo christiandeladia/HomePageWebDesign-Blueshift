@@ -6,10 +6,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
     <title>Blueshift Energy Inc.</title>
     <meta name="description" content="Clean energy can start with you. Get solar panels installed today in the Philippines. ">
+    <link rel="apple-touch-icon" type="image/png" sizes="180x180" href="assets/img/icons/logo/180-white.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/img/icons/logo/16-white.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/img/icons/logo/32-white.png">
+    <link rel="icon" type="image/png" sizes="180x180" href="assets/img/icons/logo/180-white.png">
+    <link rel="icon" type="image/png" sizes="192x192" href="assets/img/icons/logo/192-white.png">
+    <link rel="icon" type="image/png" sizes="500x500" href="assets/img/icons/logo/512-white.png">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <!-- <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet"> -->
 
 </head>
 
@@ -198,12 +203,12 @@
             </div>
 
             <!-- after service container -->
-            <div class="container p-3 p-md-5" style="background-color:#f4f4f4; height: auto; width: 90%; border-radius: 15px;">
+            <div class="container p-3 pb-0 p-md-5" style="background-color:#f4f4f4; height: auto; width: 90%; border-radius: 15px;">
                 <div class="row">
                     <div class=""><h5><span class="badge rounded-pill bg-white fw-semibold text-dark">After Service Monitoring</span></h5></div>
 
                     <div class="col-md-7 col-12 rounded-3">
-                        <div class="container p-3 bg-white rounded" style="width: 100%; height: 330px;">
+                        <div class="container p-3 pb-0 bg-white rounded" style="width: 100%; height: 330px;">
                             <!-- Button Group -->
                             <div id="AfterServiceBtnGroup" class="d-flex flex-nowrap overflow-auto pt-2" >
                                 <button id="disconnected" class="btn active btn-outline-primary rounded-pill me-2 btn-sm" style="min-width: 155px;">System Disconnected</button>
@@ -213,16 +218,19 @@
                     
                             <!-- Canvas Section -->
                             <div class="container-xl mt-0 p-0 d-flex justify-content-center align-items-center" style="height: 255px;">
-                                <canvas id="systemDisconnectedChart" class="mt-3 bg-white" style="width: 100%; height: 205px;"></canvas>
-                                <canvas id="systemDeratingChart" class="mt-3 bg-white" style="width: 100%; height: 205px;"></canvas>
-                                <canvas id="stringPerformanceChart" class="mt-3 bg-white" style="width: 100%; height: 205px;"></canvas>
+                                <div class="canvas-container" style="position: relative; width: 100%; height: 205px; ">
+                                    <canvas id="systemDisconnectedChart" class="mt-3 bg-white" style="width: 100%; height: 205px;"></canvas>
+                                    <div id="disconnectedText" class="text-overlay">System Offline</div>
+                                    <canvas id="systemDeratingChart" class="mt-3 bg-white" style="width: 100%; height: 205px;"></canvas>
+                                    <canvas id="stringPerformanceChart" class="mt-3 bg-white" style="width: 100%; height: 205px;"></canvas>
+                                </div>
                             </div>
                         </div> 
                     </div>
                     
          
             
-                    <div class="col-md-5 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4">
+                    <div class="col-md-5 col-12 pb-3 d-flex flex-row flex-md-column align-items-center mt-md-0">
                         <div class="container mx-auto bg-white shadow-md rounded-lg overflow-hidden rounded-3"  style="height: 330px;">
                             <div class="d-flex flex-column">
 
@@ -867,8 +875,8 @@
         <div class="row flex-lg-row align-items-center g-5 py-5">
         
         <div class="col-lg-7 my-0">
-            <h1 class="display-5 fw-bold text-body-emphasis lh-1 mb-3"><span style="color: #377ab0;">Blueshift</span> by the numbers</h1>
-            <p class="">Discover the impressive impact of Blueshift through key statistics that highlight our success and commitment. From the number of solar panels installed to the millions saved in energy costs, our achievements speak for themselves. Explore how our data-driven approach translates into real-world benefits for our customers and the environment.</p>
+            <h1 class="display-5 fw-semibold text-body-emphasis lh-1 mb-3"><span style="color: #377ab0;">Blueshift</span> by the numbers</h1>
+            <p class="" style="text-align: justify; text-justify: inter-word;">Discover the impressive impact of Blueshift through key statistics that highlight our success and commitment. From the number of solar panels installed to the millions saved in energy costs, our achievements speak for themselves. Explore how our data-driven approach translates into real-world benefits for our customers and the environment.</p>
         </div>
         <div class="col-12 col-sm-12 col-lg-5 mt-5">
             <div class="row mb-5">
@@ -883,7 +891,7 @@
                                 </svg>
                             </div>
                         <div class="media-body">
-                            <h5>10,000+</h5>
+                            <h3 class="fw-semibold">10,000+</h3>
                             <p class="m-0 lh-1">Solar Panels Installed</p>
                         </div>
                         </div>
@@ -896,7 +904,7 @@
                                 </svg>
                             </div>
                         <div class="media-body">
-                            <h5>1,000+</h5>
+                            <h3 class="fw-semibold">1,000+</h3>
                             <p class="m-0 lh-1"> satisfied customers</p>
 
                         </div>
@@ -913,7 +921,7 @@
                                 </svg>
                             </div>
                         <div class="media-body">
-                            <h5>$10M+</h5>
+                            <h3 class="fw-semibold">$10M+</h3>
                             <p class="m-0 lh-1">invested in renewable energy projects</p>
 
                         </div>
@@ -927,7 +935,7 @@
                                 </svg>
                             </div>
                         <div class="media-body">
-                            <h5>$2M+</h5>
+                            <h3 class="fw-semibold">$2M+</h3>
                             <p class="m-0 lh-1">tons of CO2 emissions saved annually</p>
 
                         </div>
@@ -944,7 +952,7 @@
     <!-- FREE SECTION -->
     <div class="px-4 py-5 my-5 text-center" style="background-color: #f4f4f4;">
     <img class="d-block mx-auto" src="assets/img/cleaning-service.png" alt="" width="100" height="auto">
-    <h1 class="display-5 fw-bold text-body-emphasis">Get 3x Free Cleaning for your first 3 years with us.</h1>
+    <h1 class="display-5 fw-semibold text-body-emphasis">Get 3x Free Cleaning for your first 3 years with us.</h1>
     <div class="col-lg-6 mx-auto">
         <p class="mb-5">At Blueshift, we’re dedicated to providing you with not only the best solar solutions but also exceptional customer care. As part of our commitment to ensuring your solar system operates at peak performance, we’re offering three complimentary cleanings during your first three years with us.</p>
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">

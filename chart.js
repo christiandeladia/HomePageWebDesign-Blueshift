@@ -1,13 +1,29 @@
-//disconnected
 function createChartDisconnected() {
   const ctx = document.getElementById('systemDisconnectedChart').getContext('2d');
   let chartInitialized = false;
 
-  const gridData = [96, 96, 92, 89, 86, 88, 93, 100, 92, 86, 90, 93, 89, 94, 87, 92, 93, 100, 97, 99, 98, 87, 90, 98, 98, 93, 90, 90, 92, 94, 93, 85, 98, 91, 105, 98, 90, 93, 95, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
+  // Function to generate a bell curve (normal distribution) data
+  function generateBellCurveData(numPoints, mean, stdDev) {
+    const data = [];
+    for (let i = 0; i < numPoints; i++) {
+      const x = i - mean;
+      const y = Math.exp(-0.5 * Math.pow(x / stdDev, 2));
+      data.push(y * 90); // Scale the data as needed for power output
+    }
+    return data;
+  }
+
+  const numPoints = 6;  // Number of data points (6 points for 6am, 9am, 12pm, 3pm, 6pm)
+  const mean = 2;  // Mean centered at 12pm (2 in this 6-point range)
+  const stdDev = 1;  // Standard deviation to ensure 6am/6pm are low and 12pm is high
+
+  // Generate bell curve data, peaking at 12pm
+  const gridData = generateBellCurveData(numPoints, mean, stdDev);
 
   const gradientGrid = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
   gradientGrid.addColorStop(0.05, "rgba(0, 0, 255, 0.5)");
   gradientGrid.addColorStop(0.95, "rgba(0, 0, 255, 0.2)");
+
   const totalDuration = 2500;
   const delayBetweenPoints = totalDuration / gridData.length;
 
@@ -32,14 +48,17 @@ function createChartDisconnected() {
     }
   };
 
+  // Function to create time labels with 3-hour intervals from 6 AM to 6 PM
+  const labelsPerHour = ['6am', '9am', '12pm', '3pm', '6pm'];
+
   if (!chartInitialized) {
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: Array.from({ length: gridData.length }, (_, i) => 'Day ' + (i + 1)),
+        labels: labelsPerHour,  // Use formatted labels with 3-hour intervals
         datasets: [
           {
-            label: 'Grid',
+            label: 'Solar Output',
             data: gridData,
             backgroundColor: gradientGrid,
             borderColor: 'blue',
@@ -58,18 +77,40 @@ function createChartDisconnected() {
         animation: animation,
         scales: {
           x: {
-            display: false,
+            display: true,
             grid: {
               display: false
             },
-            beginAtZero: true
+            title: {
+              display: true,
+              text: 'Time (Hours)',
+              color: 'black',
+              font: {
+                size: 14,
+                weight: 'bold'
+              }
+            },
+            ticks: {
+              autoSkip: false,
+              maxRotation: 0,
+              minRotation: 0,
+            }
           },
           y: {
-            display: false,
-            min: 70,
-            max: 110,
+            display: true,
+            min: 0,
+            max: Math.max(...gridData) + 10,  // Adjust max value based on data
             grid: {
               display: false
+            },
+            title: {
+              display: true,
+              text: 'Power Output (kW)',
+              color: 'black',
+              font: {
+                size: 14,
+                weight: 'bold'
+              }
             },
             beginAtZero: true
           }
@@ -79,7 +120,7 @@ function createChartDisconnected() {
             display: false
           },
           tooltip: {
-            enabled: false  // Disable hover data display
+            enabled: false
           }
         }
       }
@@ -88,13 +129,23 @@ function createChartDisconnected() {
   }
 }
 
-
 // Derating
 function createChartDerating() {
   const ctx = document.getElementById('systemDeratingChart').getContext('2d');
   let chartInitialized = false;
 
-  const gridData = [56, 56, 52, 49, 46, 49, 53, 45, 48, 57, 53, 51, 46, 56, 50, 53, 60, 52, 46, 50, 53, 49, 54, 47, 52, 53, 60, 57, 59, 58, 47, 50, 58, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50, 50];
+  // Generate grid data for every 5 minutes from 6am to 6pm
+  const gridData = [
+    20, 65, 49, 58, 24, 
+    72, 30, 50, 40, 90, 
+    22, 60, 35, 45, 58, 
+    50, 25, 80, 47, 63, 
+    40, 40, 40, 40, 40,
+    40, 40, 40, 40, 40,
+    40, 40, 40, 40, 40,
+    40, 40, 40, 40, 40
+  ];
+  // const gridData = Array.from({ length: 144 }, (_, i) => Math.random() * (60 - 40) + 40);
 
   const gradientGrid = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
   gradientGrid.addColorStop(0.05, "rgba(0, 172, 14, 0.8)");
@@ -123,7 +174,6 @@ function createChartDerating() {
     }
   };
 
-
   if (!chartInitialized) {
     new Chart(ctx, {
       type: 'line',
@@ -138,7 +188,7 @@ function createChartDerating() {
             borderWidth: 2,
             pointRadius: 0,
             fill: true,
-            tension: 0.4,
+            tension: 0.3,
           }
         ]
       },
@@ -150,18 +200,57 @@ function createChartDerating() {
         animation: animation,
         scales: {
           x: {
-            display: false,
+            display: true,
             grid: {
               display: false
             },
-            beginAtZero: true
+            title: {
+              display: true,
+              text: 'Time (Hours)',
+              color: 'black',
+              font: {
+                size: 14,
+                weight: 'bold'
+              }
+            },
+            ticks: {
+              autoSkip: false, // Prevent auto skipping to control labels manually
+              maxRotation: 0,
+              minRotation: 0,
+              callback: function(value, index, values) {
+                const startHour = 6; // 6am
+                const endHour = 18;  // 6pm
+                const totalTicks = 40; // Total number of ticks
+                const interval = 3; // 3 hours interval
+                const ticksPerInterval = totalTicks / ((endHour - startHour) / interval); // Number of ticks per interval
+            
+                const tickHour = startHour + Math.floor(index / ticksPerInterval) * interval;
+                
+                if (index === gridData.length - 1) {
+                  return '6pm'; // Explicitly set 6pm for the last tick
+                }
+                if (index % ticksPerInterval === 0 && tickHour <= endHour) {
+                  return `${tickHour % 12 || 12}${tickHour >= 12 ? 'pm' : 'am'}`;
+                }
+                return ''; // Hide all other ticks
+              }
+            }
           },
           y: {
-            display: false,
-            min: 30,
-            max: 70,
+            display: true,
+            min: 0,
+            max: Math.max(...gridData) + 10,  // Adjust max value based on data
             grid: {
               display: false
+            },
+            title: {
+              display: true,
+              text: 'Power Output (kW)',
+              color: 'black',
+              font: {
+                size: 14,
+                weight: 'bold'
+              }
             },
             beginAtZero: true
           }
@@ -180,33 +269,81 @@ function createChartDerating() {
   }
 }
 
+
+
 //string performance
 function createChartStringPerformance() {
   const ctx = document.getElementById('stringPerformanceChart').getContext('2d');
   let chartInitialized = false;
 
   const gridData30 = [
-      30, 32, 29, 31, 28, 30, 33, 27, 30, 31, 29, 28, 32, 31, 30, 29, 30, 37, 33, 29,
-      30, 36, 28, 31, 29, 30, 31, 32, 30, 39, 28, 31, 35, 33, 29, 30, 40, 31, 30, 29,
-      28, 30, 31, 32, 29, 30, 31, 38, 30, 29, 30, 37, 32, 40, 29, 30, 31, 32, 30, 35,
-      28, 30, 37, 34, 30
+    0, 40, 29, 38, 4, 
+    40, 10, 30, 20, 70, 
+    2, 40, 15, 25, 38, 
+    30, 5, 60, 27, 43, 
+    20, 45, 29, 28, 4, 
+    52, 10, 20, 20, 70, 
+    2, 40, 15, 25, 38, 
+    30, 5, 60, 27, 43,
     ];
     
     const gridData50 = [
-      40, 38, 42, 39, 41, 40, 37, 43, 48, 39, 42, 38, 40, 41, 39, 42, 45, 38, 41, 40,
-      39, 37, 40, 45, 38, 47, 39, 42, 40, 43, 41, 35, 39, 42, 40, 38, 41, 40, 39, 42,
-      47, 40, 42, 49, 40, 41, 46, 40, 42, 49, 40, 41, 36, 40, 42, 38, 39, 40, 45, 41,
-      36, 40, 43, 39
+      60, 55, 110, 77, 93, 
+      57, 90, 65, 75, 78, 
+      90, 60, 80, 70, 120,  
+      50, 95, 79, 88, 54,
+      80, 55, 110, 77, 93, 
+      52, 90, 65, 75, 102, 
+      88, 60, 80, 70, 120,  
+      50, 95, 79, 88, 54,
     ];
     
     const gridData90 = [
-      50, 52, 49, 47, 46, 51, 56, 48, 50, 52, 43, 49, 48, 50, 53, 46, 49, 50, 52, 47,
-      48, 50, 51, 46, 49, 52, 49, 47, 55, 51, 44, 52, 50, 48, 50, 49, 50, 52, 51, 46,
-      0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0
+      100, 145, 129, 138, 104, 
+      152, 110, 130, 120, 170, 
+      102, 140, 115, 125, 138, 
+      130, 105, 160, 127, 143,
+      100, 145, 129, 138, 104, 
+      152, 110, 130, 120, 170, 
+      150, 0, 0, 0, 0, 
+      0, 0, 0, 0, 0
     ];
 
+    // const gridData30 = [
+    //   10, 31, 9, 41, 23, 
+    //   20, 33, 11, 30, 41, 
+    //   29, 28, 32, 31, 30, 
+    //   29, 30, 37, 33, 29,
+    //   30, 36, 28, 31, 29, 
+    //   30, 31, 32, 30, 39, 
+    //   28, 31, 35, 33, 29, 
+    //   30, 40, 31, 30, 29
+    // ];
+    
+    // const gridData50 = [
+    //   50, 58, 52, 59, 61, 
+    //   50, 57, 63, 68, 59, 
+    //   62, 58, 60, 61, 59, 
+    //   62, 65, 58, 61, 60,
+    //   59, 57, 60, 65, 58, 
+    //   67, 59, 62, 60, 63, 
+    //   61, 55, 59, 62, 60, 
+    //   58, 61, 60, 59, 62
+    // ];
+    
+    // const gridData90 = [
+    //   80, 82, 79, 77, 76, 
+    //   81, 90, 78, 80, 82, 
+    //   73, 79, 78, 80, 83, 
+    //   76, 79, 80, 82, 77,
+    //   78, 80, 81, 76, 79, 
+    //   82, 79, 77, 85, 81, 
+    //   0, 0, 0, 0, 0, 
+    //   0, 0, 0, 0, 0
+    // ];
+
   const totalDuration = 2500;
-  const delayBetweenPoints = totalDuration / gridData50.length;
+  const delayBetweenPoints = totalDuration / gridData90.length;
   const gradientGrid = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
   gradientGrid.addColorStop(0.05, "rgba(205, 205, 0, 0.8)");
   gradientGrid.addColorStop(0.95, "rgba(205, 205, 0, 0.2)");
@@ -236,37 +373,37 @@ function createChartStringPerformance() {
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: Array.from({ length: gridData50.length }, (_, i) => 'Day ' + (i + 1)),
+        labels: Array.from({ length: gridData90.length }, (_, i) => 'Day ' + (i + 1)),
         datasets: [
           {
             label: '30%',
             data: gridData30,
-            backgroundColor: gradientGrid,  // Light red
+            backgroundColor: gradientGrid,
             borderColor: 'rgba(205, 205, 0, 1)',
             borderWidth: 2,
             pointRadius: 0,
             fill: true,
-            tension: 0.4,
+            tension: 0.3,
           },
           {
             label: '50%',
             data: gridData50,
-            backgroundColor: gradientGrid,  // Light green
+            backgroundColor: gradientGrid,
             borderColor: 'rgba(205, 205, 0, 1)',
             borderWidth: 2,
             pointRadius: 0,
             fill: true,
-            tension: 0.4,
+            tension: 0.3,
           },
           {
             label: '90%',
             data: gridData90,
-            backgroundColor: gradientGrid,  // Light blue
+            backgroundColor: gradientGrid,
             borderColor: 'rgba(205, 205, 0, 1)',
             borderWidth: 2,
             pointRadius: 0,
             fill: true,
-            tension: 0.4,
+            tension: 0.3,
           }
         ]
       },
@@ -278,18 +415,58 @@ function createChartStringPerformance() {
         animation: animation,
         scales: {
           x: {
-            display: false,
+            display: true,
             grid: {
               display: false
             },
-            beginAtZero: true
+            title: {
+              display: true,
+              text: 'Time (Hours)',
+              color: 'black',
+              font: {
+                size: 14,
+                weight: 'bold'
+              }
+            },
+            ticks: {
+              autoSkip: false, // Prevent auto skipping to control labels manually
+              maxRotation: 0,
+              minRotation: 0,
+              callback: function(value, index, values) {
+                const startHour = 6; // 6am
+                const endHour = 18;  // 6pm
+                const totalTicks = gridData90.length; // Total number of ticks based on data length
+                const interval = 3; // 3 hours interval
+                const hoursRange = endHour - startHour; // Total number of hours from start to end
+                const ticksPerInterval = totalTicks / (hoursRange / interval); // Number of ticks per interval
+            
+                const tickHour = startHour + Math.floor(index / ticksPerInterval) * interval;
+            
+                if (index === totalTicks - 1) {
+                  return '6pm'; // Explicitly set 6pm for the last tick
+                }
+                if (index % ticksPerInterval === 0 && tickHour <= endHour) {
+                  return `${tickHour % 12 || 12}${tickHour >= 12 ? 'pm' : 'am'}`;
+                }
+                return ''; // Hide all other ticks
+              }
+            }
           },
           y: {
-            display: false,
-            min: 25,
-            max: 60,
+            display: true,
+            min: 0,
+            max: Math.max(...gridData90) + 10,  // Adjust max value based on data
             grid: {
               display: false
+            },
+            title: {
+              display: true,
+              text: 'Power Output (kW)',
+              color: 'black',
+              font: {
+                size: 14,
+                weight: 'bold'
+              }
             },
             beginAtZero: true
           }

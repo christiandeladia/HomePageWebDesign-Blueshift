@@ -41,11 +41,26 @@ document.addEventListener('DOMContentLoaded', function () {
         const canvases = document.querySelectorAll('canvas');
         canvases.forEach(function(canvas) {
             canvas.style.display = 'none';
+            // Reset canvas filter in case it was previously modified
+            canvas.style.filter = 'none';
         });
+
+        // Hide the disconnected text by default
+        const disconnectedText = document.getElementById('disconnectedText');
+        disconnectedText.style.display = 'none';
 
         // Show the selected canvas
         if (canvasId) {
-            document.getElementById(canvasId).style.display = 'block';
+            const canvasElement = document.getElementById(canvasId);
+            canvasElement.style.display = 'block';
+    
+            // Show disconnected text for specific chart with a 4-second delay
+            if (canvasId === 'systemDisconnectedChart') {
+                setTimeout(() => {
+                    disconnectedText.style.display = 'block';
+                    canvasElement.style.filter = 'grayscale(100%)';
+                }, 2500); // 4 seconds delay
+            }
         }
 
         // Remove 'active' class from all buttons
