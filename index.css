@@ -137,3 +137,44 @@
     padding: 10px; /* Optional: Add padding */
     border-radius: 5px; /* Optional: Add rounded corners */
 }
+
+
+/* design buttons------ */
+.designBtn {
+    border: 1px solid #0B5ED7;
+    background-color: #fff;
+    color: #0B5ED7;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.designBtn:hover {
+    background-color: #0B5ED7;
+    color: #fff;
+}
+
+.designBtn:hover svg {
+    fill: #0B5ED7;
+}
+
+.designBtn:hover svg circle {
+    fill: #fff;
+    stroke: #fff;
+  }
+
+/* design image------ */
+.fixedSize {
+    width: 100%; 
+    height: auto; 
+    max-width: 700px; 
+    object-fit: cover; 
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    position: absolute; 
+    top: 0;
+    left: 0;
+}
+
+.fixedSize.active {
+    opacity: 1;
+    position: relative;
+}
