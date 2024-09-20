@@ -131,9 +131,8 @@
     left: 50%;
     transform: translate(-50%, -50%);
     color: black; /* You can change the color */
-    font-size: 20px; /* Adjust font size as needed */
-    font-weight: bold; /* Make the text bold if desired */
-    background: rgba(255, 255, 255, 0.8); /* Optional: Add a background with some transparency for better readability */
+    /* font-size: 12px; */
+    
     padding: 10px; /* Optional: Add padding */
     border-radius: 5px; /* Optional: Add rounded corners */
 }

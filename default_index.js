@@ -26,7 +26,103 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+    function updateConversation(conversationId, buttonId, canvasId) {
+        const disconnectedText = document.getElementById('disconnectedText');
     
+        // Helper function to hide all elements from a NodeList
+        const hideElements = (elements) => elements.forEach(el => el.style.display = 'none');
+    
+        // Hide all conversations
+        hideElements(document.querySelectorAll('.conversation'));
+    
+        // Show the selected conversation
+        const conversationToShow = document.getElementById(conversationId);
+        conversationToShow.style.display = 'block';
+    
+        // Hide all canvases and reset filter
+        const canvases = document.querySelectorAll('canvas');
+        canvases.forEach(canvas => {
+            canvas.style.display = 'none';
+            canvas.style.filter = 'none';
+        });
+    
+        // Always hide the disconnected text when switching
+        disconnectedText.style.display = 'none';
+    
+        // Show the selected canvas if provided
+        if (canvasId) {
+            const canvasElement = document.getElementById(canvasId);
+            canvasElement.style.display = 'block';
+    
+            // Show disconnected text only for systemDisconnectedChart and observe visibility
+            if (canvasId === 'systemDisconnectedChart') {
+                observeCanvasVisibility(canvasElement, disconnectedText);
+                console.log('Disconnected text displayed for button:', buttonId);
+            } else {
+                // Hide the disconnected text for other charts
+                disconnectedText.style.display = 'none';
+                console.log('Disconnected text not displayed for button:', buttonId);
+            }
+        }
+    
+        // Update button active state
+        document.querySelectorAll('#AfterServiceBtnGroup .btn')
+            .forEach(btn => btn.classList.remove('active'));
+        document.getElementById(buttonId).classList.add('active');
+    
+        // Initialize or update the chart based on canvasId
+        const chartActions = {
+            systemDisconnectedChart: createChartDisconnected,
+            systemDeratingChart: createChartDerating,
+            stringPerformanceChart: createChartStringPerformance
+        };
+        chartActions[canvasId]?.();
+    
+        // Delay the display of each conversation message
+        delayConversationMessages(conversationToShow);
+    }
+    
+
+
+
+    // Function to add delay to the display of conversation messages-------------------------------------
+    function delayConversationMessages(conversationElement) {
+        const messages = conversationElement.querySelectorAll('.message');
+        messages.forEach((message, index) => {
+            setTimeout(() => {
+                message.style.opacity = 1;
+            }, index * 1500);
+        });
+    }
+
+    // Function to observe canvas visibility-------------------------------------
+    function observeCanvasVisibility(canvasElement, disconnectedText) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    setTimeout(() => {
+                        disconnectedText.style.display = 'block';
+                        canvasElement.style.filter = 'grayscale(100%)';
+                    }, 2500); // 4 seconds delay after becoming visible
+                    observer.unobserve(entry.target); // Stop observing once animation starts
+                }
+            });
+        });
+        observer.observe(canvasElement);
+    }
+    // Event listeners for buttons
+    document.getElementById('disconnected').addEventListener('click', function() {
+        updateConversation('conversation-disconnected', 'disconnected', 'systemDisconnectedChart');
+    });
+    document.getElementById('derating').addEventListener('click', function() {
+        updateConversation('conversation-derating', 'derating', 'systemDeratingChart');
+    });
+    document.getElementById('string-performance').addEventListener('click', function() {
+        updateConversation('conversation-string-performance', 'string-performance', 'stringPerformanceChart');
+    });
+    // Set "Disconnected" as the default conversation when the page loads
+    updateConversation('conversation-disconnected', 'disconnected', 'systemDisconnectedChart');
+
 
 
     //Customer Reivew Section-------------------------------------
