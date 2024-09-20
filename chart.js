@@ -269,7 +269,7 @@ document.addEventListener('DOMContentLoaded', function () {
                       label += ': ';
                     }
                     if (context.parsed.y !== null) {
-                      label += new Number(context.parsed.y) + '%';
+                      label += new Number(context.parsed.y.toFixed(2)) + '%';
                     }
                     return label;
                   }
@@ -391,7 +391,18 @@ const gridData = bellCurveData.concat(dropData);
     new Chart(ctx, {
       type: 'line',
       data: {
-        labels: Array.from({ length: gridData.length }, (_, i) => 'Day ' + (i + 1)),
+        labels: Array.from({ length: gridData.length }, (_, i) => {
+          const startHour = 6; // 6am
+          const totalTicks = gridData.length;
+          const hoursRange = 12; // Total hours from 6am to 6pm
+          const interval = hoursRange / (totalTicks - 1); // Calculate hour increment based on number of ticks
+          const tickHour = startHour + Math.floor(i * interval);
+        
+          // Format hours correctly
+          if (tickHour === 12) return '12pm'; // Handle 12 PM case
+          if (tickHour === 0) return '12am'; // Handle 12 AM case
+          return tickHour < 12 ? `${tickHour}am` : `${tickHour - 12}pm`;
+        }),
         datasets: [
           {
             label: 'Grid',
@@ -486,7 +497,7 @@ const gridData = bellCurveData.concat(dropData);
                   label += ': ';
                 }
                 if (context.parsed.y !== null) {
-                  label += new Number(context.parsed.y) + '%';
+                  label += new Number(context.parsed.y.toFixed(2)) + '%';
                 }
                 return label;
               }
@@ -586,7 +597,18 @@ function createChartStringPerformance() {
     chartInstance =  new Chart(ctx, {
       type: 'line',
       data: {
-        labels: Array.from({ length: gridData90.length }, (_, i) => 'Day ' + (i + 1)),
+        labels: Array.from({ length: gridData90.length }, (_, i) => {
+          const startHour = 6; // 6am
+          const totalTicks = gridData90.length;
+          const hoursRange = 12; // Total hours from 6am to 6pm
+          const interval = hoursRange / (totalTicks - 1); // Calculate hour increment based on number of ticks
+          const tickHour = startHour + Math.floor(i * interval);
+        
+          // Format hours correctly
+          if (tickHour === 12) return '12pm'; // Handle 12 PM case
+          if (tickHour === 0) return '12am'; // Handle 12 AM case
+          return tickHour < 12 ? `${tickHour}am` : `${tickHour - 12}pm`;
+        }),
         datasets: [
           {
             label: '1st set of panels',
@@ -704,7 +726,7 @@ function createChartStringPerformance() {
                   label += ': ';
                 }
                 if (context.parsed.y !== null) {
-                  label += new Number(context.parsed.y) + '%';
+                  label += new Number(context.parsed.y.toFixed(2)) + '%';
                 }
                 return label;
               }
