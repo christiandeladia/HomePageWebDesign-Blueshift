@@ -118,39 +118,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+  function createChartDisconnected(mean = 36, stdDev = 10) {
+    const ctx = document.getElementById('systemDisconnectedChart')?.getContext('2d');
+    if (!ctx) {
+        console.error('Canvas context not found.');
+        return;
+    }
 
-  
-  // disconnected
-  function createChartDisconnected() {
-    const ctx = document.getElementById('systemDisconnectedChart').getContext('2d');
     let chartInitialized = false;
     let chart;
-  
-    // Function to generate a bell curve (normal distribution) data
-    function generateBellCurveData(numPoints, mean, stdDev) {
+
+    function generateBellCurveData(numPoints, mean, stdDev, scale = 100) {
       const data = [];
       for (let i = 0; i < numPoints; i++) {
-        const x = i - mean;
-        const y = Math.exp(-0.5 * Math.pow(x / stdDev, 2));
-        data.push(y * 90); // Scale the data as needed for power output
+          const x = i - mean;
+          let y = Math.exp(-0.5 * Math.pow(x / stdDev, 2));
+          y *= scale;  // Scale the y values by 10
+          data.push(y);
       }
       return data;
-    }
-  
-    const numPoints = 5;  // Number of data points (5 points for 6am, 9am, 12pm, 3pm, 6pm)
-    const mean = 1;  // Mean centered at 9am (1 in this 5-point range)
-    const stdDev = 0.5;  // Standard deviation to ensure 6am/12pm are low and 9am is high
-  
-    // Generate bell curve data, peaking at 9am
+  }
+
+    const numPoints = 76;
     const gridData = generateBellCurveData(numPoints, mean, stdDev);
-  
-    const gradientGrid = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-    gradientGrid.addColorStop(0.05, "rgba(0, 0, 255, 0.5)");
-    gradientGrid.addColorStop(0.95, "rgba(0, 0, 255, 0.2)");
-  
-    const totalDuration = 2500;
+    const labels = [];
+for (let i = 6; i <= 18; i++) {
+    for (let j = 0; j < 60; j += 10) {  // Every 10 minutes
+        const hour = i % 12 === 0 ? 12 : i % 12;
+        const suffix = i < 12 ? 'AM' : 'PM';
+        const minute = j === 0 ? '00' : j;
+        labels.push(`${hour} ${suffix}`);
+    }
+}
+
+// Filter the labels to show only 6:00 AM, 9:00 AM, 12:00 PM, 3:00 PM, and 6:00 PM
+const displayLabels = labels.map((label, index) => {
+    // Only display labels for the following indices (6:00 AM, 9:00 AM, 12:00 PM, 3:00 PM, 6:00 PM)
+    const displayTimes = [0, 18, 36, 54, 72];  // Corresponding to every 3 hours
+    return displayTimes.includes(index) ? label : '';  // Show label only at 3-hour intervals
+});
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+    gradient.addColorStop(0, 'rgba(255, 165, 0, 0.5)');
+    gradient.addColorStop(1, 'rgba(255, 165, 0, 0.1)');
+
+    const peakIndex = gridData.indexOf(Math.max(...gridData));
+
+    const rightHalfData = gridData.map((value, i) => (i > peakIndex ? value : null));
+    const verticalLineData = gridData.map((value, i) => (i === peakIndex ? value : (i === peakIndex + 1 ? 0 : null)));
+
+
+    const totalDuration = 2000;
     const delayBetweenPoints = totalDuration / gridData.length;
-  
+
     const animation = {
       x: {
         delay(ctx) {
@@ -174,340 +194,316 @@ document.addEventListener('DOMContentLoaded', function () {
         if (chart) {
           chart.data.datasets[0].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
           chart.data.datasets[0].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+          chart.data.datasets[1].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
+          chart.data.datasets[1].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+          chart.data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
           chart.update();
         }
         // Trigger the conversation animation after chart animation completes
-        const conversationElement = document.getElementById('conversation-disconnected');
-        delayConversationMessages(conversationElement);
+        setTimeout(() => {
+          const conversationElement = document.getElementById('conversation-disconnected');
+          delayConversationMessages(conversationElement);   
+        }, 1000);
       }
     };
-  
-    // Function to create time labels with 3-hour intervals from 6 AM to 6 PM
-    const labelsPerHour = ['6am', '9am', '12pm', '3pm', '6pm'];
-  
+
     function initializeChart() {
-      if (!chartInitialized) {
-        chart = new Chart(ctx, {
-          type: 'line',
-          data: {
-            labels: labelsPerHour,  // Use formatted labels with 3-hour intervals
-            datasets: [
-              {
-                label: 'Solar Output',
-                data: gridData,
-                backgroundColor: gradientGrid,
-                borderColor: 'blue',
-                borderWidth: 2,
-                pointRadius: 0,
-                fill: true,
-                tension: 0.5,
-              }
-            ]
-          },
-          options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            interaction: {
-              mode: 'nearest',
-              axis: 'x',
-              intersect: false
-            },
-            animation: animation,
-            scales: {
-              x: {
-                display: true,
-                grid: {
-                  display: false
+        if (!chartInitialized) {
+            chart = new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: displayLabels,
+                    datasets: [
+                        {
+                            label: 'Active Curve',
+                            data: gridData.map((value, i) => (i <= peakIndex ? value : null)),
+                            backgroundColor: gradient,
+                            borderColor: 'orange',
+                            borderWidth: 2,
+                            fill: true,
+                            pointRadius: 0,
+                            tension: 0.5,
+                        },
+                        {
+                            label: 'Offline Drop',
+                            data: verticalLineData,
+                            backgroundColor: gradient,
+                            borderColor: 'orange',
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            fill: true
+                        },
+                        {
+                            label: 'Potential Energy',
+                            data: rightHalfData,
+                            borderColor: 'orange',
+                            borderDash: [5, 5],
+                            borderWidth: 2,
+                            pointRadius: 0,
+                            fill: false,
+                        }
+                    ]
                 },
-                title: {
-                  display: false,
-                  text: 'Time (Hours)',
-                  color: 'black',
-                  font: {
-                    size: 14,
-                    weight: 'bold'
-                  }
-                },
-                ticks: {
-                  autoSkip: false,
-                  maxRotation: 0,
-                  minRotation: 0,
-                }
-              },
-              y: {
-                display: true,
-                min: 0,
-                max: Math.max(...gridData) + 10,  // Adjust max value based on data
-                grid: {
-                  display: false
-                },
-                title: {
-                  display: false,
-                  text: 'Power Output (kW)',
-                  color: 'black',
-                  font: {
-                    size: 14,
-                    weight: 'bold'
-                  }
-                },
-                beginAtZero: true
-              }
-            },
-            plugins: {
-              legend: {
-                display: false
-              },
-              tooltip: {
-                enabled: true, // Enable tooltips
-                mode: 'index', // Show all items in the dataset at the nearest X position
-                intersect: false, // Show the tooltip even when not exactly over a point
-                callbacks: {
-                  label: function (context) {
-                    var label = context.dataset.label || '';
-    
-                    if (label) {
-                      label += ': ';
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    interaction: {
+                        mode: 'nearest',
+                        axis: 'x',
+                        intersect: false
+                    },
+                    animation: animation,
+                    scales: {
+                        x: {
+                            type: 'category',
+                            display: true,
+                            grid: {
+                                display: false
+                            },
+                            ticks: {
+                              autoSkip: false, 
+                              maxRotation: 0,   
+                              minRotation: 0,
+                              font: {
+                                  size: 12
+                              }
+                          }
+                        },
+                        y: {
+                            display: true,
+                            min: 0,
+                            max: 100,
+                            grid: {
+                                display: false
+                            },
+                            beginAtZero: true
+                        }
+                    },
+                    plugins: {
+                        legend: {
+                            display: false,
+                            position: 'top'
+                        },
+                        tooltip: {
+                            enabled: true,
+                            mode: 'index',
+                            intersect: false,
+                        }
                     }
-                    if (context.parsed.y !== null) {
-                      label += new Number(context.parsed.y.toFixed(2)) + '%';
-                    }
-                    return label;
-                  }
                 }
-              }
-            }
-          }
-        });
-        chartInitialized = true;
-      }
-    }
-  
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          if (!chartInitialized) {
-            initializeChart();
-          }
-          // Ensure chart update happens only after initialization
-          chart.update();
-          observer.unobserve(entry.target);
+            });
+            chartInitialized = true;
         }
-      });
+    }
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                initializeChart();
+                chart.update();
+                observer.unobserve(entry.target);
+            }
+        });
     }, {
-      threshold: 0.1
+        threshold: 0.1
     });
-  
+
     const chartContainer = document.querySelector('.canvas-container');
     observer.observe(chartContainer);
-  }
-
-
-// Derating
-function createChartDerating() {
-  const ctx = document.getElementById('systemDeratingChart').getContext('2d');
-  let chartInitialized = false;
-
-  // Generate grid data for every 5 minutes from 6am to 6pm
-  // const gridData = [
-  //   20, 25, 30, 35, 40, 
-  //   45, 50, 55, 60, 65, 
-  //   100, 105, 110, 100, 90, 
-  //   80, 70, 70, 70, 70, 
-  //   70, 70, 70, 70, 70,
-  //   70, 67, 64, 61, 58,
-  //   55, 52, 49, 46, 43,
-  //   40, 37, 34, 31, 28
-  // ];
-  // const gridData = Array.from({ length: 144 }, (_, i) => Math.random() * (60 - 40) + 40);
-
-  function generateBellCurveData(numPoints, mean, stdDev, min, max) {
-    const data = [];
-    const scale = (max - min) / 2;
-    const shift = min + scale;
-
-    for (let i = 0; i < numPoints; i++) {
-        const x = (i - mean) / stdDev;
-        const y = Math.exp(-0.5 * Math.pow(x, 2));
-        data.push(Math.max(min, Math.min(max, y * scale + shift))); // Scale and shift the data
+}
+  
+  // derating
+  function createChartDerating(mean = 36, stdDev = 10) {
+    const ctx = document.getElementById('systemDeratingChart')?.getContext('2d');
+    if (!ctx) {
+        console.error('Canvas context not found.');
+        return;
     }
-    return data;
+
+    let chartInitialized = false;
+    let chart;
+
+    function generateBellCurveData(numPoints, mean, stdDev, scale = 100) {
+        const data = [];
+        for (let i = 0; i < numPoints; i++) {
+            const x = i - mean;
+            let y = Math.exp(-0.5 * Math.pow(x / stdDev, 2));
+            y *= scale;  // Scale the y values by 100
+            data.push(y);
+        }
+        return data;
+    }
+
+    const numPoints = 76;
+    const gridData = generateBellCurveData(numPoints, mean, stdDev);
+    const labels = [];
+    for (let i = 6; i <= 18; i++) {
+        for (let j = 0; j < 60; j += 10) {
+            const hour = i % 12 === 0 ? 12 : i % 12;
+            const suffix = i < 12 ? 'AM' : 'PM';
+            const minute = j === 0 ? '00' : j;
+            labels.push(`${hour} ${suffix}`);
+        }
+    }
+
+    // Filter to show only specific labels
+    const displayLabels = labels.map((label, index) => {
+        const displayTimes = [0, 18, 36, 54, 72];  // Indices for 3-hour intervals
+        return displayTimes.includes(index) ? label : '';
+    });
+
+    const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+  gradient.addColorStop(0.05, "rgba(0, 172, 14, 0.8)");
+  gradient.addColorStop(0.95, "rgba(0, 172, 14, 0.2)");
+
+    const peakValue = Math.max(...gridData);
+    const peakIndex = gridData.indexOf(peakValue);
+
+    // Create the offline drop data
+    const offlineDropData = new Array(numPoints).fill(null);
+for (let i = peakIndex + 1; i < numPoints; i++) {
+    offlineDropData[i] = 70; // Set horizontal line from peak to 70
 }
 
-// Parameters
-const numPoints = 16;  // Number of data points
-const mean = 9;       // Mean centered around the middle of the array
-const stdDev = 4;      // Standard deviation to control the spread
-const min = 10;        // Minimum value
-const max = 140;        // Maximum value
-
-// Generate bell curve data
-const bellCurveData = generateBellCurveData(numPoints, mean, stdDev, min, max);
-
-// Append sudden drop and decreasing values
-const dropData = [
-    70, 70, 70, 70, 70,
-    70, 70, 70, 70, 70,
-    70, 70, 67, 64, 61,
-    58, 55, 52, 49, 46,
-    43, 40, 37, 34
-];
-
-// Combine data
-const gridData = bellCurveData.concat(dropData);
-
-  const gradientGrid = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-  gradientGrid.addColorStop(0.05, "rgba(0, 172, 14, 0.8)");
-  gradientGrid.addColorStop(0.95, "rgba(0, 172, 14, 0.2)");
-  const totalDuration = 2500;
-  const delayBetweenPoints = totalDuration / gridData.length;
-
-  const animation = {
-    x: {
-      delay(ctx) {
-        if (ctx.type !== 'data' || ctx.xStarted) {
-          return 0;
-        }
-        ctx.xStarted = true;
-        return ctx.index * delayBetweenPoints;
-      }
-    },
-    y: {
-      delay(ctx) {
-        if (ctx.type !== 'data' || ctx.yStarted) {
-          return 0;
-        }
-        ctx.yStarted = true;
-        return ctx.index * delayBetweenPoints;
-      }
-    },
-    onComplete() {
-      // Trigger the conversation animation after chart animation completes
-      const conversationElement = document.getElementById('conversation-derating');
-      delayConversationMessages(conversationElement);
+    const rightHalfData = gridData.map((value, i) => (i > peakIndex ? value : null));
+    
+    const verticalLineData = new Array(numPoints).fill(null);
+    verticalLineData[peakIndex] = peakValue;  // Start at the peak value
+    for (let i = peakIndex + 1; i < numPoints; i++) {
+        verticalLineData[i] = 70; // Set the rest to 70
     }
-  };
 
-  if (!chartInitialized) {
-    new Chart(ctx, {
-      type: 'line',
-      data: {
-        labels: Array.from({ length: gridData.length }, (_, i) => {
-          const startHour = 6; // 6am
-          const totalTicks = gridData.length;
-          const hoursRange = 12; // Total hours from 6am to 6pm
-          const interval = hoursRange / (totalTicks - 1); // Calculate hour increment based on number of ticks
-          const tickHour = startHour + Math.floor(i * interval);
-        
-          // Format hours correctly
-          if (tickHour === 12) return '12pm'; // Handle 12 PM case
-          if (tickHour === 0) return '12am'; // Handle 12 AM case
-          return tickHour < 12 ? `${tickHour}am` : `${tickHour - 12}pm`;
-        }),
-        datasets: [
-          {
-            label: 'Grid',
-            data: gridData,
-            backgroundColor: gradientGrid,
-            borderColor: 'green',
-            borderWidth: 2,
-            pointRadius: 0,
-            fill: true,
-            tension: 0.3,
-          }
-        ]
-      },
-      options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        interaction: {
-          mode: 'nearest',
-          axis: 'x',
-          intersect: false
-        },
-        animation: animation,
-        scales: {
-          x: {
-            display: true,
-            grid: {
-              display: false
-            },
-            title: {
-              display: false,
-              text: "",
-              color: 'black',
-              font: {
-                size: 14,
-                weight: 'bold'
-              }
-            },
-            ticks: {
-              autoSkip: false, // Prevent auto skipping to control labels manually
-              maxRotation: 0,
-              minRotation: 0,
-              callback: function(value, index, values) {
-                const startHour = 6; // 6am
-                const endHour = 18;  // 6pm
-                const totalTicks = 40; // Total number of ticks
-                const interval = 3; // 3 hours interval
-                const ticksPerInterval = totalTicks / ((endHour - startHour) / interval); // Number of ticks per interval
-            
-                const tickHour = startHour + Math.floor(index / ticksPerInterval) * interval;
-                
-                if (index === gridData.length - 1) {
-                  return '6pm'; // Explicitly set 6pm for the last tick
-                }
-                if (index % ticksPerInterval === 0 && tickHour <= endHour) {
-                  return `${tickHour % 12 || 12}${tickHour >= 12 ? 'pm' : 'am'}`;
-                }
-                return ''; // Hide all other ticks
-              }
-            }
-          },
-          y: {
-            display: true,
-            min: 0,
-            max: Math.max(...gridData) + 10,  // Adjust max value based on data
-            grid: {
-              display: false
-            },
-            title: {
-              display: false,
-              color: 'black',
-              font: {
-                size: 14,
-                weight: 'bold'
-              }
-            },
-            beginAtZero: true
-          }
-        },
-        plugins: {
-          legend: {
-            display: false
-          },
-          tooltip: {
-            enabled: true, // Enable tooltips
-            mode: 'index', // Show all items in the dataset at the nearest X position
-            intersect: false, // Show the tooltip even when not exactly over a point
-            callbacks: {
-              label: function (context) {
-                var label = context.dataset.label || '';
 
-                if (label) {
-                  label += ': ';
+    const animation = {
+        x: {
+            delay(ctx) {
+                if (ctx.type !== 'data' || ctx.xStarted) {
+                    return 0;
                 }
-                if (context.parsed.y !== null) {
-                  label += new Number(context.parsed.y.toFixed(2)) + '%';
-                }
-                return label;
-              }
+                ctx.xStarted = true;
+                return ctx.index * (2000 / gridData.length);
             }
-          }
+        },
+        y: {
+            delay(ctx) {
+                if (ctx.type !== 'data' || ctx.yStarted) {
+                    return 0;
+                }
+                ctx.yStarted = true;
+                return ctx.index * (2000 / gridData.length);
+            }
+        },
+        onComplete() {
+            if (chart) {
+
+
+                chart.update();
+            }
+            setTimeout(() => {
+                const conversationElement = document.getElementById('conversation-derating');
+                delayConversationMessages(conversationElement);   
+            }, 1000);
         }
-      }
-    });
-    chartInitialized = true;
-  }
+    };
+
+    
+    if (!chartInitialized) {
+        chart = new Chart(ctx, {
+            type: 'line',
+            data: {
+                labels: displayLabels,
+                datasets: [
+                    {
+                        label: 'Active Curve',
+                        data: gridData.map((value, i) => (i <= peakIndex ? value : null)),
+                        backgroundColor: gradient,
+                        borderColor: 'green',
+                        borderWidth: 2,
+                        fill: true,
+                        pointRadius: 0,
+                        tension: 0.5,
+                    },
+                    {
+                        label: 'Offline Drop',
+                        data: offlineDropData,
+                        backgroundColor: gradient,
+                        borderColor: 'green',
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: false
+                    },
+                    {
+                      label: 'Offline Drop',
+                      data: verticalLineData,
+                      backgroundColor: gradient,
+                      borderColor: 'green',
+                      borderWidth: 2,
+                      pointRadius: 0,
+                      fill: true
+                  },
+                    {
+                        label: 'Potential Energy',
+                        data: rightHalfData,
+                        borderColor: 'green',
+                        borderDash: [5, 5],
+                        borderWidth: 2,
+                        pointRadius: 0,
+                        fill: false,
+                    }
+                ]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                interaction: {
+                    mode: 'nearest',
+                    axis: 'x',
+                    intersect: false
+                },
+                animation: animation,
+                scales: {
+                    x: {
+                        type: 'category',
+                        display: true,
+                        grid: {
+                            display: false
+                        },
+                        ticks: {
+                            autoSkip: false,
+                            maxRotation: 0,
+                            minRotation: 0,
+                            font: {
+                                size: 12
+                            }
+                        }
+                    },
+                    y: {
+                        display: true,
+                        min: 0,
+                        max: 100,
+                        grid: {
+                            display: false
+                        },
+                        beginAtZero: true
+                    }
+                },
+                plugins: {
+                    legend: {
+                        display: false,
+                        position: 'top'
+                    },
+                    tooltip: {
+                        enabled: true,
+                        mode: 'index',
+                        intersect: false,
+                    }
+                }
+            }
+        });
+        chartInitialized = true;
+    }
+    
+
 }
 
 
@@ -681,10 +677,10 @@ function createChartStringPerformance() {
                 const tickHour = startHour + Math.floor(index / ticksPerInterval) * interval;
             
                 if (index === totalTicks - 1) {
-                  return '6pm'; // Explicitly set 6pm for the last tick
+                  return '6 PM'; // Explicitly set 6pm for the last tick
                 }
                 if (index % ticksPerInterval === 0 && tickHour <= endHour) {
-                  return `${tickHour % 12 || 12}${tickHour >= 12 ? 'pm' : 'am'}`;
+                  return `${tickHour % 12 || 12}${tickHour >= 12 ? ' PM' : ' AM'}`;
                 }
                 return ''; // Hide all other ticks
               }
