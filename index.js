@@ -79,32 +79,23 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    // Function to update the active image based on the button's data-target attribute-------------------------------------
-    function updateImage(targetId) {
-        const imageIds = ['defaultDesign', 'homes', 'offices', 'hospitality', 'manufacturer'];
-        const images = imageIds.map(id => document.getElementById(id));
-
-        images.forEach(img => {
-            img.classList.toggle('active', img.id === targetId);
-        });
-    }
-
-    // Function to set up hover events on buttons
-    function setupImageHover() {
-        const buttons = document.querySelectorAll('#designBtn');
-        
-        buttons.forEach(button => {
+    // Function to change image when hover in ALL SECTION-------------------------------------
+    function setupAllSectionImageHover() {
+        const images = document.querySelectorAll('#defaultDesign, #homes, #offices, #hospitality, #manufacturer');
+        document.querySelectorAll('#designBtn').forEach(button => {
+            const targetId = button.getAttribute('data-target');
+            
             button.addEventListener('mouseenter', () => {
-                const targetId = button.getAttribute('data-target');
-                updateImage(targetId);
+                images.forEach(img => img.classList.toggle('active', img.id === targetId));
             });
             
             button.addEventListener('mouseleave', () => {
-                updateImage('defaultDesign'); // Show default image on leave
+                images.forEach(img => img.classList.toggle('active', img.id === 'defaultDesign'));
             });
         });
     }
-    setupImageHover();
+    setupAllSectionImageHover();
+    
 
 
 

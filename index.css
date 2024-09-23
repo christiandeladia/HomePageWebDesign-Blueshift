@@ -83,7 +83,7 @@
     transition: opacity 0.5s ease-in-out; /* Smooth transition */
 }
 
-@media (max-width: 991.98px) {
+@media (max-width: 768px) {
     #AfterServiceBtnGroup{
        margin-left: -17px; 
        margin-right: -17px;
@@ -162,9 +162,10 @@
 
 /* design image------ */
 .fixedSize {
+    display: none;
     width: 100%; 
     height: auto; 
-    max-width: 700px; 
+    max-width: 800px; 
     object-fit: cover; 
     opacity: 0;
     transition: opacity 0.5s ease;
@@ -174,6 +175,8 @@
 }
 
 .fixedSize.active {
+    display: block;
     opacity: 1;
     position: relative;
+
 }
