@@ -102,19 +102,9 @@ let timeoutId; // Variable to hold timeout ID
                     }
                 },
                 onComplete() {
-                    const chartInstance = this; // Reference to the current chart instance
-                    const data = chartInstance.data; // Access chart data
-
-                    data.datasets[0].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
-                    data.datasets[0].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                    data.datasets[1].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
-                    data.datasets[1].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                    data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                    chartInstance.update();
-                  
-                    // setTimeout(() => {
-                    //     showConversation('conversation-disconnected');
-                    // }, 1000);
+                    setTimeout(() => {
+                        // showConversation('conversation-disconnected');
+                    }, 1000);
                 }
             },
             scales: {
@@ -158,174 +148,21 @@ let timeoutId; // Variable to hold timeout ID
 }
 
   // Function to create a Bar Chart configuration
-  function getDeratingChartConfig(mean = 36, stdDev = 10) {
-    const numPoints = 76;
-    const gridData = generateBellCurveData(numPoints, mean, stdDev);
-    const labels = [];
-
-      function generateBellCurveData(numPoints, mean, stdDev, scale = 100) {
-          const data = [];
-          for (let i = 0; i < numPoints; i++) {
-              const x = i - mean;
-              let y = Math.exp(-0.5 * Math.pow(x / stdDev, 2));
-              y *= scale;  // Scale the y values by 100
-              data.push(y);
-          }
-          return data;
-      }
-      
-      for (let i = 6; i <= 18; i++) {
-          for (let j = 0; j < 60; j += 10) {
-              const hour = i % 12 === 0 ? 12 : i % 12;
-              const suffix = i < 12 ? 'AM' : 'PM';
-              const minute = j === 0 ? '00' : j;
-              labels.push(`${hour} ${suffix}`);
-          }
-      }
-  
-      // Filter to show only specific labels
-      const displayLabels = labels.map((label, index) => {
-          const displayTimes = [0, 18, 36, 54, 72];  // Indices for 3-hour intervals
-          return displayTimes.includes(index) ? label : '';
-      });
-  
-      
-  
-      const peakValue = Math.max(...gridData);
-      const peakIndex = gridData.indexOf(peakValue);
-  
-      // Create the offline drop data
-      const offlineDropData = new Array(numPoints).fill(null);
-  for (let i = peakIndex + 1; i < numPoints; i++) {
-      offlineDropData[i] = 70; // Set horizontal line from peak to 70
+  function getDeratingChartConfig() {
+    return {
+        type: 'bar',
+        data: {
+            labels: ['January', 'February', 'March', 'April', 'May', 'June'],
+            datasets: [{
+                label: 'System Derating Data',
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(54, 162, 235, 1)',
+                data: [15, 25, 35, 45, 55, 65] // Customize data as needed
+            }]
+        },
+        options: {}
+    };
   }
-  
-      const rightHalfData = gridData.map((value, i) => (i > peakIndex ? value : null));
-      
-      const verticalLineData = new Array(numPoints).fill(null);
-      verticalLineData[peakIndex] = peakValue;  // Start at the peak value
-      for (let i = peakIndex + 1; i < numPoints; i++) {
-          verticalLineData[i] = 70; // Set the rest to 70
-      }
-  
-  
-      
-      return {
-              type: 'line',
-              data: {
-                  labels: displayLabels,
-                  datasets: [
-                      {
-                          label: 'Active Curve',
-                          data: gridData.map((value, i) => (i <= peakIndex ? value : null)),
-                          borderColor: 'green',
-                          borderWidth: 2,
-                          fill: true,
-                          pointRadius: 0,
-                          tension: 0.5,
-                      },
-                      {
-                          label: 'Offline Drop',
-                          data: offlineDropData,
-                          borderColor: 'green',
-                          borderWidth: 2,
-                          pointRadius: 0,
-                          fill: false
-                      },
-                      {
-                        label: 'Offline Drop',
-                        data: verticalLineData,
-                        borderColor: 'green',
-                        borderWidth: 2,
-                        pointRadius: 0,
-                        fill: true
-                    },
-                      {
-                          label: 'Potential Energy',
-                          data: rightHalfData,
-                          borderColor: 'green',
-                          borderDash: [5, 5],
-                          borderWidth: 2,
-                          pointRadius: 0,
-                          fill: false,
-                      }
-                  ]
-              },
-              options: {
-                  responsive: true,
-                  maintainAspectRatio: false,
-                  interaction: {
-                      mode: 'nearest',
-                      axis: 'x',
-                      intersect: false
-                  },
-                  animation: {
-                    x: {
-                        delay(ctx) {
-                            if (ctx.type !== 'data' || ctx.xStarted) {
-                                return 0;
-                            }
-                            ctx.xStarted = true;
-                            return ctx.index * (2000 / gridData.length);
-                        }
-                    },
-                    y: {
-                        delay(ctx) {
-                            if (ctx.type !== 'data' || ctx.yStarted) {
-                                return 0;
-                            }
-                            ctx.yStarted = true;
-                            return ctx.index * (2000 / gridData.length);
-                        }
-                    },
-                    onComplete() {
-                        setTimeout(() => {
-                            const conversationElement = document.getElementById('conversation-derating');
-                            delayConversationMessages(conversationElement);   
-                        }, 1000);
-                    }
-                  },
-                  scales: {
-                      x: {
-                          type: 'category',
-                          display: true,
-                          grid: {
-                              display: false
-                          },
-                          ticks: {
-                              autoSkip: false,
-                              maxRotation: 0,
-                              minRotation: 0,
-                              font: {
-                                  size: 12
-                              }
-                          }
-                      },
-                      y: {
-                          display: true,
-                          min: 0,
-                          max: 100,
-                          grid: {
-                              display: false
-                          },
-                          beginAtZero: true
-                      }
-                  },
-                  plugins: {
-                      legend: {
-                          display: false,
-                          position: 'top'
-                      },
-                      tooltip: {
-                          enabled: true,
-                          mode: 'index',
-                          intersect: false,
-                      }
-                  }
-              }
-          };
-
-      }
 
   // Function to create a Pie Chart configuration
   function getStringPerformanceChartConfig() {
@@ -367,18 +204,12 @@ let timeoutId; // Variable to hold timeout ID
         }
     
         // Handle the background color gradient inside the canvas context
-        const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+        const gradient = ctx.createLinearGradient(0, 0, 0, canvas.height);
         gradient.addColorStop(0, 'rgba(255, 165, 0, 0.5)');
-        gradient.addColorStop(1, 'rgba(255, 165, 0, 0.1)');
+        gradient.addColorStop(1, 'rgba(255, 165, 0, 0)');
+    
+        // Assign the generated gradient to the chart dataset
         config.data.datasets[0].backgroundColor = gradient;
-        config.data.datasets[1].backgroundColor = gradient;
-
-        const gradient2 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-        gradient2.addColorStop(0.05, "rgba(0, 172, 14, 0.8)");
-        gradient2.addColorStop(0.95, "rgba(0, 172, 14, 0.2)");
-        config.data.datasets[0].backgroundColor = gradient;
-        config.data.datasets[1].backgroundColor = gradient;
-        config.data.datasets[2].backgroundColor = gradient;
     
         // Create and store the chart
         charts[chartId] = new Chart(ctx, config);
@@ -421,16 +252,11 @@ let timeoutId; // Variable to hold timeout ID
         });
     }
 
-// Update button active state
-function updateActiveButton(buttonId) {
-  document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById(buttonId).classList.add('active');
-}
-
-// Set up event listeners
-document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => {
-  btn.addEventListener('click', () => updateActiveButton(btn.id));
-});
+    // Update button active state
+    function updateActiveButton(buttonId) {
+        document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => btn.classList.remove('active'));
+        document.getElementById(buttonId).classList.add('active');
+    }
 
     // Observe canvas visibility to manage the display of disconnected text
     function observeCanvasVisibility(canvasElement, disconnectedText) {
@@ -466,7 +292,7 @@ document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => {
       }      
       setTimeout(() => {
           showConversation('conversation-disconnected');
-      }, 4000);
+      }, 3000);
   });
 
 document.getElementById('derating').addEventListener('click', function () {
@@ -487,7 +313,7 @@ document.addEventListener('DOMContentLoaded', () => {
   createChart('systemDisconnectedChart', getDisconnectedChartConfig()); // Create default chart
   setTimeout(() => {
     showConversation('conversation-disconnected');
-}, 4000);
+}, 3000);
 });
 
     // Observe canvas visibility for the disconnected text

@@ -79,8 +79,8 @@
 }
 
 .message {
-    opacity: 0; /* Initially hide the messages */
-    transition: opacity 0.5s ease-in-out; /* Smooth transition */
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
 }
 
 @media (max-width: 768px) {
