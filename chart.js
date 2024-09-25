@@ -1,7 +1,8 @@
 let charts = {}; // Store charts by their IDs
 let timeoutId; // Variable to hold timeout ID
+let conversationTimeout;
 
-  // Function to create a Line Chart configuration
+
   function getDisconnectedChartConfig(mean = 36, stdDev = 10) {
     const numPoints = 76;
     const gridData = generateBellCurveData(numPoints, mean, stdDev);
@@ -157,7 +158,7 @@ let timeoutId; // Variable to hold timeout ID
     };
 }
 
-  // Function to create a Bar Chart configuration
+
   function getDeratingChartConfig(mean = 36, stdDev = 10) {
     const numPoints = 76;
     const gridData = generateBellCurveData(numPoints, mean, stdDev);
@@ -278,12 +279,12 @@ let timeoutId; // Variable to hold timeout ID
                             return ctx.index * (2000 / gridData.length);
                         }
                     },
-                    onComplete() {
-                        setTimeout(() => {
-                            const conversationElement = document.getElementById('conversation-derating');
-                            delayConversationMessages(conversationElement);   
-                        }, 1000);
-                    }
+                    // onComplete() {
+                    //     setTimeout(() => {
+                    //         const conversationElement = document.getElementById('conversation-derating');
+                    //         delayConversationMessages(conversationElement);   
+                    //     }, 1000);
+                    // }
                   },
                   scales: {
                       x: {
@@ -327,29 +328,224 @@ let timeoutId; // Variable to hold timeout ID
 
       }
 
-  // Function to create a Pie Chart configuration
+
   function getStringPerformanceChartConfig() {
+    const gridData30 = [
+      0, 40, 29, 38, 4, 
+      40, 10, 30, 20, 70, 
+      2, 40, 15, 25, 38, 
+      30, 5, 60, 27, 43, 
+      20, 45, 29, 28, 4, 
+      52, 10, 20, 20, 70, 
+      2, 40, 15, 25, 38, 
+      30, 5, 60, 27, 43,
+      ];
+      
+      const gridData50 = [
+        60, 55, 110, 77, 93, 
+        57, 90, 65, 75, 78, 
+        90, 60, 80, 70, 120,  
+        50, 95, 79, 88, 54,
+        80, 55, 110, 77, 93, 
+        52, 90, 65, 75, 102, 
+        88, 60, 80, 70, 120,  
+        50, 95, 79, 88, 54,
+      ];
+      
+      const gridData90 = [
+        100, 145, 129, 138, 104, 
+        152, 110, 130, 120, 170, 
+        102, 140, 115, 125, 138, 
+        130, 105, 160, 127, 143,
+        100, 145, 129, 138, 104, 
+        152, 110, 130, 120, 170, 
+        150, 0, null, null, null, 
+        null, null, null, null, null
+      ];
+  
+  
+    const totalDuration = 2500;
+    const delayBetweenPoints = totalDuration / gridData90.length;
+
+  
+  
     return {
-        type: 'pie',
+        type: 'line',
         data: {
-            labels: ['Set 1', 'Set 2', 'Set 3'],
-            datasets: [{
-                label: 'String Performance Data',
-                backgroundColor: [
-                    'rgba(255, 206, 86, 0.2)', 
-                    'rgba(54, 162, 235, 0.2)', 
-                    'rgba(255, 99, 132, 0.2)'
-                ],
-                borderColor: [
-                    'rgba(255, 206, 86, 1)', 
-                    'rgba(54, 162, 235, 1)', 
-                    'rgba(255, 99, 132, 1)'
-                ],
-                data: [50, 30, 20] // Customize data as needed
-            }]
+          labels: Array.from({ length: gridData90.length }, (_, i) => {
+            const startHour = 6; // 6am
+            const totalTicks = gridData90.length;
+            const hoursRange = 12; // Total hours from 6am to 6pm
+            const interval = hoursRange / (totalTicks - 1); // Calculate hour increment based on number of ticks
+            const tickHour = startHour + Math.floor(i * interval);
+          
+            // Format hours correctly
+            if (tickHour === 12) return '12pm'; // Handle 12 PM case
+            if (tickHour === 0) return '12am'; // Handle 12 AM case
+            return tickHour < 12 ? `${tickHour}am` : `${tickHour - 12}pm`;
+          }),
+          datasets: [
+            {
+              label: '1st set of panels',
+              data: gridData30,
+              backgroundColor: 'rgba(255, 99, 132, 0.2)',
+              borderColor: 'rgba(255, 99, 132, 1)',
+              borderWidth: 2,
+              pointRadius: 0,
+              fill: true,
+              tension: 0.3,
+            },
+            {
+              label: '2nd set of panels',
+              data: gridData50,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(54, 162, 235, 1)',
+              borderWidth: 2,
+              pointRadius: 0,
+              fill: true,
+              tension: 0.3,
+            },
+            {
+              label: '3rd set of panels',
+              data: gridData90,
+              backgroundColor: 'rgba(54, 162, 235, 0.2)',
+              borderColor: 'rgba(205, 205, 0, 1)',
+              borderWidth: 2,
+              pointRadius: 0,
+              fill: true,
+              tension: 0.3,
+            }
+          ]
         },
-        options: {}
-    };
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          interaction: {
+            mode: 'nearest',
+            axis: 'x',
+            intersect: false
+          },
+          animation: {
+                x: {
+                delay(ctx) {
+                    if (ctx.type !== 'data' || ctx.xStarted) {
+                    return 0;
+                    }
+                    ctx.xStarted = true;
+                    return ctx.index * delayBetweenPoints;
+                }
+                },
+                y: {
+                delay(ctx) {
+                    if (ctx.type !== 'data' || ctx.yStarted) {
+                    return 0;
+                    }
+                    ctx.yStarted = true;
+                    return ctx.index * delayBetweenPoints;
+                }
+                },
+                onComplete() {
+                    const chartInstance = this; // Reference to the current chart instance
+                    const data = chartInstance.data; // Access chart data
+                    data.datasets[2].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
+                    data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+                    chartInstance.update();
+            
+                    // document.getElementById('stringPerformanceText');
+                    // stringPerformanceText.innerText = '3rd panel set down';
+                
+                // setTimeout(() => {
+                //     const conversationElement = document.getElementById('conversation-string-performance');
+                //     delayConversationMessages(conversationElement);
+                // }, 1000);
+                }
+            },
+          scales: {
+            x: {
+              display: true,
+              grid: {
+                display: false
+              },
+              title: {
+                display: false,
+                text: '',
+                color: 'black',
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                }
+              },
+              ticks: {
+                autoSkip: false, // Prevent auto skipping to control labels manually
+                maxRotation: 0,
+                minRotation: 0,
+                callback: function(value, index, values) {
+                  const startHour = 6; // 6am
+                  const endHour = 18;  // 6pm
+                  const totalTicks = gridData90.length; // Total number of ticks based on data length
+                  const interval = 3; // 3 hours interval
+                  const hoursRange = endHour - startHour; // Total number of hours from start to end
+                  const ticksPerInterval = totalTicks / (hoursRange / interval); // Number of ticks per interval
+              
+                  const tickHour = startHour + Math.floor(index / ticksPerInterval) * interval;
+              
+                  if (index === totalTicks - 1) {
+                    return '6 PM'; // Explicitly set 6pm for the last tick
+                  }
+                  if (index % ticksPerInterval === 0 && tickHour <= endHour) {
+                    return `${tickHour % 12 || 12}${tickHour >= 12 ? ' PM' : ' AM'}`;
+                  }
+                  return ''; // Hide all other ticks
+                }
+              }
+            },
+            y: {
+              display: true,
+              min: 0,
+              max: Math.max(...gridData90) + 10,  // Adjust max value based on data
+              grid: {
+                display: false
+              },
+              title: {
+                display: false,
+                text: '',
+                color: 'black',
+                font: {
+                  size: 14,
+                  weight: 'bold'
+                }
+              },
+              beginAtZero: true
+            }
+          },
+          plugins: {
+            legend: {
+              display: true,
+              position: 'top',
+            },
+            tooltip: {
+              enabled: true, // Enable tooltips
+              mode: 'index', // Show all items in the dataset at the nearest X position
+              intersect: false, // Show the tooltip even when not exactly over a point
+              callbacks: {
+                label: function (context) {
+                  var label = context.dataset.label || '';
+  
+                  if (label) {
+                    label += ': ';
+                  }
+                  if (context.parsed.y !== null) {
+                    label += new Number(context.parsed.y.toFixed(2)) + '%';
+                  }
+                  return label;
+                }
+              }
+            }
+          }
+        }
+      };
+
+
   }
 
 
@@ -365,21 +561,46 @@ let timeoutId; // Variable to hold timeout ID
         if (charts[chartId]) {
             charts[chartId].destroy();
         }
-    
-        // Handle the background color gradient inside the canvas context
-        const gradient = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-        gradient.addColorStop(0, 'rgba(255, 165, 0, 0.5)');
-        gradient.addColorStop(1, 'rgba(255, 165, 0, 0.1)');
-        config.data.datasets[0].backgroundColor = gradient;
-        config.data.datasets[1].backgroundColor = gradient;
 
-        const gradient2 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-        gradient2.addColorStop(0.05, "rgba(0, 172, 14, 0.8)");
-        gradient2.addColorStop(0.95, "rgba(0, 172, 14, 0.2)");
-        config.data.datasets[0].backgroundColor = gradient;
-        config.data.datasets[1].backgroundColor = gradient;
-        config.data.datasets[2].backgroundColor = gradient;
-    
+        let gradient1, gradient2, gradient3;
+
+        if (chartId === 'systemDisconnectedChart') {
+            // Gradient for the first chart
+            gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+            gradient1.addColorStop(0, 'rgba(255, 165, 0, 0.5)');
+            gradient1.addColorStop(1, 'rgba(255, 165, 0, 0.1)');
+            config.data.datasets[0].backgroundColor = gradient1;
+            config.data.datasets[1].backgroundColor = gradient1;
+
+
+        } 
+        else if (chartId === 'systemDeratingChart') {
+            // Gradient for the second chart
+            gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+            gradient1.addColorStop(0, 'rgba(0, 172, 14, 0.8)');
+            gradient1.addColorStop(1, 'rgba(0, 172, 14, 0.2)');
+            config.data.datasets[0].backgroundColor = gradient1;
+            config.data.datasets[1].backgroundColor = gradient1;
+            config.data.datasets[2].backgroundColor = gradient1;
+
+        } 
+        else if (chartId === 'stringPerformanceChart') {
+            // Gradient for the third chart
+            gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+            gradient1.addColorStop(0, 'rgba(255, 99, 132, 0.2)');
+            gradient1.addColorStop(1, 'rgba(255, 99, 132, 0.2)');
+            gradient2 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+            gradient2.addColorStop(0, 'rgba(54, 162, 235, 0.2)');
+            gradient2.addColorStop(1, 'rgba(54, 162, 235, 0.2)');
+            gradient3 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+            gradient3.addColorStop(0, 'rgba(205, 205, 0, 0.2)');
+            gradient3.addColorStop(1, 'rgba(205, 205, 0, 0.2)');
+
+            config.data.datasets[0].backgroundColor = gradient1;
+            config.data.datasets[1].backgroundColor = gradient2;
+            config.data.datasets[2].backgroundColor = gradient3;
+        }
+
         // Create and store the chart
         charts[chartId] = new Chart(ctx, config);
     }
@@ -391,11 +612,11 @@ let timeoutId; // Variable to hold timeout ID
         console.log(`Showing chart: ${chartId}`);
     }
 
-    // Show conversation by ID and delay message display
+    // Show conversation by ID
     function showConversation(conversationId) {
         document.querySelectorAll('.conversation').forEach(conv => {
-            conv.style.display = 'none'; // Hide all conversations first
-            clearMessagesOpacity(conv); // Clear the opacity of messages
+            conv.style.display = 'none';
+            clearMessagesOpacity(conv);
         });
         const conversationElement = document.getElementById(conversationId);
         conversationElement.style.display = 'block';
@@ -421,76 +642,148 @@ let timeoutId; // Variable to hold timeout ID
         });
     }
 
-// Update button active state
-function updateActiveButton(buttonId) {
-  document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => btn.classList.remove('active'));
-  document.getElementById(buttonId).classList.add('active');
-}
-
-// Set up event listeners
-document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => {
-  btn.addEventListener('click', () => updateActiveButton(btn.id));
-});
-
-    // Observe canvas visibility to manage the display of disconnected text
-    function observeCanvasVisibility(canvasElement, disconnectedText) {
-        disconnectedText.style.display = 'none'; // Initially hide the text
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.target === canvasElement) {
-                    timeoutId = setTimeout(() => {
-                        disconnectedText.style.display = 'flex';
-                        // Uncomment the following line if you want to apply a grayscale filter
-                        // canvasElement.style.filter = 'grayscale(100%)';
-                    }, 3000);
-
-                    observer.unobserve(entry.target); // Stop observing once it's visible
-                }
-            });
-        });
-
-        observer.observe(canvasElement); // Only observe the specified canvas
+    // Update button active state
+    function updateActiveButton(buttonId) {
+    document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById(buttonId).classList.add('active');
     }
 
+    // Set up event listeners
+    document.querySelectorAll('#AfterServiceBtnGroup .btn').forEach(btn => {
+    btn.addEventListener('click', () => updateActiveButton(btn.id));
+    });
 
+    // Function that display when the chart is visible to viewport
+    function createObserver(target, callback) {
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                    callback();
+                    observer.unobserve(entry.target); // Stop observing once the chart is shown
+                }
+            });
+        }, { threshold: 0.1 }); // Adjust threshold as needed
+        observer.observe(target);
+    }
+    
+    // Helper function to hide all conversations
+    function hideAllConversations() {
+        document.getElementById('conversation-disconnected').style.display = 'none';
+        document.getElementById('conversation-derating').style.display = 'none';
+        document.getElementById('conversation-string-performance').style.display = 'none';
+        document.getElementById('disconnectedText').style.display = 'none';
+        document.getElementById('stringPerformanceText').style.display = 'none';
+    }
 
-    // Event Listeners for Buttons
+    function displayDisconnectedText() {
+        const disconnectedText = document.getElementById('disconnectedText');
+        const disconnectedButton = document.getElementById('disconnected');
+    
+        if (disconnectedText && disconnectedButton.classList.contains('active')) {
+            disconnectedText.style.display = 'block';
+        }
+    }
+
+    function displayStringPerformanceText() {
+        const stringPerformanceText = document.getElementById('stringPerformanceText');
+        const stringPerformanceButton = document.getElementById('string-performance');
+    
+        if (stringPerformanceText && stringPerformanceButton.classList.contains('active')) {
+            stringPerformanceText.style.display = 'block';
+        }
+    }
+
+    
+
+        // Updated disconnected button event listener
     document.getElementById('disconnected').addEventListener('click', function () {
-      showChart('systemDisconnectedChart');
-      createChart('systemDisconnectedChart', getDisconnectedChartConfig()); 
+        const disconnectedButton = document.getElementById('disconnected');
+        
+        if (disconnectedButton.classList.contains('active')) {
+            clearTimeout(conversationTimeout);
 
-      const conversationDiv = document.getElementById('conversation-disconnected');
-      if (conversationDiv.style.display === 'block') {
-          conversationDiv.style.display = 'none';
-      }      
-      setTimeout(() => {
-          showConversation('conversation-disconnected');
-      }, 4000);
-  });
+            hideAllConversations();
 
-document.getElementById('derating').addEventListener('click', function () {
-  showChart('systemDeratingChart');
-  showConversation('conversation-derating');
-  createChart('systemDeratingChart', getDeratingChartConfig()); // Create chart after showing
-});
+            showChart('systemDisconnectedChart');
+            createChart('systemDisconnectedChart', getDisconnectedChartConfig());
 
-document.getElementById('string-performance').addEventListener('click', function () {
-  showChart('stringPerformanceChart');
-  showConversation('conversation-string-performance');
-  createChart('stringPerformanceChart', getStringPerformanceChartConfig()); // Create chart after showing
-});
+            setTimeout(() => {
+                displayDisconnectedText();
+            }, 3000);
 
-// Set default view on page load
-document.addEventListener('DOMContentLoaded', () => {
-  showChart('systemDisconnectedChart'); // Show default chart
-  createChart('systemDisconnectedChart', getDisconnectedChartConfig()); // Create default chart
-  setTimeout(() => {
-    showConversation('conversation-disconnected');
-}, 4000);
-});
+            conversationTimeout = setTimeout(() => {
+                showConversation('conversation-disconnected');
+            }, 4000);
+        }
+    });
 
-    // Observe canvas visibility for the disconnected text
-    const canvasElement = document.getElementById('systemDisconnectedChart');
-    const disconnectedText = document.getElementById('disconnectedText');
-    observeCanvasVisibility(canvasElement, disconnectedText);
+    // Updated derating button event listener
+    document.getElementById('derating').addEventListener('click', function () {
+        const deratingButton = document.getElementById('derating');
+
+        // Check if the button is active
+        if (deratingButton.classList.contains('active')) {
+            // Cancel any existing conversation timeout
+            clearTimeout(conversationTimeout);
+
+            // Hide all other conversations immediately
+            hideAllConversations();
+
+            // Show the chart and create the derating chart
+            showChart('systemDeratingChart');
+            createChart('systemDeratingChart', getDeratingChartConfig());
+
+            // Set a new timeout to show the conversation after 4 seconds
+            conversationTimeout = setTimeout(() => {
+                showConversation('conversation-derating');
+            }, 4000);
+        }
+    });
+    
+
+    document.getElementById('string-performance').addEventListener('click', function () {
+    const stringPerformanceButton = document.getElementById('string-performance');
+        
+    if (stringPerformanceButton.classList.contains('active')) {
+        clearTimeout(conversationTimeout);
+
+        hideAllConversations();
+
+        showChart('stringPerformanceChart');
+        createChart('stringPerformanceChart', getStringPerformanceChartConfig());
+
+        setTimeout(() => {
+            displayStringPerformanceText();
+        }, 3500);
+
+        conversationTimeout = setTimeout(() => {
+            showConversation('conversation-string-performance');
+        }, 4500);
+    }
+
+    });
+
+    
+    // Set default view on page load
+    document.addEventListener('DOMContentLoaded', () => {
+        const chartElement = document.getElementById('systemDisconnectedChart');
+
+        createObserver(chartElement, () => {
+
+            clearTimeout(conversationTimeout);
+            hideAllConversations();
+            showChart('systemDisconnectedChart');
+            createChart('systemDisconnectedChart', getDisconnectedChartConfig());
+
+            setTimeout(() => {
+                displayDisconnectedText();
+            }, 3000);
+
+            conversationTimeout = setTimeout(() => {
+                showConversation('conversation-disconnected');
+            }, 4000);
+        });
+      
+    });
+
+    
