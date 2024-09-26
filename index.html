@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html data-bs-theme="light" lang="en">
-
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
@@ -16,7 +15,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="sample.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
@@ -158,9 +157,7 @@
                                 <img src="assets/img/supply&installation1.png" alt="Sample Image 1" style="position: absolute; bottom: 0; right: 0; width: 200px; height: auto; margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Direct to Manufacturer</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark"> Direct to Manufacturer</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Get the best products at the best deal in the market.</p>
                                 <!-- <a href="" class="fw-semibold text-decoration-none" style="color: #0B5ED7;">
                                     <span class="small">Learn more</span>
@@ -184,9 +181,7 @@
                                 <img src="assets/img/supply&installation2.png" alt="Sample Image 2" style="position: absolute; bottom: 0; right: 0; width: 210px; height: auto;  margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Experienced Installers</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark"> Experienced Installers</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Your project led by our experienced team members.</p>
                             </div>
                         </div>
@@ -199,9 +194,7 @@
                                 <img src="assets/img/supply&installation3.png" alt="Sample Image 3" style="position: absolute; bottom: 0; right: 0; width: 130px; height: auto;  margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Industry Leading Warranty</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark"> Industry Leading Warranty</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Protect your system with our in-house warranty and from our direct partners.</p>
                                 <button class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-1 fw-semibold mb-3 mx-1" 
                                         style="border: 1px solid #0B5ED7; width: 150px;">
@@ -233,7 +226,7 @@
                     </div>
             
                     <!-- Chart Section -->
-                    <div class="col-md-8 col-12 rounded-3 px-0">
+                    <div class="col-md-9 col-12 rounded-3 px-0">
                         <div class="container px-0 pb-0 bg-white rounded" style="width: 100%; height: auto;">
                             <div class="container-xl mt-0 p-0 d-flex justify-content-center align-items-center" style="height: auto;">
                                 <div class="canvas-container" style="position: relative; width: 100%; height: 500px;">
@@ -252,7 +245,7 @@
                     </div>
             
                     <!-- Conversation Section -->
-                    <div class="col-md-4 col-12 pt-5 d-flex flex-row flex-md-column align-items-center mt-md-0 px-0">
+                    <div class="col-md-3 col-12 pt-5 d-flex flex-row flex-md-column align-items-center mt-md-0 px-0">
                         <div class="container mx-auto bg-white shadow-md rounded-lg overflow-hidden rounded-3 px-0">
                             <div class="d-flex flex-column">
                                 <!-- Disconnected Conversation -->
@@ -317,7 +310,7 @@
             
                     <div class="col-lg-3 col-md-4 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4 p-0">
                         <div id="designBtnGroup" style="white-space: nowrap; margin-left: -4px; margin-right: -4px; width: 100%;">
-                        <button id="designBtn" data-target="homes" data-bs-toggle="modal" data-bs-target="#homesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="homes" data-bs-toggle="modal" data-bs-target="#existingHomeModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px;">
                             <span class="text-start me-2">Existing Home</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -325,7 +318,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>                        
-                        <button id="designBtn" data-target="offices" data-bs-toggle="modal" data-bs-target="#officesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="offices" data-bs-toggle="modal" data-bs-target="#homesInConstructionModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px;">
                             <span class="text-start me-2">Homes in Construction</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -351,9 +344,7 @@
                                 <img src="assets/img/supply&installation1.png" alt="Sample Image 1" style="position: absolute; bottom: 0; right: 0; width: 200px; height: auto; margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Direct to Manufacturer</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark">Direct to Manufacturer</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Get the best products at the best deal in the market.</p>
                                 <!-- <a href="" class="fw-semibold text-decoration-none" style="color: #0B5ED7;">
                                     <span class="small">Learn more</span>
@@ -377,9 +368,7 @@
                                 <img src="assets/img/supply&installation2.png" alt="Sample Image 2" style="position: absolute; bottom: 0; right: 0; width: 210px; height: auto;  margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Experienced Installers</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark">Experienced Installers</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Your project led by our experienced team members.</p>
                             </div>
                         </div>
@@ -392,9 +381,7 @@
                                 <img src="assets/img/supply&installation3.png" alt="Sample Image 3" style="position: absolute; bottom: 0; right: 0; width: 130px; height: auto;  margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Industry Leading Warranty</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark">ndustry Leading Warranty</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Protect your system with our in-house warranty and from our direct partners.</p>
                                 <button class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-1 fw-semibold mb-3 mx-1" 
                                         style="border: 1px solid #0B5ED7; width: 150px;">
@@ -453,7 +440,7 @@
             
                     <div class="col-lg-3 col-md-4 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4 p-0">
                         <div id="designBtnGroup" style="white-space: nowrap; margin-left: -4px; margin-right: -4px; width: 100%;">
-                        <button id="designBtn" data-target="homes" data-bs-toggle="modal" data-bs-target="#homesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="homes" data-bs-toggle="modal" data-bs-target="#officesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px;">
                             <span class="text-start me-2">Offices</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -461,7 +448,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>                        
-                        <button id="designBtn" data-target="offices" data-bs-toggle="modal" data-bs-target="#officesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="offices" data-bs-toggle="modal" data-bs-target="#retailSpacesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px;">
                             <span class="text-start me-2">Retail Spaces</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -469,7 +456,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>  
-                        <button id="designBtn" data-target="hospitality" data-bs-toggle="modal" data-bs-target="#hospitalityModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="hospitality" data-bs-toggle="modal" data-bs-target="#apartmentsModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px;">
                             <span class="text-start me-2">Apartments</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -477,7 +464,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>                      
-                        <button id="designBtn" data-target="manufacturer" data-bs-toggle="modal" data-bs-target="#manufacturerModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="manufacturer" data-bs-toggle="modal" data-bs-target="#hospitalityModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px;">
                             <span class="text-start me-2">Hospitality</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -511,9 +498,7 @@
                                 <img src="assets/img/supply&installation1.png" alt="Sample Image 1" style="position: absolute; bottom: 0; right: 0; width: 200px; height: auto; margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Direct to Manufacturer</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark">Direct to Manufacturer</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Get the best products at the best deal in the market.</p>
                                 <!-- <a href="" class="fw-semibold text-decoration-none" style="color: #0B5ED7;">
                                     <span class="small">Learn more</span>
@@ -537,9 +522,7 @@
                                 <img src="assets/img/supply&installation2.png" alt="Sample Image 2" style="position: absolute; bottom: 0; right: 0; width: 210px; height: auto;  margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Experienced Installers</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark">Experienced Installers</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Your project led by our experienced team members.</p>
                             </div>
                         </div>
@@ -552,9 +535,7 @@
                                 <img src="assets/img/supply&installation3.png" alt="Sample Image 3" style="position: absolute; bottom: 0; right: 0; width: 130px; height: auto;  margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title">
-                                    <a href="https://example.com" class="text-decoration-none text-dark">Industry Leading Warranty</a>
-                                </h5>
+                                <h5 class="card-title text-decoration-none text-dark">Industry Leading Warranty</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Protect your system with our in-house warranty and from our direct partners.</p>
                                 <button class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-1 fw-semibold mb-3 mx-1" 
                                         style="border: 1px solid #0B5ED7; width: 150px;">
@@ -594,7 +575,7 @@
 
 
     <!-- OUR PRODUCTS SECTION -->
-    <div class=" px-4 py-5 text-center" id="custom-cards" style="background-color: #f4f4f4;">
+    <div class=" px-4 py-5 text-center" id="custom-cards" style="background-color: #f4f4f4; margin-top: 100px;">
         <h1 class="pt-5">Our Products</h1>
         <div class="col-lg-4 mx-auto">
             <p class="mb-5">At Blueshift, we collaborate with leading brands to ensure the highest level of reliability and performance in every installation.</p>
@@ -769,46 +750,39 @@
         </div>
     </section>
 
-    <div class="container py-5"></div>
-
     <!-- BLUESHIFT BY THE NUMBERS SECTION -->
-    <div class="container col-xxl-8 px-4 py-5">
+    <div class="container col-xxl-8 px-4 py-5" style="margin-top: 100px;">
         <div class="row flex-lg-row align-items-center g-5 py-5">
         
-        <div class="col-lg-7 my-0">
+        <div class="col-lg-7 my-0 px-lg-5">
             <h1 class="display-5 fw-semibold lh-1 mb-3"><span style="color: #377ab0;">Blueshift</span> by the numbers</h1>
             <p class="" style="text-align: justify; text-justify: inter-word;">Discover the impressive impact of Blueshift through key statistics that highlight our success and commitment. From the number of solar panels installed to the millions saved in energy costs, our achievements speak for themselves. Explore how our data-driven approach translates into real-world benefits for our customers and the environment.</p>
         </div>
-        <div class="col-12 col-sm-12 col-lg-5 mt-5">
-            <div class="row mb-5">
+        <div class="col-12 col-sm-12 col-lg-5 mt-0 px-lg-5">
+            <div class="row">
                 <div class="col-md-12">
                 <div class="about__skills">
                     <div class="row no-gutters mb-0 mb-sm-4">
                     <div class="mb-4 mb-sm-0 pr-sm-3 col-sm-6 col-6">
                         <div class="media">
-                            <div class="feature-icon me-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
-                                    <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
-                                </svg>
+                            <div class="feature-icon my-2">
+                                <i class="fas fa-solar-panel" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
                             </div>
-                        <div class="media-body">
-                            <h3 class="fw-semibold">10,000+</h3>
-                            <p class="m-0 lh-1">Solar Panels Installed</p>
-                        </div>
+                            <div class="media-body">
+                                <h3 class="fw-semibold"  data-number="9640">10,000+</h3>
+                                <p class="m-0 lh-1">Solar Panels Installed</p>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-4 mb-sm-0 pl-sm-3 col-sm-6 col-6">
                         <div class="media">
-                            <div class="feature-icon me-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
-                                    <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
-                                </svg>
+                            <div class="feature-icon my-2">
+                                <i class="fas fa-users" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
                             </div>
-                        <div class="media-body">
-                            <h3 class="fw-semibold">1,000+</h3>
-                            <p class="m-0 lh-1"> satisfied customers</p>
-
-                        </div>
+                            <div class="media-body">
+                                <h3 class="fw-semibold" data-number="3582">1,000+</h3>
+                                <p class="m-0 lh-1"> satisfied customers</p>
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -816,30 +790,24 @@
                     <div class="row no-gutters mb-0 mb-sm-4">
                     <div class="mb-4 mb-sm-0 pr-sm-3 col-sm-6 col-6">
                         <div class="media">
-                            <div class="feature-icon me-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
-                                    <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
-                                </svg>
+                            <div class="feature-icon my-2">
+                                <i class="fas fa-money-bill-wave" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
                             </div>
-                        <div class="media-body">
-                            <h3 class="fw-semibold">$10M+</h3>
-                            <p class="m-0 lh-1">invested in renewable energy projects</p>
-
-                        </div>
+                            <div class="media-body">
+                                <h3 class="fw-semibold"  data-number="12570860" data-prefix="₱ "></h3>
+                                <p class="m-0 lh-1">invested in renewable energy projects</p>
+                            </div>
                         </div>
                     </div>
                     <div class="mb-0 pl-sm-3 col-sm-6 col-6">
                         <div class="media">
-                            <div class="feature-icon me-3">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="none" viewBox="0 0 64 64">
-                                    <circle cx="32" cy="32" r="30" stroke="#34a853" stroke-width="4"/>
-                                </svg>
+                            <div class="feature-icon my-2">
+                                <i class="fas fa-leaf" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
                             </div>
-                        <div class="media-body">
-                            <h3 class="fw-semibold">$2M+</h3>
-                            <p class="m-0 lh-1">tons of CO2 emissions saved annually</p>
-
-                        </div>
+                            <div class="media-body">
+                                <h3 class="fw-semibold" data-number="2703570" data-prefix="₱ ">$2M+</h3>
+                                <p class="m-0 lh-1">tons of CO2 emissions saved annually</p>
+                            </div>
                         </div>
                     </div>
                     </div>
@@ -920,7 +888,7 @@
     </footer>
 
 
-    <!-- Homes Modal -->
+    <!-- All SECTION MODAL -->
     <div class="modal fade" id="homesModal" tabindex="-1" aria-labelledby="homesModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -938,7 +906,6 @@
         </div>
     </div>
 
-    <!-- Offices Modal -->
     <div class="modal fade" id="officesModal" tabindex="-1" aria-labelledby="officesModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -956,7 +923,6 @@
         </div>
     </div>
 
-    <!-- Hospitality Modal -->
     <div class="modal fade" id="hospitalityModal" tabindex="-1" aria-labelledby="hospitalityModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -974,7 +940,6 @@
         </div>
     </div>
 
-    <!-- Manufacturer Modal -->
     <div class="modal fade" id="manufacturerModal" tabindex="-1" aria-labelledby="manufacturerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -992,7 +957,6 @@
         </div>
     </div>
 
-     <!-- All Others Modal -->
      <div class="modal fade" id="allOthersModal" tabindex="-1" aria-labelledby="allOthersModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
         <div class="modal-content">
@@ -1011,157 +975,86 @@
     </div>
 
 
+    <!-- HOMES SECTION MODAL  -->
+    <div class="modal fade" id="existingHomeModal" tabindex="-1" aria-labelledby="existingHomeModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="existingHomeModalLabel">Existing Home Modal</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="homesInConstructionModal" tabindex="-1" aria-labelledby="homesInConstructionModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                <h1 class="modal-title fs-5" id="homesInConstructionModalLabel">Homes in Construction Modal</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                ...
+                </div>
+                <div class="modal-footer">
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- COMMERCIAL SECTION MODAL  -->
+    <div class="modal fade" id="apartmentsModal" tabindex="-1" aria-labelledby="apartmentsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="apartmentsModalLabel">Apartments Modal</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+    <div class="modal fade" id="retailSpacesModal" tabindex="-1" aria-labelledby="retailSpacesModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+            <h1 class="modal-title fs-5" id="retailSpacesModalLabel">Retail Spaces Modal</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+            ...
+            </div>
+            <div class="modal-footer">
+
+            </div>
+        </div>
+        </div>
+    </div>
+
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="chart.js"></script>
     <script src="index.js"></script>
 
-    <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
-    <script>
-    var swiper = new Swiper(".slide-content", {
-        slidesPerView: 3,
-        spaceBetween: 25,
-        loop: true,
-        centerSlide: 'true',
-        fade: 'true',
-        grabCursor: 'true',
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            dynamicBullets: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
-
-        breakpoints: {
-            0: {
-                slidesPerView: 1,
-            },
-            520: {
-                slidesPerView: 2,
-            },
-            950: {
-                slidesPerView: 3,
-            },
-        },
-    });
-    </script>
-
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            const allBtn = document.getElementById('allBtn');
-            const homesBtn = document.getElementById('homesBtn');
-            const commercialBtn = document.getElementById('commercialBtn');
-            const allContent = document.getElementById('allContent');
-            const homesContent = document.getElementById('homesContent');
-            const commercialContent = document.getElementById('commercialContent');
-
-            function showSection(sectionToShow) {
-                allContent.style.display = 'none';
-                homesContent.style.display = 'none';
-                commercialContent.style.display = 'none';
-
-                allBtn.classList.remove('active');
-                homesBtn.classList.remove('active');
-                commercialBtn.classList.remove('active');
-
-                sectionToShow.style.display = 'block';
-
-                if (sectionToShow === allContent) {
-                    allBtn.classList.add('active');
-                } else if (sectionToShow === homesContent) {
-                    homesBtn.classList.add('active');
-                } else if (sectionToShow === commercialContent) {
-                    commercialBtn.classList.add('active');
-                }
-            }
-
-            allBtn.addEventListener('click', function () {
-                showSection(allContent);
-            });
-
-            homesBtn.addEventListener('click', function () {
-                showSection(homesContent);
-            });
-
-            commercialBtn.addEventListener('click', function () {
-                showSection(commercialContent);
-            });
-        });
-    </script> -->
-    
-    <!-- <script>
-        // Function to handle displaying the conversation based on the selected radio button
-        function updateConversation() {
-            // Get all conversation divs
-            const conversations = document.querySelectorAll('.conversation');
-
-            // Hide all conversations
-            conversations.forEach(function(conv) {
-                conv.style.display = 'none';
-            });
-
-            // Show the corresponding conversation based on the selected radio button
-            if (document.getElementById('disconnected').checked) {
-                document.getElementById('conversation-disconnected').style.display = 'block';
-            } else if (document.getElementById('derating').checked) {
-                document.getElementById('conversation-derating').style.display = 'block';
-            } else if (document.getElementById('string-performance').checked) {
-                document.getElementById('conversation-string-performance').style.display = 'block';
-            }
-        }
-
-        // Add event listeners to the radio buttons
-        document.getElementById('disconnected').addEventListener('change', updateConversation);
-        document.getElementById('derating').addEventListener('change', updateConversation);
-        document.getElementById('string-performance').addEventListener('change', updateConversation);
-
-        // Call the function once to display the initial state
-        updateConversation();
-    </script> -->
-
-    <!-- <script>
-        function switchServiceContent(selectedService) {
-      
-          // Hide all content sections initially
-          $('#systemDisconnected').hide();
-          $('#systemDerating').hide();
-          $('#stringPerformance').hide();
-      
-          // Switch content based on the selected service category
-          switch (selectedService) {
-            case 'System Disconnected':
-              $('h4.pt-4.pb-3').text("");
-              $('#systemDisconnected').show();
-              break;
-            case 'System Derating':
-              $('h4.pt-4.pb-3').text("power output increasing but is flat lining throughout the day");
-              $('#systemDerating').show();
-              break;
-            case 'String Performance':
-              $('h4.pt-4.pb-3').text("3 power output then 1 suddenly turns off");
-              $('#stringPerformance').show();
-              break;
-            default:
-              break;
-          }
-        }
-      
-        // Add event listener for radio button clicks
-        $(document).ready(function() {
-          $('input[name="radio"]').on('change', function() {
-            const selectedService = $(this).closest('label').text().trim(); // Get the selected service text
-            switchServiceContent(selectedService);
-          });
-      
-          // Initialize with default checked radio button
-          const selectedService = $('input[name="radio"]:checked').closest('label').text().trim();
-          switchServiceContent(selectedService);
-        });
-      </script> -->
 </body>
 
 </html>

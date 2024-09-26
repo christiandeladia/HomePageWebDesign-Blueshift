@@ -98,6 +98,75 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
 
+    // Function to animate numbers with Peso sign BLUESHIFT BY THE NUMBERS SECTION-------------------------------------
+    function animateValue(element, start, end, duration, prefix = '') {
+        let startTimestamp = null;
+        const step = (timestamp) => {
+            if (!startTimestamp) startTimestamp = timestamp;
+            const progress = Math.min((timestamp - startTimestamp) / duration, 1);
+            element.innerText = prefix + Math.floor(progress * (end - start) + start).toLocaleString();
+            if (progress < 1) {
+                window.requestAnimationFrame(step);
+            } else {
+                element.innerText = prefix + end.toLocaleString() + '+'; // Add the '+' sign after animation ends
+            }
+        };
+        window.requestAnimationFrame(step);
+    }
+
+    // Intersection Observer to trigger the number animation when in view
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                const element = entry.target;
+                const endValue = parseInt(element.getAttribute('data-number'), 10);
+                const startValue = 0;
+                const prefix = element.hasAttribute('data-prefix') ? element.getAttribute('data-prefix') : ''; // Check if a prefix is set
+                animateValue(element, startValue, endValue, 2000, prefix);
+                observer.unobserve(element); // Stop observing once the animation starts
+            }
+        });
+    }, { threshold: 1 });
+
+    // Select all elements with numbers to animate
+    document.querySelectorAll('h3[data-number]').forEach(numElement => {
+        observer.observe(numElement);
+    });
+
+
+
+    // variables in SOLAR 101 SECTION-------------------------------------
+    var swiper = new Swiper(".slide-content", {
+        slidesPerView: 3,
+        spaceBetween: 25,
+        loop: true,
+        centerSlide: 'true',
+        fade: 'true',
+        grabCursor: 'true',
+        pagination: {
+            el: ".swiper-pagination",
+            clickable: true,
+            dynamicBullets: true,
+        },
+        navigation: {
+            nextEl: ".swiper-button-next",
+            prevEl: ".swiper-button-prev",
+        },
+
+        breakpoints: {
+            0: {
+                slidesPerView: 1,
+            },
+            520: {
+                slidesPerView: 2,
+            },
+            950: {
+                slidesPerView: 3,
+            },
+        },
+    });
+
+
 
 
 });
