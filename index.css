@@ -139,14 +139,47 @@
 
 
 /* design buttons------ */
-.designBtn {
+/* .designBtn {
     border: 1px solid #0B5ED7;
     background-color: #fff;
     color: #0B5ED7;
     transition: background-color 0.3s ease, color 0.3s ease;
+} */
+
+.designBtn {
+    border: 1px solid #0B5ED7;
+    background-color: #fff;
+    color: #0B5ED7;
+    background-position: left;
+    background-size: 0% 100%; /* Initially, no background fill */
+    background-repeat: no-repeat;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+.designBtn:not(.active) {
+    background-image: none; 
+    background-color: #fff; 
+}
+.designBtn.active {
+    transition: color 0.3s ease, background-color 5s ease, background-size 5s ease;
+    background-image: linear-gradient(90deg, #0B5ED7 0%, #0B5ED7 100%);
+    /* border: 1px solid #0B5ED7; */
+    background-size: 100% 100%; 
+    color: #fff;
+}
+
+.designBtn.active svg {
+    fill: #0B5ED7; /* Change the SVG fill color */
+}
+
+.designBtn.active svg circle {
+    fill: #fff;    /* Change the fill color of the circle */
+    stroke: #fff;  /* Change the stroke color of the circle */
 }
 
 .designBtn:hover {
+    transition:none;
     background-color: #0B5ED7;
     color: #fff;
 }
@@ -180,3 +213,55 @@
     position: relative;
 
 }
+
+
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+#customerReviewRow::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for other browsers (Firefox, IE, Edge, etc.) */
+#customerReviewRow {
+    -ms-overflow-style: none;  /* IE and Edge */
+    scrollbar-width: none;  /* Firefox */
+}
+
+
+/* Disable hover for mobile and tablet (up to 991px) */
+@media (max-width: 991px) {
+    #AfterServiceBtnGroup .btn:hover {
+      background-color: #fff !important;
+      color: #0d6efd !important;
+    }
+
+    #AfterServiceBtnGroup .btn.active:hover {
+        background-color: #0d6efd !important;
+        color: #fff !important;
+    }
+
+    #designBtnGroup .designBtn:hover {
+        background-color: #fff !important;
+        color: #0B5ED7 !important;
+    }
+    #designBtnGroup .designBtn:hover svg circle {
+        fill: #0B5ED7;
+        stroke: #0B5ED7;
+    }
+    #designBtnGroup .designBtn:hover svg {
+        fill: #fff;
+    }
+    #designBtnGroup .designBtn.active:hover {
+        background-color: #0B5ED7 !important;
+        color: #fff !important;
+    }
+    #designBtnGroup .designBtn.active:hover svg circle {
+        fill: #fff;
+        stroke: #fff;
+    }
+    #designBtnGroup .designBtn.active:hover svg {
+        fill: #0B5ED7;
+    }
+
+  }
+  
