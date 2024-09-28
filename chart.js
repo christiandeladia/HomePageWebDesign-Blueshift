@@ -38,8 +38,9 @@ let conversationTimeout;
         const rightHalfData = gridData.map((value, i) => (i > peakIndex ? value : null));
         const verticalLineData = gridData.map((value, i) => (i === peakIndex ? value : (i === peakIndex + 1 ? 0 : null)));
 
-        const totalDuration = 2000;
+        const totalDuration = 2500;
         const delayBetweenPoints = totalDuration / gridData.length;
+        const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
 
         // Define the chart configuration
         return {
@@ -85,6 +86,10 @@ let conversationTimeout;
                 },
                 animation: {
                     x: {
+                        type: 'number',
+                        easing: 'linear',
+                        duration: delayBetweenPoints,
+                        from: NaN, // the point is initially skipped
                         delay(ctx) {
                             if (ctx.type !== 'data' || ctx.xStarted) {
                                 return 0;
@@ -94,6 +99,10 @@ let conversationTimeout;
                         }
                     },
                     y: {
+                        type: 'number',
+                        easing: 'linear',
+                        duration: delayBetweenPoints,
+                        from: previousY,
                         delay(ctx) {
                             if (ctx.type !== 'data' || ctx.yStarted) {
                                 return 0;
@@ -102,22 +111,28 @@ let conversationTimeout;
                             return ctx.index * delayBetweenPoints;
                         }
                     },
-                    onComplete() {
-                        const chartInstance = this; // Reference to the current chart instance
-                        const data = chartInstance.data; // Access chart data
-
-                        data.datasets[0].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
-                        data.datasets[0].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                        data.datasets[1].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
-                        data.datasets[1].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                        data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                        chartInstance.update();
-                    
-                        // setTimeout(() => {
-                        //     showConversation('conversation-disconnected');
-                        // }, 1000);
+                    onProgress() {
+                        const chartInstance = this;
+                
+                        // Use requestAnimationFrame to avoid UI flickering
+                        requestAnimationFrame(() => {
+                            // Safely update dataset colors after animation completes
+                            setTimeout(() => {
+                                const data = chartInstance.data;
+                
+                                data.datasets[0].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
+                                data.datasets[0].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+                                data.datasets[1].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
+                                data.datasets[1].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+                                data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+                
+                                // Safely update the chart after all animations are done
+                                chartInstance.update('none');
+                            }, 1200);  // Small delay after the animation completes to ensure smoothness
+                        });
                     }
                 },
+                
                 scales: {
                     x: {
                         type: 'category',
@@ -208,7 +223,10 @@ let conversationTimeout;
       for (let i = peakIndex + 1; i < numPoints; i++) {
           verticalLineData[i] = 70; // Set the rest to 70
       }
-  
+      
+      const totalDuration = 3000;
+      const delayBetweenPoints = totalDuration / gridData.length;
+      const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
   
       
       return {
@@ -262,25 +280,31 @@ let conversationTimeout;
                   },
                   animation: {
                     x: {
+                        type: 'number',
+                        easing: 'linear',
+                        duration: delayBetweenPoints,
+                        from: NaN, // the point is initially skipped
                         delay(ctx) {
                             if (ctx.type !== 'data' || ctx.xStarted) {
                                 return 0;
                             }
                             ctx.xStarted = true;
-                            return ctx.index * (2000 / gridData.length);
+                            return ctx.index * delayBetweenPoints;
                         }
                     },
                     y: {
+                        type: 'number',
+                        easing: 'linear',
+                        duration: delayBetweenPoints,
+                        from: previousY,
                         delay(ctx) {
                             if (ctx.type !== 'data' || ctx.yStarted) {
                                 return 0;
                             }
                             ctx.yStarted = true;
-                            return ctx.index * (2000 / gridData.length);
+                            return ctx.index * delayBetweenPoints;
                         }
                     },
-                    // onComplete() {
-                    //     setTimeout(() => {
                     //         const conversationElement = document.getElementById('conversation-derating');
                     //         delayConversationMessages(conversationElement);   
                     //     }, 1000);
@@ -358,15 +382,15 @@ let conversationTimeout;
             102, 140, 115, 125, 138, 
             130, 105, 160, 127, 143,
             100, 145, 129, 138, 104, 
-            152, 110, 130, 120, 170, 
-            150, 0, null, null, null, 
+            152, 110, 130, 120, 140, 
+            120, 0, null, null, null, 
             null, null, null, null, null
         ];
     
     
-        const totalDuration = 2500;
+        const totalDuration = 3000;
         const delayBetweenPoints = totalDuration / gridData90.length;
-
+        const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
     
     
         return {
@@ -426,32 +450,45 @@ let conversationTimeout;
                 intersect: false
             },
             animation: {
-                    x: {
+                x: {
+                    type: 'number',
+                    easing: 'easeInOutQuad',
+                    duration: delayBetweenPoints,
+                    from: NaN, // the point is initially skipped
                     delay(ctx) {
                         if (ctx.type !== 'data' || ctx.xStarted) {
-                        return 0;
+                            return 0;
                         }
                         ctx.xStarted = true;
                         return ctx.index * delayBetweenPoints;
                     }
-                    },
-                    y: {
+                },
+                y: {
+                    type: 'number',
+                    easing: 'easeInOutQuad',
+                    duration: delayBetweenPoints,
+                    from: previousY,
                     delay(ctx) {
                         if (ctx.type !== 'data' || ctx.yStarted) {
-                        return 0;
+                            return 0;
                         }
                         ctx.yStarted = true;
                         return ctx.index * delayBetweenPoints;
                     }
-                    },
-                    onComplete() {
+                },
+                onProgress() {
                         const chartInstance = this; // Reference to the current chart instance
-                        const data = chartInstance.data; // Access chart data
-                        data.datasets[2].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
-                        data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                        chartInstance.update();
-                
-                        // document.getElementById('stringPerformanceText');
+
+                        requestAnimationFrame(() => {
+                            // Safely update dataset colors after animation completes
+                            setTimeout(() => {
+                                const data = chartInstance.data; // Access chart data
+                                data.datasets[2].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
+                                data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+                                chartInstance.update('none');
+                            }, 2500);  // Small delay after the animation completes to ensure smoothness
+                        });
+                                // document.getElementById('stringPerformanceText');
                         // stringPerformanceText.innerText = '3rd panel set down';
                     
                     // setTimeout(() => {
@@ -711,7 +748,7 @@ let conversationTimeout;
 
             setTimeout(() => {
                 displayDisconnectedText();
-            }, 3000);
+            }, 1200);
 
             conversationTimeout = setTimeout(() => {
                 showConversation('conversation-disconnected');
@@ -754,11 +791,11 @@ let conversationTimeout;
 
         setTimeout(() => {
             displayStringPerformanceText();
-        }, 3500);
+        }, 2500);
 
         conversationTimeout = setTimeout(() => {
             showConversation('conversation-string-performance');
-        }, 4500);
+        }, 4000);
     }
 
     });
@@ -776,7 +813,7 @@ let conversationTimeout;
 
             setTimeout(() => {
                 displayDisconnectedText();
-            }, 3000);
+            }, 1200);
 
             conversationTimeout = setTimeout(() => {
                 showConversation('conversation-disconnected');

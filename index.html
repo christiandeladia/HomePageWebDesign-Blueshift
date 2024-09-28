@@ -86,12 +86,12 @@
 
             <!-- design container -->
             <div class="container p-lg-3 p-0 mb-5" style="height: auto; width: 100%; border-radius: 15px;">
-                <div class="row">
+                <div class="row section1">
                     <div><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">Design</span></h5></div>
                     <h4 class="py-2">Custom system designs for every home or business type.</h4>
                     
                     <div class="col-lg-9 col-md-8 col-12">
-                        <img id="defaultDesign" src="assets/img/design.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize active">
+                        <img id="defaultDesign" src="assets/img/design.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
                         <img id="homes" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                         <img id="offices" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                         <img id="hospitality" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
@@ -233,7 +233,7 @@
                                     </div>
                                     <canvas id="systemDeratingChart" class="mt-5 bg-white"></canvas>
                                     <canvas id="stringPerformanceChart" class="mt-5 bg-white"></canvas>
-                                    <div id="stringPerformanceText" class="badge rounded-pill fw-bolder" style="display: none; position: absolute; top: 120px; right: 50px; color: grey; font-size: 12px; background-color:#f4f4f4;">
+                                    <div id="stringPerformanceText" class="badge rounded-pill fw-bolder" style="display: none; position: absolute; top: 135px; right: 60px; color: grey; font-size: 12px; background-color:#f4f4f4;">
                                         <p class="small m-0" style="color: grey;">3rd panel set down</p>
                                     </div>
                                 </div>
@@ -295,19 +295,19 @@
 
             <!-- HOME design container -->
             <div class="container p-lg-3 p-0 mb-5" style="height: auto; width: 100%; border-radius: 15px;">
-                <div class="row">
+                <div class="row section2">
                     <div><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">Home Solar Design</span></h5></div>
                     <h4 class="py-2">Custom system designs for every home.</h4>
                     
                     <div class="col-lg-9 col-md-8 col-12">
-                        <img id="defaultDesign" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active">
-                        <img id="homes" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
-                        <img id="offices" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="defaultDesign" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
+                        <img id="homes2" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="offices2" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                     </div>
             
                     <div class="col-lg-3 col-md-4 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4 p-0">
                         <div id="designBtnGroup" style="white-space: nowrap; margin-left: -4px; margin-right: -4px; width: 100%;">
-                        <button id="designBtn" data-target="homes" data-bs-toggle="modal" data-bs-target="#existingHomeModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="homes2" data-bs-toggle="modal" data-bs-target="#existingHomeModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px; min-height: 40px;">
                             <span class="text-start me-2">Existing Home</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -315,7 +315,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>                        
-                        <button id="designBtn" data-target="offices" data-bs-toggle="modal" data-bs-target="#homesInConstructionModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="offices2" data-bs-toggle="modal" data-bs-target="#homesInConstructionModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px; min-height: 40px;">
                             <span class="text-start me-2">Homes in Construction</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -378,7 +378,7 @@
                                 <img src="assets/img/supply&installation3.png" alt="Sample Image 3" style="position: absolute; bottom: 0; right: 0; width: 130px; height: auto;  margin-right: 20px;">
                             </a>
                             <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title text-decoration-none text-dark">ndustry Leading Warranty</h5>
+                                <h5 class="card-title text-decoration-none text-dark">Industry Leading Warranty</h5>
                                 <p class="card-text" style="line-height: normal; min-height: 75px;">Protect your system with our in-house warranty and from our direct partners.</p>
                                 <button class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-1 fw-semibold mb-3 mx-1" 
                                         style="border: 1px solid #0B5ED7; width: 150px;">
@@ -423,21 +423,22 @@
 
             <!-- Commercial design container -->
             <div class="container p-lg-3 p-0 mb-5" style="height: auto; width: 100%; border-radius: 15px;">
-                <div class="row">
+                <div class="row section3">
                     <div><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">Commercial Solar Design</span></h5></div>
                     <h4 class="py-2">Custom system designs for every business.</h4>
                     
                     <div class="col-lg-9 col-md-8 col-12">
-                        <img id="defaultDesign" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active">
-                        <img id="homes" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
-                        <img id="offices" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
-                        <img id="hospitality" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
-                        <img id="manufacturer" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="defaultDesign" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
+                        <img id="homes3" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="offices3" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="hospitality3" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="manufacturer3" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="manufacturer33" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                     </div>
             
                     <div class="col-lg-3 col-md-4 col-12 d-flex flex-row flex-md-column align-items-center mt-md-0 mt-4 p-0">
                         <div id="designBtnGroup" style="white-space: nowrap; margin-left: -4px; margin-right: -4px; width: 100%;">
-                        <button id="designBtn" data-target="homes" data-bs-toggle="modal" data-bs-target="#officesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="homes3" data-bs-toggle="modal" data-bs-target="#officesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px; min-height: 40px; ">
                             <span class="text-start me-2">Offices</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -445,7 +446,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>                        
-                        <button id="designBtn" data-target="offices" data-bs-toggle="modal" data-bs-target="#retailSpacesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="offices3" data-bs-toggle="modal" data-bs-target="#retailSpacesModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px; min-height: 40px;">
                             <span class="text-start me-2">Retail Spaces</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -453,7 +454,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>  
-                        <button id="designBtn" data-target="hospitality" data-bs-toggle="modal" data-bs-target="#apartmentsModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="hospitality3" data-bs-toggle="modal" data-bs-target="#apartmentsModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px; min-height: 40px; ">
                             <span class="text-start me-2">Apartments</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -461,7 +462,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>                      
-                        <button id="designBtn" data-target="manufacturer" data-bs-toggle="modal" data-bs-target="#hospitalityModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="manufacturer3" data-bs-toggle="modal" data-bs-target="#hospitalityModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px; min-height: 40px;">
                             <span class="text-start me-2">Hospitality</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">
@@ -469,7 +470,7 @@
                                 <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
                             </svg>
                         </button>                        
-                        <button id="designBtn" data-target="manufacturer" data-bs-toggle="modal" data-bs-target="#manufacturerModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
+                        <button id="designBtn" data-target="manufacturer33" data-bs-toggle="modal" data-bs-target="#manufacturerModal" class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-lg-2 py-md-1 py-0 fw-semibold mb-3 mx-lg-0 mx-md-0 mx-1" 
                                 style="border: 1px solid #0B5ED7; width: 100%; max-width: 250px; min-height: 40px;">
                             <span class="text-start me-2">Manufacturer</span>
                             <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 30px; height: 30px;">

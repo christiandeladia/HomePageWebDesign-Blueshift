@@ -170,104 +170,116 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
-    let autoChangeInterval; // Variable to hold the interval for automatic changes
-    let isHovering = false; // Flag to track hover state
-
-    // Function to hide all images
-    function hideAllImages() {
-        const images = document.querySelectorAll('.img-fluid');
-        images.forEach(image => {
-            image.classList.remove('active');
+    function setupSection(sectionClass, imageOrder) {
+        let autoChangeInterval;
+        let isHovering = false;
+        let imageIndex = 0;
+    
+        function hideAllImages(section) {
+            const images = document.querySelectorAll(`.${section} .img-fluid`);
+            images.forEach(image => {
+                image.classList.remove('active');
+            });
+        }
+    
+        function deactivateAllButtons(section) {
+            const buttons = document.querySelectorAll(`.${section} .designBtn`);
+            buttons.forEach(button => {
+                button.classList.remove('active');
+            });
+        }
+    
+        function showImage(section, imageId) {
+            hideAllImages(section);
+            deactivateAllButtons(section);
+            const image = document.getElementById(imageId);
+            if (image) {
+                image.classList.add('active');
+            }
+    
+            const activeButton = document.querySelector(`.${section} .designBtn[data-target="${imageId}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+        }
+    
+        function changeImageAutomatically(section) {
+            if (!isHovering) { 
+                imageIndex = (imageIndex + 1) % imageOrder.length;
+                showImage(section, imageOrder[imageIndex]);
+            }
+        }
+    
+        function isMobile() {
+            return window.innerWidth <= 991;
+        }
+    
+        function setupButtonEventListeners(section) {
+            const buttons = document.querySelectorAll(`.${section} .designBtn`);
+    
+            if (isMobile()) {
+                buttons.forEach(button => {
+                    const newButton = button.cloneNode(true);
+                    button.parentNode.replaceChild(newButton, button);
+                });
+            }
+    
+            buttons.forEach(button => {
+                const targetImage = button.getAttribute('data-target');
+    
+                if (isMobile()) {
+                    button.addEventListener('click', () => {
+                        showImage(section, targetImage);
+                    });
+                } else {
+                    button.addEventListener('mouseenter', () => {
+                        isHovering = true;
+                        clearInterval(autoChangeInterval);
+                        showImage(section, targetImage);
+                    });
+    
+                    button.addEventListener('mouseleave', () => {
+                        isHovering = false;
+                        clearInterval(autoChangeInterval);
+                        autoChangeInterval = setInterval(() => changeImageAutomatically(section), 5000);
+                        
+                        // Show the default design image
+                        const defaultImage = document.querySelector(`.${section} .defaultDesign`);
+                        if (defaultImage) {
+                            hideAllImages(section); // Hide all other images first
+                            defaultImage.classList.add('active'); // Show the default design
+                        }
+                        deactivateAllButtons(section);
+    
+                        console.log(section, 'defaultDesign');
+                    });
+                }
+            });
+        }
+    
+        setupButtonEventListeners(sectionClass);
+    
+        window.addEventListener('resize', () => {
+            setupButtonEventListeners(sectionClass);
         });
-    }
-
-    // Function to deactivate all buttons
-    function deactivateAllButtons() {
-        const buttons = document.querySelectorAll('.designBtn');
-        buttons.forEach(button => {
-            button.classList.remove('active');
-        });
-    }
-
-    // Function to show selected image and activate the corresponding button
-    function showImage(imageId) {
-        hideAllImages(); // Hide all images
-        deactivateAllButtons(); // Deactivate all buttons
-        const image = document.getElementById(imageId);
-        image.classList.add('active'); // Show the current image
-
-        // Find the button corresponding to the image and activate it
-        const activeButton = document.querySelector(`.designBtn[data-target="${imageId}"]`);
-        if (activeButton) {
-            activeButton.classList.add('active');
+    
+        autoChangeInterval = setInterval(() => changeImageAutomatically(sectionClass), 5000);
+        
+        // Initialize the default design image
+        const defaultImage = document.querySelector(`.${sectionClass} .defaultDesign`);
+        if (defaultImage) {
+            defaultImage.classList.add('active');
+            setTimeout(() => {
+                showImage(sectionClass, imageOrder[0]);
+            }, 1000);
         }
     }
-
-    // Image order excluding 'defaultDesign'
-    let imageIndex = 0;
-    const imageOrder = ['homes', 'offices', 'hospitality', 'manufacturer']; // Exclude 'defaultDesign'
-
-    // Function to handle automatic image change
-    function changeImageAutomatically() {
-        if (!isHovering) { // Only change if not hovering
-            imageIndex = (imageIndex + 1) % imageOrder.length; // Loop through images
-            showImage(imageOrder[imageIndex]);
-        }
-    }
-
-    // Event listeners for buttons
-    const buttons = document.querySelectorAll('.designBtn');
-    buttons.forEach(button => {
-        const targetImage = button.getAttribute('data-target');
-
-        button.addEventListener('mouseenter', () => {
-            isHovering = true; // Set hover state to true
-            clearInterval(autoChangeInterval); // Stop automatic changes
-            showImage(targetImage); // Show the hovered image
-        });
-
-        button.addEventListener('mouseleave', () => {
-            isHovering = false; // Reset hover state
-            clearInterval(autoChangeInterval); // Clear any existing intervals
-            autoChangeInterval = setInterval(changeImageAutomatically, 5000); // Resume automatic changes
-            showImage('defaultDesign'); // Show default image on mouse leave
-        });
-    });
-
-    // Set automatic image change every 5 seconds
-    autoChangeInterval = setInterval(changeImageAutomatically, 5000);
-
-    // Initially display the 'defaultDesign' and start with the first image right after
-    window.onload = function() {
-        document.getElementById('defaultDesign').classList.add('active'); // Show 'defaultDesign' initially
-        setTimeout(() => {
-            showImage('homes'); // Show 'homes' after 1 second
-        }, 1000);
-    };
-
-    // Function to set up hover effects
-    function setupAllSectionImageHover() {
-        const images = document.querySelectorAll('#defaultDesign, #homes, #offices, #hospitality, #manufacturer');
-        document.querySelectorAll('.designBtn').forEach(button => {
-            const targetId = button.getAttribute('data-target');
-            
-            button.addEventListener('mouseenter', () => {
-                isHovering = true; // Set hover state to true
-                clearInterval(autoChangeInterval); // Stop automatic changes
-                images.forEach(img => img.classList.toggle('active', img.id === targetId));
-            });
-            
-            button.addEventListener('mouseleave', () => {
-                isHovering = false; // Reset hover state
-                clearInterval(autoChangeInterval); // Clear any existing intervals
-                autoChangeInterval = setInterval(changeImageAutomatically, 5000); // Resume automatic changes
-                images.forEach(img => img.classList.toggle('active', img.id === 'defaultDesign'));
-            });
-        });
-    }
-
-    setupAllSectionImageHover(); // Initialize hover functionality
-
+    
+    // Initialize for each section with their specific image order
+    setupSection('section3', ['homes3', 'offices3', 'hospitality3', 'manufacturer3', 'manufacturer33']);
+    setupSection('section2', ['homes2', 'offices2']);
+    setupSection('section1', ['homes', 'offices', 'hospitality', 'manufacturer']);
+    
 
 
 
