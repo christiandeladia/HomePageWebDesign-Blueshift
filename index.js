@@ -10,16 +10,40 @@ document.addEventListener('DOMContentLoaded', function () {
     function showSection(sectionToShow) {
         [allContent, homesContent, commercialContent].forEach(section => section.style.display = 'none');
         [allBtn, homesBtn, commercialBtn].forEach(btn => btn.classList.remove('active'));
+        resetAllDesignBtn();
 
         sectionToShow.style.display = 'block';
         if (sectionToShow === allContent) {
             allBtn.classList.add('active');
+            showDefaultImage('section1');
         } else if (sectionToShow === homesContent) {
             homesBtn.classList.add('active');
+            showDefaultImage('section2');
         } else if (sectionToShow === commercialContent) {
             commercialBtn.classList.add('active');
+            showDefaultImage('section3');
         }
     }
+
+    // Function to reset all buttons images in main sections
+    function resetAllDesignBtn() {
+        [allContent, homesContent, commercialContent].forEach(section => {
+            const buttons = section.querySelectorAll('.designBtn');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            const images = section.querySelectorAll('.img-fluid');
+            images.forEach(image => image.classList.remove('active'));
+        });
+    }
+
+    // Function to show the default image for the current section
+    function showDefaultImage(sectionClass) {
+        const defaultImage = document.querySelector(`.${sectionClass} .defaultDesign`);
+        if (defaultImage) {
+            defaultImage.classList.add('active');
+        }
+    }
+
     allBtn.addEventListener('click', () => showSection(allContent));
     homesBtn.addEventListener('click', () => showSection(homesContent));
     commercialBtn.addEventListener('click', () => showSection(commercialContent));
@@ -114,7 +138,6 @@ document.addEventListener('DOMContentLoaded', function () {
         window.requestAnimationFrame(step);
     }
 
-    // Intersection Observer to trigger the number animation when in view
     const observer = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -128,7 +151,6 @@ document.addEventListener('DOMContentLoaded', function () {
         });
     }, { threshold: 1 });
 
-    // Select all elements with numbers to animate
     document.querySelectorAll('h3[data-number]').forEach(numElement => {
         observer.observe(numElement);
     });
