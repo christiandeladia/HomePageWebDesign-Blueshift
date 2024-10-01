@@ -1164,6 +1164,7 @@ let conversationTimeout;
 
     }
 
+
     function getCommercialDisconnectedChartConfig(mean = 36, stdDev = 10) {
         const numPoints = 76;
         const gridData = generateBellCurveData(numPoints, mean, stdDev);
@@ -1970,7 +1971,7 @@ let conversationTimeout;
 
     
 
-    // Event Listeneners-------------------------------------
+    // Event Listeneners for all section-------------------------------------
     document.getElementById('disconnected').addEventListener('click', function () {
         const disconnectedButton = document.getElementById('disconnected');
         
@@ -2036,81 +2037,8 @@ let conversationTimeout;
 
     });
 
-    
-    // Default-------------------------------------
-    function setChartBehavior(chartId, configFunction, conversationId) {
-        const chartElement = document.getElementById(chartId);
-    
-        createObserver(chartElement, () => {
-            clearTimeout(conversationTimeout);
-            hideAllConversations();
-            showChart(chartId);
-            try {
-                createChart(chartId, configFunction());
-            } catch (error) {
-                console.error(`Error creating chart: ${error}`);
-            }
-    
-            setTimeout(() => {
-                displayDisconnectedText();
-            }, 1200);
-    
-            conversationTimeout = setTimeout(() => {
-                showConversation(conversationId);
-            }, 4000);
-        });
-    }
-    
-    document.addEventListener('DOMContentLoaded', () => {
-        setChartBehavior('systemDisconnectedChart', getDisconnectedChartConfig, 'conversation-disconnected');
-        // setChartBehavior('homeSystemDisconnectedChart', getHomeDisconnectedChartConfig, 'homeConversationDisconnected');
-        // setChartBehavior('commercialSystemDisconnectedChart', getCommercialDisconnectedChartConfig, 'commercialConversationDisconnected');
-    });
 
-    document.getElementById('homesBtn').addEventListener('click', function () {
-        const disconnectedButton = document.getElementById('homeDisconnected');
-        
-        if (disconnectedButton.classList.contains('active')) {
-            clearTimeout(conversationTimeout);
-
-            hideAllConversations();
-
-            showChart('homeSystemDisconnectedChart');
-            createChart('homeSystemDisconnectedChart', getHomeDisconnectedChartConfig());
-
-            setTimeout(() => {
-                displayDisconnectedText();
-            }, 1200);
-
-            conversationTimeout = setTimeout(() => {
-                showConversation('homeConversationDisconnected');
-            }, 4000);
-        }
-    });
-
-    document.getElementById('commercialBtn').addEventListener('click', function () {
-        const disconnectedButton = document.getElementById('commercialDisconnected');
-        
-        if (disconnectedButton.classList.contains('active')) {
-            clearTimeout(conversationTimeout);
-
-            hideAllConversations();
-
-            showChart('commercialSystemDisconnectedChart');
-            createChart('commercialSystemDisconnectedChart', getCommercialDisconnectedChartConfig());
-
-            setTimeout(() => {
-                displayDisconnectedText();
-            }, 1200);
-
-            conversationTimeout = setTimeout(() => {
-                showConversation('commercialConversationDisconnected');
-            }, 4000);
-        }
-    });
-    
-
-    // even listener for home section
+    // Event listeners for home section-------------------------------------
     document.getElementById('homeDisconnected').addEventListener('click', function () {
         const disconnectedButton = document.getElementById('homeDisconnected');
         
@@ -2173,7 +2101,7 @@ let conversationTimeout;
 
 
 
-     // even listener for commercial section
+     // Event listeners for commercial section-------------------------------------
      document.getElementById('commercialDisconnected').addEventListener('click', function () {
         const disconnectedButton = document.getElementById('commercialDisconnected');
         
@@ -2232,4 +2160,57 @@ let conversationTimeout;
         }, 4000);
     }
 
+    });
+
+
+    
+    // Default-------------------------------------
+    let currentChartId = null;
+    function setChartBehavior(chartId, configFunction, conversationId) {
+        const chartElement = document.getElementById(chartId);
+    
+        createObserver(chartElement, () => {
+            clearTimeout(conversationTimeout);
+            hideAllConversations();
+            // Check if the chart is already shown
+            if (currentChartId !== chartId) {
+                showChart(chartId);
+                currentChartId = chartId; // Update the current chart ID
+            } else {
+                console.log(`Chart ${chartId} is already displayed, skipping.`);
+            }
+
+            try {
+                createChart(chartId, configFunction());
+            } catch (error) {
+                console.error(`Error creating chart: ${error}`);
+            }
+    
+            setTimeout(() => {
+                displayDisconnectedText();
+            }, 1200);
+    
+            conversationTimeout = setTimeout(() => {
+                showConversation(conversationId);
+            }, 4000);
+        });
+    }
+    
+    document.addEventListener('DOMContentLoaded', () => {
+        setChartBehavior('systemDisconnectedChart', getDisconnectedChartConfig, 'conversation-disconnected');
+    });
+
+    // const systemDisconnectedTrigger = document.getElementById('allBtn');
+    allBtn.addEventListener('click', () => {
+        setChartBehavior('systemDisconnectedChart', getDisconnectedChartConfig, 'conversation-disconnected');
+    });
+
+    // const homeChartTrigger = document.getElementById('homesBtn');
+    homesBtn.addEventListener('click', () => {
+        setChartBehavior('homeSystemDisconnectedChart', getHomeDisconnectedChartConfig, 'homeConversationDisconnected');
+    });
+
+    // const commercialChartTrigger = document.getElementById('commercialBtn');
+    commercialBtn.addEventListener('click', () => {
+        setChartBehavior('commercialSystemDisconnectedChart', getCommercialDisconnectedChartConfig, 'commercialConversationDisconnected');
     });

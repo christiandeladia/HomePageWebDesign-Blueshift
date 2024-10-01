@@ -1,10 +1,14 @@
 document.addEventListener('DOMContentLoaded', function () {
+    let swiper;
+
     const allBtn = document.getElementById('allBtn');
     const homesBtn = document.getElementById('homesBtn');
     const commercialBtn = document.getElementById('commercialBtn');
     const allContent = document.getElementById('allContent');
     const homesContent = document.getElementById('homesContent');
     const commercialContent = document.getElementById('commercialContent');
+
+    const cards = document.querySelectorAll('.card');
 
     // Function to show the selected section and update button states-------------------------------------
     function showSection(sectionToShow) {
@@ -16,12 +20,24 @@ document.addEventListener('DOMContentLoaded', function () {
         if (sectionToShow === allContent) {
             allBtn.classList.add('active');
             showDefaultImage('section1');
+            console.log('Active: All Button');
+            showChart('systemDisconnectedChart');
+            filterCards('All');
+            resetSwiper();
         } else if (sectionToShow === homesContent) {
             homesBtn.classList.add('active');
             showDefaultImage('section2');
+            console.log('Active: Homes Button');
+            showChart('homeSystemDisconnectedChart');
+            filterCards('Homes');
+            resetSwiper();
         } else if (sectionToShow === commercialContent) {
             commercialBtn.classList.add('active');
             showDefaultImage('section3');
+            console.log('Active: Commercial Button');
+            showChart('commercialSystemDisconnectedChart');
+            filterCards('Commercial');
+            resetSwiper();
         }
     }
 
@@ -43,12 +59,46 @@ document.addEventListener('DOMContentLoaded', function () {
             defaultImage.classList.add('active');
         }
     }
+    
+    function filterCards(category) {
+        let visibleCount = 0;
+
+        cards.forEach(card => {
+            const badge = card.querySelector('.badge');
+            if (badge) {
+                const badgeText = badge.textContent.trim();
+                if (category === 'All' || badgeText === category) {
+                    card.style.display = 'block';
+                    visibleCount++;
+                } else {
+                    card.style.display = 'none';
+                }
+            }
+        });
+
+        if (swiper) {
+            swiper.update();
+        }
+
+        // Hide or show navigation buttons based on the visible count
+        const nextButton = document.querySelector(".swiper-button-next");
+        const prevButton = document.querySelector(".swiper-button-prev");
+        if (visibleCount <= 3) {
+            nextButton.style.display = 'none';
+            prevButton.style.display = 'none';
+        } else {
+            nextButton.style.display = '';
+            prevButton.style.display = '';
+        }
+    }
 
     allBtn.addEventListener('click', () => showSection(allContent));
     homesBtn.addEventListener('click', () => showSection(homesContent));
     commercialBtn.addEventListener('click', () => showSection(commercialContent));
 
-
+    showSection(allContent);
+    filterCards('All');
+    initSwiper();
 
     
 
@@ -158,36 +208,43 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // variables in SOLAR 101 SECTION-------------------------------------
-    var swiper = new Swiper(".slide-content", {
-        slidesPerView: 3,
-        spaceBetween: 25,
-        loop: true,
-        centerSlide: 'true',
-        fade: 'true',
-        grabCursor: 'true',
-        pagination: {
-            el: ".swiper-pagination",
-            clickable: true,
-            dynamicBullets: true,
-        },
-        navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
-        },
+    function initSwiper() {
+        swiper = new Swiper(".slide-content", {
+            slidesPerView: 3,
+            spaceBetween: 25,
+            loop: false, // Set loop to false for filtering
+            centerSlide: true,
+            fade: true,
+            grabCursor: true,
+            pagination: {
+                el: ".swiper-pagination",
+                clickable: true,
+                dynamicBullets: true,
+            },
+            navigation: {
+                nextEl: ".swiper-button-next",
+                prevEl: ".swiper-button-prev",
+            },
+            breakpoints: {
+                0: {
+                    slidesPerView: 1,
+                },
+                520: {
+                    slidesPerView: 2,
+                },
+                950: {
+                    slidesPerView: 3,
+                },
+            },
+        });
+    }
 
-        breakpoints: {
-            0: {
-                slidesPerView: 1,
-            },
-            520: {
-                slidesPerView: 2,
-            },
-            950: {
-                slidesPerView: 3,
-            },
-        },
-    });
-
+    function resetSwiper() {
+        if (swiper) {
+            swiper.slideTo(0); // Reset the Swiper to the first slide
+            swiper.update(); // Update the Swiper to refresh its state
+        }
+    }
 
 
 

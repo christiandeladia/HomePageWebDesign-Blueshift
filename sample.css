@@ -13,7 +13,7 @@
 .card-content {
     display: flex;
     flex-direction: column;
-    padding: 10px 14px;
+    padding: 10px 5px;
 }
 
 .image-content {
@@ -21,9 +21,9 @@
     row-gap: 5px;
 }
 
-.image-content img{
+/* .image-content img{
     border-radius: 25px;
-}
+} */
 
 .card-content .title {
     font-size: 18px;
