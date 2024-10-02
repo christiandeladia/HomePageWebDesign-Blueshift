@@ -21,7 +21,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="border-style: none;">
+    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
                 <img src="assets/img/icons/logo/main-logo.webp" style="width: 24px;" alt="Logo">
@@ -31,13 +31,172 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div id="navbarContent" class="collapse navbar-collapse">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item position-static dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
+                        <!-- Dropdown items for small screens -->
+                        <ul class="dropdown-menu d-lg-none" aria-labelledby="productsNav">
+                            <li><a class="dropdown-item" href="#">All in one Solar Installation</a></li>
+                            <li><a class="dropdown-item" href="#">Net Metering Processing</a></li>
+                            <li><a class="dropdown-item" href="#">Pre-Construction Consultation</a></li>
+                            <li><a class="dropdown-item" href="#">Blueshift Monitoring</a></li>
+                            <li><a class="dropdown-item" href="#">Shop equipment & materials</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item position-static dropdown">
+                        <a class="nav-link dropdown-toggle text-dark" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
+                        <!-- Dropdown items for small screens -->
+                        <ul class="dropdown-menu d-lg-none" aria-labelledby="resourcesNav">
+                            <li><a class="dropdown-item" href="#">Testimonials</a></li>
+                            <li><a class="dropdown-item" href="#">Case studies</a></li>
+                            <li><a class="dropdown-item" href="#">Solar Design Studio</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#">Company</a></li>
+                </ul>
                 <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link" href="https://my.blueshift.ph">Sign In</a></li>
-                    <li class="nav-item"><a class="nav-link" href="public/contact.html">Contact Us</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="https://my.blueshift.ph">Sign In</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="public/contact.html">Contact Us</a></li>
                 </ul>
             </div>
         </div>
     </nav>
+    
+    <div id="productsDisplay" class="px-0 pt-4" style="background-color: white; width: 100%;">
+        <div class="row row-1 row-md-2 align-items-stretch g-0">
+            
+            <div class="col-4 gap-4">
+                <div class="d-flex align-items-center gap-3 border border-1 h-100" style="padding: 3rem 6rem;">
+                    <div class="feature-icon d-flex align-items-center">
+                        <img src="assets/img/all-in-one.jpg" alt="Solar Panel" style=" width: 200px; height: 200px; border-radius: 25px;">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">All in one Solar Installation</p>
+                        <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+
+                        <a href="#" class="btn btn-outline-secondary" style="width: 150px;">
+                            Explore details
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
+                              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 gap-4">
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center">
+                        <i class="fas fa-bolt" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Net Metering Processing</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </a>
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center">
+                        <i class="fas fa-hard-hat" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Pre-Construction Consultation</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-4 gap-4">
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center">
+                        <i class="fas fa-chart-line" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Blueshift Monitoring</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </a>
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center">
+                        <i class="fas fa-tools" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Shop equipment & materials</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </a>
+            </div>
+
+        </div>
+    </div>
+
+    <div id="resourcesDisplay" class="px-0 pt-4" style="background-color: white; width: 100%;">
+        <div class="row row-1 row-md-2 align-items-stretch g-0">
+            
+            <div class="col-4 gap-4">
+                <div class="d-flex align-items-center gap-3 border border-1 h-100" style="padding: 3rem 6rem;">
+                    <div class="feature-icon d-flex align-items-center">
+                        <img src="assets/img/testimonials.jpg" alt="Solar Panel" style=" width: 200px; height: 200px; border-radius: 25px;">
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Testimonials</p>
+                        <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+
+                        <a href="#" class="btn btn-outline-secondary" style="width: 150px;">
+                            Explore details
+                            <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
+                              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-4 gap-4">
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center">
+                        <i class="fas fa-book-open" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Case studies</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </a>
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center">
+                        <i class="fas fa-drafting-compass" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Solar Design Studio</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </a>
+            </div>
+            
+            <div class="col-4 gap-4">
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center">
+                        <i class="fas fa-newspaper" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center">
+                        <p class="fw-semibold mb-1">Articles</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </a>
+                <div id="#" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                    <div class="feature-icon d-flex align-items-center" style="visibility: hidden;">
+                        <i class="fas fa-solar-panel" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                    </div>
+                    <div class="d-flex flex-column justify-content-center" style="visibility: hidden;">
+                        <p class="fw-semibold mb-1">Featured title</p>
+                        <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    
 
     <!-- header -->
     <section class="d-flex flex-column" style="padding: 50px 0;">
@@ -1226,7 +1385,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="chart.js"></script>

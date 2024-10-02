@@ -265,3 +265,38 @@
 
   }
   
+
+   /* navigation bar------------------------------------- */
+  #productsDisplay {
+    display: none;
+    position: absolute;
+    z-index: 1000;
+    }
+    #productsDisplay.show {
+        opacity: 1; /* Set opacity to 1 when shown */
+    }
+
+    #productsNav:hover + #productsDisplay {
+        display: block; /* Show on hover */
+    }
+
+    #productBtn:hover {
+        background-color: #F1F9FF; /* Change background color on hover */
+    }
+
+    #resourcesDisplay {
+        display: none;
+        position: absolute;
+        z-index: 1000;
+    }
+    #resourcesDisplay.show {
+        opacity: 1; /* Set opacity to 1 when shown */
+    }
+
+    #resourcesNav:hover + #productsDisplay {
+        display: block; /* Show on hover */
+    }
+
+    #resourcesBtn:hover {
+        background-color: #F1F9FF; /* Change background color on hover */
+    }

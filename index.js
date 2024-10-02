@@ -362,5 +362,59 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
 
+    // navigation bar-------------------------------------
+    const mainNav = document.getElementById('mainNav');
+    const productsNav = document.getElementById('productsNav');
+    const productsDisplay = document.getElementById('productsDisplay');
+    const navLinks = mainNav.querySelectorAll('a');
+    const resourcesNav = document.getElementById('resourcesNav');
+    const resourcesDisplay = document.getElementById('resourcesDisplay');
     
+    const isMobile = () => window.innerWidth <= 991; // Adjust the width as needed for your mobile breakpoint
+    
+    const handleProductsDisplay = (show) => {
+        if (!isMobile()) {
+            productsDisplay.style.display = show ? 'block' : 'none';
+        } else {
+            productsDisplay.style.display = 'none'; // Ensure it's hidden on mobile
+        }
+    };
+    
+    const handleResourcesDisplay = (show) => {
+        if (!isMobile()) {
+            resourcesDisplay.style.display = show ? 'block' : 'none';
+        } else {
+            resourcesDisplay.style.display = 'none'; // Ensure it's hidden on mobile
+        }
+    };
+    
+    productsNav.addEventListener('mouseover', () => handleProductsDisplay(true));
+    
+    navLinks.forEach(link => {
+        if (link !== productsNav) {
+            link.addEventListener('mouseover', () => handleProductsDisplay(false));
+        }
+    });
+    
+    productsDisplay.addEventListener('mouseover', () => handleProductsDisplay(true));
+    productsDisplay.addEventListener('mouseout', () => handleProductsDisplay(false));
+    
+    resourcesNav.addEventListener('mouseover', () => handleResourcesDisplay(true));
+    
+    navLinks.forEach(link => {
+        if (link !== resourcesNav) { 
+            link.addEventListener('mouseover', () => handleResourcesDisplay(false));
+        }
+    });
+    
+    resourcesDisplay.addEventListener('mouseover', () => handleResourcesDisplay(true));
+    resourcesDisplay.addEventListener('mouseout', () => handleResourcesDisplay(false));
+    
+    // Optional: Add a resize event listener to hide displays on window resize
+    window.addEventListener('resize', () => {
+        handleProductsDisplay(false);
+        handleResourcesDisplay(false);
+    });
+    
+
 });
