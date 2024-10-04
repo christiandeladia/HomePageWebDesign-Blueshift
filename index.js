@@ -98,7 +98,7 @@ document.addEventListener('DOMContentLoaded', function () {
     homesBtn.addEventListener('click', () => showSection(homesContent));
     commercialBtn.addEventListener('click', () => showSection(commercialContent));
 
-    showSection(allContent);
+    // showSection(allContent);
     filterCards('All');
     initSwiper();
 
