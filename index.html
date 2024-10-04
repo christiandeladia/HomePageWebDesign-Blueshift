@@ -14,7 +14,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
     <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="sample.css">
+    <link rel="stylesheet" href="swiper.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
@@ -30,27 +30,39 @@
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div id="navbarContent" class="collapse navbar-collapse">
+            <div id="navbarContent" class="collapse navbar-collapse d-none d-lg-block">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item position-static dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">Products</a>
-                        <!-- Dropdown items for small screens -->
-                        <ul class="dropdown-menu d-lg-none" aria-labelledby="productsNav">
+                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>Products</span>
+                            <span style="margin-left: 5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </a>
+                        <!-- <ul class="dropdown-menu  border border-0" aria-labelledby="productsNav">
                             <li><a class="dropdown-item" href="#">All in one Solar Installation</a></li>
                             <li><a class="dropdown-item" href="#">Net Metering Processing</a></li>
                             <li><a class="dropdown-item" href="#">Pre-Construction Consultation</a></li>
                             <li><a class="dropdown-item" href="#">Blueshift Monitoring</a></li>
                             <li><a class="dropdown-item" href="#">Shop equipment & materials</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li class="nav-item position-static dropdown">
-                        <a class="nav-link dropdown-toggle text-dark" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">Resources</a>
-                        <!-- Dropdown items for small screens -->
-                        <ul class="dropdown-menu d-lg-none" aria-labelledby="resourcesNav">
+                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <span>Resources</span>
+                            <span style="margin-left: 5px;">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                                    <polyline points="6 9 12 15 18 9"></polyline>
+                                </svg>
+                            </span>
+                        </a>
+                        <!-- <ul class="dropdown-menu d-lg-none border border-0" aria-labelledby="resourcesNav">
                             <li><a class="dropdown-item" href="#">Testimonials</a></li>
                             <li><a class="dropdown-item" href="#">Case studies</a></li>
                             <li><a class="dropdown-item" href="#">Solar Design Studio</a></li>
-                        </ul>
+                        </ul> -->
                     </li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#">Company</a></li>
                 </ul>
@@ -61,28 +73,75 @@
             </div>
         </div>
     </nav>
+
+    <div id="overlay" class="overlay"></div>
+
+    <!-- Sidebar -->
+    <div class="sidebar" id="sidebar">
+        <ul class="sidebar-nav me-auto">
+            <li class="sidebar-item position-static dropdown">
+                <a class="sidebar-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" aria-expanded="false">
+                    <span>Products</span>
+                    <span style="margin-left: 5px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>     
+                </a>
+                <ul class="dropdown-menu border border-0" aria-labelledby="productsNav" style="display: none; padding-left: 0;">
+                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#">All in one Solar Installation</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#">Net Metering Processing</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#">Pre-Construction Consultation</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#">Blueshift Monitoring</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#">Shop equipment & materials</a></li>
+                </ul>
+            </li>
+            
+            <li class="sidebar-item position-static dropdown">
+                <a class="sidebar-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" aria-expanded="false">
+                    <span>Resources</span>
+                    <span style="margin-left: 5px;">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                            <polyline points="6 9 12 15 18 9"></polyline>
+                        </svg>
+                    </span>    
+                </a>
+                <ul class="dropdown-menu border border-0" aria-labelledby="resourcesNav" style="display: none; padding-left: 0;">
+                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#">Testimonials</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#">Case studies</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#">Solar Design Studio</a></li>
+                </ul>
+            </li>
+            
+            <li class="sidebar-item"><a class="sidebar-link text-dark" href="#">Company</a></li>
+            <li class="sidebar-item"><a class="sidebar-link text-dark" href="https://my.blueshift.ph">Sign In</a></li>
+            <li class="sidebar-item"><a class="sidebar-link text-dark" href="public/contact.html">Contact Us</a></li>
+        </ul>
+    </div>
+
     
-    <div id="productsDisplay" class="px-0 pt-4" style="background-color: white; width: 100%;">
+    <div id="productsDisplay" class="px-0 pt-4">
         <div class="row row-1 row-md-2 align-items-stretch g-0">
             
             <div class="col-4 gap-4">
-                <div class="d-flex align-items-center gap-3 border border-1 h-100" style="padding: 3rem 6rem;">
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
                     <div class="feature-icon d-flex align-items-center">
-                        <img src="assets/img/all-in-one.jpg" alt="Solar Panel" style=" width: 200px; height: 200px; border-radius: 25px;">
+                        <img src="assets/img/all-in-one.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                         <p class="fw-semibold mb-1">All in one Solar Installation</p>
                         <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
-
-                        <a href="#" class="btn btn-outline-secondary" style="width: 150px;">
+            
+                        <button class="btn btn-outline-secondary" style="min-width: 150px;">
                             Explore details
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
-                              <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
                             </svg>
-                        </a>
+                        </button>
                     </div>
-                </div>
+                </a>
             </div>
+            
 
             <div class="col-4 gap-4">
                 <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
@@ -133,22 +192,22 @@
         <div class="row row-1 row-md-2 align-items-stretch g-0">
             
             <div class="col-4 gap-4">
-                <div class="d-flex align-items-center gap-3 border border-1 h-100" style="padding: 3rem 6rem;">
+                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
                     <div class="feature-icon d-flex align-items-center">
-                        <img src="assets/img/testimonials.jpg" alt="Solar Panel" style=" width: 200px; height: 200px; border-radius: 25px;">
+                        <img src="assets/img/testimonials.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
                     </div>
                     <div class="d-flex flex-column justify-content-center">
                         <p class="fw-semibold mb-1">Testimonials</p>
                         <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
 
-                        <a href="#" class="btn btn-outline-secondary" style="width: 150px;">
+                        <button class="btn btn-outline-secondary" style="min-width: 150px;">
                             Explore details
                             <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
                               <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
                             </svg>
-                        </a>
+                        </button>
                     </div>
-                </div>
+                </a>
             </div>
 
             <div class="col-4 gap-4">
@@ -244,7 +303,7 @@
             <p class="text-left py-5" style="font-weight: 600;font-size: 48px; line-height: 1">Your  complete solar journey with us.</p>
 
             <!-- design container -->
-            <div class="container p-lg-3 p-0 mb-5" style="height: auto; width: 100%; border-radius: 15px;">
+            <div class="container p-lg-3 p-0 mb-5" style="height: 700px; width: 100%; border-radius: 15px;">
                 <div class="row section1">
                     <div><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">Design</span></h5></div>
                     <h4 class="py-2">Custom system designs for every home or business type.</h4>
@@ -305,7 +364,7 @@
             </div>
             
             <!-- supply&installation container -->
-            <div class="container p-lg-3 p-0 mb-5" style="height: auto; width: 100%; border-radius: 15px;">
+            <div class="container p-lg-3 p-0 mb-5" style="height: 800px; width: 100%; border-radius: 15px;">
                 <div class="row">
                     <div class=""><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">Supply & Installation</span></h5></div>
                     
@@ -368,7 +427,7 @@
             
 
             <!-- after service container -->
-            <div class="container p-lg-3 p-0 mb-5" style="height: auto; width: 100%; border-radius: 15px;">
+            <div class="container p-lg-3 p-0 mb-5" style="height: 700px; width: 100%; border-radius: 15px;">
                 <div class="row m-lg-0 m-md-0 m-2">
                     <div><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">After Service Monitoring</span></h5></div>
             
@@ -880,10 +939,10 @@
     </div>
 
     <!-- SOLAR 101 SECTION -->
-    <div class="container py-5" id="featured-3">
+    <div class=" py-5 px-2" id="featured-3">
         <div class="d-flex justify-content-between align-items-center pb-2 mb-0 pt-5">
-            <h2 class="mb-0">Solar 101</h2>
-            <a href="#" class="d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold text-decoration-none mx-1">
+            <h2 class="mb-0 ms-5">Solar 101</h2>
+            <a href="#" class="d-flex me-5 align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold text-decoration-none mx-1">
                 <span class="text-start" style="color: #0B5ED7;">View all</span>
                 <svg fill="#0B5ED7" viewBox="0 0 24 24" class="ms-auto" style="width: 40px; height: 40px;">
                     <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
@@ -1171,6 +1230,85 @@
     <p class="text-center">Instantly see how much you'll save when you switch to solar with us.</p>
     <div class="d-flex justify-content-center"><a class="btn btn-dark" href="design-studio/design.html">Design Yours</a></div>
     <div class="d-flex justify-content-center align-items-baseline"><img src="assets/img/mockups/sds-phone.png" style="width: 125px;margin-right: -85px;z-index: 1;max-width: 25%;"><img src="assets/img/mockups/sds-laptop.png" style="max-width: 100%;width: 520px;"></div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="text-light" style="margin-top: 50px;padding: 50px 0px;background: #000000;">
+        <div class="row g-0">
+            <div class="col-10 col-lg-10 offset-1 offset-lg-1">
+                <h1>FAQ</h1>
+            </div>
+        </div>
+        <div class="row g-0" style="margin-top: 25px;">
+            <div class="col-12 col-lg-5 offset-lg-1">
+                <div class="border-top py-3 px-3 mx-2">
+                    <div class="d-flex align-items-center"><button class="btn btn-outline-light d-flex justify-content-center align-items-center rounded-circle" type="button" style="margin-right: 15px;width: 35px;height: 35px;padding: 0px;" data-bs-target="#faqCollapse1" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqCollapse1"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-down-short">
+                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"></path>
+                            </svg></button>
+                        <p class="h5" style="margin: 0px;">How long do panels really last?</p>
+                    </div>
+                    <div id="faqCollapse1" class="collapse">
+                        <p class="mt-4">Solar panels typically have a lifespan of 25 to 30 years, or even longer in some cases. However, this doesn't mean that they'll stop generating electricity after this period. Instead, it indicates that their efficiency in producing energy will diminish to a level that solar panel manufacturers deem sufficient for replacement.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 offset-lg-0">
+                <div class="border-top py-3 px-3 mx-2">
+                    <div class="d-flex align-items-center"><button class="btn btn-outline-light d-flex justify-content-center align-items-center rounded-circle" type="button" style="margin-right: 15px;width: 35px;height: 35px;padding: 0px;" data-bs-target="#faqCollapse2" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqCollapse2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-down-short">
+                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"></path>
+                            </svg></button>
+                        <p class="h5" style="margin: 0px;">Will you drill holes on my roof?</p>
+                    </div>
+                    <div id="faqCollapse2" class="collapse">
+                        <p class="mt-4">Typically, the installation process may require drilling holes or making certain modifications. However, we ensure that we only create essential openings, and our method of securing attachments to your roof is designed to be extremely waterproof, complemented by sealant to prevent any water infiltration.<br><br>To date, we have experienced no problems with our installations, and should any arise, you are covered by our Blueshift warranty for a year. This gives you the opportunity to see how the setup performs throughout the different seasons.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 offset-lg-1">
+                <div class="border-top py-3 px-3 mx-2">
+                    <div class="d-flex align-items-center"><button class="btn btn-outline-light d-flex justify-content-center align-items-center rounded-circle" type="button" style="margin-right: 15px;width: 35px;height: 35px;padding: 0px;" data-bs-target="#faqCollapse3" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqCollapse3"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-down-short">
+                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"></path>
+                            </svg></button>
+                        <p class="h5" style="margin: 0px;">What is the maintenance for solar?</p>
+                    </div>
+                    <div id="faqCollapse3" class="collapse">
+                        <p class="mt-4">Solar panels typically require minimal upkeep, primarily involving system checks to ensure everything is functioning correctly. Cleaning the panels to enhance their efficiency 1-3x a year is recommended but not required.<br><br>When you choose to install with us, we offer a complimentary cleaning service for the first year, available up to 3x. In subsequent years, this service can be requested for a fee.<br><br>Our systems will also monitor your solar as long as we exists and your system is still connected.</p>
+                    </div>
+                </div>
+                <div class="border-top py-3 px-3 mx-2">
+                    <div class="d-flex align-items-center"><button class="btn btn-outline-light d-flex justify-content-center align-items-center rounded-circle" type="button" style="margin-right: 15px;width: 35px;height: 35px;padding: 0px;" data-bs-target="#faqCollapse5" data-bs-toggle="collapse" aria-expanded="false" aria-controls="firstFaqCollapse"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-down-short">
+                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"></path>
+                            </svg></button>
+                        <p class="h5" style="margin: 0px;">How does Meralco sync with solar?</p>
+                    </div>
+                    <div id="faqCollapse5" class="collapse">
+                        <p class="mt-4">As you use your energy the way you normally do, solar will be prioritized in the supply of your electricity and Meralco will supplement what's missing.<br><br>If you get excess power from solar the inverter will automatically limit the output if you are not on the net metering program or have a battery backup.&nbsp;<br><br>You will not have to flip any switches or constantly have to keep watch of your system.&nbsp;</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-5 offset-lg-0">
+                <div class="border-top py-3 px-3 mx-2">
+                    <div class="d-flex align-items-center"><button class="btn btn-outline-light d-flex justify-content-center align-items-center rounded-circle" type="button" style="margin-right: 15px;width: 35px;height: 35px;padding: 0px;" data-bs-target="#faqCollapse4" data-bs-toggle="collapse" aria-expanded="false" aria-controls="faqCollapse4"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-down-short">
+                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"></path>
+                            </svg></button>
+                        <p class="h5" style="margin: 0px;">What happens if something breaks?</p>
+                    </div>
+                    <div id="faqCollapse4" class="collapse">
+                        <p class="mt-4">In general your solar system is very tough and protected by extensive warranties like the following:<br><br>Solar Panels - 10 year product warranty &amp; 20 year performance warranty.<br>Inverters - 5 year product warranty.<br>Blueshift Workmanship - 1 year warranty.<br><br>However if our monitoring has not picked up an issue and you notice an issue please send us a message through your account manager or by emailing support@blueshift.ph<br><br><br><br></p>
+                    </div>
+                </div>
+                <div class="border-top py-3 px-3 mx-2">
+                    <div class="d-flex align-items-center"><button class="btn btn-outline-light d-flex justify-content-center align-items-center rounded-circle" type="button" style="margin-right: 15px;width: 35px;height: 35px;padding: 0px;" data-bs-target="#faqCollapse6" data-bs-toggle="collapse" aria-expanded="false" aria-controls="firstFaqCollapse"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-down-short">
+                                <path fill-rule="evenodd" d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4"></path>
+                            </svg></button>
+                        <p class="h5" style="margin: 0px;">Do I need to get batteries?</p>
+                    </div>
+                    <div id="faqCollapse6" class="collapse">
+                        <p class="mt-4">The downsides of solar without batteries is that you won't be able to store this power for night time and has to be consumed the same time you are using your energy. However there are programs like the net-metering program that will allow you to export up to 100kW capacity to the grid so that you won't have to store this power.<br><br>Having a battery is expensive and the more times you use the battery the faster it degrades so we only really recommend this option if you are concerned with a power outage or as a replacement for a generator system.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
 
     <!-- FOOTER SECTION -->

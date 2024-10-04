@@ -9,15 +9,29 @@ let conversationTimeout;
         const labels = [];
 
         function generateBellCurveData(numPoints, mean, stdDev, scale = 100) {
-        const data = [];
-        for (let i = 0; i < numPoints; i++) {
-            const x = i - mean;
-            let y = Math.exp(-0.5 * Math.pow(x / stdDev, 2));
-            y *= scale;  // Scale the y values
-            data.push(y);
+            const data = [];
+            let decreaseFactor = 0.3; // Initial decrease factor for odd indices
+            let increaseFactor = 1.2; // Initial increase factor for even indices
+        
+            for (let i = 0; i < numPoints; i++) {
+                const x = i - mean;
+                let y = Math.exp(-0.5 * Math.pow(x / stdDev, 2));
+                y *= scale;  // Scale the y values
+        
+                if (i % 2 === 0) {
+                    y *= increaseFactor; // Increase for even-indexed points
+                    increaseFactor -= 0.01; // Decrease increase factor gradually
+                    if (increaseFactor < 1) increaseFactor = 1; // Prevent going below 1
+                } else {
+                    y *= (1 - decreaseFactor); // Decrease for odd-indexed points
+                    decreaseFactor -= 0.01; // Decrease decrease factor gradually
+                    if (decreaseFactor < 0) decreaseFactor = 0; // Prevent going below 0
+                }
+        
+                data.push(y);
+            }
+            return data;
         }
-        return data;
-    }
         // Generate labels for every 10 minutes between 6 AM to 6 PM
         for (let i = 6; i <= 18; i++) {
             for (let j = 0; j < 60; j += 10) {
@@ -55,7 +69,7 @@ let conversationTimeout;
                         borderWidth: 2,
                         fill: true,
                         pointRadius: 0,
-                        tension: 0.5
+                        tension: 0.1
                     },
                     {
                         label: 'Offline Drop',

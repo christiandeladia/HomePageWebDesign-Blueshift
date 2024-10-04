@@ -17,6 +17,8 @@ document.addEventListener('DOMContentLoaded', function () {
         resetAllDesignBtn();
 
         sectionToShow.style.display = 'block';
+        sectionToShow.scrollIntoView({ behavior: 'smooth' });
+        
         if (sectionToShow === allContent) {
             allBtn.classList.add('active');
             showDefaultImage('section1');
@@ -273,7 +275,14 @@ document.addEventListener('DOMContentLoaded', function () {
             deactivateAllButtons(section);
             const image = document.getElementById(imageId);
             if (image) {
+                image.style.opacity = 0;
+                image.style.transition = 'opacity 1s';
+            
                 image.classList.add('active');
+            
+                setTimeout(() => {
+                    image.style.opacity = 1;
+                }, 10);
             }
     
             const activeButton = document.querySelector(`.${section} .designBtn[data-target="${imageId}"]`);
@@ -314,6 +323,13 @@ document.addEventListener('DOMContentLoaded', function () {
                     button.addEventListener('mouseenter', () => {
                         isHovering = true;
                         clearInterval(autoChangeInterval);
+
+                        // Fade out all images except the target one
+                const allImages = document.querySelectorAll(`.${section} .img-fluid`);
+                allImages.forEach(img => {
+                    img.style.transition = 'opacity 0.8s linear'; // Ensure smooth transition
+                    img.style.opacity = '0'; // Fade out
+                });
                         showImage(section, targetImage);
                     });
     
@@ -326,7 +342,10 @@ document.addEventListener('DOMContentLoaded', function () {
                         const defaultImage = document.querySelector(`.${section} .defaultDesign`);
                         if (defaultImage) {
                             hideAllImages(section); // Hide all other images first
-                            defaultImage.classList.add('active'); // Show the default design
+                            defaultImage.classList.add('active');
+                            
+                            defaultImage.style.transition = 'opacity 1s'; // Ensure smooth transition
+                            defaultImage.style.opacity = '1'; // Reset opacity to fully visible
                         }
                         deactivateAllButtons(section);
     
@@ -359,7 +378,10 @@ document.addEventListener('DOMContentLoaded', function () {
     setupSection('section2', ['homes2', 'offices2']);
     setupSection('section1', ['homes', 'offices', 'hospitality', 'manufacturer']);
     
-
+    // document.querySelector('.navbar-toggler').addEventListener('click', function() {
+    //     document.getElementById('sideNavbar').classList.toggle('show');
+    // });
+    
 
 
     // navigation bar-------------------------------------
@@ -389,24 +411,20 @@ document.addEventListener('DOMContentLoaded', function () {
     };
     
     productsNav.addEventListener('mouseover', () => handleProductsDisplay(true));
-    
     navLinks.forEach(link => {
         if (link !== productsNav) {
             link.addEventListener('mouseover', () => handleProductsDisplay(false));
         }
     });
-    
     productsDisplay.addEventListener('mouseover', () => handleProductsDisplay(true));
     productsDisplay.addEventListener('mouseout', () => handleProductsDisplay(false));
     
     resourcesNav.addEventListener('mouseover', () => handleResourcesDisplay(true));
-    
     navLinks.forEach(link => {
         if (link !== resourcesNav) { 
             link.addEventListener('mouseover', () => handleResourcesDisplay(false));
         }
     });
-    
     resourcesDisplay.addEventListener('mouseover', () => handleResourcesDisplay(true));
     resourcesDisplay.addEventListener('mouseout', () => handleResourcesDisplay(false));
     
@@ -414,6 +432,52 @@ document.addEventListener('DOMContentLoaded', function () {
     window.addEventListener('resize', () => {
         handleProductsDisplay(false);
         handleResourcesDisplay(false);
+    });
+    
+
+    //sidenavbar-------------------------------------
+    const navbarToggler = document.querySelector('.navbar-toggler');
+    const sidebar = document.getElementById('sidebar');
+    const overlay = document.getElementById('overlay'); // Reference to the overlay
+    
+    navbarToggler.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        overlay.classList.toggle('active'); // Toggle overlay visibility
+    
+        // Disable scrolling when sidebar is active
+        if (sidebar.classList.contains('active')) {
+            document.body.style.overflow = 'hidden'; // Disable scroll
+        } else {
+            document.body.style.overflow = ''; // Enable scroll
+        }
+    });
+    
+    // Optional: Close sidebar when clicking on the overlay
+    overlay.addEventListener('click', function() {
+        sidebar.classList.remove('active');
+        overlay.classList.remove('active');
+        document.body.style.overflow = ''; // Enable scroll
+    });
+    
+    
+    document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', function(event) {
+            const dropdownMenu = this.nextElementSibling;
+    
+            // Toggle the current dropdown
+            if (dropdownMenu.style.display === 'block') {
+                dropdownMenu.style.display = 'none';
+            } else {
+                // Close any open dropdowns
+                document.querySelectorAll('.dropdown-menu').forEach(menu => {
+                    menu.style.display = 'none';
+                });
+                dropdownMenu.style.display = 'block';
+            }
+    
+            // Prevent default anchor behavior
+            event.preventDefault();
+        });
     });
     
 
