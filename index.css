@@ -162,11 +162,12 @@
     background-color: #fff; 
 }
 .designBtn.active {
-    transition: color 0.3s ease, background-color 5s ease, background-size 5s ease;
+    transition: color 5s ease, background-color 5s ease, background-size 5s ease;
     background-image: linear-gradient(90deg, #0B5ED7 0%, #0B5ED7 100%);
     /* border: 1px solid #0B5ED7; */
     background-size: 100% 100%; 
     color: #fff;
+    transition: all 4s;
 }
 
 .designBtn.active svg {
@@ -176,6 +177,7 @@
 .designBtn.active svg circle {
     fill: #fff;    /* Change the fill color of the circle */
     stroke: #fff;  /* Change the stroke color of the circle */
+    transition: all 4s;
 }
 
 .designBtn:hover {
