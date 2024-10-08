@@ -4,7 +4,6 @@ let conversationTimeout;
 
 
     function getDisconnectedChartConfig() {
-        // Original active curve data
         const activeCurveData = [
             0, 35, 9, 25, 4, 
             40, 10, 30, 25, 35, 
@@ -15,78 +14,42 @@ let conversationTimeout;
             42, 60, 35, 45, 58, 
             50, 35, 70, 47, 63,
             70, 75, 50, 77, 88, 
-            57, 95, 70, 80, 78, 
+            47, 95, 70, 80, 78, 
             90, 60, 80, 70, 120,  
             70, 115, 99, 108, 90,
             100, 75, 130, 97, 123, 
-            82, 130, 105, 95, 142, 
+            72, 130, 105, 95, 142, 
             128, 140, 130, 110, 160,  
-            140, 155, 136, 168, 154,
-            150, 185, 149, 188, 174, 
-            178, 170, 185, 180, 190, 
+            140, 155, 126, 168, 154,
+            150, 185, 129, 188, 174, 
+            178, 165, 185, 180, 190, 
             184, 170,
-            // 130, 105, 160, 127, 143,
-            // 100, 145, 129, 138, 104, 
-            // 152, 110, 130, 120, 140, 
-            // 120, 110, 130, 120, 140, 
-            // 152, 110, 130, 120, 140,
 
-
-
-            // 0, 40, 29, 38, 4, 
-            // 40, 10, 30, 25, 35, 
-            // 7, 40, 15, 25, 38, 
-            // 30, 5, 60, 27, 43, 
-            // 20, 45, 29, 28, 4, 
-            // 52, 10, 20, 20, 70, 
-            // 2, 40, 15, 25, 38, 
-            // 30, 5, 60, 27, 43,
-            // 60, 55, 110, 77, 93, 
-            // 57, 90, 65, 75, 78, 
-            // 90, 60, 80, 70, 120,  
-            // 50, 95, 79, 88, 54,
-            // 80, 55, 110, 77, 93, 
-            // 52, 90, 65, 75, 102, 
-            // 88, 60, 80, 70, 120,  
-            // 50, 95, 79, 88, 54,
-            // 100, 145, 129, 138, 104, 
-            // 152, 110, 130, 120, 170, 
-            // 102, 140,
-            // 130, 105, 160, 127, 143,
-            // 100, 145, 129, 138, 104, 
-            // 152, 110, 130, 120, 140, 
-            // 120, 110, 130, 120, 140, 
-            // 152, 110, 130, 120, 140,
         ];
 
-        // Create the mirrored PotentialData
         const PotentialData = [...activeCurveData, ...activeCurveData.slice().reverse()];
-
         const peakIndex = activeCurveData.indexOf(Math.max(...activeCurveData));
         const verticalLineData = activeCurveData.map((value, i) => (i === peakIndex ? value : (i === peakIndex + 1 ? 0 : null)));
 
-        // Calculate total data length
         const totalLength = PotentialData.length ;
-
         const totalDuration = 2500;
         const delayBetweenPoints = totalDuration / activeCurveData.length;
 
         const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
 
-        // Define the chart configuration
         return {
             type: 'line',
             data: {
                 labels: Array.from({ length: totalLength }, (_, i) => {
-                    const startHour = 6; // 6am
-                    const totalTicks = totalLength; // Total number of ticks based on combined data length
-                    const hoursRange = 12; // Total hours from 6am to 6pm
-                    const interval = hoursRange / (totalTicks - 1); // Calculate hour increment based on number of ticks
+                    const startHour = 6;
+                    const totalTicks = totalLength;
+                    const hoursRange = 12;
+                    const interval = hoursRange / (totalTicks - 1);
                     const tickHour = startHour + Math.floor(i * interval);
                 
                     // Format hours correctly
-                    if (tickHour === 12) return '12pm'; // Handle 12 PM case
-                    if (tickHour === 0) return '12am'; // Handle 12 AM case
+                    if (tickHour === 12) return '12pm';
+                    if (tickHour === 0) return '12am';
                     return tickHour < 12 ? `${tickHour}am` : `${tickHour - 12}pm`;
                 }),
                 datasets: [
@@ -94,7 +57,7 @@ let conversationTimeout;
                         label: 'Active Curve',
                         data: activeCurveData.map((value, i) => (i <= peakIndex ? value : null)),
                         borderColor: 'orange',
-                        borderWidth: 2,
+                        borderWidth: 1.8,
                         fill: true,
                         pointRadius: 0,
                         tension: 0.3
@@ -103,7 +66,7 @@ let conversationTimeout;
                         label: 'Offline Drop',
                         data: verticalLineData,
                         borderColor: 'orange',
-                        borderWidth: 2,
+                        borderWidth: 1.8,
                         pointRadius: 0,
                         fill: true
                     },
@@ -112,7 +75,7 @@ let conversationTimeout;
                         data: PotentialData,
                         borderColor: 'orange',
                         borderDash: [5, 5],
-                        borderWidth: 2,
+                        borderWidth: 1.8,
                         pointRadius: 0,
                         fill: false,
                         tension: 0.3
@@ -132,7 +95,7 @@ let conversationTimeout;
                         type: 'number',
                         easing: 'linear',
                         duration: delayBetweenPoints,
-                        from: NaN, // the point is initially skipped
+                        from: NaN,
                         delay(ctx) {
                             if (ctx.type !== 'data' || ctx.xStarted) {
                                 return 0;
@@ -157,21 +120,18 @@ let conversationTimeout;
                     onProgress() {
                         const chartInstance = this;
 
-                        // Use requestAnimationFrame to avoid UI flickering
                         requestAnimationFrame(() => {
-                            // Safely update dataset colors after animation completes
                             setTimeout(() => {
                                 const data = chartInstance.data;
 
-                                data.datasets[0].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
-                                data.datasets[0].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
+                                data.datasets[0].backgroundColor = 'rgba(128, 128, 128, 0.4)';
+                                data.datasets[0].borderColor = 'rgba(128, 128, 128, 1)';
                                 data.datasets[1].backgroundColor = 'rgba(128, 128, 128, 0.4)';
                                 data.datasets[1].borderColor = 'rgba(128, 128, 128, 1)';  
-                                // data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';
+                                data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';
 
-                                // Safely update the chart after all animations are done
                                 chartInstance.update('none');
-                            }, 2500);  // Small delay after the animation completes to ensure smoothness
+                            }, 2500);
                         });
                     }
                 },
@@ -184,26 +144,26 @@ let conversationTimeout;
                             display: false
                         },
                         ticks: {
-                            autoSkip: false, // Prevent auto skipping to control labels manually
+                            autoSkip: false,
                             maxRotation: 0,
                             minRotation: 0,
                             callback: function(value, index, values) {
-                                const startHour = 6; // 6am
-                                const endHour = 18;  // 6pm
-                                const totalTicks = totalLength; // Total number of ticks based on data length
-                                const interval = 3; // 3 hours interval
-                                const hoursRange = endHour - startHour; // Total number of hours from start to end
-                                const ticksPerInterval = totalTicks / (hoursRange / interval); // Number of ticks per interval
+                                const startHour = 6;
+                                const endHour = 18;
+                                const totalTicks = totalLength;
+                                const interval = 3;
+                                const hoursRange = endHour - startHour;
+                                const ticksPerInterval = totalTicks / (hoursRange / interval);
                         
                                 const tickHour = startHour + Math.floor(index / ticksPerInterval) * interval;
                         
                                 if (index === totalTicks - 1) {
-                                    return '6 PM'; // Explicitly set 6pm for the last tick
+                                    return '6 PM';
                                 }
                                 if (index % ticksPerInterval === 0 && tickHour <= endHour) {
                                     return `${tickHour % 12 || 12}${tickHour >= 12 ? ' PM' : ' AM'}`;
                                 }
-                                return ''; // Hide all other ticks
+                                return '';
                             }
                         }
                     },
@@ -232,8 +192,6 @@ let conversationTimeout;
     }
 
     function getDeratingChartConfig() {
-        const numPoints = 76;
-        // Original active curve data
         const activeCurveData = [
             0, 35, 9, 25, 4, 
             40, 10, 30, 25, 35, 
@@ -241,18 +199,18 @@ let conversationTimeout;
             30, 5, 60, 27, 43, 
             20, 45, 29, 28, 4, 
             52, 10, 40, 20, 70, 
-            42, 60, 35, 45, 58, 
-            50, 35, 70, 47, 63,
-            70, 75, 50, 77, 88, 
+            42, 60, 15, 45, 58, 
+            25, 35, 70, 47, 63,
+            70, 75, 30, 77, 88, 
             57, 95, 70, 80, 78, 
-            90, 60, 80, 70, 120,  
-            70, 115, 99, 108, 90,
+            90, 30, 80, 70, 120,  
+            70, 115, 99, 108, 50,
             100, 75, 130, 97, 123, 
-            82, 130, 105, 95, 142, 
-            128, 140, 130, 110, 160,  
-            140, 155, 136, 168, 154,
-            150, 185, 149, 188, 174, 
-            178, 170, 185, 180, 190, 
+            52, 130, 105, 95, 142, 
+            88, 140, 130, 110, 160,  
+            140, 155, 76, 168, 154,
+            150, 185, 109, 188, 174, 
+            178, 150, 185, 180, 190, 
             184, 170,
         ];
 
@@ -260,13 +218,9 @@ let conversationTimeout;
 
         const PotentialData = [...activeCurveData, ...activeCurveData.slice().reverse()];
 
-        // const peakIndex = activeCurveData.indexOf(Math.max(...activeCurveData));
-        // const rightHalfData = activeCurveData.map((value, i) => (i > peakIndex ? value : null));
-
         const totalLength = PotentialData.length ;
         const activeLength = activeCurveData.length ;
-
-        const totalDuration = 2500;
+        const totalDuration = 2000;
         const delayBetweenPoints = totalDuration / activeCurveData.length;
 
         const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
@@ -274,13 +228,8 @@ let conversationTimeout;
 
         const peakValue = Math.max(...activeCurveData);
         const peakIndex = activeCurveData.indexOf(peakValue);
-
         const verticalLineData = activeCurveData.map((value, i) => (i === peakIndex ? value : (i === peakIndex + 1 ? 0 : null)));
 
-        // const verticalLineData = new Array(numPoints).fill(null);
-        // verticalLineData[peakIndex] = peakValue; 
-
-        // Drop to 70 and stop
         let droppedToSeventy = false;
         for (let i = peakIndex + 1; i < totalLength; i++) {
             if (!droppedToSeventy) {
@@ -292,48 +241,39 @@ let conversationTimeout;
         }
 
         const offlineDropData = new Array(activeLength).fill(null);
-
         const startOfflineIndex = peakIndex + 1; 
-
-        const twoPMIndex = Math.floor((8 * 60) / 10);
-        const sixPMIndex = Math.floor((12 * 60) / 10); 
+        const twoPMIndex = Math.floor((22 * 60) / 10);
+        const sixPMIndex = Math.floor((30 * 60) / 10); 
 
         for (let i = startOfflineIndex; i <= twoPMIndex; i++) {
             offlineDropData[i] = 70;
         }
-
 
         const decreaseRate = 70 / (sixPMIndex - twoPMIndex); 
         for (let i = twoPMIndex + 1; i <= sixPMIndex; i++) {
             offlineDropData[i] = 70 - (decreaseRate * (i - twoPMIndex));
         }
 
-
         for (let i = sixPMIndex + 1; i < totalLength; i++) {
             offlineDropData[i] = 0; 
         }
+        
         const rightHalfData = [...activeCurveData, ...activeCurveData.slice().reverse()];
-        // const rightHalfData = activeCurveData.map((value, i) => (i > peakIndex ? value : null));
-
-        // const totalDuration = 2500;
-        // const delayBetweenPoints = totalDuration / activeCurveData.length;
-        // const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
-        // const totalLength = activeCurveData.length ;
 
 
         return {
             type: 'line',
             data: {
                 labels: Array.from({ length: totalLength }, (_, i) => {
-                    const startHour = 6; // 6am
-                    const totalTicks = totalLength; // Total number of ticks based on combined data length
-                    const hoursRange = 12; // Total hours from 6am to 6pm
-                    const interval = hoursRange / (totalTicks - 1); // Calculate hour increment based on number of ticks
+                    const startHour = 6;
+                    const totalTicks = totalLength;
+                    const hoursRange = 12;
+                    const interval = hoursRange / (totalTicks - 1);
                     const tickHour = startHour + Math.floor(i * interval);
                 
                     // Format hours correctly
-                    if (tickHour === 12) return '12pm'; // Handle 12 PM case
-                    if (tickHour === 0) return '12am'; // Handle 12 AM case
+                    if (tickHour === 12) return '12pm';
+                    if (tickHour === 0) return '12am';
                     return tickHour < 12 ? `${tickHour}am` : `${tickHour - 12}pm`;
                 }),
                 datasets: [
@@ -341,7 +281,7 @@ let conversationTimeout;
                         label: 'Active Curve',
                         data: activeCurveData.map((value, i) => (i <= peakIndex ? value : null)),
                         borderColor: 'green',
-                        borderWidth: 2,
+                        borderWidth: 1.8,
                         fill: true,
                         pointRadius: 0,
                         tension: 0.3
@@ -349,16 +289,16 @@ let conversationTimeout;
                     {
                         label: 'Vertical Drop',
                         data: verticalLineData,
-                        borderColor: 'orange',
-                        borderWidth: 2,
+                        borderColor: 'green',
+                        borderWidth: 1.8,
                         pointRadius: 0,
                         fill: true
                     },
                     {
                         label: 'Offline Drop',
                         data: offlineDropData,
-                        borderColor: 'red',
-                        borderWidth: 2,
+                        borderColor: 'green',
+                        borderWidth: 1.8,
                         pointRadius: 0,
                         fill: true
                     },
@@ -367,9 +307,10 @@ let conversationTimeout;
                         data: rightHalfData,
                         borderColor: 'green',
                         borderDash: [5, 5],
-                        borderWidth: 2,
+                        borderWidth: 1.8,
                         pointRadius: 0,
                         fill: false,
+                        tension: 0.3
                     }
                 ]
             },
@@ -386,7 +327,7 @@ let conversationTimeout;
                         type: 'number',
                         easing: 'linear',
                         duration: delayBetweenPoints,
-                        from: NaN, // the point is initially skipped
+                        from: NaN,
                         delay(ctx) {
                             if (ctx.type !== 'data' || ctx.xStarted) {
                                 return 0;
@@ -408,26 +349,6 @@ let conversationTimeout;
                             return ctx.index * delayBetweenPoints;
                         }
                     },
-                    onProgress() {
-                        const chartInstance = this;
-
-                        // Use requestAnimationFrame to avoid UI flickering
-                        requestAnimationFrame(() => {
-                            // Safely update dataset colors after animation completes
-                            setTimeout(() => {
-                                const data = chartInstance.data;
-
-                                data.datasets[0].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
-                                data.datasets[0].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
-                                data.datasets[1].backgroundColor = 'rgba(128, 128, 128, 0.4)';
-                                data.datasets[1].borderColor = 'rgba(128, 128, 128, 1)';  
-                                // data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';
-
-                                // Safely update the chart after all animations are done
-                                chartInstance.update('none');
-                            }, 2500);  // Small delay after the animation completes to ensure smoothness
-                        });
-                    }
                 },
 
                 scales: {
@@ -438,26 +359,26 @@ let conversationTimeout;
                             display: false
                         },
                         ticks: {
-                            autoSkip: false, // Prevent auto skipping to control labels manually
+                            autoSkip: false,
                             maxRotation: 0,
                             minRotation: 0,
                             callback: function(value, index, values) {
-                                const startHour = 6; // 6am
-                                const endHour = 18;  // 6pm
-                                const totalTicks = totalLength; // Total number of ticks based on data length
-                                const interval = 3; // 3 hours interval
-                                const hoursRange = endHour - startHour; // Total number of hours from start to end
-                                const ticksPerInterval = totalTicks / (hoursRange / interval); // Number of ticks per interval
+                                const startHour = 6;
+                                const endHour = 18;
+                                const totalTicks = totalLength;
+                                const interval = 3;
+                                const hoursRange = endHour - startHour;
+                                const ticksPerInterval = totalTicks / (hoursRange / interval);
                         
                                 const tickHour = startHour + Math.floor(index / ticksPerInterval) * interval;
                         
                                 if (index === totalTicks - 1) {
-                                    return '6 PM'; // Explicitly set 6pm for the last tick
+                                    return '6 PM';
                                 }
                                 if (index % ticksPerInterval === 0 && tickHour <= endHour) {
                                     return `${tickHour % 12 || 12}${tickHour >= 12 ? ' PM' : ' AM'}`;
                                 }
-                                return ''; // Hide all other ticks
+                                return '';
                             }
                         }
                     },
@@ -689,7 +610,7 @@ let conversationTimeout;
                 y: {
                 display: true,
                 min: 0,
-                max: Math.max(...gridData90) + 10,  // Adjust max value based on data
+                max: Math.max(...gridData90) + 30,  // Adjust max value based on data
                 grid: {
                     display: false
                 },
@@ -2164,7 +2085,7 @@ let conversationTimeout;
             // Set a new timeout to show the conversation after 4 seconds
             conversationTimeout = setTimeout(() => {
                 showConversation('conversation-derating');
-            }, 4000);
+            }, 4200);
         }
     });
     
@@ -2289,7 +2210,7 @@ let conversationTimeout;
 
             conversationTimeout = setTimeout(() => {
                 showConversation('commercialConversationDerating');
-            }, 4000);
+            }, 5000);
         }
     });
     
