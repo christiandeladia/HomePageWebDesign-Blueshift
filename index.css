@@ -15,6 +15,37 @@
 }
 
 
+.message.left {
+    text-align: left;
+}
+
+.message.left:after {
+    content: "";
+    display: inline-block;
+    border-style: solid;
+    border-width: 10px 10px 0;
+    border-color: #6C757D transparent;
+    position: absolute;
+    bottom: -7px;
+    left: 13px; /* Arrow position for left bubble */
+}
+
+.message.right {
+    text-align: left; 
+
+}
+
+.message.right:after {
+    content: "";
+    display: inline-block;
+    border-style: solid;
+    border-width: 10px 10px 0;
+    border-color: #0D6EFD transparent;
+    position: absolute;
+    bottom: -7px;
+    right: 13px; /* Arrow position for right bubble */
+}
+
 /* OUR PRODUCTS SECTION */
 .product-img {
     width: 100%;
@@ -81,6 +112,7 @@
 .message {
     opacity: 0; 
     transition: opacity 0.5s ease-in-out;
+    position: relative;
 }
 
 @media (max-width: 768px) {
@@ -408,5 +440,41 @@
     .canvas-container {
         /* opacity: 0.3; */
         max-height: 400px;
+    }
+}
+
+
+/* OUR PRODUCTS SECTION  */
+
+.logo-slider {
+    overflow: hidden;
+    padding: 30px 0 0 0;
+    white-space: nowrap;
+    position: relative;
+}
+
+.logo-slider:hover .logos-slide {
+    animation-play-state: paused;
+}
+
+.logos-slide {
+    display: inline-block;
+    animation: 45s slide infinite linear;
+}
+
+.logos-slide img {
+    height: 100px;
+    width: 180px;
+    margin: 0 50px;
+}
+
+
+@keyframes slide {
+    from {
+        transform: translateX(0);
+    }
+
+    to {
+        transform: translateX(-100%);
     }
 }

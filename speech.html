@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body {
+            background: #F8F8FF;
+          }
+          
+          .logo-slider {
+              overflow: hidden;
+              padding: 30px 0 0 0;
+              white-space: nowrap;
+              position: relative;
+          }
+          
+          .logo-slider:hover .logos-slide {
+              animation-play-state: paused;
+          }
+          
+          .logos-slide {
+              display: inline-block;
+              animation: 45s slide infinite linear;
+          }
+          
+          .logos-slide img {
+              width: 183px;
+              height: 83px;
+              margin: 0 40px;
+          }
+          
+          
+          @keyframes slide {
+              from {
+                  transform: translateX(0);
+              }
+          
+              to {
+                  transform: translateX(-100%);
+              }
+          }
+    </style>
+</head>
+<body>
+    <div class="logo-slider">
+        <div class="logos-slide">
+          <img src="#">
+          <img src="#">
+          <img src="#">
+          <img src="#">
+          <img src="#">
+          <img src="#">
+          
+        </div>
+      </div>
+</body>
+
+<script>
+    var copy = document.querySelector(".logos-slide").cloneNode(true);
+document.querySelector(".logo-slider").appendChild(copy);
+</script>
+</html>
