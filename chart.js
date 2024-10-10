@@ -5,25 +5,77 @@ let conversationTimeout;
 
     function getDisconnectedChartConfig() {
         const activeCurveData = [
-            0, 35, 9, 25, 4, 
-            40, 10, 30, 25, 35, 
-            7, 40, 15, 25, 38, 
-            30, 5, 60, 27, 43, 
-            20, 45, 29, 28, 4, 
-            52, 10, 40, 20, 70, 
-            42, 60, 35, 45, 58, 
-            50, 35, 70, 47, 63,
-            70, 75, 50, 77, 88, 
-            47, 95, 70, 80, 78, 
-            90, 60, 80, 70, 120,  
-            70, 115, 99, 108, 90,
-            100, 75, 130, 97, 123, 
-            72, 130, 105, 95, 142, 
-            128, 140, 130, 110, 160,  
-            140, 155, 126, 168, 154,
-            150, 185, 129, 188, 174, 
+            // 0, 35, 9, 25, 4, 
+            // 40, 10, 30, 25, 35, 
+            // 7, 40, 15, 25, 38, 
+            // 30, 5, 60, 27, 43, 
+            // 20, 45, 29, 28, 4, 
+            // 52, 10, 40, 20, 70, 
+            // 42, 60, 35, 45, 58, 
+            // 50, 35, 70, 47, 63,
+            // 70, 75, 50, 77, 88, 
+            // 47, 95, 70, 80, 78, 
+            // 90, 60, 80, 70, 120,  
+            // 70, 115, 99, 108, 90,
+            // 100, 75, 130, 97, 123, 
+            // 72, 130, 105, 95, 142, 
+            // 128, 140, 130, 110, 160,  
+            // 140, 155, 126, 168, 154,
+            // 150, 185, 129, 188, 174, 
+            // 178, 165, 185, 180, 190, 
+            // 184, 170,
+
+
+
+            // 15, 50, 24, 40, 19,
+
+            // 65, 40, 60, 55, 65,
+            // 37, 70, 45, 65, 78,
+            // 70, 45, 100, 77, 93,
+            // 70, 95, 79, 78, 54,
+
+            // 112, 70, 110, 75, 125,
+            // 97, 125, 100, 110, 123,
+            // 115, 110, 140, 117, 133,
+            // 140, 145, 120, 142, 153,
+            // 112, 160, 135, 145, 143,
+            // 155, 125, 145, 135, 175,
+            // 125, 177, 164, 168, 155, 
+            // 165, 145, 168, 157, 183,
+            
+            // 112, 170, 145, 135, 178, 
+            // 168, 180, 170, 150, 189,  
+            // 180, 185, 166, 188, 184,
+
+            // 150, 185, 129, 188, 174,
+            // 178, 165, 185, 180, 190, 
+            // 184, 182,
+
+            
+
+            28, 50, 34, 40, 29,
+
+            65, 40, 60, 50, 65,
+            57, 70, 45, 65, 78,
+            70, 75, 100, 77, 93,
+            70, 95, 79, 88, 84,
+
+            112, 100, 110, 90, 125,
+            97, 125, 114, 110, 123,
+            115, 110, 140, 117, 133,
+            140, 145, 129, 142, 153,
+            130, 160, 135, 145, 143,
+            155, 135, 155, 145, 175,
+            155, 177, 164, 168, 155, 
+            165, 145, 168, 157, 183,
+            
+            152, 170, 145, 165, 178, 
+            168, 180, 170, 160, 189,  
+            180, 185, 166, 188, 184,
+
+            175, 185, 170, 188, 174,
             178, 165, 185, 180, 190, 
-            184, 170,
+            184, 182,
 
         ];
 
@@ -193,28 +245,76 @@ let conversationTimeout;
 
     function getDeratingChartConfig() {
         const activeCurveData = [
-            0, 35, 9, 25, 4, 
-            40, 10, 30, 25, 35, 
-            7, 40, 15, 25, 38, 
-            30, 5, 60, 27, 43, 
-            20, 45, 29, 28, 4, 
-            52, 10, 40, 20, 70, 
-            42, 60, 15, 45, 58, 
-            25, 35, 70, 47, 63,
-            70, 75, 30, 77, 88, 
-            57, 95, 70, 80, 78, 
-            90, 30, 80, 70, 120,  
-            70, 115, 99, 108, 50,
-            100, 75, 130, 97, 123, 
-            52, 130, 105, 95, 142, 
-            88, 140, 130, 110, 160,  
-            140, 155, 76, 168, 154,
-            150, 185, 109, 188, 174, 
-            178, 150, 185, 180, 190, 
-            184, 170,
+            // 28, 38, 29, 45, 34, 
+            // 60, 50, 80, 45, 55, 
+
+            // 47, 80, 55, 65, 78, 
+            // 70, 45, 100, 67, 83, 
+            
+            // 90, 115, 99, 98, 74,
+            // 122, 80, 110, 90, 140,
+            // 112, 130, 85, 115, 128,
+            // 95, 105, 140, 117, 133,
+            // 140, 145, 100, 147, 158,
+            // 127, 165, 140, 150, 148,
+            // 160, 100, 150, 140, 190,
+            // 140, 185, 169, 178, 120,
+            
+            // 150, 125, 180, 147, 173,
+            // 102, 180, 155, 145, 190,
+            // 138, 190, 180, 160, 190,
+            // 170, 185, 106, 190, 184,
+            
+            // 160, 195, 119, 198, 184,
+            // 188, 160, 195, 190, 192,
+            // 184, 192
+            
+
+            28, 50, 34, 40, 29,
+            65, 40, 60, 50, 65,
+            57, 70, 45, 65, 78,
+            70, 75, 100, 77, 93,
+            70, 95, 79, 88, 84,
+            112, 100, 110, 90, 125,
+            97, 125, 114, 110, 123,
+            115, 110, 140, 117, 133,
+            140, 145, 129, 142, 153,
+            130, 160, 135, 145, 143,
+
+            155, 135, 155, 145, 175,
+            155, 177, 164, 168, 155, 
+            165, 145, 168, 157, 183,
+            
+            152, 170, 145, 165, 178, 
+            168, 180, 170, 160, 189,  
+            180, 185, 166, 188, 184,
+
+            175, 185, 170, 188, 174,
+            178, 165, 185, 180, 190, 
+            184, 182,
+            
+            
+            
+            
         ];
 
 
+        const predefinedDropOffData = [
+            74, 72,
+            65, 75, 60, 78, 64,
+            70, 75, 56, 78, 74,
+            58, 70, 60, 56, 78,
+            57, 65, 55, 60, 73,
+
+            60, 58, 63, 52, 78,
+            50, 72, 59, 63, 50,
+            50, 40, 50, 40, 60,
+
+            45, 55, 30, 40, 38,
+            24, 22, 33,
+            10, 40, 15, 25, 23,
+
+        ];
 
         const PotentialData = [...activeCurveData, ...activeCurveData.slice().reverse()];
 
@@ -233,7 +333,7 @@ let conversationTimeout;
         let droppedToSeventy = false;
         for (let i = peakIndex + 1; i < totalLength; i++) {
             if (!droppedToSeventy) {
-                verticalLineData[i] = 70;
+                verticalLineData[i] = 80;
                 droppedToSeventy = true; 
             } else {
                 verticalLineData[i] = null; 
@@ -245,18 +345,21 @@ let conversationTimeout;
         const twoPMIndex = Math.floor((22 * 60) / 10);
         const sixPMIndex = Math.floor((30 * 60) / 10); 
 
-        for (let i = startOfflineIndex; i <= twoPMIndex; i++) {
-            offlineDropData[i] = 70;
-        }
+   // Populate offlineDropData up to 2 PM with a fixed value of 70
+   for (let i = peakIndex + 1; i <= twoPMIndex; i++) {
+        offlineDropData[i] = 80;
+    }
 
-        const decreaseRate = 70 / (sixPMIndex - twoPMIndex); 
-        for (let i = twoPMIndex + 1; i <= sixPMIndex; i++) {
-            offlineDropData[i] = 70 - (decreaseRate * (i - twoPMIndex));
-        }
+    // Use predefined drop-off values for 2 PM to 6 PM
+    const dropOffLength = predefinedDropOffData.length;
+    for (let i = 0; i < dropOffLength; i++) {
+        offlineDropData[twoPMIndex + 1 + i] = predefinedDropOffData[i];
+    }
 
-        for (let i = sixPMIndex + 1; i < totalLength; i++) {
-            offlineDropData[i] = 0; 
-        }
+    // Set the remaining data points after 6 PM to 0
+    for (let i = twoPMIndex + 1 + dropOffLength; i < totalLength; i++) {
+        offlineDropData[i] = 0;
+    }
         
         const rightHalfData = [...activeCurveData, ...activeCurveData.slice().reverse()];
 
@@ -300,18 +403,19 @@ let conversationTimeout;
                         borderColor: 'green',
                         borderWidth: 1.8,
                         pointRadius: 0,
-                        fill: true
-                    },
-                    {
-                        label: 'Potential Energy',
-                        data: rightHalfData,
-                        borderColor: 'green',
-                        borderDash: [5, 5],
-                        borderWidth: 1.8,
-                        pointRadius: 0,
-                        fill: false,
+                        fill: true,
                         tension: 0.3
-                    }
+                    },
+                    // {
+                    //     label: 'Potential Energy',
+                    //     data: rightHalfData,
+                    //     borderColor: 'green',
+                    //     borderDash: [5, 5],
+                    //     borderWidth: 1.8,
+                    //     pointRadius: 0,
+                    //     fill: false,
+                    //     tension: 0.3
+                    // }
                 ]
             },
             options: {
@@ -1849,7 +1953,7 @@ let conversationTimeout;
             config.data.datasets[0].backgroundColor = gradient1;
             config.data.datasets[1].backgroundColor = gradient1;
             config.data.datasets[2].backgroundColor = gradient1;
-            config.data.datasets[3].backgroundColor = gradient1;
+            // config.data.datasets[3].backgroundColor = gradient1;
 
         } 
         else if (chartId === 'stringPerformanceChart') {
@@ -1968,7 +2072,7 @@ let conversationTimeout;
 
     // Function to clear the opacity of messages in a conversation
     function clearMessagesOpacity(conversationElement) {
-        const messages = conversationElement.querySelectorAll('.message');
+        const messages = conversationElement.querySelectorAll('.message-wrapper');
         messages.forEach(message => {
             message.style.opacity = 0; // Reset opacity
         });
@@ -1976,7 +2080,7 @@ let conversationTimeout;
 
     // Function to add delay to the display of conversation messages
     function delayConversationMessages(conversationElement) {
-        const messages = conversationElement.querySelectorAll('.message');
+        const messages = conversationElement.querySelectorAll('.message-wrapper');
         messages.forEach((message, index) => {
             setTimeout(() => {
                 message.style.opacity = 1; // Fade in message
