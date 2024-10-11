@@ -498,3 +498,55 @@
         transform: translateX(-100%);
     }
 }
+
+
+
+
+/* Custom Navbar  */
+#customizedClientNavBar {
+    transition: opacity 2s ease-in-out;
+    opacity: 0;
+    display: none;
+  }
+  
+  #customizedClientNavBar.show {
+    display: block;
+    opacity: 1;
+  }
+
+  .navbar.scrolled {
+    background-color: #fff !important;
+    transition: background-color 200ms linear;
+    box-shadow: 0 2px 4px 0 rgba(0,0,0,.2);
+  }
+  
+  .navbar-sticky-top {
+    overflow: hidden;
+    width: 100%;
+    position: sticky !important;
+    top: 0;
+    z-index: 100;
+  }
+  
+  .navbar-fixed-bottom {
+    width: 100%;
+    overflow: hidden;
+    z-index: 1;
+    bottom: 0;
+    position: fixed !important;
+  }
+  
+  .nav-link {
+    color: black;
+  }
+  
+  .nav-expandable {
+    transition: box-shadow 0.3s ease, background-color 0.3s ease !important;
+    box-shadow: 0 0 0 0 rgba(0,0,0,0);
+    background-color: transparent;
+  }
+  
+  .nav-expandable.active {
+    box-shadow: 0 0 0 100vmax rgba(0,0,0,.3) !important;
+    background-color: #ffffff;
+  }

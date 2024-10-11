@@ -484,4 +484,34 @@ document.addEventListener('DOMContentLoaded', function () {
     // OUR PRODUCTS SECTION 
     var copy = document.querySelector(".logos-slide").cloneNode(true);
     document.querySelector(".logo-slider").appendChild(copy);
+
+
+
+    //Navbar display when viewport reaches
+    window.onscroll = function () {
+
+        function setupCustomizedNavbar() {
+          const toolbar = document.getElementById('customizedClientToolBar');
+          const navbar = document.getElementById('customizedClientNavBar');
+    
+          // Get the position of the toolbar relative to the top of the page
+          const toolbarPosition = toolbar.getBoundingClientRect().bottom + window.scrollY;
+    
+          // Buffer value
+          const buffer = 25; // Adjust this value to your needs
+    
+          // If we've scrolled past the toolbar plus the buffer, show the navbar
+          if (window.scrollY > toolbarPosition + buffer) {
+            navbar.classList.add('show');
+          }
+          // If we've scrolled up past the toolbar minus the buffer, hide the navbar
+          else if (window.scrollY < toolbarPosition - buffer) {
+            navbar.classList.remove('show');
+          }
+        }
+     
+        setupCustomizedNavbar();
+      };
+    
+    
 });

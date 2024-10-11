@@ -21,7 +21,7 @@
 
 <body>
     <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
+    <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
                 <img src="assets/img/icons/logo/main-logo.webp" style="width: 24px;" alt="Logo">
@@ -33,7 +33,7 @@
             <div id="navbarContent" class="collapse navbar-collapse d-none d-lg-block">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item position-static dropdown">
-                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
                             <span>Products</span>
                             <span style="margin-left: 5px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
@@ -50,7 +50,7 @@
                         </ul> -->
                     </li>
                     <li class="nav-item position-static dropdown">
-                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
                             <span>Resources</span>
                             <span style="margin-left: 5px;">
                                 <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
@@ -64,12 +64,39 @@
                             <li><a class="dropdown-item" href="#">Solar Design Studio</a></li>
                         </ul> -->
                     </li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="#">Company</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="#" style="padding-left: 12px; padding-right: 12px;">Company</a></li>
+                    <li class="nav-item"><a class="nav-link text-dark" href="contact.html" style="padding-left: 12px; padding-right: 12px;">Contact</a></li>
                 </ul>
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item"><a class="nav-link text-dark" href="https://my.blueshift.ph">Sign In</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="public/contact.html">Contact Us</a></li>
+                <ul class="navbar-nav ms-auto align-items-center">
+                    <!-- <li class="nav-item"><a class="nav-link text-dark" href="https://my.blueshift.ph">Sign In</a></li> -->
+                    <li class="nav-item"><a href="design-studio/design.html" class="btn btn-outline-primary me-sm-3 mb-2 mb-sm-0 rounded-1" style="padding: 8px 24px; font-size: 12px;">Login</a></li>
+                    <li class="nav-item"><a href="public/contact.html" class="btn btn-primary rounded-1" style="padding: 8px 24px; font-size: 12px;">Get started</a></li>
                 </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Custom Navbar  -->
+    <nav class="navbar navbar-expand-xl bg-white navbar navbar-expand-lg navbar-light navbar-sticky-top nav-expandable scrolled" id="customizedClientNavBar" >
+        <div class="container"><a class="navbar-brand" style="padding: 0px;">
+                <div class="d-flex align-items-start">
+                    <h6 style="margin: 0px;padding: 0px;">A full solar service solution for&nbsp;</h6><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                    </svg>
+                </div>
+            </a><button class="btn navbar-toggler-icon navbar-toggler" id="navbarToggleButton-1" type="button" data-bs-toggle="collapse" aria-controls="navbarContent-2" data-bs-target="#navbarContent-2" aria-expanded="false" aria-label="Toggle navigation" style="border: #ffc400;"></button>
+            <div id="navbarContent-2" class="navbar-collapse collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown my-1"><button id="allBtn" class="btn btn-outline-primary btn-sm active rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">All</button></li>
+                    <li class="nav-item dropdown my-1"><button id="homesBtn" class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Homes</button></li>
+                    <li class="nav-item dropdown my-1"><button id="commercialBtn" class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Commercial</button></li>
+                    
+                </ul><a href="design-studio/design.html" style="margin-right: 10px;">
+                    <button class="btn btn-primary btn-sm" type="button" style="padding: 10px 25px;margin-top: 5px;width: 100%;">Get started</button>
+                    </a>
+                    <a href="/public/contact.html"  style="margin-right: 10px;">
+                    <button class="btn btn-outline-primary btn-sm" type="button" style="padding: 10px 25px;margin-top: 5px;width: 100%;">Contact sales</button>
+                    </a>
             </div>
         </div>
     </nav>
@@ -266,8 +293,16 @@
                     <h1 id="heroHeading" style="font-family: Montserrat, sans-serif;font-weight: bold;font-size: 2.5rem;">Replace high electricity <br>cost with solar.</h1>
                     <p class="small subHeroHeading">Create energy, reduce costs, and go green with a personally designed <br>system for your home or business.</p>
                     <div class="d-flex flex-column flex-sm-row">
-                        <a href="design-studio/design.html" class="btn btn-primary me-sm-2 mb-2 mb-sm-0" style="padding: 10px 25px;">Design Studio</a>
-                        <a href="public/contact.html" class="btn btn-outline-primary" style="padding: 10px 25px;">Contact Sales</a>
+                        <!-- <a href="design-studio/design.html" class="btn btn-primary me-sm-2 mb-2 mb-sm-0" style="padding: 10px 25px;">Design Studio</a>
+                        <a href="public/contact.html" class="btn btn-outline-primary" style="padding: 10px 25px;">Contact Sales</a> -->
+                        <div class="input-group mb-3" style="max-width: 450px;">
+                            <button class="btn btn-primary" type="button" id="button-addon1" style="padding: 10px 25px;">Get started</button>
+                            <input type="text" class="form-control shadow-none border border-dark-subtle border-end-0" placeholder="Address" aria-label="Example text with button addon" aria-describedby="button-addon1" style="padding: 10px 25px; border-right: none;">
+                            <span class="input-group-text  border-dark-subtle" style="border-left: none; background-color: transparent;">
+                                <i class="fas fa-map-marker-alt" style="color: gray;"></i>
+                            </span>
+                        </div>
+                        
                     </div>
                 </div>
                 <div class="col-md-6 text-center">
@@ -279,7 +314,7 @@
     </section>
 
     <!-- Call To Action -->
-    <div id="customizedClientToolBar" class="py-4">
+    <div id="customizedClientToolBar" class="pb-4">
         <div class="container text-left">
             <p class="mb-0" style="color:#464646;">Learn More</p>
         </div>
