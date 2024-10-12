@@ -376,11 +376,11 @@
     /* Sidebar Styles */
     .sidebar {
         position: fixed;
-        top: 56px;
+        top: 72px;
         right: -425px;
         max-width: 425px;
         width: 100%;
-        height: calc(100% - 56px);
+        height: calc(100% - 72px);
         background-color: white;
         transition: right 0.3s ease;
         box-shadow: -2px 0 5px rgba(0, 0, 0, 0.1);
