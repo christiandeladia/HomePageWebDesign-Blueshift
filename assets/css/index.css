@@ -550,3 +550,27 @@
     box-shadow: 0 0 0 100vmax rgba(0,0,0,.3) !important;
     background-color: #ffffff;
   }
+
+
+/* custom navbar  */
+  @media (max-width: 991px) {
+    #navbarContent-2 .navbar-nav{
+        margin-top: 2rem;
+    }
+
+    #navbarContent-2 .navbar-nav .nav-item button{
+        width: 100%;
+        font-size: 16px;
+        padding: .5rem 0;
+    }
+
+    #navbarContent-2 .row{
+        margin-top: 45px;
+        margin-bottom: 10px;
+    }
+
+    .borderLine{
+        border-top: 1px solid rgb(219, 219, 219);
+        padding-bottom: 1rem;
+    }
+  }
