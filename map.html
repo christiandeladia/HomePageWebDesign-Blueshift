@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Google Maps Autocomplete - Philippines</title>
+</head>
+<body>
+
+<div class="input-group mb-3" style="max-width: 450px; margin-top: 1rem;">
+    <button class="btn btn-primary" type="button" id="button-addon1" style="padding: 10px 25px;">Get started</button>
+    <input type="text" id="addressInput" class="form-control shadow-none border border-dark-subtle border-end-0" placeholder="Address" aria-label="Example text with button addon" aria-describedby="button-addon1" style="padding: 10px 25px; border-right: none;">
+    <span class="input-group-text border-dark-subtle" style="border-left: none; background-color: transparent;">
+        <i class="fas fa-map-marker-alt" style="color: gray;"></i>
+    </span>
+</div>
+
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCz8uwySRi7b4cG9a0MsC5sEB7rmsPxe4o&libraries=places&callback=initMap"></script>
+<script>
+    function initAutocomplete() {
+        const input = document.getElementById("addressInput");
+        
+        // Create the autocomplete object with component restrictions
+        const options = {
+            componentRestrictions: { country: 'PH' }, // Restrict to the Philippines
+            types: ['address'] // Optional: restrict to addresses only
+        };
+
+        const autocomplete = new google.maps.places.Autocomplete(input, options);
+        
+        // Set the place changed listener
+        autocomplete.addListener("place_changed", function() {
+            const place = autocomplete.getPlace();
+            if (place.geometry) {
+                console.log("Selected place:", place);
+                // You can use place.geometry.location for latitude and longitude
+            } else {
+                console.log("No details available for the input: '" + place.name + "'");
+            }
+        });
+    }
+
+    // Initialize the autocomplete when the window loads
+    window.onload = function() {
+        initAutocomplete();
+    };
+</script>
+
+</body>
+</html>

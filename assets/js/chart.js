@@ -2020,6 +2020,7 @@ let conversationTimeout;
         document.getElementById('conversation-derating').style.display = 'none';
         document.getElementById('conversation-string-performance').style.display = 'none';
         document.getElementById('disconnectedText').style.display = 'none';
+        document.getElementById('deratingText').style.display = 'none';
         document.getElementById('stringPerformanceText').style.display = 'none';
 
         document.getElementById('homeConversationDisconnected').style.display = 'none';
@@ -2037,6 +2038,15 @@ let conversationTimeout;
     
         if (disconnectedText && disconnectedButton.classList.contains('active')) {
             disconnectedText.style.display = 'block';
+        }
+    }
+
+    function displayDeratingText() {
+        const deratingText = document.getElementById('deratingText');
+        const deratingButton = document.getElementById('derating');
+    
+        if (deratingText && deratingButton.classList.contains('active')) {
+            deratingText.style.display = 'block';
         }
     }
 
@@ -2076,19 +2086,18 @@ let conversationTimeout;
     document.getElementById('derating').addEventListener('click', function () {
         const deratingButton = document.getElementById('derating');
 
-        // Check if the button is active
         if (deratingButton.classList.contains('active')) {
-            // Cancel any existing conversation timeout
             clearTimeout(conversationTimeout);
 
-            // Hide all other conversations immediately
             hideAllConversations();
 
-            // Show the chart and create the derating chart
             showChart('systemDeratingChart');
             createChart('systemDeratingChart', getDeratingChartConfig());
 
-            // Set a new timeout to show the conversation after 4 seconds
+            setTimeout(() => {
+                displayDeratingText();
+            }, 2000);
+
             conversationTimeout = setTimeout(() => {
                 showConversation('conversation-derating');
             }, 4200);

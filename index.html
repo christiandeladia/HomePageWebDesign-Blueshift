@@ -93,21 +93,42 @@
                     
                 </ul>
                 <div class="row"> 
-                    <!-- <div class="borderLine col-12"></div> -->
-                    <div class="col-6 g-2 ps-2 m-0">
+                    <div class="col-lg-auto col-6 g-2 ps-2 m-0">
                         <a href="design-studio/design.html">
-                            <button class="btn btn-primary btn-sm" type="button" style="padding: 10px 25px; width: 100%; min-width: 139px;">Get started</button>
+                            <button class="btn btn-primary btn-sm" type="button" style="padding: 10px 25px; width: 100%;">Get started</button>
                         </a>
                     </div>
-                    <div class="col-6 g-2 pe-2 m-0">
+                    <div class="col-lg-auto col-6 g-2 pe-2 m-0">
                         <a href="/public/contact.html">
-                            <button class="btn btn-outline-primary btn-sm" type="button" style="padding: 10px 25px; width: 100%; min-width:139px;">Contact sales</button>
+                            <button class="btn btn-outline-primary btn-sm" type="button" style="padding: 10px 25px; width: 100%; ">Contact sales</button>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
     </nav>
+
+    <!-- <nav class="navbar navbar-expand-xl bg-white navbar navbar-expand-lg navbar-light navbar-sticky-top nav-expandable scrolled" id="customizedClientNavBar" style="z-index: 4000;">
+        <div class="container"><a class="navbar-brand" style="padding: 0px;">
+                <div class="d-flex align-items-start">
+                    <h6 style="margin: 0px;padding: 0px;">A full solar service solution for&nbsp;</h6>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
+                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                    </svg>
+                </div>
+            </a><button class="btn navbar-toggler-icon navbar-toggler" id="navbarToggleButton-1" type="button" data-bs-toggle="collapse" aria-controls="navbarContent-2" data-bs-target="#navbarContent-2" aria-expanded="false" aria-label="Toggle navigation" style="border: #ffc400;"></button>
+            <div id="navbarContent-2" class="navbar-collapse collapse">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item dropdown my-1"><button class="btn btn-outline-primary btn-sm active rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">All</button></li>
+                    <li class="nav-item dropdown my-1"><button class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Homes</button></li>
+                    <li class="nav-item dropdown my-1"><button class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Commercial</button></li>
+
+                </ul>
+                <a href="design-studio/design.html" style="margin-right: 10px;"><button class="btn btn-primary btn-sm" type="button" style="padding: 10px 25px;margin-top: 5px;width: 100%;">Get started</button></a>
+                <a href="/public/contact.html" onclick="tagAnalytics(&quot;index_get_rooftop_solar_button&quot;)" style="margin-right: 10px;"><button class="btn btn-outline-primary btn-sm" type="button" style="padding: 10px 25px;margin-top: 5px;width: 100%;">Contact sales</button></a>
+            </div>
+        </div>
+    </nav> -->
 
     <div id="overlay" class="overlay"></div>
 
@@ -292,7 +313,6 @@
     </div>
 
     
-
     <!-- Header -->
     <section class="d-flex flex-column" style="padding: 50px 0;">
         <div class="container px-4">
@@ -305,7 +325,7 @@
                         <a href="public/contact.html" class="btn btn-outline-primary" style="padding: 10px 25px;">Contact Sales</a> -->
                         <div class="input-group mb-3" style="max-width: 450px; margin-top: 1rem;">
                             <button class="btn btn-primary" type="button" id="button-addon1" style="padding: 10px 25px;">Get started</button>
-                            <input type="text" class="form-control shadow-none border border-dark-subtle border-end-0" placeholder="Address" aria-label="Example text with button addon" aria-describedby="button-addon1" style="padding: 10px 25px; border-right: none;">
+                            <input type="text" id="addressInput" class="form-control shadow-none border border-dark-subtle border-end-0" placeholder="Address" aria-label="Example text with button addon" aria-describedby="button-addon1" style="padding: 10px 0px 10px 25px; border-right: none;">
                             <span class="input-group-text  border-dark-subtle" style="border-left: none; background-color: transparent;">
                                 <i class="fas fa-map-marker-alt" style="color: gray;"></i>
                             </span>
@@ -360,9 +380,9 @@
                 </svg>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
-                <button id="allBtn" class="btn active btn-outline-primary rounded-pill customizedBtn me-2" data-category="All" style="min-width: 75px;">All</button>
-                <button id="homesBtn" class="btn btn-outline-primary rounded-pill customizedBtn me-2" data-category="Homes" style="min-width: 75px;">Homes</button>
-                <button id="commercialBtn" class="btn btn-outline-primary rounded-pill customizedBtn" data-category="Commercial" style="min-width: 75px;">Commercial</button>
+                <button id="toolbar-allBtn" class="btn active btn-outline-primary rounded-pill customizedBtn me-2" data-category="All" style="min-width: 75px;">All</button>
+                <button id="toolbar-homesBtn" class="btn btn-outline-primary rounded-pill customizedBtn me-2" data-category="Homes" style="min-width: 75px;">Homes</button>
+                <button id="toolbar-commercialBtn" class="btn btn-outline-primary rounded-pill customizedBtn" data-category="Commercial" style="min-width: 75px;">Commercial</button>
             </div>
         </div>
     </div>
@@ -521,6 +541,9 @@
                                             <p class="ms-5 badge rounded-pill fw-bolder" style="color: grey; background-color:#f4f4f4; font-size: 16px;">system offline</p>
                                         </div>
                                         <canvas id="systemDeratingChart" class="mt-5 bg-white"></canvas>
+                                        <div id="deratingText" class="text-overlay">
+                                            <p class="ms-5 badge rounded-pill fw-bolder" style="color: grey; background-color:#f4f4f4; font-size: 15px;">inverter temperature overheat</p>
+                                        </div>
                                         <canvas id="stringPerformanceChart" class="mt-5 bg-white"></canvas>
                                         <div id="stringPerformanceText" class="badge rounded-pill fw-bolder" style="display: none; position: absolute; top: 135px; right: 60px; color: grey; font-size: 12px; background-color:#f4f4f4;">
                                             <p class="small m-0" style="color: grey;">3rd panel set down</p>
@@ -1006,11 +1029,17 @@
 
 
     <!-- OUR PRODUCTS SECTION -->
-    <div class="py-5 text-center" id="custom-cards" style="background-color: #f4f4f4; margin-top: 100px;">
-        <h1 class="pt-5">Our Products</h1>
-        <div class="col-lg-4 mx-auto">
-            <p class="mb-5">At Blueshift, we collaborate with leading brands to ensure the highest level of reliability and performance in every installation.</p>
+    <div id="ourProductSection" class="py-5 text-center" id="custom-cards" style="background-color: #f4f4f4; margin-top: 100px;">
+        <div class="row my-5 justify-content-center">
+            <div class="col-xxl-4 col-lg-5 col-12  d-flex align-items-center justify-content-lg-end justify-content-center">
+                <h1 class="m-0" style="font-size: 54px;">Our Products</h1>
+            </div>
+            <div class="col-xxl-4 col-lg-5 col-12 d-flex align-items-center lh-sm ">
+                <p class="m-0 text-lg-start text-center" style="font-size: 31px;">Get the best products with some of the most reliable manufacturers when you partner with us.</p>
+            </div>
         </div>
+        
+        
         
 
         <!-- <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 align-items-center g-4 pb-5">
@@ -1036,12 +1065,19 @@
                 <img src="assets/img/products/Dyness-logo.png" alt="solar" class="product-img">
                 <img src="assets/img/products/Solis-logo.png" alt="solar" class="product-img">
                 <img src="assets/img/products/Deye-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Goodwe-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Canadian-Solar-logo.webp" alt="solar" class="product-img">
+                <img src="assets/img/products/Suntree-logo.png" alt="solar" class="product-img">
+                <img src="assets/img/products/Kukacable-logo.jpg" alt="solar" class="product-img">
+                <img src="assets/img/products/Projoy-logo.png" alt="solar" class="product-img">
+                <img src="assets/img/products/Schneider-logo.png" alt="solar" class="product-img">
+                
+                <!-- <img src="assets/img/products/Canadian-Solar-logo.webp" alt="solar" class="product-img">
                 <img src="assets/img/products/Dyness-logo.png" alt="solar" class="product-img">
                 <img src="assets/img/products/Solis-logo.png" alt="solar" class="product-img">
                 <img src="assets/img/products/Deye-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Goodwe-logo.png" alt="solar" class="product-img">
+                <img src="assets/img/products/Suntree-logo.png" alt="solar" class="product-img">
+                <img src="assets/img/products/Kukacable-logo.jpg" alt="solar" class="product-img">
+                <img src="assets/img/products/Projoy-logo.png" alt="solar" class="product-img">
+                <img src="assets/img/products/Schneider-logo.png" alt="solar" class="product-img"> -->
             </div>
           </div>
 
@@ -1638,6 +1674,38 @@
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/chart.js"></script>
     <script src="assets/js/index.js"></script>
+    <!-- <script src="assets/js/solar-design.js"></script> -->
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCz8uwySRi7b4cG9a0MsC5sEB7rmsPxe4o&libraries=places&callback=initMap"></script>
+    <script>
+        function initAutocomplete() {
+            const input = document.getElementById("addressInput");
+            
+            // Create the autocomplete object with component restrictions
+            const options = {
+                componentRestrictions: { country: 'PH' }, // Restrict to the Philippines
+                types: ['address'] // Optional: restrict to addresses only
+            };
+
+            const autocomplete = new google.maps.places.Autocomplete(input, options);
+            
+            // Set the place changed listener
+            autocomplete.addListener("place_changed", function() {
+                const place = autocomplete.getPlace();
+                if (place.geometry) {
+                    console.log("Selected place:", place);
+                    // You can use place.geometry.location for latitude and longitude
+                } else {
+                    console.log("No details available for the input: '" + place.name + "'");
+                }
+            });
+        }
+
+        // Initialize the autocomplete when the window loads
+        window.onload = function() {
+            initAutocomplete();
+        };
+    </script>
 
 </body>
 

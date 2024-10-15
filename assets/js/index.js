@@ -4,6 +4,10 @@ document.addEventListener('DOMContentLoaded', function () {
     const allBtn = document.getElementById('allBtn');
     const homesBtn = document.getElementById('homesBtn');
     const commercialBtn = document.getElementById('commercialBtn');
+    const toolbarAllBtn = document.getElementById('toolbar-allBtn');
+    const toolbarHomesBtn = document.getElementById('toolbar-homesBtn');
+    const toolbarCommercialBtn = document.getElementById('toolbar-commercialBtn');
+    
     const allContent = document.getElementById('allContent');
     const homesContent = document.getElementById('homesContent');
     const commercialContent = document.getElementById('commercialContent');
@@ -13,14 +17,15 @@ document.addEventListener('DOMContentLoaded', function () {
     // Function to show the selected section and update button states-------------------------------------
     function showSection(sectionToShow) {
         [allContent, homesContent, commercialContent].forEach(section => section.style.display = 'none');
-        [allBtn, homesBtn, commercialBtn].forEach(btn => btn.classList.remove('active'));
+        [allBtn, homesBtn, commercialBtn, toolbarAllBtn, toolbarHomesBtn, toolbarCommercialBtn].forEach(btn => btn.classList.remove('active'));
         resetAllDesignBtn();
 
         sectionToShow.style.display = 'block';
         sectionToShow.scrollIntoView({ behavior: 'smooth' });
-        
+
         if (sectionToShow === allContent) {
             allBtn.classList.add('active');
+            toolbarAllBtn.classList.add('active');
             showDefaultImage('section1');
             console.log('Active: All Button');
             showChart('systemDisconnectedChart');
@@ -28,6 +33,7 @@ document.addEventListener('DOMContentLoaded', function () {
             resetSwiper();
         } else if (sectionToShow === homesContent) {
             homesBtn.classList.add('active');
+            toolbarHomesBtn.classList.add('active');
             showDefaultImage('section2');
             console.log('Active: Homes Button');
             showChart('homeSystemDisconnectedChart');
@@ -35,6 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
             resetSwiper();
         } else if (sectionToShow === commercialContent) {
             commercialBtn.classList.add('active');
+            toolbarCommercialBtn.classList.add('active');
             showDefaultImage('section3');
             console.log('Active: Commercial Button');
             showChart('commercialSystemDisconnectedChart');
@@ -97,6 +104,10 @@ document.addEventListener('DOMContentLoaded', function () {
     allBtn.addEventListener('click', () => showSection(allContent));
     homesBtn.addEventListener('click', () => showSection(homesContent));
     commercialBtn.addEventListener('click', () => showSection(commercialContent));
+
+    toolbarAllBtn.addEventListener('click', () => showSection(allContent));
+    toolbarHomesBtn.addEventListener('click', () => showSection(homesContent));
+    toolbarCommercialBtn.addEventListener('click', () => showSection(commercialContent));
 
     // showSection(allContent);
     filterCards('All');
