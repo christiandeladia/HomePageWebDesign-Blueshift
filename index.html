@@ -13,14 +13,14 @@
     <link rel="icon" type="image/png" sizes="500x500" href="assets/img/icons/logo/512-white.png">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.css" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-    <link rel="stylesheet" href="assets/css/index.css">
-    <link rel="stylesheet" href="assets/css/swiper.css">
+    <link rel="stylesheet" href="assets/css/homepage.css">
+    <!-- <link rel="stylesheet" href="assets/css/swiper.css"> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 
 </head>
 
 <body>
-    <!-- Navbar -->
+    <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
         <div class="container">
             <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
@@ -41,13 +41,6 @@
                                 </svg>
                             </span>
                         </a>
-                        <!-- <ul class="dropdown-menu  border border-0" aria-labelledby="productsNav">
-                            <li><a class="dropdown-item" href="#">All in one Solar Installation</a></li>
-                            <li><a class="dropdown-item" href="#">Net Metering Processing</a></li>
-                            <li><a class="dropdown-item" href="#">Pre-Construction Consultation</a></li>
-                            <li><a class="dropdown-item" href="#">Blueshift Monitoring</a></li>
-                            <li><a class="dropdown-item" href="#">Shop equipment & materials</a></li>
-                        </ul> -->
                     </li>
                     <li class="nav-item position-static dropdown">
                         <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
@@ -58,17 +51,11 @@
                                 </svg>
                             </span>
                         </a>
-                        <!-- <ul class="dropdown-menu d-lg-none border border-0" aria-labelledby="resourcesNav">
-                            <li><a class="dropdown-item" href="#">Testimonials</a></li>
-                            <li><a class="dropdown-item" href="#">Case studies</a></li>
-                            <li><a class="dropdown-item" href="#">Solar Design Studio</a></li>
-                        </ul> -->
                     </li>
                     <li class="nav-item"><a class="nav-link text-dark" href="#" style="padding-left: 12px; padding-right: 12px;">Company</a></li>
                     <li class="nav-item"><a class="nav-link text-dark" href="contact.html" style="padding-left: 12px; padding-right: 12px;">Contact</a></li>
                 </ul>
                 <ul class="navbar-nav ms-auto align-items-center">
-                    <!-- <li class="nav-item"><a class="nav-link text-dark" href="https://my.blueshift.ph">Sign In</a></li> -->
                     <li class="nav-item"><a href="design-studio/design.html" class="btn btn-outline-primary me-sm-3 mb-2 mb-sm-0 rounded-1" style="padding: 8px 24px; font-size: 12px;">Login</a></li>
                     <li class="nav-item"><a href="public/contact.html" class="btn btn-primary rounded-1" style="padding: 8px 24px; font-size: 12px;">Get started</a></li>
                 </ul>
@@ -76,11 +63,12 @@
         </div>
     </nav>
 
-    <!-- Custom Navbar  -->
-    <nav class="navbar navbar-expand-xl bg-white navbar navbar-expand-lg navbar-light navbar-sticky-top nav-expandable scrolled" id="customizedClientNavBar" style="z-index: 4000;">
+    <!-- CUSTOM NAVBAR -->
+    <nav class="navbar navbar-expand-xl bg-white navbar navbar-expand-lg navbar-light navbar-sticky-top nav-expandable scrolled" id="customizedClientNavBar">
         <div class="container"><a class="navbar-brand" style="padding: 0px;">
                 <div class="d-flex align-items-start">
-                    <h6 style="margin: 0px;padding: 0px;">A full solar service solution for&nbsp;</h6><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
+                    <h6 style="margin: 0px;padding: 0px;">A full solar service solution for&nbsp;</h6>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
                         <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
                     </svg>
                 </div>
@@ -99,7 +87,7 @@
                         </a>
                     </div>
                     <div class="col-lg-auto col-6 g-2 pe-2 m-0">
-                        <a href="/public/contact.html">
+                        <a href="/public/contact.html" onclick="tagAnalytics(&quot;index_get_rooftop_solar_button&quot;)">
                             <button class="btn btn-outline-primary btn-sm" type="button" style="padding: 10px 25px; width: 100%; ">Contact sales</button>
                         </a>
                     </div>
@@ -108,31 +96,9 @@
         </div>
     </nav>
 
-    <!-- <nav class="navbar navbar-expand-xl bg-white navbar navbar-expand-lg navbar-light navbar-sticky-top nav-expandable scrolled" id="customizedClientNavBar" style="z-index: 4000;">
-        <div class="container"><a class="navbar-brand" style="padding: 0px;">
-                <div class="d-flex align-items-start">
-                    <h6 style="margin: 0px;padding: 0px;">A full solar service solution for&nbsp;</h6>
-                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right">
-                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                    </svg>
-                </div>
-            </a><button class="btn navbar-toggler-icon navbar-toggler" id="navbarToggleButton-1" type="button" data-bs-toggle="collapse" aria-controls="navbarContent-2" data-bs-target="#navbarContent-2" aria-expanded="false" aria-label="Toggle navigation" style="border: #ffc400;"></button>
-            <div id="navbarContent-2" class="navbar-collapse collapse">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown my-1"><button class="btn btn-outline-primary btn-sm active rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">All</button></li>
-                    <li class="nav-item dropdown my-1"><button class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Homes</button></li>
-                    <li class="nav-item dropdown my-1"><button class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Commercial</button></li>
+    <div id="overlayBgIndex" class="overlayBgIndex"></div>
 
-                </ul>
-                <a href="design-studio/design.html" style="margin-right: 10px;"><button class="btn btn-primary btn-sm" type="button" style="padding: 10px 25px;margin-top: 5px;width: 100%;">Get started</button></a>
-                <a href="/public/contact.html" onclick="tagAnalytics(&quot;index_get_rooftop_solar_button&quot;)" style="margin-right: 10px;"><button class="btn btn-outline-primary btn-sm" type="button" style="padding: 10px 25px;margin-top: 5px;width: 100%;">Contact sales</button></a>
-            </div>
-        </div>
-    </nav> -->
-
-    <div id="overlay" class="overlay"></div>
-
-    <!-- Sidebar -->
+    <!-- SIDEBAR -->
     <div class="sidebar" id="sidebar">
         <ul class="sidebar-nav me-auto">
             <li class="sidebar-item position-static dropdown">
@@ -176,12 +142,12 @@
         </ul>
     </div>
 
-    <!-- Dropdown -->
+    <!-- NAVBAR DROPDOWN -->
     <div id="productsDisplay" class="px-0">
         <div class="row row-1 row-md-2 align-items-stretch g-0">
             
             <div class="col-4 gap-4">
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
+                <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
                     <div class="feature-icon d-flex align-items-center">
                         <img src="assets/img/all-in-one.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
                     </div>
@@ -201,7 +167,7 @@
             
 
             <div class="col-4 gap-4">
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
                     <div class="feature-icon d-flex align-items-center">
                         <i class="fas fa-bolt" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                     </div>
@@ -210,7 +176,7 @@
                         <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
                     </div>
                 </a>
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
                     <div class="feature-icon d-flex align-items-center">
                         <i class="fas fa-hard-hat" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                     </div>
@@ -222,7 +188,7 @@
             </div>
             
             <div class="col-4 gap-4">
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
                     <div class="feature-icon d-flex align-items-center">
                         <i class="fas fa-chart-line" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                     </div>
@@ -231,7 +197,7 @@
                         <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
                     </div>
                 </a>
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
                     <div class="feature-icon d-flex align-items-center">
                         <i class="fas fa-tools" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                     </div>
@@ -249,7 +215,7 @@
         <div class="row row-1 row-md-2 align-items-stretch g-0">
             
             <div class="col-4 gap-4">
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
+                <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
                     <div class="feature-icon d-flex align-items-center">
                         <img src="assets/img/testimonials.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
                     </div>
@@ -268,7 +234,7 @@
             </div>
 
             <div class="col-4 gap-4">
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
                     <div class="feature-icon d-flex align-items-center">
                         <i class="fas fa-book-open" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                     </div>
@@ -277,7 +243,7 @@
                         <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
                     </div>
                 </a>
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
                     <div class="feature-icon d-flex align-items-center">
                         <i class="fas fa-drafting-compass" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                     </div>
@@ -289,7 +255,7 @@
             </div>
             
             <div class="col-4 gap-4">
-                <a href="#" id="productBtn" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
                     <div class="feature-icon d-flex align-items-center">
                         <i class="fas fa-newspaper" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                     </div>
@@ -313,7 +279,7 @@
     </div>
 
     
-    <!-- Header -->
+    <!-- HEADER -->
     <section class="d-flex flex-column" style="padding: 50px 0;">
         <div class="container px-4">
             <div class="row align-items-center">
@@ -321,8 +287,6 @@
                     <h1 id="heroHeading" style="font-family: Montserrat, sans-serif;font-weight: bold;font-size: 2.5rem;">Replace high electricity <br>cost with solar.</h1>
                     <p class="small subHeroHeading" style="margin-top: 1rem;">Create energy, reduce costs, and go green with a personally designed <br>system for your home or business.</p>
                     <div class="d-flex flex-column flex-sm-row">
-                        <!-- <a href="design-studio/design.html" class="btn btn-primary me-sm-2 mb-2 mb-sm-0" style="padding: 10px 25px;">Design Studio</a>
-                        <a href="public/contact.html" class="btn btn-outline-primary" style="padding: 10px 25px;">Contact Sales</a> -->
                         <div class="input-group mb-3" style="max-width: 450px; margin-top: 1rem;">
                             <button class="btn btn-primary" type="button" id="button-addon1" style="padding: 10px 25px;">Get started</button>
                             <input type="text" id="addressInput" class="form-control shadow-none border border-dark-subtle border-end-0" placeholder="Address" aria-label="Example text with button addon" aria-describedby="button-addon1" style="padding: 10px 0px 10px 25px; border-right: none;">
@@ -1030,7 +994,7 @@
 
     <!-- OUR PRODUCTS SECTION -->
     <div id="ourProductSection" class="py-5 text-center" id="custom-cards" style="background-color: #f4f4f4; margin-top: 100px;">
-        <div class="row my-5 justify-content-center">
+        <div class="row my-5 mx-0 justify-content-center">
             <div class="col-xxl-4 col-lg-5 col-12  d-flex align-items-center justify-content-lg-end justify-content-center">
                 <h1 class="m-0" style="font-size: 54px;">Our Products</h1>
             </div>
@@ -1039,26 +1003,6 @@
             </div>
         </div>
         
-        
-        
-
-        <!-- <div class="row row-cols-2 row-cols-md-3 row-cols-lg-5 align-items-center g-4 pb-5">
-            <div class="col d-flex justify-content-center">
-                <img src="assets/img/products/Canadian-Solar-logo.webp" alt="solar" class="product-img">
-            </div>
-            <div class="col d-flex justify-content-center">
-                <img src="assets/img/products/Dyness-logo.png" alt="solar" class="product-img">
-            </div>
-            <div class="col d-flex justify-content-center">
-                <img src="assets/img/products/Solis-logo.png" alt="solar" class="product-img">
-            </div>
-            <div class="col d-flex justify-content-center">
-                <img src="assets/img/products/Deye-logo.png" alt="solar" class="product-img">
-            </div>
-            <div class="col d-flex justify-content-center">
-                <img src="assets/img/products/Goodwe-logo.png" alt="solar" class="product-img">
-            </div>
-        </div> -->
         <div class="logo-slider">
             <div class="logos-slide">
                 <img src="assets/img/products/Canadian-Solar-logo.webp" alt="solar" class="product-img">
@@ -1069,15 +1013,6 @@
                 <img src="assets/img/products/Kukacable-logo.jpg" alt="solar" class="product-img">
                 <img src="assets/img/products/Projoy-logo.png" alt="solar" class="product-img">
                 <img src="assets/img/products/Schneider-logo.png" alt="solar" class="product-img">
-                
-                <!-- <img src="assets/img/products/Canadian-Solar-logo.webp" alt="solar" class="product-img">
-                <img src="assets/img/products/Dyness-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Solis-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Deye-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Suntree-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Kukacable-logo.jpg" alt="solar" class="product-img">
-                <img src="assets/img/products/Projoy-logo.png" alt="solar" class="product-img">
-                <img src="assets/img/products/Schneider-logo.png" alt="solar" class="product-img"> -->
             </div>
           </div>
 
@@ -1673,8 +1608,7 @@
     <script src="https://cdn.jsdelivr.net/npm/swiper@latest/swiper-bundle.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script src="assets/js/chart.js"></script>
-    <script src="assets/js/index.js"></script>
-    <!-- <script src="assets/js/solar-design.js"></script> -->
+    <script src="assets/js/homepage.js"></script>
 
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCz8uwySRi7b4cG9a0MsC5sEB7rmsPxe4o&libraries=places&callback=initMap"></script>
     <script>

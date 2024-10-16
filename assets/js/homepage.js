@@ -163,25 +163,6 @@ document.addEventListener('DOMContentLoaded', function () {
         $(scrollRightBtn).show();
         });
     });
-
-
-
-    // Function to change image when hover in ALL SECTION-------------------------------------
-    // function setupAllSectionImageHover() {
-    //     const images = document.querySelectorAll('#defaultDesign, #homes, #offices, #hospitality, #manufacturer');
-    //     document.querySelectorAll('#designBtn').forEach(button => {
-    //         const targetId = button.getAttribute('data-target');
-            
-    //         button.addEventListener('mouseenter', () => {
-    //             images.forEach(img => img.classList.toggle('active', img.id === targetId));
-    //         });
-            
-    //         button.addEventListener('mouseleave', () => {
-    //             images.forEach(img => img.classList.toggle('active', img.id === 'defaultDesign'));
-    //         });
-    //     });
-    // }
-    // setupAllSectionImageHover();
     
 
 
@@ -449,11 +430,11 @@ document.addEventListener('DOMContentLoaded', function () {
     //sidenavbar-------------------------------------
     const navbarToggler = document.querySelector('.navbar-toggler');
     const sidebar = document.getElementById('sidebar');
-    const overlay = document.getElementById('overlay'); // Reference to the overlay
+    const overlayBgIndex = document.getElementById('overlayBgIndex'); // Reference to the overlay
     
     navbarToggler.addEventListener('click', function() {
         sidebar.classList.toggle('active');
-        overlay.classList.toggle('active'); // Toggle overlay visibility
+        overlayBgIndex.classList.toggle('active'); // Toggle overlay visibility
     
         // Disable scrolling when sidebar is active
         if (sidebar.classList.contains('active')) {
@@ -464,9 +445,9 @@ document.addEventListener('DOMContentLoaded', function () {
     });
     
     // Optional: Close sidebar when clicking on the overlay
-    overlay.addEventListener('click', function() {
+    overlayBgIndex.addEventListener('click', function() {
         sidebar.classList.remove('active');
-        overlay.classList.remove('active');
+        overlayBgIndex.classList.remove('active');
         document.body.style.overflow = ''; // Enable scroll
     });
     

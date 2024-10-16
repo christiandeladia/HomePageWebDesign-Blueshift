@@ -1,5 +1,5 @@
 /* background color */
-.overlayBg {
+.overlayBgContact {
     position: absolute;
     left: 0;
     width: 100%;
@@ -80,7 +80,7 @@ grid-column: 2 / 3;
     grid-row: 3;
     grid-column: 1;
     }
-    .overlayBg{
+    .overlayBgContact{
         height: 300px;
     }
 }
@@ -116,7 +116,7 @@ grid-column: 2 / 3;
     .item1 h5 {
         font-size: 16px !important;
     }
-    .overlayBg{
+    .overlayBgContact{
         height: 175px;
     }
     .item2 {
