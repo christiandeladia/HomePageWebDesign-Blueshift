@@ -134,9 +134,9 @@
 .dropdown-menu {
     width: 100%; 
     padding: 0; 
-    display: none;
-    position: sticky;
-    background-color: #F0F0F0;
+    display: none ;
+    position: sticky !important;
+    background-color: #F0F0F0 !important;
 }
 /* SIDEBAR BACKGROUND */
 .overlayBgIndex {
