@@ -32,7 +32,7 @@ let conversationTimeout;
         const verticalLineData = activeCurveData.map((value, i) => (i === peakIndex ? value : (i === peakIndex + 1 ? 0 : null)));
 
         const totalLength = PotentialData.length ;
-        const totalDuration = 2500;
+        const totalDuration = 1500;
         const delayBetweenPoints = totalDuration / activeCurveData.length;
 
         const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
@@ -131,7 +131,7 @@ let conversationTimeout;
                                 data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';
 
                                 chartInstance.update('none');
-                            }, 2500);
+                            }, 1500);
                         });
                     }
                 },
@@ -234,7 +234,7 @@ let conversationTimeout;
 
         const totalLength = PotentialData.length ;
         const activeLength = activeCurveData.length ;
-        const totalDuration = 2000;
+        const totalDuration = 1500;
         const delayBetweenPoints = totalDuration / activeCurveData.length;
 
         const previousY = (ctx) => ctx.index === 0 ? ctx.chart.scales.y.getPixelForValue(100) : ctx.chart.getDatasetMeta(ctx.datasetIndex).data[ctx.index - 1].getProps(['y'], true).y;
@@ -2075,11 +2075,11 @@ let conversationTimeout;
 
             setTimeout(() => {
                 displayDisconnectedText();
-            }, 2500);
+            }, 1500);
 
             conversationTimeout = setTimeout(() => {
                 showConversation('conversation-disconnected');
-            }, 5200);
+            }, 4000);
         }
     });
 
@@ -2096,11 +2096,11 @@ let conversationTimeout;
 
             setTimeout(() => {
                 displayDeratingText();
-            }, 2000);
+            }, 1500);
 
             conversationTimeout = setTimeout(() => {
                 showConversation('conversation-derating');
-            }, 4200);
+            }, 4000);
         }
     });
     
@@ -2277,11 +2277,11 @@ let conversationTimeout;
     
             setTimeout(() => {
                 displayDisconnectedText();
-            }, 2500);
+            }, 1500);
     
             conversationTimeout = setTimeout(() => {
                 showConversation(conversationId);
-            }, 5200);
+            }, 4000);
         });
     }
     

@@ -7,9 +7,10 @@
     display: none;
     position: absolute;
     z-index: 1000;  
-    background-color: white; 
-    width: 100%;
-
+}
+#productsDisplay.show {
+    opacity: 1; 
+    /* display: block; */
 }
 #productsNav:hover + #productsDisplay {
     display: block; 
@@ -17,6 +18,7 @@
 .productBtn:hover {
     background-color: #F1F9FF; 
 }
+
 #resourcesDisplay {
     display: none;
     position: absolute;
@@ -24,8 +26,9 @@
 }
 #resourcesDisplay.show {
     opacity: 1; 
+    /* display: block; */
 }
-#resourcesNav:hover + #productsDisplay {
+#resourcesNav:hover + #resourcesDisplay {
     display: block; 
 }
 .resourcesBtn:hover {

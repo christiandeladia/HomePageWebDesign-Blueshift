@@ -375,8 +375,8 @@ document.addEventListener('DOMContentLoaded', function () {
     // });
     
 
-
-    // navigation bar-------------------------------------
+    // Navbar-------------------------------------
+    const overlayBgIndex = document.getElementById('overlayBgIndex');
     const mainNav = document.getElementById('mainNav');
     const productsNav = document.getElementById('productsNav');
     const productsDisplay = document.getElementById('productsDisplay');
@@ -384,41 +384,53 @@ document.addEventListener('DOMContentLoaded', function () {
     const resourcesNav = document.getElementById('resourcesNav');
     const resourcesDisplay = document.getElementById('resourcesDisplay');
     
-    const isMobile = () => window.innerWidth <= 991; // Adjust the width as needed for your mobile breakpoint
+    const isMobile = () => window.innerWidth <= 991;
+    
+    const showOverlay = (show) => {
+        overlayBgIndex.style.display = show ? 'block' : 'none';
+    };
     
     const handleProductsDisplay = (show) => {
         if (!isMobile()) {
             productsDisplay.style.display = show ? 'block' : 'none';
+            showOverlay(show || resourcesDisplay.style.display === 'block');
         } else {
-            productsDisplay.style.display = 'none'; // Ensure it's hidden on mobile
+            // On mobile, show the overlay if the sidebar is active
+            productsDisplay.style.display = 'none';
+            showOverlay(sidebar.classList.contains('active'));
         }
     };
     
     const handleResourcesDisplay = (show) => {
         if (!isMobile()) {
             resourcesDisplay.style.display = show ? 'block' : 'none';
+            showOverlay(show || productsDisplay.style.display === 'block');
         } else {
-            resourcesDisplay.style.display = 'none'; // Ensure it's hidden on mobile
+            resourcesDisplay.style.display = 'none';
+            showOverlay(sidebar.classList.contains('active'));
         }
     };
     
+    // Add event listeners
     productsNav.addEventListener('mouseover', () => handleProductsDisplay(true));
+    productsDisplay.addEventListener('mouseover', () => handleProductsDisplay(true));
+    productsDisplay.addEventListener('mouseout', () => handleProductsDisplay(false));
+    
+    resourcesNav.addEventListener('mouseover', () => handleResourcesDisplay(true));
+    resourcesDisplay.addEventListener('mouseover', () => handleResourcesDisplay(true));
+    resourcesDisplay.addEventListener('mouseout', () => handleResourcesDisplay(false));
+    
+    // Close when hovering over other links
     navLinks.forEach(link => {
         if (link !== productsNav) {
             link.addEventListener('mouseover', () => handleProductsDisplay(false));
         }
     });
-    productsDisplay.addEventListener('mouseover', () => handleProductsDisplay(true));
-    productsDisplay.addEventListener('mouseout', () => handleProductsDisplay(false));
-    
-    resourcesNav.addEventListener('mouseover', () => handleResourcesDisplay(true));
     navLinks.forEach(link => {
-        if (link !== resourcesNav) { 
+        if (link !== resourcesNav) {
             link.addEventListener('mouseover', () => handleResourcesDisplay(false));
         }
     });
-    resourcesDisplay.addEventListener('mouseover', () => handleResourcesDisplay(true));
-    resourcesDisplay.addEventListener('mouseout', () => handleResourcesDisplay(false));
     
     // Optional: Add a resize event listener to hide displays on window resize
     window.addEventListener('resize', () => {
@@ -426,21 +438,21 @@ document.addEventListener('DOMContentLoaded', function () {
         handleResourcesDisplay(false);
     });
     
-
-    //sidenavbar-------------------------------------
+    // Sidebar-------------------------------------
     const navbarToggler = document.querySelector('.navbar-toggler');
     const sidebar = document.getElementById('sidebar');
-    const overlayBgIndex = document.getElementById('overlayBgIndex'); // Reference to the overlay
     
     navbarToggler.addEventListener('click', function() {
         sidebar.classList.toggle('active');
-        overlayBgIndex.classList.toggle('active'); // Toggle overlay visibility
+        overlayBgIndex.classList.toggle('active');
     
         // Disable scrolling when sidebar is active
         if (sidebar.classList.contains('active')) {
-            document.body.style.overflow = 'hidden'; // Disable scroll
+            document.body.style.overflow = 'hidden';
+            showOverlay(true);
         } else {
-            document.body.style.overflow = ''; // Enable scroll
+            document.body.style.overflow = '';
+            showOverlay(false);
         }
     });
     
@@ -448,10 +460,11 @@ document.addEventListener('DOMContentLoaded', function () {
     overlayBgIndex.addEventListener('click', function() {
         sidebar.classList.remove('active');
         overlayBgIndex.classList.remove('active');
-        document.body.style.overflow = ''; // Enable scroll
+        document.body.style.overflow = '';
+        showOverlay(false);
     });
     
-    
+    // Sidebar dropdown functionality
     document.querySelectorAll('.sidebar-link').forEach(link => {
         link.addEventListener('click', function(event) {
             const dropdownMenu = this.nextElementSibling;
@@ -467,19 +480,31 @@ document.addEventListener('DOMContentLoaded', function () {
                 dropdownMenu.style.display = 'block';
             }
     
-            // Prevent default anchor behavior
             event.preventDefault();
         });
     });
     
 
-    // OUR PRODUCTS SECTION 
+    // OUR PRODUCTS SECTION------------------------------------- 
     var copy = document.querySelector(".logos-slide").cloneNode(true);
     document.querySelector(".logo-slider").appendChild(copy);
 
 
+    // Function to hide custom navbar when modals is active------------------------------------- 
+    var designModals = document.querySelectorAll('.modal');
 
-    //Navbar display when viewport reaches
+    designModals.forEach(function(modal) {
+        modal.addEventListener('show.bs.modal', function () {
+            document.getElementById('customizedClientNavBar').style.display = 'none';
+        });
+
+        modal.addEventListener('hide.bs.modal', function () {
+            document.getElementById('customizedClientNavBar').style.display = 'block';
+        });
+    });
+
+
+    //Custom Navbar display when viewport reaches
     window.onscroll = function () {
 
         function setupCustomizedNavbar() {
