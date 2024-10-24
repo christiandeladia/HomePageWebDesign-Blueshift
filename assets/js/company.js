@@ -85,6 +85,15 @@
         overlayBgIndex.classList.remove('active');
         document.body.style.overflow = '';
         showOverlay(false);
+        
+        // Close dropdowns
+        productsDisplay.style.display = 'none';
+        resourcesDisplay.style.display = 'none';
+
+        // Reset any open sidebar dropdowns
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
     });
     
     // Sidebar dropdown functionality
@@ -106,3 +115,55 @@
             event.preventDefault();
         });
     });
+
+
+
+
+
+     //Customer Reivew Section-------------------------------------
+     var scrollRightBtn = document.getElementById('customerReviewRightBtn');
+     var scrollLeftBtn = document.getElementById('customerReviewLeftBtn');
+     var rowContainer = document.getElementById('customerReviewRow');
+     var divCard = $('#customerReviewDivCard'); // jQuery selector
+ 
+     if (!('ontouchstart' in window)) {
+         $(scrollRightBtn).show();
+         $(scrollLeftBtn).show();
+     }
+ 
+     // Listen for click events on the right button
+     scrollRightBtn.addEventListener('click', function () {
+         // Calculate the new scroll position
+         var newScrollPosition = rowContainer.scrollLeft + divCard.width(); // Adjust to the div card width
+ 
+         if (newScrollPosition + rowContainer.offsetWidth >= rowContainer.scrollWidth) {
+         // If we're at the end, hide the right arrow
+         $(scrollRightBtn).hide();
+         }
+ 
+         // Animate the scroll position
+         $(rowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
+         // Show the left arrow in case it was hidden
+         $(scrollLeftBtn).show();
+         });
+     });
+ 
+     // Listen for click events on the left button
+     scrollLeftBtn.addEventListener('click', function () {
+         // Calculate the new scroll position
+         var newScrollPosition = rowContainer.scrollLeft - divCard.width(); // Adjust to the div card width
+ 
+         console.log(rowContainer.scrollLeft - divCard.width())
+ 
+         if (rowContainer.scrollLeft - divCard.width() <= 0) {
+         // If we're at the start, hide the left arrow
+         $(scrollLeftBtn).hide();
+         }
+ 
+         // Animate the scroll position
+         $(rowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
+         // After the animation completes, check the scroll position
+         // Show the right arrow in case it was hidden
+         $(scrollRightBtn).show();
+         });
+     });

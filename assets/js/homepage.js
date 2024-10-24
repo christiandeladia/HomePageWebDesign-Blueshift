@@ -204,10 +204,10 @@ document.addEventListener('DOMContentLoaded', function () {
     // variables in SOLAR 101 SECTION-------------------------------------
     function initSwiper() {
         swiper = new Swiper(".slide-content", {
-            slidesPerView: 3,
+            slidesPerView: 3.5,
             spaceBetween: 25,
             loop: false, // Set loop to false for filtering
-            centerSlide: true,
+            centerSlide: false,
             fade: true,
             grabCursor: true,
             pagination: {
@@ -221,13 +221,13 @@ document.addEventListener('DOMContentLoaded', function () {
             },
             breakpoints: {
                 0: {
-                    slidesPerView: 1,
+                    slidesPerView: 1.2,
                 },
                 520: {
-                    slidesPerView: 2,
+                    slidesPerView: 2.2,
                 },
                 950: {
-                    slidesPerView: 3,
+                    slidesPerView: 3.5,
                 },
             },
         });
@@ -462,6 +462,16 @@ document.addEventListener('DOMContentLoaded', function () {
         overlayBgIndex.classList.remove('active');
         document.body.style.overflow = '';
         showOverlay(false);
+
+        // Close dropdowns
+        productsDisplay.style.display = 'none';
+        resourcesDisplay.style.display = 'none';
+
+        // Reset any open sidebar dropdowns
+        document.querySelectorAll('.dropdown-menu').forEach(menu => {
+            menu.style.display = 'none';
+        });
+
     });
     
     // Sidebar dropdown functionality
@@ -528,7 +538,7 @@ document.addEventListener('DOMContentLoaded', function () {
         }
      
         setupCustomizedNavbar();
-      };
+    };
     
     
 });
