@@ -1839,8 +1839,9 @@ let conversationTimeout;
 
         if (chartId === 'systemDisconnectedChart') {
             // Gradient for the first chart
-            gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-            gradient1.addColorStop(0, 'rgba(255, 165, 0, 0.5)');
+            gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
+            gradient1.addColorStop(0, 'rgba(255, 165, 0, 0.8)');
+            gradient1.addColorStop(0.5, 'rgba(255, 165, 0, 0.5)');
             gradient1.addColorStop(1, 'rgba(255, 165, 0, 0.1)');
             config.data.datasets[0].backgroundColor = gradient1;
             config.data.datasets[1].backgroundColor = gradient1;
@@ -1849,9 +1850,10 @@ let conversationTimeout;
         } 
         else if (chartId === 'systemDeratingChart') {
             // Gradient for the second chart
-            gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
+            gradient1 = ctx.createLinearGradient(0, 0, 0, 400);
             gradient1.addColorStop(0, 'rgba(0, 172, 14, 0.8)');
-            gradient1.addColorStop(1, 'rgba(0, 172, 14, 0.2)');
+            gradient1.addColorStop(0.5, 'rgba(0, 172, 14, 0.5)');
+            gradient1.addColorStop(1, 'rgba(0, 172, 14, 0.1)');
             config.data.datasets[0].backgroundColor = gradient1;
             config.data.datasets[1].backgroundColor = gradient1;
             config.data.datasets[2].backgroundColor = gradient1;

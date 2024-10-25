@@ -253,8 +253,28 @@
     display: none;
     position: absolute;
     top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+    left: 51%;
+    /* transform: translate(-50%, -50%); */
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+.text-overlay-derating {
+    display: none;
+    position: absolute;
+    top: 40%;
+    left: 51%;
+    /* transform: translate(-50%, -50%); */
+    color: black;
+    padding: 10px;
+    border-radius: 5px;
+}
+.text-overlay-string {
+    display: none;
+    position: absolute;
+    top: 22%;
+    left: 72%;
+    /* transform: translate(-50%, -50%); */
     color: black;
     padding: 10px;
     border-radius: 5px;

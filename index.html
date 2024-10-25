@@ -132,7 +132,23 @@
   }
 </script>
 </head>
+<style>
+    .animated-line, .broken-vertical-line {
+        animation: moveLine 10s linear infinite;
+        animation-delay: 0s; 
+    }
+    @keyframes moveLine {
+        0% {
+            stroke-dashoffset: 0;
 
+        }
+        100% {
+            stroke-dashoffset: -300; /* Adjust based on line length */
+
+        }
+    }
+
+</style>
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
@@ -228,8 +244,8 @@
                     <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-solar-panel" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>All in one Solar Installation</a></li>
                     <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-bolt" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Net Metering Processing</a></li>
                     <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-hard-hat" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Pre-Construction Consultation</a></li>
-                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-chart-line" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Blueshift Monitoring</a></li>
-                    <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#"><i class="fas fa-tools" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Shop equipment & materials</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-tv" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Blueshift Monitoring</a></li>
+                    <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#"><i class="fas fa-shopping-bag" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Shop equipment & materials</a></li>
                 </ul>
             </li>
             
@@ -513,8 +529,8 @@ Your browser does not support the video tag.
                     <h4 class="py-2">Custom system designs for every home or business type.</h4>
                     
                     <div class="col-lg-9 col-md-8 col-12">
-                        <img id="defaultDesign" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
-                        <img id="homes" src="assets/img/home/design.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <!-- <img id="defaultDesign" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign"> -->
+                        <img id="homes" src="assets/img/home/design.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize defaultDesign">
                         <img id="offices" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                         <img id="hospitality" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                         <img id="manufacturer" src="assets/img/home/manufacturing_img.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
@@ -652,15 +668,65 @@ Your browser does not support the video tag.
                                     <div class="canvas-container" style="position: relative; width: 100%; height: 500px;">
                                         <canvas id="systemDisconnectedChart" class="mt-5 bg-white"></canvas>
                                         <div id="disconnectedText" class="text-overlay">
-                                            <p class="ms-5 badge rounded-pill fw-bolder" style="color: grey; background-color:#f4f4f4; font-size: 16px;">system offline</p>
+                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
+                                                <!-- Broken horizontal line -->
+                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                
+                                                <!-- Circle at the start -->
+                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
+                                                
+                                                <!-- Broken vertical line at the end circle -->
+                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                
+                                                <!-- Triangle at the end of the vertical line-->
+                                                <polygon points="100,74 106,86 94,86" fill="#62676c" />
+                                                
+                                                Sorry, your browser does not support inline SVG.
+                                            </svg>
+                                            <p class="mb-0 rounded-3 text-white p-4 text-center" style="font-size: 16px; background-color: #62676c; margin-left: 5px; max-width: 170px;">system offline</p>
+                                            
                                         </div>
+                                        
                                         <canvas id="systemDeratingChart" class="mt-5 bg-white"></canvas>
-                                        <div id="deratingText" class="text-overlay">
-                                            <p class="ms-5 badge rounded-pill fw-bolder" style="color: grey; background-color:#f4f4f4; font-size: 15px;">inverter temperature overheat</p>
+                                        <div id="deratingText" class="text-overlay-derating">
+                                            <!-- <p class="ms-5 badge rounded-pill fw-bolder" style="color: grey; background-color:#f4f4f4; font-size: 15px;"></p> -->
+                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
+                                                <!-- Broken horizontal line -->
+                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                
+                                                <!-- Circle at the start -->
+                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
+                                                
+                                                <!-- Broken vertical line at the end circle -->
+                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                
+                                                <!-- Triangle at the end of the vertical line-->
+                                                <polygon points="100,74 106,86 94,86" fill="#62676c" />
+                                                
+                                                Sorry, your browser does not support inline SVG.
+                                            </svg>
+                                            <p class="mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -5px; background-color: #62676c; max-width: 170px;">inverter temperature overheat</p>
                                         </div>
                                         <canvas id="stringPerformanceChart" class="mt-5 bg-white"></canvas>
-                                        <div id="stringPerformanceText" class="badge rounded-pill fw-bolder" style="display: none; position: absolute; top: 135px; right: 60px; color: grey; font-size: 12px; background-color:#f4f4f4;">
-                                            <p class="small m-0" style="color: grey;">3rd panel set down</p>
+                                        <div id="stringPerformanceText" class="text-overlay-string">
+                                            <!-- <p class="small m-0" style="color: grey;"></p> -->
+                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top: 10px; right: 23px;">
+                                                <!-- Circle at the start -->
+                                                <circle class="animated-circle" cx="100" cy="80" r="6" fill="#62676c" />
+                                                
+                                                <!-- Broken vertical line going up -->
+                                                <line class="broken-vertical-line" x1="100" y1="80" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                
+                                                <!-- Broken horizontal line going right -->
+                                                <line class="animated-line" x1="100" y1="20" x2="150" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                
+                                                <!-- Triangle at the end of the horizontal line -->
+                                                <polygon points="150,20 160,26 160,14" fill="#62676c" />
+                                                
+                                                Sorry, your browser does not support inline SVG.
+                                            </svg>
+                                            
+                                            <p class="mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -5px; background-color: #62676c; max-width: 170px;">3rd panel set down</p>
                                         </div>
                                     </div>
                                 </div>
@@ -749,8 +815,8 @@ Your browser does not support the video tag.
                     <h4 class="py-2">Custom system designs for every home.</h4>
                     
                     <div class="col-lg-9 col-md-8 col-12">
-                        <img id="defaultDesign" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
-                        <img id="homes2" src="assets/img/home/design.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <!-- <img id="defaultDesign" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign"> -->
+                        <img id="homes2" src="assets/img/home/design.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
                         <img id="offices2" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                     </div>
             
@@ -872,11 +938,11 @@ Your browser does not support the video tag.
                     <h4 class="py-2">Custom system designs for every business.</h4>
                     
                     <div class="col-lg-9 col-md-8 col-12">
-                        <img id="defaultDesign" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
-                        <img id="homes3" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
-                        <img id="offices3" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <!-- <img id="defaultDesign" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign"> -->
+                        <img id="homes3" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign">
+                        <img id="offices3" src="assets/img/home/manufacturing_img.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                         <img id="hospitality3" src="assets/img/projects/hotel_kimberly.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
-                        <img id="manufacturer3" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
+                        <img id="manufacturer3" src="assets/img/home/manufacturing_img.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                         <img id="manufacturer33" src="assets/img/projects/blueshift.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
                     </div>
             
@@ -1039,7 +1105,7 @@ Your browser does not support the video tag.
 
     <!-- SOLAR 101 SECTION -->
     <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class=" py-5 px-0" id="featured-3">
-        <div class="container d-flex justify-content-between align-items-center pb-2 mb-0 pt-5">
+        <div class="container d-flex justify-content-between align-items-center pb-0 mb-0 pt-5">
             <h2 class="mb-0">Solar 101</h2>
             <a href="#" class="d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold text-decoration-none mx-1">
                 <span class="text-start" style="color: #0B5ED7;">View all</span>
@@ -1050,11 +1116,11 @@ Your browser does not support the video tag.
         </div>
 
         <!-- SwiperJS -->
-        <div class="slide-container swiper">
+        <div class="slide-container swiper pt-0">
             <div class="slide-content">
-                <div class="card-wrapper swiper-wrapper">
+                <div class="card-wrapper swiper-wrapper mx-2">
 
-                    <div class="card swiper-slide border-0">
+                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon" >
@@ -1071,7 +1137,7 @@ Your browser does not support the video tag.
                         </div>
                     </div>
                     
-                    <div class="card swiper-slide border-0">
+                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1089,7 +1155,7 @@ Your browser does not support the video tag.
                         </div>
                     </div>
 
-                    <div class="card swiper-slide border-0">
+                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1107,7 +1173,7 @@ Your browser does not support the video tag.
                         </div>
                     </div>
 
-                    <div class="card swiper-slide border-0">
+                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1125,7 +1191,7 @@ Your browser does not support the video tag.
                         </div>
                     </div>
 
-                    <div class="card swiper-slide border-0">
+                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1143,7 +1209,7 @@ Your browser does not support the video tag.
                         </div>
                     </div>
 
-                    <div class="card swiper-slide border-0">
+                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1161,7 +1227,7 @@ Your browser does not support the video tag.
                         </div>
                     </div>
 
-                    <div class="card swiper-slide border-0">
+                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1290,7 +1356,7 @@ Your browser does not support the video tag.
                                 <i class="fas fa-money-bill-wave" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
                             </div>
                             <div class="media-body">
-                                <h3 class="fw-semibold"  data-number="12570860" data-prefix="₱ "></h3>
+                                <h3 class="fw-semibold"  data-number="570860" data-prefix="₱ "></h3>
                                 <p class="m-0 lh-1">invested in renewable energy projects</p>
                             </div>
                         </div>
@@ -1301,7 +1367,7 @@ Your browser does not support the video tag.
                                 <i class="fas fa-leaf" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
                             </div>
                             <div class="media-body">
-                                <h3 class="fw-semibold" data-number="2703570" data-prefix="₱ ">$2M+</h3>
+                                <h3 class="fw-semibold" data-number="83570" data-prefix="₱ ">$2M+</h3>
                                 <p class="m-0 lh-1">tons of CO2 emissions saved annually</p>
                             </div>
                         </div>
@@ -1468,14 +1534,19 @@ Your browser does not support the video tag.
     <div class="modal fade" id="homesModal" tabindex="-1" aria-labelledby="homesModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
-            <h1 class="modal-title fs-5" id="homesModalLabel">Homes Modal</h1>
+            <div class="modal-header border-0">
+            <!-- <h1 class="modal-title fs-5" id="homesModalLabel">Homes Modal</h1> -->
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-            ...
+                <div class="d-flex btn-group w-50 mx-auto" role="group" aria-label="Basic checkbox toggle button group" style="background: #f5f5f5;padding: 10px;margin-top: 25px;">
+                    <input type="radio" id="#" class="btn-check" name="buildingRadio" autocomplete="off" data="residential" checked="" value="BUILDING/HOME">
+                    <label class="form-label btn" for="#" style="margin: 0px;">Existing Home</label>
+                    <input type="radio" id="#" class="btn-check" name="buildingRadio" autocomplete="off" value="BUILDING/COMMERCIAL" data="commercial">
+                    <label class="form-label btn btn-outline" for="#" style="margin: 0px;">Homes in Construction</label>
+                </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>
@@ -1485,14 +1556,14 @@ Your browser does not support the video tag.
     <div class="modal fade" id="officesModal" tabindex="-1" aria-labelledby="officesModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="officesModalLabel">Offices Modal</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>
@@ -1502,14 +1573,14 @@ Your browser does not support the video tag.
     <div class="modal fade" id="hospitalityModal" tabindex="-1" aria-labelledby="hospitalityModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="hospitalityModalLabel">Hospitality Modal</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>
@@ -1519,14 +1590,14 @@ Your browser does not support the video tag.
     <div class="modal fade" id="manufacturerModal" tabindex="-1" aria-labelledby="manufacturerModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="manufacturerModalLabel">Manufacturer Modal</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>
@@ -1536,14 +1607,14 @@ Your browser does not support the video tag.
      <div class="modal fade" id="allOthersModal" tabindex="-1" aria-labelledby="allOthersModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="allOthersModalLabel">All Others Modal</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>
@@ -1555,14 +1626,14 @@ Your browser does not support the video tag.
     <div class="modal fade" id="existingHomeModal" tabindex="-1" aria-labelledby="existingHomeModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="existingHomeModalLabel">Existing Home Modal</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>
@@ -1572,14 +1643,14 @@ Your browser does not support the video tag.
     <div class="modal fade" id="homesInConstructionModal" tabindex="-1" aria-labelledby="homesInConstructionModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
             <div class="modal-content">
-                <div class="modal-header">
+                <div class="modal-header border-0">
                 <h1 class="modal-title fs-5" id="homesInConstructionModalLabel">Homes in Construction Modal</h1>
                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body">
                 ...
                 </div>
-                <div class="modal-footer">
+                <div class="modal-footer border-0">
 
                 </div>
             </div>
@@ -1591,14 +1662,14 @@ Your browser does not support the video tag.
     <div class="modal fade" id="apartmentsModal" tabindex="-1" aria-labelledby="apartmentsModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="apartmentsModalLabel">Apartments Modal</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>
@@ -1608,14 +1679,14 @@ Your browser does not support the video tag.
     <div class="modal fade" id="retailSpacesModal" tabindex="-1" aria-labelledby="retailSpacesModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
         <div class="modal-content">
-            <div class="modal-header">
+            <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="retailSpacesModalLabel">Retail Spaces Modal</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
             ...
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer border-0">
 
             </div>
         </div>

@@ -247,6 +247,7 @@ document.addEventListener('DOMContentLoaded', function () {
         let autoChangeInterval;
         let isHovering = false;
         let imageIndex = 0;
+        let currentImage = null;
     
         function hideAllImages(section) {
             const images = document.querySelectorAll(`.${section} .img-fluid`);
@@ -310,6 +311,7 @@ document.addEventListener('DOMContentLoaded', function () {
                 if (isMobile()) {
                     button.addEventListener('click', () => {
                         showImage(section, targetImage);
+                        currentImage = targetImage;
                     });
                 } else {
                     button.addEventListener('mouseenter', () => {
@@ -331,7 +333,7 @@ document.addEventListener('DOMContentLoaded', function () {
                         autoChangeInterval = setInterval(() => changeImageAutomatically(section), 5000);
                         
                         // Show the default design image
-                        const defaultImage = document.querySelector(`.${section} .defaultDesign`);
+                        const defaultImage = document.querySelector(`.${section} #${currentImage}`);
                         if (defaultImage) {
                             hideAllImages(section); // Hide all other images first
                             defaultImage.classList.add('active');
@@ -500,45 +502,43 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector(".logo-slider").appendChild(copy);
 
 
-    // Function to hide custom navbar when modals is active------------------------------------- 
+    // Function to manage custom navbar visibility based on modal state and scroll position
     var designModals = document.querySelectorAll('.modal');
+    const toolbar = document.getElementById('customizedClientToolBar');
+    const navbar = document.getElementById('customizedClientNavBar');
 
+    // Function to setup customized navbar display
+    function setupCustomizedNavbar() {
+        const toolbarPosition = toolbar.getBoundingClientRect().bottom + window.scrollY;
+        const buffer = 25; // Adjust this value to your needs
+
+        // If we've scrolled past the toolbar plus the buffer, show the navbar
+        if (window.scrollY > toolbarPosition + buffer) {
+            navbar.classList.add('show');
+        } 
+        // If we've scrolled up past the toolbar minus the buffer, hide the navbar
+        else if (window.scrollY < toolbarPosition - buffer) {
+            navbar.classList.remove('show');
+        }
+    }
+
+    // Add event listeners for modals
     designModals.forEach(function(modal) {
         modal.addEventListener('show.bs.modal', function () {
-            document.getElementById('customizedClientNavBar').style.display = 'none';
+            navbar.classList.remove('show'); // Hide the navbar when a modal is shown
         });
 
         modal.addEventListener('hide.bs.modal', function () {
-            document.getElementById('customizedClientNavBar').style.display = 'block';
+            navbar.classList.add('show'); // Show the navbar when a modal is hidden
+            setupCustomizedNavbar(); // Re-evaluate navbar visibility based on scroll position
         });
     });
 
-
-    //Custom Navbar display when viewport reaches
+    // Set up scroll event listener
     window.onscroll = function () {
-
-        function setupCustomizedNavbar() {
-          const toolbar = document.getElementById('customizedClientToolBar');
-          const navbar = document.getElementById('customizedClientNavBar');
-    
-          // Get the position of the toolbar relative to the top of the page
-          const toolbarPosition = toolbar.getBoundingClientRect().bottom + window.scrollY;
-    
-          // Buffer value
-          const buffer = 25; // Adjust this value to your needs
-    
-          // If we've scrolled past the toolbar plus the buffer, show the navbar
-          if (window.scrollY > toolbarPosition + buffer) {
-            navbar.classList.add('show');
-          }
-          // If we've scrolled up past the toolbar minus the buffer, hide the navbar
-          else if (window.scrollY < toolbarPosition - buffer) {
-            navbar.classList.remove('show');
-          }
-        }
-     
         setupCustomizedNavbar();
     };
+
     
     
 });
