@@ -448,19 +448,34 @@ let conversationTimeout;
         ];
         
         const gridData90 = [
+            // 100, 145, 129, 138, 104, 
+            // 152, 110, 130, 120, 170, 
+            // 102, 140, 115, 125, 138, 
+            // 130, 105, 160, 127, 143,
+            // 100, 145, 129, 138, 104, 
+            // 152, 110, 130, 120, 140,
+            // 100, 145, 129, 138, 104, 
+            // 152, 110, 130, 120, 170, 
+            // 102, 140, 115, 125, 138, 
+            // 130, 105, 160, 127, 143,
+            // 100, 145, 129, 138, 104, 
+            // 152, 110, 130, 120, 140, 
+            // 120, 0, null, null, null, 
+            // null, null, null,
+
             100, 145, 129, 138, 104, 
             152, 110, 130, 120, 170, 
             102, 140, 115, 125, 138, 
             130, 105, 160, 127, 143,
-            100, 145, 129, 138, 104, 
-            152, 110, 130, 120, 140,
-            100, 145, 129, 138, 104, 
-            152, 110, 130, 120, 170, 
-            102, 140, 115, 125, 138, 
-            130, 105, 160, 127, 143,
-            100, 145, 129, 138, 104, 
-            152, 110, 130, 120, 140, 
-            120, 0, null, null, null, 
+            0, null, null, null, null, 
+            null, null, null, null, null,
+            null, null, null, null, null,
+            null, null, null, null, null,
+            null, null, null, null, null,
+            null, null, null, null, null,
+            null, null, null, null, null,
+            null, null, null, null, null,
+            null, null, null, null, null,
             null, null, null,
         ];
     
@@ -563,7 +578,7 @@ let conversationTimeout;
                                 data.datasets[2].backgroundColor = 'rgba(128, 128, 128, 0.4)';  // Grey background
                                 data.datasets[2].borderColor = 'rgba(128, 128, 128, 1)';  // Grey border
                                 chartInstance.update('none');
-                            }, 2500);  // Small delay after the animation completes to ensure smoothness
+                            }, 1000);  // Small delay after the animation completes to ensure smoothness
                         });
                                 // document.getElementById('stringPerformanceText');
                         // stringPerformanceText.innerText = '3rd panel set down';
@@ -2119,7 +2134,7 @@ let conversationTimeout;
 
         setTimeout(() => {
             displayStringPerformanceText();
-        }, 2500);
+        }, 1000);
 
         conversationTimeout = setTimeout(() => {
             showConversation('conversation-string-performance');

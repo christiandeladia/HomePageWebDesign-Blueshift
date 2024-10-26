@@ -502,6 +502,46 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelector(".logo-slider").appendChild(copy);
 
 
+
+
+    // Function to hide custom navbar when modals is active------------------------------------- 
+    // var designModals = document.querySelectorAll('.modal');
+
+    // designModals.forEach(function(modal) {
+    //     modal.addEventListener('show.bs.modal', function () {
+    //         document.getElementById('customizedClientNavBar').style.display = 'none';
+    //     });
+
+    //     modal.addEventListener('hide.bs.modal', function () {
+    //         document.getElementById('customizedClientNavBar').style.display = 'block';
+    //     });
+    // });
+
+
+    //Custom Navbar display when viewport reaches
+    // window.onscroll = function () {
+
+    //     function setupCustomizedNavbar() {
+    //     const toolbar = document.getElementById('customizedClientToolBar');
+    //     const navbar = document.getElementById('customizedClientNavBar');
+
+    //     const toolbarPosition = toolbar.getBoundingClientRect().bottom + window.scrollY;
+
+
+    //     const buffer = 25;
+
+    //     if (window.scrollY > toolbarPosition + buffer) {
+    //         navbar.classList.add('show');
+    //     }
+    //     else if (window.scrollY < toolbarPosition - buffer) {
+    //         navbar.classList.remove('show');
+    //     }
+    //     }
+
+    //     setupCustomizedNavbar();
+    // };
+
+    
     // Function to manage custom navbar visibility based on modal state and scroll position
     var designModals = document.querySelectorAll('.modal');
     const toolbar = document.getElementById('customizedClientToolBar');
@@ -538,6 +578,11 @@ document.addEventListener('DOMContentLoaded', function () {
     window.onscroll = function () {
         setupCustomizedNavbar();
     };
+
+
+
+
+    
 
     
     

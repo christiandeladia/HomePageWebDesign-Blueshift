@@ -40,48 +40,231 @@
 
 
 <body>
-    <!-- Navbar -->
-    <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
-        <div class="container">
-            <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
-                <img src="../assets/img/icons/logo/main-logo.webp" style="width: 24px;" alt="Logo">
-                <h5 style="margin: 0 8px;">Blueshift</h5>
+ <!-- NAVBAR -->
+ <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
+    <div class="container">
+        <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
+            <img src="../assets/img/icons/logo/main-logo.webp" style="width: 24px;" alt="Logo">
+            <h5 style="margin: 0 8px;">Blueshift</h5>
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div id="navbarContent" class="collapse navbar-collapse d-none d-lg-block">
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item position-static dropdown">
+                    <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
+                        <span>Products</span>
+                        <span style="margin-left: 5px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item position-static dropdown">
+                    <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
+                        <span>Resources</span>
+                        <span style="margin-left: 5px;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                                <polyline points="6 9 12 15 18 9"></polyline>
+                            </svg>
+                        </span>
+                    </a>
+                </li>
+                <li class="nav-item"><a class="nav-link text-dark" href="../public/company.html" style="padding-left: 12px; padding-right: 12px;">Company</a></li>
+                <li class="nav-item"><a class="nav-link text-dark" href="../public/contact.html" style="padding-left: 12px; padding-right: 12px;">Contact</a></li>
+            </ul>
+            <ul class="navbar-nav ms-auto align-items-center">
+                <li class="nav-item"><a href="https://my.blueshift.ph" class="btn btn-outline-primary me-sm-3 mb-2 mb-sm-0 rounded-1" style="padding: 8px 24px; font-size: 12px;">Login</a></li>
+                <li class="nav-item"><a href="../design-studio/design.html" class="btn btn-primary rounded-1" style="padding: 8px 24px; font-size: 12px;">Get started</a></li>
+            </ul>
+        </div>
+    </div>
+</nav>
+
+<div id="overlayBgIndex" class="overlayBgIndex"></div>
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
+    <ul class="sidebar-nav me-auto">
+        <li class="sidebar-item position-static dropdown">
+            <a class="sidebar-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" aria-expanded="false">
+                <span>Products</span>
+                <span style="margin-left: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </span>     
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation" style="visibility: hidden;">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div id="navbarContent" class="collapse navbar-collapse d-none d-lg-block" style="visibility: hidden;">
-                <ul class="navbar-nav me-auto">
-                    <li class="nav-item position-static dropdown">
-                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
-                            <span>Products</span>
-                            <span style="margin-left: 5px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item position-static dropdown">
-                        <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
-                            <span>Resources</span>
-                            <span style="margin-left: 5px;">
-                                <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                                    <polyline points="6 9 12 15 18 9"></polyline>
-                                </svg>
-                            </span>
-                        </a>
-                    </li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="#" style="padding-left: 12px; padding-right: 12px;">Company</a></li>
-                    <li class="nav-item"><a class="nav-link text-dark" href="public/contact.html" style="padding-left: 12px; padding-right: 12px;">Contact</a></li>
-                </ul>
-                <ul class="navbar-nav ms-auto align-items-center">
-                    <li class="nav-item"><a href="design-studio/design.html" class="btn btn-outline-primary me-sm-3 mb-2 mb-sm-0 rounded-1" style="padding: 8px 24px; font-size: 12px;">Login</a></li>
-                    <li class="nav-item"><a href="public/contact.html" class="btn btn-primary rounded-1" style="padding: 8px 24px; font-size: 12px;">Get started</a></li>
-                </ul>
+            <ul class="dropdown-menu border border-0 p-0" aria-labelledby="productsNav" style="display: none; padding-left: 0;">
+                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-solar-panel" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>All in one Solar Installation</a></li>
+                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-bolt" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Net Metering Processing</a></li>
+                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-hard-hat" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Pre-Construction Consultation</a></li>
+                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-tv" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Blueshift Monitoring</a></li>
+                <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#"><i class="fas fa-shopping-bag" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Shop equipment & materials</a></li>
+            </ul>
+        </li>
+        
+        <li class="sidebar-item position-static dropdown">
+            <a class="sidebar-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" aria-expanded="false">
+                <span>Resources</span>
+                <span style="margin-left: 5px;">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
+                        <polyline points="6 9 12 15 18 9"></polyline>
+                    </svg>
+                </span>    
+            </a>
+            <ul class="dropdown-menu border border-0 p-0" aria-labelledby="resourcesNav" style="display: none; padding-left: 0;">
+                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-users" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Testimonials</a></li>
+                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-book-open" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Case studies</a></li>
+                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-drafting-compass" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Solar Design Studio</a></li>
+                <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#"><i class="fas fa-newspaper" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Articles</a></li>
+            </ul>
+        </li>
+        
+        <li class="sidebar-item"><a class="sidebar-link text-dark" href="#">Company</a></li>
+        <li class="sidebar-item"><a class="sidebar-link text-dark" href="public/contact.html">Contact</a></li>
+        <li class="sidebar-item"><a class="sidebar-link text-dark" href="https://my.blueshift.ph">Login</a></li>
+        <li class="sidebar-item"><a class="sidebar-link text-dark" href="design-studio/design.html">Get Started</a></li>
+    </ul>
+</div>
+
+<!-- NAVBAR DROPDOWN -->
+<div id="productsDisplay" class="px-0" style="background-color: white; width: 100%;">
+    <div class="row row-1 row-md-2 align-items-stretch g-0">
+        
+        <div class="col-4 gap-4">
+            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
+                <div class="feature-icon d-flex align-items-center">
+                    <img src="../assets/img/home/all-in-one.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">All in one Solar Installation</p>
+                    <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+        
+                    <button class="btn text-start" style="min-width: 150px;">
+                        Explore details
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                        </svg>
+                    </button>
+                </div>
+            </a>
+        </div>
+        
+
+        <div class="col-4 gap-4">
+            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center">
+                    <i class="fas fa-bolt" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Net Metering Processing</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Start exporting power when not in use. Get credited for energy you sell.</p>
+                </div>
+            </a>
+            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center">
+                    <i class="fas fa-hard-hat" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Pre-Construction Consultation</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Get help on designing for your new home before it's complete.</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-4 gap-4">
+            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center">
+                    <i class="fas fa-tv" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Blueshift Monitoring</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">In house monitoring so you don't have to worry about your system.</p>
+                </div>
+            </a>
+            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center">
+                    <i class="fas fa-shopping-bag" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Shop equipment & materials</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Are you an installer? Get the best products through our store.</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+</div>
+
+<div id="resourcesDisplay" class="px-0" style="background-color: white; width: 100%;">
+    <div class="row row-1 row-md-2 align-items-stretch g-0">
+        
+        <div class="col-4 gap-4">
+            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
+                <div class="feature-icon d-flex align-items-center">
+                    <img src="../assets/img/home/testimonials.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Testimonials</p>
+                    <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">See what others have to say about us.</p>
+
+                    <button class="btn text-start" style="min-width: 150px;">
+                        Explore details
+                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
+                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                        </svg>
+                    </button>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-4 gap-4">
+            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center">
+                    <i class="fas fa-book-open" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Case studies</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Learn more on how we have helped some of our customers.</p>
+                </div>
+            </a>
+            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center">
+                    <i class="fas fa-drafting-compass" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Solar Design Studio</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
+            </a>
+        </div>
+        
+        <div class="col-4 gap-4">
+            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center">
+                    <i class="fas fa-newspaper" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center">
+                    <p class="fw-semibold mb-1">Articles</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Browse helpful articles to help you understand.</p>
+                </div>
+            </a>
+            <div id="#" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
+                <div class="feature-icon d-flex align-items-center" style="visibility: hidden;">
+                    <i class="fas fa-solar-panel" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                </div>
+                <div class="d-flex flex-column justify-content-center" style="visibility: hidden;">
+                    <p class="fw-semibold mb-1">Featured title</p>
+                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
+                </div>
             </div>
         </div>
-    </nav>
+
+    </div>
+</div>
 
     <!-- Background Overlay  -->
     <div id="#" class="overlayBgContact"></div>
@@ -246,6 +429,8 @@
     <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-storage-compat.js"></script> -->
     <!-- <script src="../assets/js/global.js"></script> -->
     <script src="../assets/js/contact.js"></script>
-    <script src="../assets/js/homepage.js"></script>
+    <!-- <script src="../assets/js/homepage.js"></script> -->
+    <script src="../assets/js/company.js"></script>
+
 </body>
 </html>

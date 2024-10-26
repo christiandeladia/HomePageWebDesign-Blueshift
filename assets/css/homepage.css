@@ -60,7 +60,7 @@
     width: 100%;
     position: sticky !important;
     top: 0;
-    z-index: 4000;
+    z-index: 500;
 }
 
 .navbar-fixed-bottom {
@@ -273,7 +273,7 @@
     display: none;
     position: absolute;
     top: 22%;
-    left: 72%;
+    left: 33%;
     /* transform: translate(-50%, -50%); */
     color: black;
     padding: 10px;
@@ -483,11 +483,11 @@
 .slide-container {
     /* max-width: 1120px; */
     width: 100%;
-    padding: 10px 30px;
+    /* padding: 10px 30px; */
 }
 
 .slide-content {
-    margin: 0 40px;
+    /* margin: 0 40px; */
     overflow: hidden;
 }
 
@@ -528,7 +528,10 @@
 .swiper-navBtn::after {
     font-size: 35px;
 }
-
+.swiper-button-next::after, .swiper-button-prev::after {
+    content: "";
+    display: none;
+}
 .swiper-button-next {
     right: 0;
     margin: 0 37.5px;

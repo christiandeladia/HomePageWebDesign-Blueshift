@@ -148,6 +148,12 @@
         }
     }
 
+    .modalBannerImg {
+        background-image: url('assets/img/backgrounds/banners/Blog-Hero.webp'); /* Replace with your image path */
+        background-size: cover; /* Make background cover the full area */
+        background-position: center; /* Center the background image */
+        height: 600px;
+    }
 </style>
 <body>
     <!-- NAVBAR -->
@@ -710,23 +716,24 @@ Your browser does not support the video tag.
                                         <canvas id="stringPerformanceChart" class="mt-5 bg-white"></canvas>
                                         <div id="stringPerformanceText" class="text-overlay-string">
                                             <!-- <p class="small m-0" style="color: grey;"></p> -->
-                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top: 10px; right: 23px;">
+                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top: 95px; left: -20px;">
+                                                <!-- Broken horizontal line -->
+                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                
                                                 <!-- Circle at the start -->
-                                                <circle class="animated-circle" cx="100" cy="80" r="6" fill="#62676c" />
+                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
                                                 
-                                                <!-- Broken vertical line going up -->
-                                                <line class="broken-vertical-line" x1="100" y1="80" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                <!-- Broken vertical line going up from the end of the horizontal line -->
+                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="-40" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
                                                 
-                                                <!-- Broken horizontal line going right -->
-                                                <line class="animated-line" x1="100" y1="20" x2="150" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
-                                                
-                                                <!-- Triangle at the end of the horizontal line -->
-                                                <polygon points="150,20 160,26 160,14" fill="#62676c" />
+                                                <!-- Triangle at the top end of the vertical line -->
+                                                <polygon points="100,-34 106,-46 94,-46" fill="#62676c" />
                                                 
                                                 Sorry, your browser does not support inline SVG.
                                             </svg>
                                             
-                                            <p class="mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -5px; background-color: #62676c; max-width: 170px;">3rd panel set down</p>
+                                            
+                                            <p class="mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -8px; background-color: #62676c; max-width: 170px;">3rd panel set down</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1081,10 +1088,10 @@ Your browser does not support the video tag.
     <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" id="ourProductSection" class="py-5 text-center" id="custom-cards" style="background-color: #f4f4f4; margin-top: 100px;">
         <div class="row my-5 mx-0 justify-content-center">
             <div class="col-xxl-4 col-lg-5 col-12  d-flex align-items-center justify-content-lg-end justify-content-center">
-                <h1 class="m-0" style="font-size: 54px;">Our Products</h1>
+                <h1 class="m-0 pe-lg-4" style="font-size: 54px;">Our Products</h1>
             </div>
             <div class="col-xxl-4 col-lg-5 col-12 d-flex align-items-center lh-sm ">
-                <p class="m-0 text-lg-start text-center" style="font-size: 31px;">Get the best products with some of the most reliable manufacturers when you partner with us.</p>
+                <p class="m-0 ps-lg-4 text-lg-start text-center" style="font-size: 31px;">Get the best products and reliable manufacturers when you partner with us. </p>
             </div>
         </div>
         
@@ -1118,7 +1125,7 @@ Your browser does not support the video tag.
         <!-- SwiperJS -->
         <div class="slide-container swiper pt-0">
             <div class="slide-content">
-                <div class="card-wrapper swiper-wrapper mx-2">
+                <div class="card-wrapper swiper-wrapper" style="margin: 0px 15px;">
 
                     <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
                         <div class="image-content">
@@ -1248,9 +1255,20 @@ Your browser does not support the video tag.
                 </div>
             </div>
 
-            <div class="swiper-button-next swiper-navBtn"></div>
-            <div class="swiper-button-prev swiper-navBtn"></div>
+            <!-- <div class="swiper-button-next swiper-navBtn"></div>
+            <div class="swiper-button-prev swiper-navBtn"></div> -->
             <div class="swiper-pagination"></div>
+
+
+            <button class="swiper-button-next btn btn-light rounded-circle"  type="button" style="margin-right: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;right: 20px;top: 50%;transform: translateY(-50%);z-index: 1;" >
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short" style="width: 32px;height: 32px;">
+                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"></path>
+            </svg></button>
+            <button class="swiper-button-prev btn btn-light rounded-circle" type="button" style="margin-left: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;left: 20px;top: 50%;transform: translateY(-50%);z-index: 1;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-left-short" style="width: 32px;height: 32px;">
+                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"></path>
+            </svg>
+        </button>
         </div>
 
     </div>
@@ -1277,8 +1295,8 @@ Your browser does not support the video tag.
             </div>
         </div>
     </div>
-        <div class="container-fluid" style="position: relative;">
-            <div class="row g-0" id="customerReviewRow" style="overflow-x: auto;flex-wrap: nowrap;display: flex;margin-top: 25px;padding: 0px 25px;">
+        <div class="container-fluid px-0" style="position: relative;">
+            <div class="row g-0" id="customerReviewRow" style="overflow-x: auto;flex-wrap: nowrap;display: flex;margin-top: 25px;padding: 0px;">
                 <div class="col-11 col-lg-5" style="flex: 0 0 auto;margin-left: 15px;">
                     <div id="customerReviewDivCard" class="bg-success rounded" style="height: 100%;width: 100%;padding: 35px;">
                         <p class="text-white h3">"Our bill from Meralco of 20k per month is now down to 3k per month. This has helped improve our cashflow as a business."</p>
@@ -1533,28 +1551,123 @@ Your browser does not support the video tag.
     <!-- All SECTION MODAL -->
     <div class="modal fade" id="homesModal" tabindex="-1" aria-labelledby="homesModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-fullscreen">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-            <!-- <h1 class="modal-title fs-5" id="homesModalLabel">Homes Modal</h1> -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <div class="d-flex btn-group w-50 mx-auto" role="group" aria-label="Basic checkbox toggle button group" style="background: #f5f5f5;padding: 10px;margin-top: 25px;">
-                    <input type="radio" id="#" class="btn-check" name="buildingRadio" autocomplete="off" data="residential" checked="" value="BUILDING/HOME">
-                    <label class="form-label btn" for="#" style="margin: 0px;">Existing Home</label>
-                    <input type="radio" id="#" class="btn-check" name="buildingRadio" autocomplete="off" value="BUILDING/COMMERCIAL" data="commercial">
-                    <label class="form-label btn btn-outline" for="#" style="margin: 0px;">Homes in Construction</label>
+            <div class="modal-content">
+                <div class="modal-body p-0">
+
+                    <div class="modalBannerImg container-fluid p-3">
+                        <div class="d-flex justify-content-end"><button type="button" class="btn-close p-4" data-bs-dismiss="modal" aria-label="Close"></button></div>
+
+                        <div class="d-flex btn-group w-50 mx-auto" role="group" aria-label="Basic checkbox toggle button group" style="background: #f5f5f5;padding: 10px;margin-top: 25px;">
+                            <input type="radio" id="existingHome" class="btn-check" name="buildingRadio" autocomplete="off" checked="" >
+                            <label class="form-label btn" for="existingHome" style="margin: 0px;">Existing Home</label>
+                            <input type="radio" id="homesInConstruction" class="btn-check" name="buildingRadio" autocomplete="off" >
+                            <label class="form-label btn btn-outline" for="homesInConstruction" style="margin: 0px;">Homes in Construction</label>
+                        </div>
+                    </div>
+
+
+                    <div class="existingModalContent container py-5" id="existingHomeContent">
+                        <div class="row align-items-md-stretch">
+                            <div class="container py-5">
+                                <h1 class=" fw-semibold">Transition from your monthly electricity bill to saving with solar panels.</h1>
+                            </div>
+                            <div class="col-md-6 pe-5">
+                                <div class="image-content position-relative">
+                                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
+                                        <img src="assets/img/backgrounds/banners/Blog-Hero.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
+                                        <div class="overlay-container position-absolute bottom-0 start-0 p-2 rounded-3" style="background-color: rgba(0, 0, 0, 0.5); margin:20px;">
+                                            <h5 class="text-light mb-0">sample</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <h3 class="">Design & Recommendations Suited to your families needs.</h3>
+                                    <p class="">Know the best system to fit your needs as we learn about your energy usage patterns, your monthly consumption, appliances, equipments, and many more that is personal to you & your family.</p>
+                                    <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
+                                        Learn more
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ps-5">
+                                <div class="image-content position-relative">
+                                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
+                                        <img src="assets/img/backgrounds/banners/Blog-Hero.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
+                                        <div class="overlay-container position-absolute bottom-0 start-0 p-2 rounded-3" style="background-color: rgba(0, 0, 0, 0.5); margin:20px;">
+                                            <h5 class="text-light mb-0">sample</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-content">
+                                    <h3 class="">You get the savings while we do the monitoring</h3>
+                                    <p class="">Keep your peace of mind as you generate clean renewable energy while we do the hard work of making sure your system is working 100%, 100% of the time.</p>
+                                    <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
+                                        Learn more
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
+                    <div class="constructionModalContent container py-5 d-none" id="homesInConstructionContent">
+                        <div class="row align-items-md-stretch">
+                            <div class="container py-5">
+                                <h1 class=" fw-semibold">Give your future home the early planning for solar. Heading</h1>
+                            </div>
+                            <div class="col-md-6 pe-5">
+                                <div class="image-content position-relative">
+                                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
+                                        <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
+                                        <div class="overlay-container position-absolute bottom-0 start-0 p-2 rounded-3" style="background-color: rgba(0, 0, 0, 0.5); margin:20px;">
+                                            <h5 class="text-light mb-0">sample</h5>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="card-content">
+                                    <h3 class="">Know which option solar option will best suit you & your family.</h3>
+                                    <p class="">Get peace of mind during brownouts or reduce electricity cost, maybe both. Whatever it is our advisors will always recommend you the best option for you with transparent recommendations.</p>
+                                    <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
+                                        Learn more
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6 ps-5">
+                                <div class="image-content position-relative">
+                                    <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
+                                        <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
+                                        <div class="overlay-container position-absolute bottom-0 start-0 p-2 rounded-3" style="background-color: rgba(0, 0, 0, 0.5); margin:20px;">
+                                            <h5 class="text-light mb-0">sample</h5>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="card-content">
+                                    <h3 class="">Plan for the extra wires, panels & regulation requirements</h3>
+                                    <p class="">Keep your house looking clean by having the wires & panel boxes built in from the start of your home all while following the required guidelines for fast approval.</p>
+                                    <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
+                                        Learn more
+                                    </a>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+
+
                 </div>
-            </div>
-            <div class="modal-footer border-0">
 
             </div>
-        </div>
         </div>
     </div>
 
     <div class="modal fade" id="officesModal" tabindex="-1" aria-labelledby="officesModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-fullscreen">
+        <div class="modal-dialog modal-fullscreen" style="z-index: 5000;">
         <div class="modal-content">
             <div class="modal-header border-0">
             <h1 class="modal-title fs-5" id="officesModalLabel">Offices Modal</h1>
@@ -1752,6 +1865,34 @@ Your browser does not support the video tag.
         
                 });
         }
+    </script>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Function to change content based on selected button
+            function updateContent() {
+                const existingHomeContent = document.getElementById('existingHomeContent');
+                const homesInConstructionContent = document.getElementById('homesInConstructionContent');
+        
+                // Check which radio button is checked
+                if (document.getElementById('existingHome').checked) {
+                    existingHomeContent.classList.remove('d-none'); // Show existing home content
+                    homesInConstructionContent.classList.add('d-none'); // Hide construction content
+                } else if (document.getElementById('homesInConstruction').checked) {
+                    existingHomeContent.classList.add('d-none'); // Hide existing home content
+                    homesInConstructionContent.classList.remove('d-none'); // Show construction content
+                }
+            }
+        
+            // Add event listeners to the radio buttons
+            document.querySelectorAll('input[name="buildingRadio"]').forEach((radio) => {
+                radio.addEventListener('change', updateContent);
+            });
+        
+            // Initialize content based on default checked radio button
+            updateContent();
+        });
+        
     </script>
     
 </body>
