@@ -573,3 +573,32 @@
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
+
+
+
+
+/* MODALS  */
+@media (max-width: 768px){
+    .modalBannerImg .btn-group {
+        width: 75% !important;
+    }
+    .modal-body .modalCard {
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        padding-bottom: 1.5rem !important;
+    }
+}
+
+@media (max-width: 576px){
+    .modalBannerImg .btn-group {
+        width: 100% !important;
+    }
+    .modal-body .modalCard {
+        padding-left: 1.5rem !important;
+        padding-right: 1.5rem !important;
+        padding-bottom: 1.5rem !important;
+    }
+}
+
+
+

@@ -133,18 +133,44 @@
 </script>
 </head>
 <style>
-    .animated-line, .broken-vertical-line {
-        animation: moveLine 10s linear infinite;
-        animation-delay: 0s; 
+    .animated-line {
+        stroke-dasharray: 2800; /* Length of the line */
+        stroke-dashoffset: 2800; /* Start with the dash offset equal to the dash array (not visible initially) */
+        animation: dash 20s linear forwards; /* Use standard animation property for compatibility */
     }
-    @keyframes moveLine {
-        0% {
-            stroke-dashoffset: 0;
+    .broken-vertical-line{
+        stroke-dasharray: 2800; /* Length of the line */
+        stroke-dashoffset: 2800; /* Start with the dash offset equal to the dash array (not visible initially) */
+        animation: dash 20s linear forwards; /* Use standard animation property for compatibility */
+        animation-delay: 1s;
+    }
+    
+    @keyframes dash { /* Standard @keyframes without vendor prefixes */
+        from {
+            stroke-dashoffset: 2800; /* Start with the full dash offset (hidden) */
+        }
+        to {
+            stroke-dashoffset: 0; /* End with the dash offset at zero (fully visible) */
+        }
+    }
 
+    .animated-triangle {
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 1s forwards; /* Animation to fade in */
+        animation-delay: 1.3s; /* Delay before starting the animation */
+    }
+    .delayParagraph {
+        opacity: 0; /* Initially hidden */
+        animation: fadeIn 0.5s forwards; /* Animation to fade in */
+        animation-delay: 1.3s; /* Delay before starting the animation */
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
         }
         100% {
-            stroke-dashoffset: -300; /* Adjust based on line length */
-
+            opacity: 1;
         }
     }
 
@@ -676,20 +702,20 @@ Your browser does not support the video tag.
                                         <div id="disconnectedText" class="text-overlay">
                                             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
                                                 <!-- Broken horizontal line -->
-                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2;" />
                                                 
                                                 <!-- Circle at the start -->
                                                 <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
                                                 
                                                 <!-- Broken vertical line at the end circle -->
-                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2; " />
                                                 
                                                 <!-- Triangle at the end of the vertical line-->
-                                                <polygon points="100,74 106,86 94,86" fill="#62676c" />
+                                                <polygon class="animated-triangle" points="100,74 106,86 94,86" fill="#62676c" />
                                                 
                                                 Sorry, your browser does not support inline SVG.
                                             </svg>
-                                            <p class="mb-0 rounded-3 text-white p-4 text-center" style="font-size: 16px; background-color: #62676c; margin-left: 5px; max-width: 170px;">system offline</p>
+                                            <p class="delayParagraph mb-0 rounded-3 text-white p-4 text-center" style="font-size: 16px; background-color: #62676c; margin-left: 5px; max-width: 170px;">system offline</p>
                                             
                                         </div>
                                         
@@ -698,42 +724,42 @@ Your browser does not support the video tag.
                                             <!-- <p class="ms-5 badge rounded-pill fw-bolder" style="color: grey; background-color:#f4f4f4; font-size: 15px;"></p> -->
                                             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
                                                 <!-- Broken horizontal line -->
-                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2;"/>
                                                 
                                                 <!-- Circle at the start -->
                                                 <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
                                                 
                                                 <!-- Broken vertical line at the end circle -->
-                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2;"/>
                                                 
                                                 <!-- Triangle at the end of the vertical line-->
-                                                <polygon points="100,74 106,86 94,86" fill="#62676c" />
+                                                <polygon class="animated-triangle" points="100,74 106,86 94,86" fill="#62676c" />
                                                 
                                                 Sorry, your browser does not support inline SVG.
                                             </svg>
-                                            <p class="mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -5px; background-color: #62676c; max-width: 170px;">inverter temperature overheat</p>
+                                            <p class="delayParagraph mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -5px; background-color: #62676c; max-width: 170px;">inverter temperature overheat</p>
                                         </div>
                                         <canvas id="stringPerformanceChart" class="mt-5 bg-white"></canvas>
                                         <div id="stringPerformanceText" class="text-overlay-string">
                                             <!-- <p class="small m-0" style="color: grey;"></p> -->
                                             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top: 95px; left: -20px;">
                                                 <!-- Broken horizontal line -->
-                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2;" />
                                                 
                                                 <!-- Circle at the start -->
                                                 <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
                                                 
                                                 <!-- Broken vertical line going up from the end of the horizontal line -->
-                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="-40" style="stroke:#62676c; stroke-width: 2; stroke-dasharray: 10, 5;" />
+                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="-40" style="stroke:#62676c; stroke-width: 2; " />
                                                 
                                                 <!-- Triangle at the top end of the vertical line -->
-                                                <polygon points="100,-34 106,-46 94,-46" fill="#62676c" />
+                                                <polygon class="animated-triangle" points="100,-34 106,-46 94,-46" fill="#62676c" />
                                                 
                                                 Sorry, your browser does not support inline SVG.
                                             </svg>
                                             
                                             
-                                            <p class="mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -8px; background-color: #62676c; max-width: 170px;">3rd panel set down</p>
+                                            <p class="delayParagraph mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -8px; background-color: #62676c; max-width: 170px;">3rd panel set down</p>
                                         </div>
                                     </div>
                                 </div>
@@ -1571,7 +1597,7 @@ Your browser does not support the video tag.
                             <div class="container py-5">
                                 <h1 class=" fw-semibold">Transition from your monthly electricity bill to saving with solar panels.</h1>
                             </div>
-                            <div class="col-md-6 pe-5">
+                            <div class="modalCard col-md-6 pe-5">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/Blog-Hero.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
@@ -1590,7 +1616,7 @@ Your browser does not support the video tag.
                                 </div>
                             </div>
 
-                            <div class="col-md-6 ps-5">
+                            <div class="modalCard col-md-6 ps-5">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/Blog-Hero.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
@@ -1618,7 +1644,7 @@ Your browser does not support the video tag.
                             <div class="container py-5">
                                 <h1 class=" fw-semibold">Give your future home the early planning for solar. Heading</h1>
                             </div>
-                            <div class="col-md-6 pe-5">
+                            <div class="modalCard col-md-6 pe-5">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
@@ -1637,7 +1663,7 @@ Your browser does not support the video tag.
                                 </div>
                             </div>
 
-                            <div class="col-md-6 ps-5">
+                            <div class="modalCard col-md-6 ps-5">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">

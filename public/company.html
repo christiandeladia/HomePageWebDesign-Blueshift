@@ -150,12 +150,34 @@
         background-color: rgb(232, 231, 231);
         color: gray;
         border-radius: 50%;
-        height: 31px;
-        width: 31px;
+        height: 35px;
+        width: 35px;
         display: flex;
         align-items: center;
         justify-content: center;
       }
+
+    /* Style for highlighted line and icon */
+    .timeline-item.highlighted .timeline-icon {
+        background-color: blue;
+        color: white;
+    }
+
+    /* Highlight the line by coloring the border */
+    .timeline-item.highlighted::before {
+        content: "";
+        position: absolute;
+        left: -32px; /* Adjust based on your design */
+        width: 2px;
+        height: 100%; /* Full height of the line within the item */
+        background-color: blue;
+    }
+
+    .timeline-item.highlighted .timelineTitle,
+    .timeline-item.highlighted .timelineDescription{
+        color: #212529 !important;
+    }
+
 
 </style>
 
@@ -593,53 +615,53 @@
     <!-- Timeline Section -->
     <section class="py-5 px-4  container">
         <ul class="timeline-with-icons">
-        <li class="timeline-item mb-5">
+        <li class="timeline-item pb-5">
             <span class="timeline-icon">
             <!-- <i class="fas fa-rocket text-primary fa-sm fa-fw"></i> -->
             1
             </span>
-            <p class="text-muted mb-2 fw-bold lead">Step 1: Contact us, or design your system & get a site visit for your home.</p>
-            <p class="text-muted">
+            <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 1: Contact us, or design your system & get a site visit for your home.</p>
+            <p class="timelineDescription text-muted">
                 - <a href="../public/contact.html" style="text-decoration: none;">Contact us</a> <br>
                 - <a href="#" style="text-decoration: none;">Solar design studio</a>
             </p>
         </li>
     
-        <li class="timeline-item mb-5">
+        <li class="timeline-item pb-5">
             <span class="timeline-icon">
             2
             </span>
-            <p class="text-muted mb-2 fw-bold lead">Step 2: Receive your panel placement design & approval</p>
-            <p class="text-muted">
+            <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 2: Receive your panel placement design & approval</p>
+            <p class="timelineDescription text-muted">
                 - After the site visit, you will receive our panel placement design to make sure that you first approval where we will place the panels.
             </p>
         </li>
     
-        <li class="timeline-item mb-5">
+        <li class="timeline-item pb-5">
             <span class="timeline-icon">
             3
             </span>
-            <p class="text-muted mb-2 fw-bold lead">Step 3: Schedule the installation with us.</p>
-            <p class="text-muted">
+            <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 3: Schedule the installation with us.</p>
+            <p class="timelineDescription text-muted">
                 - Your account manager will work with you to schedule your full installation for your home.
             </p>
         </li>
     
-        <li class="timeline-item mb-5">
+        <li class="timeline-item pb-5">
             <span class="timeline-icon">
             4
             </span>
-            <p class="text-muted mb-2 fw-bold lead">Step 4: Energize & Monitor</p>
-            <p class="text-muted">
+            <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 4: Energize & Monitor</p>
+            <p class="timelineDescription text-muted">
                 - After your installation we will do our final checks and set your system up for monitoring from us + you. Congrats you are now on solar.
             </p>
         </li>
-        <li class="timeline-item mb-5">
+        <li class="timeline-item pb-5">
             <span class="timeline-icon">
-            4
+            5
             </span>
-            <p class="text-muted mb-2 fw-bold lead">Step 5: Wait for Net Metering approval (net metering systems only)</p>
-            <p class="text-muted">
+            <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 5: Wait for Net Metering approval (net metering systems only)</p>
+            <p class="timelineDescription text-muted">
                 - If you decide you apply for net metering, we will handle everything you will need from service re-entrance remodel to getting city hall approval on your system to export power to the grid. This roughly takes 4-8 months but you can start saving on power from day 1.
             </p>
         </li>

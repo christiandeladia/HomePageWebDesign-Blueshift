@@ -167,3 +167,32 @@
          $(scrollRightBtn).show();
          });
      });
+
+     // Select all timeline items
+const timelineItems = document.querySelectorAll('.timeline-item');
+
+// Intersection Observer options
+const options = {
+    root: null, // Use viewport as root
+    threshold: 0.20, // Trigger when 75% of the element is visible
+    rootMargin: '0px 0px -30% 0px' // Trigger when the element reaches slightly above the center
+};
+
+// Function to handle intersection
+function handleIntersection(entries) {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            // Add the highlighted class when the element reaches the desired viewport position
+            entry.target.classList.add('highlighted');
+        } else {
+            // Remove the highlighted class when the element leaves the viewport position
+            entry.target.classList.remove('highlighted');
+        }
+    });
+}
+
+// Create Intersection Observer
+const observer = new IntersectionObserver(handleIntersection, options);
+
+// Observe each timeline item
+timelineItems.forEach(item => observer.observe(item));
