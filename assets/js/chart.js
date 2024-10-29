@@ -86,7 +86,7 @@ let conversationTimeout;
                 responsive: true,
                 maintainAspectRatio: false,
                 interaction: {
-                    mode: 'nearest',
+                    mode: 'none',
                     axis: 'x',
                     intersect: false
                 },
@@ -182,7 +182,7 @@ let conversationTimeout;
                         display: false
                     },
                     tooltip: {
-                        enabled: true,
+                        enabled: false,
                         mode: 'index',
                         intersect: false
                     }
@@ -324,7 +324,7 @@ let conversationTimeout;
                 responsive: true,
                 maintainAspectRatio: false,
                 interaction: {
-                    mode: 'nearest',
+                    mode: 'none',
                     axis: 'x',
                     intersect: false
                 },
@@ -403,7 +403,7 @@ let conversationTimeout;
                         display: false
                     },
                     tooltip: {
-                        enabled: true,
+                        enabled: false,
                         mode: 'index',
                         intersect: false
                     }
@@ -537,7 +537,7 @@ let conversationTimeout;
             responsive: true,
             maintainAspectRatio: false,
             interaction: {
-                mode: 'nearest',
+                mode: 'none',
                 axis: 'x',
                 intersect: false
             },
@@ -653,7 +653,7 @@ let conversationTimeout;
                 position: 'top',
                 },
                 tooltip: {
-                enabled: true, // Enable tooltips
+                enabled: false, // Enable tooltips
                 mode: 'index', // Show all items in the dataset at the nearest X position
                 intersect: false, // Show the tooltip even when not exactly over a point
                 callbacks: {
@@ -755,7 +755,7 @@ let conversationTimeout;
                 responsive: true,
                 maintainAspectRatio: false,
                 interaction: {
-                    mode: 'nearest',
+                    mode: 'none',
                     axis: 'x',
                     intersect: false
                 },
@@ -839,7 +839,7 @@ let conversationTimeout;
                         display: false
                     },
                     tooltip: {
-                        enabled: true,
+                        enabled: false,
                         mode: 'index',
                         intersect: false
                     }
@@ -948,7 +948,7 @@ let conversationTimeout;
                       responsive: true,
                       maintainAspectRatio: false,
                       interaction: {
-                          mode: 'nearest',
+                          mode: 'none',
                           axis: 'x',
                           intersect: false
                       },
@@ -1016,7 +1016,7 @@ let conversationTimeout;
                               position: 'top'
                           },
                           tooltip: {
-                              enabled: true,
+                              enabled: false,
                               mode: 'index',
                               intersect: false,
                           }
@@ -1118,7 +1118,7 @@ let conversationTimeout;
             responsive: true,
             maintainAspectRatio: false,
             interaction: {
-                mode: 'nearest',
+                mode: 'none',
                 axis: 'x',
                 intersect: false
             },
@@ -1234,7 +1234,7 @@ let conversationTimeout;
                 position: 'top',
                 },
                 tooltip: {
-                enabled: true, // Enable tooltips
+                enabled: false, // Enable tooltips
                 mode: 'index', // Show all items in the dataset at the nearest X position
                 intersect: false, // Show the tooltip even when not exactly over a point
                 callbacks: {
@@ -1336,7 +1336,7 @@ let conversationTimeout;
                 responsive: true,
                 maintainAspectRatio: false,
                 interaction: {
-                    mode: 'nearest',
+                    mode: 'none',
                     axis: 'x',
                     intersect: false
                 },
@@ -1420,7 +1420,7 @@ let conversationTimeout;
                         display: false
                     },
                     tooltip: {
-                        enabled: true,
+                        enabled: false,
                         mode: 'index',
                         intersect: false
                     }
@@ -1529,7 +1529,7 @@ let conversationTimeout;
                       responsive: true,
                       maintainAspectRatio: false,
                       interaction: {
-                          mode: 'nearest',
+                          mode: 'none',
                           axis: 'x',
                           intersect: false
                       },
@@ -1597,7 +1597,7 @@ let conversationTimeout;
                               position: 'top'
                           },
                           tooltip: {
-                              enabled: true,
+                              enabled: false,
                               mode: 'index',
                               intersect: false,
                           }
@@ -1699,7 +1699,7 @@ let conversationTimeout;
             responsive: true,
             maintainAspectRatio: false,
             interaction: {
-                mode: 'nearest',
+                mode: 'none',
                 axis: 'x',
                 intersect: false
             },
@@ -1815,7 +1815,7 @@ let conversationTimeout;
                 position: 'top',
                 },
                 tooltip: {
-                enabled: true, // Enable tooltips
+                enabled: false, // Enable tooltips
                 mode: 'index', // Show all items in the dataset at the nearest X position
                 intersect: false, // Show the tooltip even when not exactly over a point
                 callbacks: {

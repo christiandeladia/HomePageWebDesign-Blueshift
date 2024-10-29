@@ -180,6 +180,89 @@
         background-position: center; /* Center the background image */
         height: 600px;
     }
+
+     .modalGradientOverlay {
+        position: absolute; /* Position it absolutely within the parent */
+        top: 0; /* Start from the top */
+        left: 0; /* Start from the left */
+        right: 0; /* Extend to the right */
+        bottom: 0; /* Extend to the bottom */
+        background: rgb(41,41,41);
+background: linear-gradient(180deg, rgba(41,41,41,1) 0%, rgba(55,54,54,0.9549136549150911) 19%, rgba(76,76,76,0.9297035708814776) 33%, rgba(110,110,110,0.9100957277442226) 46%, rgba(122,122,122,0.8400677165397409) 55%, rgba(141,141,141,0.5067343832064075) 67%, rgba(238,238,238,0.2518324224220938) 77%, rgba(255,255,255,0) 88%);
+        z-index: 1; /* Position it above the background image */
+        height: 300px;
+    }
+
+     .modalBtnClose {
+        z-index: 2; /* Ensure the close button is above the gradient */
+    }
+    
+    .modalRadioGrp {
+        position: relative; /* Ensure the button group is positioned relative for stacking */
+        z-index: 2; /* Ensure the button group is above the gradient */
+    }
+    
+    .timeline-with-icons {
+        border-left: 1px solid hsl(0, 0%, 90%);
+        position: relative;
+        list-style: none;
+      }
+      
+      .timeline-with-icons .timeline-item {
+        position: relative;
+      }
+      
+      .timeline-with-icons .timeline-item:after {
+        position: absolute;
+        display: block;
+        top: 0;
+      }
+      
+      .timeline-with-icons .timeline-icon {
+        position: absolute;
+        left: -48px;
+        background-color: rgb(232, 231, 231);
+        color: gray;
+        border-radius: 50%;
+        height: 35px;
+        width: 35px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: background-color 1s ease, color 1s ease; /* Add this line */
+      }
+
+    /* Style for highlighted line and icon */
+    .timeline-item.highlighted .timeline-icon {
+        background-color: blue;
+        color: white;
+    }
+
+    /* Highlight the line by coloring the border */
+    .timeline-item::before {
+        content: "";
+        position: absolute;
+        left: -32px; /* Adjust based on your design */
+        width: 2px;
+        height: 0; /* Full height of the line within the item */
+        background-color: blue;
+        transition: height 1s ease;
+    }
+    .timeline-item.highlighted::before {
+        height: 100%; /* Full height of the line within the item */
+    }
+
+    .timeline-item.highlighted .timelineTitle,
+    .timeline-item.highlighted .timelineDescription{
+        color: #212529 !important;
+    }
+
+    #AfterServiceBtnGroup .btn:disabled {
+        background-color: #0d6efd !important; /* Change this to your desired active color */
+        color: white !important; /* Change text color */
+        pointer-events: none !important; /* Prevent interaction */
+        opacity: 1 !important;
+    }
 </style>
 <body>
     <!-- NAVBAR -->
@@ -523,7 +606,7 @@ Your browser does not support the video tag.
 
                 </div>
                 <div class="col-md-6 text-center">
-                    <img id="imgHeader" src="assets/img/home/solars.png" alt="Solar Image" class="img-fluid">
+                    <img id="imgHeader" src="assets/img/home/HeaderSolar1.png" alt="Solar Image" class="img-fluid">
                 </div>
             </div>
         </div>
@@ -1581,15 +1664,21 @@ Your browser does not support the video tag.
                 <div class="modal-body p-0">
 
                     <div class="modalBannerImg container-fluid p-3">
-                        <div class="d-flex justify-content-end"><button type="button" class="btn-close p-4" data-bs-dismiss="modal" aria-label="Close"></button></div>
-
-                        <div class="d-flex btn-group w-50 mx-auto" role="group" aria-label="Basic checkbox toggle button group" style="background: #f5f5f5;padding: 10px;margin-top: 25px;">
-                            <input type="radio" id="existingHome" class="btn-check" name="buildingRadio" autocomplete="off" checked="" >
+                        <!-- Gradient Overlay -->
+                        <div class="modalGradientOverlay"></div>
+                    
+                        <div class="d-flex justify-content-end">
+                            <button type="button" class="modalBtnClose btn-close p-4 btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                    
+                        <div class="modalRadioGrp d-flex btn-group w-50 mx-auto" role="group" aria-label="Basic checkbox toggle button group" style="background: #f5f5f5;padding: 10px;margin-top: 25px;">
+                            <input type="radio" id="existingHome" class="btn-check" name="buildingRadio" autocomplete="off" checked="">
                             <label class="form-label btn" for="existingHome" style="margin: 0px;">Existing Home</label>
-                            <input type="radio" id="homesInConstruction" class="btn-check" name="buildingRadio" autocomplete="off" >
+                            <input type="radio" id="homesInConstruction" class="btn-check" name="buildingRadio" autocomplete="off">
                             <label class="form-label btn btn-outline" for="homesInConstruction" style="margin: 0px;">Homes in Construction</label>
                         </div>
                     </div>
+                    
 
 
                     <div class="existingModalContent container py-5" id="existingHomeContent">
@@ -1634,6 +1723,89 @@ Your browser does not support the video tag.
                                     </a>
                                 </div>
                             </div>
+
+                                <!-- Timeline Section -->
+                                <section class="py-5 px-4  container">
+                                    <ul class="timeline-with-icons">
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        <!-- <i class="fas fa-rocket text-primary fa-sm fa-fw"></i> -->
+                                        1
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 1: Contact us, or design your system & get a site visit for your home.</p>
+                                        <p class="timelineDescription text-muted">
+                                            - <a href="../public/contact.html" style="text-decoration: none;">Contact us</a> <br>
+                                            - <a href="#" style="text-decoration: none;">Solar design studio</a>
+                                        </p>
+                                    </li>
+                                
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        2
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 2: Receive your panel placement design & approval</p>
+                                        <p class="timelineDescription text-muted">
+                                            - After the site visit, you will receive our panel placement design to make sure that you first approval where we will place the panels.
+                                        </p>
+                                    </li>
+                                
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        3
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 3: Schedule the installation with us.</p>
+                                        <p class="timelineDescription text-muted">
+                                            - Your account manager will work with you to schedule your full installation for your home.
+                                        </p>
+                                    </li>
+                                
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        4
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 4: Energize & Monitor</p>
+                                        <p class="timelineDescription text-muted">
+                                            - After your installation we will do our final checks and set your system up for monitoring from us + you. Congrats you are now on solar.
+                                        </p>
+                                    </li>
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        5
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 5: Wait for Net Metering approval (net metering systems only)</p>
+                                        <p class="timelineDescription text-muted">
+                                            - If you decide you apply for net metering, we will handle everything you will need from service re-entrance remodel to getting city hall approval on your system to export power to the grid. This roughly takes 4-8 months but you can start saving on power from day 1.
+                                        </p>
+                                    </li>
+                                    </ul>
+                                </section>
+
+                                <!-- engagement section  -->
+                                <div class="container mb-5">
+                                    <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
+                                        <div class="col-lg-7">
+                                            <div class="h-100">
+                                                <h1 class="mb-3 text-white display-3 fw-semibold">The future of business starts with you.</h1>
+                                                <p class="col-md-10 text-white fs-5 mb-0">Revolutionize your counter - and everywhere you sell - with custom tools to help you meet any goal</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 d-flex align-items-end justify-content-end">
+                                            <div class="pt-4">
+                                                <a href="#" class="text-primary text-decoration-none me-4" style="font-size: 18px;">Get started
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
+                                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                                    </svg>
+                                                </a>
+
+                                                <a href="../public/contact.html" class="text-primary text-decoration-none" style="font-size: 18px;">Contact sales
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
+                                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                         </div>
                     </div>
@@ -1681,6 +1853,89 @@ Your browser does not support the video tag.
                                     </a>
                                 </div>
                             </div>
+
+                                <!-- Timeline Section -->
+                                <section class="py-5 px-4  container">
+                                    <ul class="timeline-with-icons">
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        <!-- <i class="fas fa-rocket text-primary fa-sm fa-fw"></i> -->
+                                        1
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 1: Contact us, or design your system & get a site visit for your home.</p>
+                                        <p class="timelineDescription text-muted">
+                                            - <a href="../public/contact.html" style="text-decoration: none;">Contact us</a> <br>
+                                            - <a href="#" style="text-decoration: none;">Solar design studio</a>
+                                        </p>
+                                    </li>
+                                
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        2
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 2: Receive your panel placement design & approval</p>
+                                        <p class="timelineDescription text-muted">
+                                            - After the site visit, you will receive our panel placement design to make sure that you first approval where we will place the panels.
+                                        </p>
+                                    </li>
+                                
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        3
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 3: Schedule the installation with us.</p>
+                                        <p class="timelineDescription text-muted">
+                                            - Your account manager will work with you to schedule your full installation for your home.
+                                        </p>
+                                    </li>
+                                
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        4
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 4: Energize & Monitor</p>
+                                        <p class="timelineDescription text-muted">
+                                            - After your installation we will do our final checks and set your system up for monitoring from us + you. Congrats you are now on solar.
+                                        </p>
+                                    </li>
+                                    <li class="timeline-item pb-5">
+                                        <span class="timeline-icon">
+                                        5
+                                        </span>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 5: Wait for Net Metering approval (net metering systems only)</p>
+                                        <p class="timelineDescription text-muted">
+                                            - If you decide you apply for net metering, we will handle everything you will need from service re-entrance remodel to getting city hall approval on your system to export power to the grid. This roughly takes 4-8 months but you can start saving on power from day 1.
+                                        </p>
+                                    </li>
+                                    </ul>
+                                </section>
+
+                                <!-- engagement section  -->
+                                <div class="container mb-5">
+                                    <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
+                                        <div class="col-lg-7">
+                                            <div class="h-100">
+                                                <h1 class="mb-3 text-white display-3 fw-semibold">The future of business starts with you.</h1>
+                                                <p class="col-md-10 text-white fs-5 mb-0">Revolutionize your counter - and everywhere you sell - with custom tools to help you meet any goal</p>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-5 d-flex align-items-end justify-content-end">
+                                            <div class="pt-4">
+                                                <a href="#" class="text-primary text-decoration-none me-4" style="font-size: 18px;">Get started
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
+                                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                                    </svg>
+                                                </a>
+
+                                                <a href="../public/contact.html" class="text-primary text-decoration-none" style="font-size: 18px;">Contact sales
+                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
+                                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                                    </svg>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
 
                         </div>
                     </div>
@@ -1848,6 +2103,7 @@ Your browser does not support the video tag.
     <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics-compat.js"></script>
     <script src="../assets/js/aos.min.js"></script>
+    <script src="assets/js/company.js"></script>
     
     <script src="assets/js/public/global.js"></script>
     <!-- <script src="assets/js/design-studio/solar-design.js"></script> -->
@@ -1921,6 +2177,40 @@ Your browser does not support the video tag.
         
     </script>
     
+    <script>
+        // Select buttons
+const buttons = document.querySelectorAll('#AfterServiceBtnGroup button');
+
+// Function to disable the clicked button temporarily
+function disableButtonTemporarily(button) {
+    // Disable the clicked button
+    button.disabled = true;
+
+    // Re-enable the button after 3 seconds
+    setTimeout(() => {
+        button.disabled = false; // Enable the button
+    }, 3500);
+}
+
+// Add event listeners to each button
+buttons.forEach(button => {
+    button.addEventListener('click', (event) => {
+        // Disable the previously clicked button if it's not the same as the current one
+        buttons.forEach(btn => {
+            if (btn !== button && btn.disabled) {
+                btn.disabled = false; // Re-enable previously disabled buttons
+            }
+        });
+        
+        // Disable the currently clicked button
+        disableButtonTemporarily(button);
+        
+        // Perform any additional actions you want here
+        console.log(`${event.target.textContent} button clicked`);
+    });
+});
+
+    </script>
 </body>
 
 </html>
