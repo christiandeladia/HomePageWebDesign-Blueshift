@@ -255,6 +255,11 @@ background: linear-gradient(180deg, rgba(41,41,41,1) 0%, rgba(55,54,54,0.9549136
     .timeline-item.highlighted .timelineTitle,
     .timeline-item.highlighted .timelineDescription{
         color: #212529 !important;
+        opacity: 1 !important;
+    }
+
+    .timeline-item.highlighted .timelineDescription a{
+        opacity: 1 !important;
     }
 
     #AfterServiceBtnGroup .btn:disabled {
@@ -262,6 +267,14 @@ background: linear-gradient(180deg, rgba(41,41,41,1) 0%, rgba(55,54,54,0.9549136
         color: white !important; /* Change text color */
         pointer-events: none !important; /* Prevent interaction */
         opacity: 1 !important;
+    }
+
+
+    @media (max-width: 576px) {
+        .companyEngagementSection{
+            border-radius: 0px !important;
+            padding: 3rem 1rem !important;
+        }
     }
 </style>
 <body>
@@ -606,7 +619,7 @@ Your browser does not support the video tag.
 
                 </div>
                 <div class="col-md-6 text-center">
-                    <img id="imgHeader" src="assets/img/home/HeaderSolar1.png" alt="Solar Image" class="img-fluid">
+                    <img id="imgHeader" src="assets/img/home/HeaderSolar1.png" alt="Solar Image" class="img-fluid" style=" transform: scaleX(-1);">
                 </div>
             </div>
         </div>
@@ -783,66 +796,53 @@ Your browser does not support the video tag.
                                     <div class="canvas-container" style="position: relative; width: 100%; height: 500px;">
                                         <canvas id="systemDisconnectedChart" class="mt-5 bg-white"></canvas>
                                         <div id="disconnectedText" class="text-overlay">
-                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
-                                                <!-- Broken horizontal line -->
-                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2;" />
-                                                
-                                                <!-- Circle at the start -->
-                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
-                                                
-                                                <!-- Broken vertical line at the end circle -->
-                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2; " />
-                                                
-                                                <!-- Triangle at the end of the vertical line-->
-                                                <polygon class="animated-triangle" points="100,74 106,86 94,86" fill="#62676c" />
-                                                
-                                                Sorry, your browser does not support inline SVG.
+                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; z-index: 0; overflow: visible; top:-75px; left:-11px;">
+                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#f85149" />
+                                                <line class="animated-line" x1="0" y1="20" x2="110" y2="20" style="stroke:#f85149; stroke-width: 2;" />
+                                                <line class="broken-vertical-line" x1="110" y1="20" x2="110" y2="80" style="stroke:#f85149; stroke-width: 2; " />
+                                                <polygon class="animated-triangle" points="110,74 116,86 104,86" fill="#f85149" />
                                             </svg>
-                                            <p class="delayParagraph mb-0 rounded-3 text-white p-4 text-center" style="font-size: 16px; background-color: #62676c; margin-left: 5px; max-width: 170px;">system offline</p>
                                             
+                                            <div class="delayParagraph d-flex align-items-center  rounded-3  px-2 py-2" style=" background-color: #f851491a; border: 0.125rem solid #f85149; color: #b22b2b; max-width: 180px;">
+                                                <i class="fa fa-warning me-2" style="font-size: 24px; color: #b22b2b;"></i>
+                                                <p class="mb-0 fw-semibold text-start" style="font-size: 16px; line-height: 1.1;">
+                                                    <span style="font-weight: bold">Error Code: 403</span> <br> System Offline
+                                                </p>
+                                            </div>
                                         </div>
                                         
                                         <canvas id="systemDeratingChart" class="mt-5 bg-white"></canvas>
                                         <div id="deratingText" class="text-overlay-derating">
-                                            <!-- <p class="ms-5 badge rounded-pill fw-bolder" style="color: grey; background-color:#f4f4f4; font-size: 15px;"></p> -->
                                             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
-                                                <!-- Broken horizontal line -->
-                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2;"/>
-                                                
-                                                <!-- Circle at the start -->
-                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
-                                                
-                                                <!-- Broken vertical line at the end circle -->
-                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="80" style="stroke:#62676c; stroke-width: 2;"/>
-                                                
-                                                <!-- Triangle at the end of the vertical line-->
-                                                <polygon class="animated-triangle" points="100,74 106,86 94,86" fill="#62676c" />
-                                                
-                                                Sorry, your browser does not support inline SVG.
+                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#f85149" />
+                                                <line class="animated-line" x1="0" y1="20" x2="120" y2="20" style="stroke:#f85149; stroke-width: 2;"/>
+                                                <line class="broken-vertical-line" x1="120" y1="20" x2="120" y2="80" style="stroke:#f85149; stroke-width: 2;"/>
+                                                <polygon class="animated-triangle" points="120,72 126,84 114,84" fill="#f85149" />
                                             </svg>
-                                            <p class="delayParagraph mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -5px; background-color: #62676c; max-width: 170px;">inverter temperature overheat</p>
+                                            <!-- <p class="delayParagraph mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -5px; background-color: #62676c; max-width: 170px;">inverter temperature overheat</p> -->
+
+                                            <div class="delayParagraph d-flex align-items-center  rounded-3  px-2 py-2" style=" background-color: #f851491a; border: 0.125rem solid #f85149; color: #b22b2b; max-width: 210px;">
+                                                <i class="fa fa-warning me-2" style="font-size: 24px; color: #b22b2b;"></i>
+                                                <p class="mb-0 fw-semibold text-start" style="font-size: 16px; line-height: 1.1;">
+                                                    <span style="font-weight: bold">Error Code: 403</span> <br> Inverter Temperature Overheat
+                                                </p>
+                                            </div>
                                         </div>
                                         <canvas id="stringPerformanceChart" class="mt-5 bg-white"></canvas>
                                         <div id="stringPerformanceText" class="text-overlay-string">
-                                            <!-- <p class="small m-0" style="color: grey;"></p> -->
                                             <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top: 95px; left: -20px;">
-                                                <!-- Broken horizontal line -->
-                                                <line class="animated-line" x1="0" y1="20" x2="100" y2="20" style="stroke:#62676c; stroke-width: 2;" />
-                                                
-                                                <!-- Circle at the start -->
-                                                <circle class="animated-circle" cx="0" cy="20" r="6" fill="#62676c" />
-                                                
-                                                <!-- Broken vertical line going up from the end of the horizontal line -->
-                                                <line class="broken-vertical-line" x1="100" y1="20" x2="100" y2="-40" style="stroke:#62676c; stroke-width: 2; " />
-                                                
-                                                <!-- Triangle at the top end of the vertical line -->
-                                                <polygon class="animated-triangle" points="100,-34 106,-46 94,-46" fill="#62676c" />
-                                                
-                                                Sorry, your browser does not support inline SVG.
+                                                <circle class="animated-circle" cx="0" cy="40" r="6" fill="#f85149" />
+                                                <line class="animated-line" x1="0" y1="40" x2="130" y2="40" style="stroke:#f85149; stroke-width: 2;" />
+                                                <line class="broken-vertical-line" x1="130" y1="40" x2="130" y2="-21" style="stroke:#f85149; stroke-width: 2; " />
+                                                <polygon class="animated-triangle" points="130,-19 136,-31 124,-31" fill="#f85149" />
                                             </svg>
-                                            
-                                            
-                                            <p class="delayParagraph mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -8px; background-color: #62676c; max-width: 170px;">3rd panel set down</p>
+                                            <!-- <p class="delayParagraph mb-0 rounded-3 text-white p-2 text-center" style="font-size: 16px; margin-left: -8px; background-color: #62676c; max-width: 170px;">3rd panel set down</p> -->
+                                            <div class="delayParagraph d-flex align-items-center  rounded-3  px-2 py-2" style=" background-color: #f851491a; border: 0.125rem solid #f85149; color: #b22b2b; max-width: 210px;">
+                                                <i class="fa fa-warning me-2" style="font-size: 24px; color: #b22b2b;"></i>
+                                                <p class="mb-0 fw-semibold text-start" style="font-size: 16px; line-height: 1.1;">
+                                                    <span style="font-weight: bold">Error Code: 403</span> <br> 3rd Panel Set Down
+                                                </p>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
@@ -1219,8 +1219,9 @@ Your browser does not support the video tag.
 
     </div>
 
-    <!-- SOLAR 101 SECTION -->
-    <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class=" py-5 px-0" id="featured-3">
+
+     <!-- SOLAR 101 SECTION -->
+     <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class=" py-5 px-0" id="featured-3">
         <div class="container d-flex justify-content-between align-items-center pb-0 mb-0 pt-5">
             <h2 class="mb-0">Solar 101</h2>
             <a href="#" class="d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold text-decoration-none mx-1">
@@ -1684,9 +1685,9 @@ Your browser does not support the video tag.
                     <div class="existingModalContent container py-5" id="existingHomeContent">
                         <div class="row align-items-md-stretch">
                             <div class="container py-5">
-                                <h1 class=" fw-semibold">Transition from your monthly electricity bill to saving with solar panels.</h1>
+                                <h1 class="fw-semibold text-capitalize">Transition from your monthly electricity bill to saving with solar panels.</h1>
                             </div>
-                            <div class="modalCard col-md-6 pe-5">
+                            <div class="modalCard col-md-6 pe-5 mb-3">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/Blog-Hero.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
@@ -1697,7 +1698,7 @@ Your browser does not support the video tag.
                                 </div>
                                 
                                 <div class="card-content">
-                                    <h3 class="">Design & Recommendations Suited to your families needs.</h3>
+                                    <h3 class="text-capitalize">Design & Recommendations Suited to your families needs.</h3>
                                     <p class="">Know the best system to fit your needs as we learn about your energy usage patterns, your monthly consumption, appliances, equipments, and many more that is personal to you & your family.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
@@ -1705,7 +1706,7 @@ Your browser does not support the video tag.
                                 </div>
                             </div>
 
-                            <div class="modalCard col-md-6 ps-5">
+                            <div class="modalCard col-md-6 ps-5 mb-3">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/Blog-Hero.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
@@ -1716,7 +1717,7 @@ Your browser does not support the video tag.
                                 </div>
 
                                 <div class="card-content">
-                                    <h3 class="">You get the savings while we do the monitoring</h3>
+                                    <h3 class="text-capitalize">You get the savings while we do the monitoring</h3>
                                     <p class="">Keep your peace of mind as you generate clean renewable energy while we do the hard work of making sure your system is working 100%, 100% of the time.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
@@ -1725,17 +1726,27 @@ Your browser does not support the video tag.
                             </div>
 
                                 <!-- Timeline Section -->
-                                <section class="py-5 px-4  container">
+                                <section class="container py-5 ps-5 pe-4 my-4">
+                                    <h1 class="fw-semibold text-capitalize mb-4" style="position: relative; left:-35px;">Steps</h1>
                                     <ul class="timeline-with-icons">
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         <!-- <i class="fas fa-rocket text-primary fa-sm fa-fw"></i> -->
                                         1
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 1: Contact us, or design your system & get a site visit for your home.</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Contact us, or design your system & get a site visit for your home.</p>
                                         <p class="timelineDescription text-muted">
-                                            - <a href="../public/contact.html" style="text-decoration: none;">Contact us</a> <br>
-                                            - <a href="#" style="text-decoration: none;">Solar design studio</a>
+                                            <a href="../public/contact.html" class="icon-link icon-link-hover" style="opacity: 0.5;">Contact Us
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
+                                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                                </svg>
+                                            </a>
+                                            <br>
+                                            <a href="#" class="icon-link icon-link-hover" style="margin-top: 10px; opacity: 0.5;">Solar Design Studio
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
+                                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                                </svg>
+                                            </a>
                                         </p>
                                     </li>
                                 
@@ -1743,9 +1754,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         2
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 2: Receive your panel placement design & approval</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Receive your panel placement design & approval</p>
                                         <p class="timelineDescription text-muted">
-                                            - After the site visit, you will receive our panel placement design to make sure that you first approval where we will place the panels.
+                                           After the site visit, you will receive our panel placement design to make sure that you first approval where we will place the panels.
                                         </p>
                                     </li>
                                 
@@ -1753,9 +1764,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         3
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 3: Schedule the installation with us.</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Schedule the installation with us.</p>
                                         <p class="timelineDescription text-muted">
-                                            - Your account manager will work with you to schedule your full installation for your home.
+                                           Your account manager will work with you to schedule your full installation for your home.
                                         </p>
                                     </li>
                                 
@@ -1763,19 +1774,22 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         4
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 4: Energize & Monitor</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Energize & Monitor</p>
                                         <p class="timelineDescription text-muted">
-                                            - After your installation we will do our final checks and set your system up for monitoring from us + you. Congrats you are now on solar.
+                                           After your installation we will do our final checks and set your system up for monitoring from us + you. Congrats you are now on solar.
                                         </p>
                                     </li>
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         5
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 5: Wait for Net Metering approval (net metering systems only)</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Wait for Net Metering approval (net metering systems only)</p>
                                         <p class="timelineDescription text-muted">
-                                            - If you decide you apply for net metering, we will handle everything you will need from service re-entrance remodel to getting city hall approval on your system to export power to the grid. This roughly takes 4-8 months but you can start saving on power from day 1.
+                                           If you decide you apply for net metering, we will handle everything you will need from service re-entrance remodel to getting city hall approval on your system to export power to the grid.
                                         </p>
+                                        <p class="timelineDescription text-muted">
+                                            This roughly takes 4-8 months but you can start saving on power from day 1.
+                                         </p>
                                     </li>
                                     </ul>
                                 </section>
@@ -1785,17 +1799,12 @@ Your browser does not support the video tag.
                                     <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
                                         <div class="col-lg-7">
                                             <div class="h-100">
-                                                <h1 class="mb-3 text-white display-3 fw-semibold">The future of business starts with you.</h1>
-                                                <p class="col-md-10 text-white fs-5 mb-0">Revolutionize your counter - and everywhere you sell - with custom tools to help you meet any goal</p>
+                                                <h1 class="mb-3 text-white display-3 fw-semibold text-capitalize">Your future home powered by solar.</h1>
+                                                <p class="col-md-10 text-white fs-5 mb-0">Start integrating renewable energy easily with our custom plan to work for your new home.</p>
                                             </div>
                                         </div>
                                         <div class="col-lg-5 d-flex align-items-end justify-content-end">
                                             <div class="pt-4">
-                                                <a href="#" class="text-primary text-decoration-none me-4" style="font-size: 18px;">Get started
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
-                                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                                                    </svg>
-                                                </a>
 
                                                 <a href="../public/contact.html" class="text-primary text-decoration-none" style="font-size: 18px;">Contact sales
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
@@ -1814,9 +1823,9 @@ Your browser does not support the video tag.
                     <div class="constructionModalContent container py-5 d-none" id="homesInConstructionContent">
                         <div class="row align-items-md-stretch">
                             <div class="container py-5">
-                                <h1 class=" fw-semibold">Give your future home the early planning for solar. Heading</h1>
+                                <h1 class=" fw-semibold text-capitalize">Give your future home the early planning for solar. Heading</h1>
                             </div>
-                            <div class="modalCard col-md-6 pe-5">
+                            <div class="modalCard col-md-6 pe-5 mb-3">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
@@ -1827,7 +1836,7 @@ Your browser does not support the video tag.
                                 </div>
                                 
                                 <div class="card-content">
-                                    <h3 class="">Know which option solar option will best suit you & your family.</h3>
+                                    <h3 class="text-capitalize">Know which option solar option will best suit you & your family.</h3>
                                     <p class="">Get peace of mind during brownouts or reduce electricity cost, maybe both. Whatever it is our advisors will always recommend you the best option for you with transparent recommendations.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
@@ -1835,7 +1844,7 @@ Your browser does not support the video tag.
                                 </div>
                             </div>
 
-                            <div class="modalCard col-md-6 ps-5">
+                            <div class="modalCard col-md-6 ps-5 mb-3">
                                 <div class="image-content position-relative">
                                     <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                         <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height: auto;" alt="Feature Icon">
@@ -1846,7 +1855,7 @@ Your browser does not support the video tag.
                                 </div>
 
                                 <div class="card-content">
-                                    <h3 class="">Plan for the extra wires, panels & regulation requirements</h3>
+                                    <h3 class="text-capitalize">Plan for the extra wires, panels & regulation requirements</h3>
                                     <p class="">Keep your house looking clean by having the wires & panel boxes built in from the start of your home all while following the required guidelines for fast approval.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
@@ -1855,17 +1864,21 @@ Your browser does not support the video tag.
                             </div>
 
                                 <!-- Timeline Section -->
-                                <section class="py-5 px-4  container">
+                                <section class="container py-5 ps-5 pe-4 my-4">
+                                    <h1 class="fw-semibold text-capitalize mb-4" style="position: relative; left:-35px;">Steps</h1>
                                     <ul class="timeline-with-icons">
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         <!-- <i class="fas fa-rocket text-primary fa-sm fa-fw"></i> -->
                                         1
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 1: Contact us, or design your system & get a site visit for your home.</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Contact Us & Get An Initial Estimate For Your Future Home.</p>
                                         <p class="timelineDescription text-muted">
-                                            - <a href="../public/contact.html" style="text-decoration: none;">Contact us</a> <br>
-                                            - <a href="#" style="text-decoration: none;">Solar design studio</a>
+                                            <a href="../public/contact.html" class="icon-link icon-link-hover" style="opacity: 0.5;">Contact Us
+                                                <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
+                                                    <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
+                                                </svg>
+                                            </a>
                                         </p>
                                     </li>
                                 
@@ -1873,9 +1886,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         2
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 2: Receive your panel placement design & approval</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Secure us for your home's design & consulting</p>
                                         <p class="timelineDescription text-muted">
-                                            - After the site visit, you will receive our panel placement design to make sure that you first approval where we will place the panels.
+                                            Pay only 50k to have us help your engineers with the roof plan, wiring diagrams, regulations & best practices. This fee will be credited to your overall project.
                                         </p>
                                     </li>
                                 
@@ -1883,9 +1896,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         3
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 3: Schedule the installation with us.</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Design & Partial Project Deployment</p>
                                         <p class="timelineDescription text-muted">
-                                            - Your account manager will work with you to schedule your full installation for your home.
+                                            As your home is coming along we will be installing some necessary things first. Things such as wirings and conduits to keep your home looking organized.
                                         </p>
                                     </li>
                                 
@@ -1893,18 +1906,21 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         4
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 4: Energize & Monitor</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Full Project Deployment</p>
                                         <p class="timelineDescription text-muted">
-                                            - After your installation we will do our final checks and set your system up for monitoring from us + you. Congrats you are now on solar.
+                                            Once your almost ready to move in we will come in to install and energize your system. 
                                         </p>
                                     </li>
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         5
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead">Step 5: Wait for Net Metering approval (net metering systems only)</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Wait for net Metering Approval (Net Metering Systems Only).</p>
                                         <p class="timelineDescription text-muted">
-                                            - If you decide you apply for net metering, we will handle everything you will need from service re-entrance remodel to getting city hall approval on your system to export power to the grid. This roughly takes 4-8 months but you can start saving on power from day 1.
+                                            We may have to wait till approval after you moved in for net metering to take effect depending on the project's specifics and location.
+                                        </p>
+                                        <p class="timelineDescription text-muted">
+                                            However it's also possible to have this ready before you even move in.
                                         </p>
                                     </li>
                                     </ul>
@@ -1915,17 +1931,12 @@ Your browser does not support the video tag.
                                     <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
                                         <div class="col-lg-7">
                                             <div class="h-100">
-                                                <h1 class="mb-3 text-white display-3 fw-semibold">The future of business starts with you.</h1>
-                                                <p class="col-md-10 text-white fs-5 mb-0">Revolutionize your counter - and everywhere you sell - with custom tools to help you meet any goal</p>
+                                                <h1 class="mb-3 text-white display-3 fw-semibold text-capitalize">Your future home powered by solar.</h1>
+                                                <p class="col-md-10 text-white fs-5 mb-0">Start integrating renewable energy easily with our custom plan to work for your new home.</p>
                                             </div>
                                         </div>
                                         <div class="col-lg-5 d-flex align-items-end justify-content-end">
                                             <div class="pt-4">
-                                                <a href="#" class="text-primary text-decoration-none me-4" style="font-size: 18px;">Get started
-                                                    <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
-                                                        <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                                                    </svg>
-                                                </a>
 
                                                 <a href="../public/contact.html" class="text-primary text-decoration-none" style="font-size: 18px;">Contact sales
                                                     <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">

@@ -116,15 +116,17 @@ document.addEventListener('DOMContentLoaded', function () {
     
 
 
-    //Customer Reivew Section-------------------------------------
+    //Customer Review Section-------------------------------------
     var scrollRightBtn = document.getElementById('customerReviewRightBtn');
     var scrollLeftBtn = document.getElementById('customerReviewLeftBtn');
     var rowContainer = document.getElementById('customerReviewRow');
     var divCard = $('#customerReviewDivCard'); // jQuery selector
 
+    $(scrollLeftBtn).hide();
+
     if (!('ontouchstart' in window)) {
         $(scrollRightBtn).show();
-        $(scrollLeftBtn).show();
+        // $(scrollLeftBtn).show();
     }
 
     // Listen for click events on the right button
@@ -202,14 +204,19 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
     // variables in SOLAR 101 SECTION-------------------------------------
+    function isSolar101TouchDevice() {
+        return window.matchMedia("(pointer: coarse)").matches;
+    }
+
     function initSwiper() {
         swiper = new Swiper(".slide-content", {
             slidesPerView: 3.5,
             spaceBetween: 25,
-            loop: false, // Set loop to false for filtering
+            loop: false, 
             centerSlide: false,
             fade: true,
-            grabCursor: true,
+            grabCursor: false,
+            speed: 500,
             pagination: {
                 el: ".swiper-pagination",
                 clickable: true,
@@ -222,21 +229,60 @@ document.addEventListener('DOMContentLoaded', function () {
             breakpoints: {
                 0: {
                     slidesPerView: 1.2,
+                    touchRatio: 1,
                 },
                 520: {
                     slidesPerView: 2.2,
+                    touchRatio: 1,
                 },
                 950: {
                     slidesPerView: 3.5,
+                    touchRatio: 0,
                 },
             },
-        });
-    }
+            on: {
+                init: function () {
+                    // Hide the left button initially
+                    document.querySelector('.swiper-button-prev').style.display = 'none';
+                    // document.querySelector('.swiper-button-next').style.display = 'block';
+                },
+                slideChange: function () {
+                    // Check if it's a touch device
+                    if (!('ontouchstart' in window)) {
+                   
 
+                    // Hide left button if at the start; show if not
+                    if (swiper.isBeginning) {
+                        document.querySelector('.swiper-button-prev').style.display = 'none';
+                    } else {
+                        document.querySelector('.swiper-button-prev').style.display = 'block';
+                    }
+    
+                    // Hide right button if at the end; show if not
+                    if (swiper.isEnd) {
+                        document.querySelector('.swiper-button-next').style.display = 'none';
+                    } else {
+                        document.querySelector('.swiper-button-next').style.display = 'block';
+                    }
+                }
+                }
+            }
+        });
+
+        // Hide buttons on touch devices
+        if (isSolar101TouchDevice()) {
+            document.querySelector('.swiper-button-prev').style.display = 'none';
+            document.querySelector('.swiper-button-next').style.display = 'none';
+        }
+    }
+// Ensure to re-evaluate the allowTouchMove property on resize
+window.addEventListener('resize', function() {
+    swiper.allowTouchMove = isTouchDevice(); // Update the allowTouchMove based on current device type
+});
     function resetSwiper() {
         if (swiper) {
-            swiper.slideTo(0); // Reset the Swiper to the first slide
-            swiper.update(); // Update the Swiper to refresh its state
+            swiper.slideTo(0);
+            swiper.update();
         }
     }
 

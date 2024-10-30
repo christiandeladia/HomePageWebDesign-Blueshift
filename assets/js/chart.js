@@ -504,8 +504,9 @@ let conversationTimeout;
                 {
                 label: '1st set of panels',
                 data: gridData30,
-                backgroundColor: 'rgba(255, 99, 132, 0.2)',
-                borderColor: 'rgba(255, 99, 132, 1)',
+                
+                backgroundColor: 'rgba(54, 162, 235, 0.2)',
+                borderColor: 'rgba(205, 205, 0, 1)',
                 borderWidth: 2,
                 pointRadius: 0,
                 fill: true,
@@ -524,8 +525,8 @@ let conversationTimeout;
                 {
                 label: '3rd set of panels',
                 data: gridData90,
-                backgroundColor: 'rgba(54, 162, 235, 0.2)',
-                borderColor: 'rgba(205, 205, 0, 1)',
+                backgroundColor: 'rgba(0, 172, 14, 0.2)',
+                borderColor: 'rgba(0, 172, 14, 1)',
                 borderWidth: 2,
                 pointRadius: 0,
                 fill: true,
@@ -1878,14 +1879,14 @@ let conversationTimeout;
         else if (chartId === 'stringPerformanceChart') {
             // Gradient for the third chart
             gradient1 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-            gradient1.addColorStop(0, 'rgba(255, 99, 132, 0.2)');
-            gradient1.addColorStop(1, 'rgba(255, 99, 132, 0.2)');
+            gradient1.addColorStop(0, 'rgba(205, 205, 0, 0.2)');
+            gradient1.addColorStop(1, 'rgba(205, 205, 0, 0.2)');
             gradient2 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
             gradient2.addColorStop(0, 'rgba(54, 162, 235, 0.2)');
             gradient2.addColorStop(1, 'rgba(54, 162, 235, 0.2)');
             gradient3 = ctx.createLinearGradient(0, 0, 0, ctx.canvas.height);
-            gradient3.addColorStop(0, 'rgba(205, 205, 0, 0.2)');
-            gradient3.addColorStop(1, 'rgba(205, 205, 0, 0.2)');
+            gradient3.addColorStop(0, 'rgba(0, 172, 14, 0.2)');
+            gradient3.addColorStop(1, 'rgba(0, 172, 14, 0.2)');
 
             config.data.datasets[0].backgroundColor = gradient1;
             config.data.datasets[1].backgroundColor = gradient2;
