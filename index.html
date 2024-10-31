@@ -276,6 +276,49 @@ background: linear-gradient(180deg, rgba(41,41,41,1) 0%, rgba(55,54,54,0.9549136
             padding: 3rem 1rem !important;
         }
     }
+
+
+
+    /* SOLAR 101 SECTION  */
+.solarArticlesCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+
+.solarArticlesCard .image-content {
+    position: relative;
+    row-gap: 5px;
+}
+
+.solarArticlesCard .card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+}
+
+.solarArticlesCard .card-content .title {
+    font-size: 18px;
+    font-weight: 500;
+    color: #333;
+}
+
+.solarArticlesCard .card-content .description {
+    font-size: 14px;
+    color: #707070;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+/* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
+#solar101Row::-webkit-scrollbar {
+    display: none;
+}
+/* Hide scrollbar for other browsers (Firefox, IE, Edge, etc.) */
+#solar101Row {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+}
 </style>
 <body>
     <!-- NAVBAR -->
@@ -333,9 +376,9 @@ background: linear-gradient(180deg, rgba(41,41,41,1) 0%, rgba(55,54,54,0.9549136
             </a><button class="btn navbar-toggler-icon navbar-toggler" id="navbarToggleButton-1" type="button" data-bs-toggle="collapse" aria-controls="navbarContent-2" data-bs-target="#navbarContent-2" aria-expanded="false" aria-label="Toggle navigation" style="border: #ffc400;"></button>
             <div id="navbarContent-2" class="navbar-collapse collapse">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                    <li class="nav-item dropdown my-1"><button id="allBtn" class="btn btn-outline-primary btn-sm active rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">All</button></li>
-                    <li class="nav-item dropdown my-1"><button id="homesBtn" class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Homes</button></li>
-                    <li class="nav-item dropdown my-1"><button id="commercialBtn" class="btn btn-outline-primary btn-sm rounded-pill customizedBtn" type="button" style="min-width: 75px;margin-right: 5px;">Commercial</button></li>
+                    <li class="nav-item dropdown my-1"><button id="allBtn" class="filter-btn btn btn-outline-primary btn-sm active rounded-pill customizedBtn" data-category="All" type="button" style="min-width: 75px;margin-right: 5px;">All</button></li>
+                    <li class="nav-item dropdown my-1"><button id="homesBtn" class="filter-btn btn btn-outline-primary btn-sm rounded-pill customizedBtn" data-category="Homes" type="button" style="min-width: 75px;margin-right: 5px;">Homes</button></li>
+                    <li class="nav-item dropdown my-1"><button id="commercialBtn" class="filter-btn btn btn-outline-primary btn-sm rounded-pill customizedBtn"data-category="Commercial" type="button" style="min-width: 75px;margin-right: 5px;">Commercial</button></li>
                     
                 </ul>
                 <div class="row"> 
@@ -638,9 +681,9 @@ Your browser does not support the video tag.
                 </svg>
             </div>
             <div class="d-flex flex-wrap justify-content-center">
-                <button id="toolbar-allBtn" class="btn active btn-outline-primary rounded-pill customizedBtn me-2" data-category="All" style="min-width: 75px;">All</button>
-                <button id="toolbar-homesBtn" class="btn btn-outline-primary rounded-pill customizedBtn me-2" data-category="Homes" style="min-width: 75px;">Homes</button>
-                <button id="toolbar-commercialBtn" class="btn btn-outline-primary rounded-pill customizedBtn" data-category="Commercial" style="min-width: 75px;">Commercial</button>
+                <button id="toolbar-allBtn" class="filter-btn btn active btn-outline-primary rounded-pill customizedBtn me-2" data-category="All" style="min-width: 75px;">All</button>
+                <button id="toolbar-homesBtn" class="filter-btn btn btn-outline-primary rounded-pill customizedBtn me-2" data-category="Homes" style="min-width: 75px;">Homes</button>
+                <button id="toolbar-commercialBtn" class="filter-btn btn btn-outline-primary rounded-pill customizedBtn" data-category="Commercial" style="min-width: 75px;">Commercial</button>
             </div>
         </div>
     </div>
@@ -1220,24 +1263,29 @@ Your browser does not support the video tag.
     </div>
 
 
-     <!-- SOLAR 101 SECTION -->
-     <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class=" py-5 px-0" id="featured-3">
-        <div class="container d-flex justify-content-between align-items-center pb-0 mb-0 pt-5">
-            <h2 class="mb-0">Solar 101</h2>
-            <a href="#" class="d-flex align-items-center justify-content-between rounded-pill px-2 py-2 fw-semibold text-decoration-none mx-1">
-                <span class="text-start" style="color: #0B5ED7;">View all</span>
-                <svg fill="#0B5ED7" viewBox="0 0 24 24" class="ms-auto" style="width: 40px; height: 40px;">
-                    <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                </svg>
-            </a>            
+    <!-- SOLAR 101 SECTION -->
+    <section data-aos="fade" data-aos-duration="300" data-aos-delay="300" style="margin-top: 100px;">
+        <div class="container">
+            <div class="row g-0 align-items-center">
+                <div class="col-6">
+                    <h2>Solar 101</h2>
+                </div>
+                <div class="col-6 text-end">
+                    <a href="#" class="d-inline-flex align-items-center  py-2 fw-semibold text-decoration-none mx-1">
+                        <span class="text-start" style="color: #0B5ED7;">View all</span>
+                        <svg fill="#0B5ED7" viewBox="0 0 24 24" style="width: 40px; height: 40px;">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
+                        </svg>
+                    </a>
+                </div>
+            </div>
         </div>
-
-        <!-- SwiperJS -->
-        <div class="slide-container swiper pt-0">
-            <div class="slide-content">
-                <div class="card-wrapper swiper-wrapper" style="margin: 0px 15px;">
-
-                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
+        
+        <div class="container-fluid px-0" style="position: relative;">
+            <div class="row g-0" id="solar101Row" style="overflow-x: auto;flex-wrap: nowrap;display: flex;margin-top: 25px;padding: 0px;">
+                
+                <div class="col-8 col-md-5 col-lg-3 pt-2 pb-5" style="flex: 0 0 auto;margin-left: 25px;">
+                    <div id="solar101DivCard" class="solarArticlesCard card border-0 p-3 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon" >
@@ -1253,8 +1301,10 @@ Your browser does not support the video tag.
                             </a>
                         </div>
                     </div>
-                    
-                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
+                </div>
+
+                <div class="col-8 col-md-5 col-lg-3 pt-2 pb-5" style="flex: 0 0 auto;margin-left: 25px;">
+                    <div class="solarArticlesCard card border-0 p-3  shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1271,8 +1321,10 @@ Your browser does not support the video tag.
                             </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
+                <div class="col-8 col-md-5 col-lg-3 pt-2 pb-5" style="flex: 0 0 auto;margin-left: 25px;">
+                    <div class="solarArticlesCard card border-0 p-3 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/backgrounds/banners/residential-main.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1289,8 +1341,10 @@ Your browser does not support the video tag.
                             </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
+                <div class="col-8 col-md-5 col-lg-3 pt-2 pb-5" style="flex: 0 0 auto;margin-left: 25px;">
+                    <div class="solarArticlesCard card border-0 p-3 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1307,8 +1361,10 @@ Your browser does not support the video tag.
                             </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
+                <div class="col-8 col-md-5 col-lg-3 pt-2 pb-5" style="flex: 0 0 auto;margin-left: 25px;">
+                    <div class="solarArticlesCard card border-0 p-3 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1325,8 +1381,10 @@ Your browser does not support the video tag.
                             </a>
                         </div>
                     </div>
-
-                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
+                </div>
+                
+                <div class="col-8 col-md-5 col-lg-3 pt-2 pb-5" style="flex: 0 0 auto;margin-left: 25px;">
+                    <div class="solarArticlesCard card border-0 p-3 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1343,8 +1401,10 @@ Your browser does not support the video tag.
                             </a>
                         </div>
                     </div>
+                </div>
 
-                    <div class="card swiper-slide border-0 p-3 my-5 shadow rounded-4">
+                <div class="col-8 col-md-5 col-lg-3 pt-2 pb-5" style="flex: 0 0 auto;margin-left: 25px;">
+                    <div class="solarArticlesCard card border-0 p-3 shadow rounded-4">
                         <div class="image-content">
                             <div class="feature-icon d-inline-flex align-items-center justify-content-center fs-2">
                                 <img src="assets/img/projects/blueshift.webp" class="rounded-4" style="width: 100%; height:auto;" alt="Feature Icon">
@@ -1361,27 +1421,26 @@ Your browser does not support the video tag.
                             </a>
                         </div>
                     </div>
-
                 </div>
+
             </div>
-
-            <!-- <div class="swiper-button-next swiper-navBtn"></div>
-            <div class="swiper-button-prev swiper-navBtn"></div> -->
-            <div class="swiper-pagination"></div>
-
-
-            <button class="swiper-button-next btn btn-light rounded-circle"  type="button" style="margin-right: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;right: 20px;top: 50%;transform: translateY(-50%);z-index: 1;" >
+            
+            
+            <button class="solar101RightBtn btn btn-light rounded-circle" id="solar101RightBtn" type="button" style="margin-right: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;right: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short" style="width: 32px;height: 32px;">
-                <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"></path>
-            </svg></button>
-            <button class="swiper-button-prev btn btn-light rounded-circle" type="button" style="margin-left: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;left: 20px;top: 50%;transform: translateY(-50%);z-index: 1;">
+                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"></path>
+                </svg>
+            </button>
+            
+            <button class="solar101LeftBtn btn btn-light rounded-circle" id="solar101LeftBtn" type="button" style="margin-left: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;left: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2">
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-left-short" style="width: 32px;height: 32px;">
-                <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"></path>
-            </svg>
-        </button>
-        </div>
+                    <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"></path>
+                </svg>
+            </button>
 
-    </div>
+        </div>
+    </section>
+
 
     <!-- RESULTS FROM OUR CUSTOMER SECTION -->
     <section data-aos="fade" data-aos-duration="300" data-aos-delay="300" style="margin-top: 100px;">
@@ -1439,6 +1498,7 @@ Your browser does not support the video tag.
                 </svg></button>
         </div>
     </section>
+
 
     <!-- BLUESHIFT BY THE NUMBERS SECTION -->
     <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="container col-xxl-8 px-4 py-5" style="margin-top: 100px;">
@@ -1508,6 +1568,7 @@ Your browser does not support the video tag.
         </div>
     </div>
 
+
     <!-- FREE SECTION -->
     <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="px-4 py-5 my-5 text-center" style="background: rgb(8,63,141); background: radial-gradient(circle at bottom, rgba(8,63,141,1) 0%, rgba(5,43,98,1) 29%, rgba(4,19,41,1) 59%, rgba(0,0,0,1) 94%); color: white;">
         <img class="d-block mx-auto" src="assets/img/home/cleaning-service.png" alt="" width="100" height="auto" style="filter: invert(90%);">
@@ -1517,7 +1578,6 @@ Your browser does not support the video tag.
         </div>
     </div>
     
-
 
     <!-- DESIGN STUDIO SECTION -->
     <section data-aos="fade" data-aos-duration="300" data-aos-delay="300" style="padding: 85px 30px;background: #ffffff;">
@@ -1685,7 +1745,7 @@ Your browser does not support the video tag.
                     <div class="existingModalContent container py-5" id="existingHomeContent">
                         <div class="row align-items-md-stretch">
                             <div class="container py-5">
-                                <h1 class="fw-semibold text-capitalize">Transition from your monthly electricity bill to saving with solar panels.</h1>
+                                <h1 class="fw-semibold">Transition From Your Monthly Electricity Bill to Solar Savings</h1>
                             </div>
                             <div class="modalCard col-md-6 pe-5 mb-3">
                                 <div class="image-content position-relative">
@@ -1698,8 +1758,8 @@ Your browser does not support the video tag.
                                 </div>
                                 
                                 <div class="card-content">
-                                    <h3 class="text-capitalize">Design & Recommendations Suited to your families needs.</h3>
-                                    <p class="">Know the best system to fit your needs as we learn about your energy usage patterns, your monthly consumption, appliances, equipments, and many more that is personal to you & your family.</p>
+                                    <h3 class="">Custom Design & Recommendations Just for You</h3>
+                                    <p class="">We’ll help you choose the best solar setup based on your energy needs, monthly usage, and appliances to create a plan that fits your lifestyle.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -1717,8 +1777,8 @@ Your browser does not support the video tag.
                                 </div>
 
                                 <div class="card-content">
-                                    <h3 class="text-capitalize">You get the savings while we do the monitoring</h3>
-                                    <p class="">Keep your peace of mind as you generate clean renewable energy while we do the hard work of making sure your system is working 100%, 100% of the time.</p>
+                                    <h3 class="">Enjoy the Savings While We Handle the Monitoring</h3>
+                                    <p class="">Relax and save with solar! We’ll keep your system running at its best, so you don’t have to worry about a thing.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -1727,14 +1787,14 @@ Your browser does not support the video tag.
 
                                 <!-- Timeline Section -->
                                 <section class="container py-5 ps-5 pe-4 my-4">
-                                    <h1 class="fw-semibold text-capitalize mb-4" style="position: relative; left:-35px;">Steps</h1>
+                                    <h1 class="fw-semibold text-capitalize mb-4" style="position: relative; left:-35px;">Get Started</h1>
                                     <ul class="timeline-with-icons">
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         <!-- <i class="fas fa-rocket text-primary fa-sm fa-fw"></i> -->
                                         1
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Contact us, or design your system & get a site visit for your home.</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Contact us or use our Solar Design Studio to design your system and set up a site visit.</p>
                                         <p class="timelineDescription text-muted">
                                             <a href="../public/contact.html" class="icon-link icon-link-hover" style="opacity: 0.5;">Contact Us
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
@@ -1754,9 +1814,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         2
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Receive your panel placement design & approval</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Approve Your Panel Placement</p>
                                         <p class="timelineDescription text-muted">
-                                           After the site visit, you will receive our panel placement design to make sure that you first approval where we will place the panels.
+                                            After the site visit, we’ll share a panel placement design for your approval to make sure it meets your preferences.
                                         </p>
                                     </li>
                                 
@@ -1764,9 +1824,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         3
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Schedule the installation with us.</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Schedule Your Installation</p>
                                         <p class="timelineDescription text-muted">
-                                           Your account manager will work with you to schedule your full installation for your home.
+                                            Your account manager will help you pick a date for your installation.
                                         </p>
                                     </li>
                                 
@@ -1774,21 +1834,21 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         4
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Energize & Monitor</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Power Up & Monitor</p>
                                         <p class="timelineDescription text-muted">
-                                           After your installation we will do our final checks and set your system up for monitoring from us + you. Congrats you are now on solar.
+                                            Once installed, we’ll do final checks and set up monitoring. Congratulations—you’re now running on solar!
                                         </p>
                                     </li>
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         5
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Wait for Net Metering approval (net metering systems only)</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">ait for Net Metering Approval (for Net Metering Systems Only)</p>
                                         <p class="timelineDescription text-muted">
-                                           If you decide you apply for net metering, we will handle everything you will need from service re-entrance remodel to getting city hall approval on your system to export power to the grid.
+                                            If you opt for net metering, we’ll handle everything, from adjustments to city approvals for exporting power to the grid.
                                         </p>
                                         <p class="timelineDescription text-muted">
-                                            This roughly takes 4-8 months but you can start saving on power from day 1.
+                                            Note: Approval typically takes 4-8 months, but you’ll start saving from day one.
                                          </p>
                                     </li>
                                     </ul>
@@ -1799,8 +1859,8 @@ Your browser does not support the video tag.
                                     <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
                                         <div class="col-lg-7">
                                             <div class="h-100">
-                                                <h1 class="mb-3 text-white display-3 fw-semibold text-capitalize">Your future home powered by solar.</h1>
-                                                <p class="col-md-10 text-white fs-5 mb-0">Start integrating renewable energy easily with our custom plan to work for your new home.</p>
+                                                <h1 class="mb-3 text-white display-3 fw-semibold text-capitalize">Your Home Powered By Solar Now.</h1>
+                                                <p class="col-md-10 text-white fs-5 mb-0">Start integrating renewable energy easily with our custom plan to work for you & your family.</p>
                                             </div>
                                         </div>
                                         <div class="col-lg-5 d-flex align-items-end justify-content-end">
@@ -1823,7 +1883,7 @@ Your browser does not support the video tag.
                     <div class="constructionModalContent container py-5 d-none" id="homesInConstructionContent">
                         <div class="row align-items-md-stretch">
                             <div class="container py-5">
-                                <h1 class=" fw-semibold text-capitalize">Give your future home the early planning for solar. Heading</h1>
+                                <h1 class=" fw-semibold text-capitalize">Give your future home the early planning for solar.</h1>
                             </div>
                             <div class="modalCard col-md-6 pe-5 mb-3">
                                 <div class="image-content position-relative">
@@ -1836,8 +1896,8 @@ Your browser does not support the video tag.
                                 </div>
                                 
                                 <div class="card-content">
-                                    <h3 class="text-capitalize">Know which option solar option will best suit you & your family.</h3>
-                                    <p class="">Get peace of mind during brownouts or reduce electricity cost, maybe both. Whatever it is our advisors will always recommend you the best option for you with transparent recommendations.</p>
+                                    <h3 class="text-capitalize">Find the Best Solar Solution for Your Family</h3>
+                                    <p class="">Whether you’re looking to stay powered during brownouts, lower your electricity bills, or achieve both, our advisors will provide you with transparent recommendations tailored to your needs.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -1855,8 +1915,8 @@ Your browser does not support the video tag.
                                 </div>
 
                                 <div class="card-content">
-                                    <h3 class="text-capitalize">Plan for the extra wires, panels & regulation requirements</h3>
-                                    <p class="">Keep your house looking clean by having the wires & panel boxes built in from the start of your home all while following the required guidelines for fast approval.</p>
+                                    <h3 class="text-capitalize">Prepare for Wires, Panels, and Regulations from the Start</h3>
+                                    <p class="">Ensure a clean and organized setup by planning the wiring and panel boxes during the early stages of your home construction. This approach not only keeps your home looking tidy but also follows the necessary guidelines for quicker approval.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -1865,14 +1925,15 @@ Your browser does not support the video tag.
 
                                 <!-- Timeline Section -->
                                 <section class="container py-5 ps-5 pe-4 my-4">
-                                    <h1 class="fw-semibold text-capitalize mb-4" style="position: relative; left:-35px;">Steps</h1>
+                                    <h1 class="fw-semibold text-capitalize mb-4" style="position: relative; left:-35px;">Get Started</h1>
                                     <ul class="timeline-with-icons">
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         <!-- <i class="fas fa-rocket text-primary fa-sm fa-fw"></i> -->
                                         1
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Contact Us & Get An Initial Estimate For Your Future Home.</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Contact Us for an Initial Estimate
+                                            Get in touch with us to receive a basic estimate for your future solar system.</p>
                                         <p class="timelineDescription text-muted">
                                             <a href="../public/contact.html" class="icon-link icon-link-hover" style="opacity: 0.5;">Contact Us
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right" style="vertical-align: middle;">
@@ -1886,9 +1947,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         2
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Secure us for your home's design & consulting</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Secure Our Design & Consulting Services</p>
                                         <p class="timelineDescription text-muted">
-                                            Pay only 50k to have us help your engineers with the roof plan, wiring diagrams, regulations & best practices. This fee will be credited to your overall project.
+                                            For a one-time fee of 50,000 PHP, our engineers will assist with creating a roof plan, wiring diagrams, and ensure everything follows regulations and best practices. This fee will be applied to your overall project cost.
                                         </p>
                                     </li>
                                 
@@ -1896,9 +1957,9 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         3
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Design & Partial Project Deployment</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Design and Begin Installation</p>
                                         <p class="timelineDescription text-muted">
-                                            As your home is coming along we will be installing some necessary things first. Things such as wirings and conduits to keep your home looking organized.
+                                            As your home progresses, we’ll start installing essential components, such as wiring and conduits, to keep everything organized.
                                         </p>
                                     </li>
                                 
@@ -1906,21 +1967,21 @@ Your browser does not support the video tag.
                                         <span class="timeline-icon">
                                         4
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Full Project Deployment</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Complete the Installation</p>
                                         <p class="timelineDescription text-muted">
-                                            Once your almost ready to move in we will come in to install and energize your system. 
+                                            When your home is nearly ready, we’ll come in to fully install and activate your solar system. 
                                         </p>
                                     </li>
                                     <li class="timeline-item pb-5">
                                         <span class="timeline-icon">
                                         5
                                         </span>
-                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Wait for net Metering Approval (Net Metering Systems Only).</p>
+                                        <p class="timelineTitle text-muted mb-2 fw-bold lead text-capitalize">Wait for Net Metering Approval (for net metering systems only).</p>
                                         <p class="timelineDescription text-muted">
-                                            We may have to wait till approval after you moved in for net metering to take effect depending on the project's specifics and location.
+                                            Approval for net metering may be needed after you move in, depending on project specifics and location.
                                         </p>
                                         <p class="timelineDescription text-muted">
-                                            However it's also possible to have this ready before you even move in.
+                                            However, in some cases, this can be set up beforehand.
                                         </p>
                                     </li>
                                     </ul>

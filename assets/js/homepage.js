@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function () {
-    let swiper;
+    // let swiper;
 
     const allBtn = document.getElementById('allBtn');
     const homesBtn = document.getElementById('homesBtn');
@@ -12,7 +12,6 @@ document.addEventListener('DOMContentLoaded', function () {
     const homesContent = document.getElementById('homesContent');
     const commercialContent = document.getElementById('commercialContent');
 
-    const cards = document.querySelectorAll('.card');
 
     // Function to show the selected section and update button states-------------------------------------
     function showSection(sectionToShow) {
@@ -29,24 +28,21 @@ document.addEventListener('DOMContentLoaded', function () {
             showDefaultImage('section1');
             console.log('Active: All Button');
             showChart('systemDisconnectedChart');
-            filterCards('All');
-            resetSwiper();
+            // resetSwiper();
         } else if (sectionToShow === homesContent) {
             homesBtn.classList.add('active');
             toolbarHomesBtn.classList.add('active');
             showDefaultImage('section2');
             console.log('Active: Homes Button');
             showChart('homeSystemDisconnectedChart');
-            filterCards('Homes');
-            resetSwiper();
+            // resetSwiper();
         } else if (sectionToShow === commercialContent) {
             commercialBtn.classList.add('active');
             toolbarCommercialBtn.classList.add('active');
             showDefaultImage('section3');
             console.log('Active: Commercial Button');
             showChart('commercialSystemDisconnectedChart');
-            filterCards('Commercial');
-            resetSwiper();
+            // resetSwiper();
         }
     }
 
@@ -69,37 +65,45 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
     
-    function filterCards(category) {
-        let visibleCount = 0;
 
-        cards.forEach(card => {
-            const badge = card.querySelector('.badge');
-            if (badge) {
-                const badgeText = badge.textContent.trim();
-                if (category === 'All' || badgeText === category) {
-                    card.style.display = 'block';
-                    visibleCount++;
-                } else {
-                    card.style.display = 'none';
-                }
-            }
+    function initializeCardFilter() {
+        const filterButtons = document.querySelectorAll(".filter-btn");
+        const cards = document.querySelectorAll(".solarArticlesCard");
+    
+        filterButtons.forEach(button => {
+            button.addEventListener("click", () => {
+                const category = button.getAttribute("data-category");
+    
+                let visibleCardCount = 0;
+                cards.forEach(card => {
+                    const badge = card.querySelector(".badge").textContent.trim();
+    
+                    if (category === "All" || badge === category) {
+                        card.parentElement.style.display = "block";
+                        visibleCardCount++;
+                    } else {
+                        card.parentElement.style.display = "none";
+                    }
+                });
+    
+                toggleFilterButtons(visibleCardCount);
+            });
         });
+    }
 
-        if (swiper) {
-            swiper.update();
-        }
-
-        // Hide or show navigation buttons based on the visible count
-        const nextButton = document.querySelector(".swiper-button-next");
-        const prevButton = document.querySelector(".swiper-button-prev");
-        if (visibleCount <= 3) {
-            nextButton.style.display = 'none';
-            prevButton.style.display = 'none';
+    function toggleFilterButtons(visibleCardCount) {
+        const solar101LeftBtn = document.getElementById("solar101LeftBtn");
+        const solar101RightBtn = document.getElementById("solar101RightBtn");
+    
+        if (visibleCardCount <= 3) {
+            solar101LeftBtn.style.display = "none";
+            solar101RightBtn.style.display = "none";
         } else {
-            nextButton.style.display = '';
-            prevButton.style.display = '';
+            // solar101LeftBtn.style.display = "block";
+            solar101RightBtn.style.display = "block";
         }
     }
+    initializeCardFilter()
 
     allBtn.addEventListener('click', () => showSection(allContent));
     homesBtn.addEventListener('click', () => showSection(homesContent));
@@ -110,10 +114,58 @@ document.addEventListener('DOMContentLoaded', function () {
     toolbarCommercialBtn.addEventListener('click', () => showSection(commercialContent));
 
     // showSection(allContent);
-    filterCards('All');
-    initSwiper();
+    // initSwiper();
 
     
+    //SOLAR 101 Section-------------------------------------
+    var solarNextBtn = document.getElementById('solar101RightBtn');
+    var solarPrevBtn = document.getElementById('solar101LeftBtn');
+    var solarRowContainer = document.getElementById('solar101Row');
+    var solarDivCard = $('#solar101DivCard'); // jQuery selector
+
+    $(solarPrevBtn).hide();
+
+    if (!('ontouchstart' in window)) {
+        $(solarNextBtn).show();
+        // $(solarPrevBtn).show();
+    }
+
+    // Listen for click events on the right button
+    solarNextBtn.addEventListener('click', function () {
+        // Calculate the new scroll position
+        var newScrollPosition = solarRowContainer.scrollLeft + solarDivCard.width(); // Adjust to the div card width
+
+        if (newScrollPosition + solarRowContainer.offsetWidth >= solarRowContainer.scrollWidth) {
+        // If we're at the end, hide the right arrow
+        $(solarNextBtn).hide();
+        }
+
+        // Animate the scroll position
+        $(solarRowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
+        // Show the left arrow in case it was hidden
+        $(solarPrevBtn).show();
+        });
+    });
+
+    // Listen for click events on the left button
+    solarPrevBtn.addEventListener('click', function () {
+        // Calculate the new scroll position
+        var newScrollPosition = solarRowContainer.scrollLeft - solarDivCard.width(); // Adjust to the div card width
+
+        console.log(solarRowContainer.scrollLeft - solarDivCard.width())
+
+        if (solarRowContainer.scrollLeft - solarDivCard.width() <= 0) {
+        // If we're at the start, hide the left arrow
+        $(solarPrevBtn).hide();
+        }
+
+        // Animate the scroll position
+        $(solarRowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
+        // After the animation completes, check the scroll position
+        // Show the right arrow in case it was hidden
+        $(solarNextBtn).show();
+        });
+    });
 
 
     //Customer Review Section-------------------------------------
@@ -200,91 +252,6 @@ document.addEventListener('DOMContentLoaded', function () {
     document.querySelectorAll('h3[data-number]').forEach(numElement => {
         observer.observe(numElement);
     });
-
-
-
-    // variables in SOLAR 101 SECTION-------------------------------------
-    function isSolar101TouchDevice() {
-        return window.matchMedia("(pointer: coarse)").matches;
-    }
-
-    function initSwiper() {
-        swiper = new Swiper(".slide-content", {
-            slidesPerView: 3.5,
-            spaceBetween: 25,
-            loop: false, 
-            centerSlide: false,
-            fade: true,
-            grabCursor: false,
-            speed: 500,
-            pagination: {
-                el: ".swiper-pagination",
-                clickable: true,
-                dynamicBullets: true,
-            },
-            navigation: {
-                nextEl: ".swiper-button-next",
-                prevEl: ".swiper-button-prev",
-            },
-            breakpoints: {
-                0: {
-                    slidesPerView: 1.2,
-                    touchRatio: 1,
-                },
-                520: {
-                    slidesPerView: 2.2,
-                    touchRatio: 1,
-                },
-                950: {
-                    slidesPerView: 3.5,
-                    touchRatio: 0,
-                },
-            },
-            on: {
-                init: function () {
-                    // Hide the left button initially
-                    document.querySelector('.swiper-button-prev').style.display = 'none';
-                    // document.querySelector('.swiper-button-next').style.display = 'block';
-                },
-                slideChange: function () {
-                    // Check if it's a touch device
-                    if (!('ontouchstart' in window)) {
-                   
-
-                    // Hide left button if at the start; show if not
-                    if (swiper.isBeginning) {
-                        document.querySelector('.swiper-button-prev').style.display = 'none';
-                    } else {
-                        document.querySelector('.swiper-button-prev').style.display = 'block';
-                    }
-    
-                    // Hide right button if at the end; show if not
-                    if (swiper.isEnd) {
-                        document.querySelector('.swiper-button-next').style.display = 'none';
-                    } else {
-                        document.querySelector('.swiper-button-next').style.display = 'block';
-                    }
-                }
-                }
-            }
-        });
-
-        // Hide buttons on touch devices
-        if (isSolar101TouchDevice()) {
-            document.querySelector('.swiper-button-prev').style.display = 'none';
-            document.querySelector('.swiper-button-next').style.display = 'none';
-        }
-    }
-// Ensure to re-evaluate the allowTouchMove property on resize
-window.addEventListener('resize', function() {
-    swiper.allowTouchMove = isTouchDevice(); // Update the allowTouchMove based on current device type
-});
-    function resetSwiper() {
-        if (swiper) {
-            swiper.slideTo(0);
-            swiper.update();
-        }
-    }
 
 
 
