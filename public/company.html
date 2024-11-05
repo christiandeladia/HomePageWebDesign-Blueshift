@@ -120,14 +120,28 @@
 
     
     .map-container {
+        box-sizing: border-box;
         padding: 20px;
         border: 2px solid #dee2e6;
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        height: auto;
+        height: 450px;
         width: 100%;
         border-radius: 10px;
     }
 
+
+    @media (min-width: 768px) and (max-width: 992px) {
+        .container-fluid-md {
+            width: 100%;
+            max-width: 100%;
+        }
+    }
+    @media (max-width: 768px) {
+        .normalSpacing {
+            letter-spacing: normal !important; /* Adjust this value as necessary */
+        }
+    }
+    
 </style>
 
 <body>
@@ -443,23 +457,23 @@
 </div>
 
     <!-- Number Section  -->
-    <div class="container py-5 my-5">
-        <div class="row  text-start">
-            <div class="col-md-3 mx-auto">
-            <p class="my-0">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-            <h1 class="fw-bold display-1">290+</h1>
+    <div class="container container-fluid-md py-5 my-5">
+        <div class="row text-start align-items-stretch">
+            <div class="col-md-4 mx-auto d-flex flex-column">
+                <p class="my-0">Total lifetime awarded contract between our customers</p>
+                <h1 class="fw-bold display-1 mt-auto normalSpacing" style="letter-spacing: -5px;">P18m+</h1>
             </div>
-            <div class="col-md-3 mx-auto">
-                <p class="my-0">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                <h1 class="fw-bold display-1">12+</h1>
+            <div class="col-md-4 mx-auto d-flex flex-column">
+                <p class="my-0">Since our business was in operation.</p>
+                <h1 class="fw-bold display-1 mt-auto normalSpacing" style="letter-spacing: -10px;">3+ <span class="fw-bolder fs-1" style="letter-spacing: 1px; white-space: nowrap;">years</span></h1>
             </div>
-            <div class="col-md-3 mx-auto">
-                <p class="my-0">Some representative placeholder content for the three columns of text below the carousel. This is the first column.</p>
-                <h1 class="fw-bold display-1">20K+</h1>
+            <div class="col-md-4 mx-auto d-flex flex-column">
+                <p class="my-0">Number of clean renewable energy produced by our clients.</p>
+                <h1 class="fw-bold display-1 mt-auto normalSpacing" style="letter-spacing: -10px;">211k+ <span class="fw-bolder fs-1" style="letter-spacing: 1px; white-space: nowrap;">kWh</span></h1>
             </div>
         </div>
+    </div>
     
-        </div>
 
     <!-- largest Clients Section -->
     <section data-aos="fade" data-aos-duration="300" data-aos-delay="300" style="margin-top: 100px;">
@@ -472,7 +486,7 @@
 
                     <div id="customerReviewDivCard" class="d-flex align-items-end rounded" style="height: 60vh;background: url(&quot;../assets/img/home/design.jpg&quot;) center / cover;padding: 35px;">
                         <div style="background: rgba(255,255,255,0.46);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255,255,255,0.39);border-radius: 10px;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding: 8px;">
-                            <p class="h5 text-white" style="margin: 0px;">The residential project has achieved a completely zero peso bill with Meralco through Solar.</p>
+                            <p class="h5 text-white" style="margin: 0px;">This home started with 30k/monthly down to 5k by going hybrid with us.</p>
                         </div>
                     </div>
                 </div>
@@ -493,7 +507,7 @@
                 <div class="col-12 col-lg-5" style="flex: 0 0 auto;margin-left: 15px;">
                     <div class="rounded" style="height: 60vh;background: url(&quot;../assets/img/home/manufacturing_img.jpg&quot;) center / cover;padding: 35px;">
                         <div style="background: rgba(255,255,255,0.46);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255,255,255,0.39);border-radius: 10px;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding: 8px;">
-                            <p class="h5 text-white" style="margin: 0px;">The residential project has achieved a completely zero peso bill with Meralco through Solar.</p>
+                            <p class="h5 text-white" style="margin: 0px;">This warehouse now powers all their common area with solar.</p>
                         </div>
                     </div>
                 </div>
@@ -526,7 +540,7 @@
                                         <i class="fas fa-phone" style="color: rgb(13, 110, 253); background-color: #ffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-size: 20px; padding: 12px; width: 45px; height: 45px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                                     </div>
                                     <div class="px-2" style="margin-left: 10px;">
-                                        <h6 class="mb-0" style="font-weight: bold;">Phone</h6><a class="text-decoration-underline" href="tel:+639189170873" onclick="clickedCall()"><span style="text-decoration: underline; color: rgb(33, 37, 41);">+63 962 691 9259</span></a>
+                                        <h6 class="mb-0" style="font-weight: bold;">Phone</h6><a class="text-decoration-underline" href="tel:+639085781707" onclick="clickedCall()"><span style="text-decoration: underline; color: rgb(33, 37, 41);">+63 908 578 1707</span></a>
                                     </div>
                                 </div>
                                 <div class="d-flex align-items-center my-3">
@@ -542,7 +556,7 @@
                                         <i class="fas fa-map-marker-alt" style="color: rgb(13, 110, 253); background-color: #ffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-size: 20px; padding: 12px; width: 45px; height: 45px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
                                     </div>
                                     <div class="px-2" style="margin-left: 10px;">
-                                        <h6 class="mb-0" style="font-weight: bold;">Location</h6><a href="https://www.google.com/maps/place/Blueshift+Energy/@14.646171,121.0221382,17z/data=!3m1!4b1!4m6!3m5!1s0x9e14dabb7c017c5:0xc2b3d70a4706f085!8m2!3d14.6461658!4d121.0243269!16s%2Fg%2F11k3c_hbhm" target="_blank" onclick="clickedDirections"><span style="text-decoration: underline; color: rgb(33, 37, 41);">Barangay Paltok, Quezon City,</span></a>
+                                        <h6 class="mb-0" style="font-weight: bold;">Location</h6><a href="https://www.google.com/maps/place/Blueshift+Energy/@14.646171,121.0221382,17z/data=!3m1!4b1!4m6!3m5!1s0x9e14dabb7c017c5:0xc2b3d70a4706f085!8m2!3d14.6461658!4d121.0243269!16s%2Fg%2F11k3c_hbhm" target="_blank" onclick="clickedDirections"><span style="text-decoration: underline; color: rgb(33, 37, 41);">22 Ilagan St, Quezon City, Metro Manila, 1105</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -552,9 +566,10 @@
             </div>
 
             <div class="col-lg-6">
-                <div id="metroManilaMap" class="map-container">
+                <!-- <div id="metroManilaMap" class="map-container">
                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d247138.7926780877!2d120.85549041225813!3d14.568070469935973!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3397c8d26026386d%3A0x5fed23daac9278d0!2sMetro%20Manila!5e0!3m2!1sen!2sph!4v1729757838298!5m2!1sen!2sph" width="100%" height="450" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-                </div>
+                </div> -->
+                <div id="metroManilaMap" class="map-container"></div>
             </div>
 
             </div>
@@ -566,8 +581,8 @@
         <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
             <div class="col-lg-7">
                 <div class="h-100">
-                    <h1 class="mb-3 text-white display-3 fw-semibold">The future of business starts with you.</h1>
-                    <p class="col-md-10 text-white fs-5 mb-0">Revolutionize your counter - and everywhere you sell - with custom tools to help you meet any goal</p>
+                    <h1 class="mb-3 text-white display-3 fw-semibold">Start Powering your Place now with Solar.</h1>
+                    <p class="col-md-10 text-white fs-5 mb-0">Create energy, lower your bill and go green with our custom solutions designed for you.</p>
                 </div>
             </div>
             <div class="col-lg-5 d-flex align-items-end justify-content-end">
@@ -595,7 +610,7 @@
             <div class="row g-0">
                 <div class="col-lg-3 d-flex flex-column item social">
                     <div class="fw-bold d-flex align-items-center mb-2"><img src="../assets/img/icons/logo/main-logo.webp" style="width: 24px;margin-right: 10px;"><span>Blueshift Energy Inc.</span></div>
-                    <p class="text-muted copyright small">Created to help transition Philippines into a sustainable country.</p>
+                    <p class="text-muted copyright small" style="max-width: 80%;">Created to help transition Philippines into a sustainable country.</p>
                 </div>
                 <div class="col-lg-3 d-flex flex-column item social">
                     <div class="fw-bold d-flex align-items-center mb-2">
@@ -607,11 +622,11 @@
                     <div class="fw-bold d-flex align-items-center mb-2">
                         <h3 class="fs-6">SALES</h3>
                     </div>
-                    <p class="text-muted copyright small">sales@blueshift.ph<br>Phone:&nbsp;(0962) 691 9259</p>
+                    <p class="text-muted copyright small">sales@blueshift.ph<br>Phone:&nbsp;+63 908 578 1707</p>
                     <div class="fw-bold d-flex align-items-center mb-2">
                         <h3 class="fs-6">SUPPORT</h3>
                     </div>
-                    <p class="text-muted copyright small">support@blueshift.ph<br>Phone:&nbsp;(0962) 691 9259</p>
+                    <p class="text-muted copyright small">support@blueshift.ph<br>Phone:&nbsp;+63 908 578 1707</p>
                 </div>
                 <div class="col-sm-4 col-md-3 d-flex flex-column item">
                     <div class="fw-bold d-flex align-items-center mb-2">
@@ -650,5 +665,33 @@
     <script src="../assets/js/aos.min.js"></script> -->
     <!-- <script src="../assets/js/public/global.js"></script> -->
     <script src="../assets/js/company.js"></script>
+
+
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCz8uwySRi7b4cG9a0MsC5sEB7rmsPxe4o&libraries=places&callback=initMap"></script>
+    <script>
+        function initMap() {
+            // Create a map centered on Metro Manila
+            const metroManila = { lat: 14.5995, lng: 120.9842 }; // Coordinates for Metro Manila
+            const map = new google.maps.Map(document.getElementById("metroManilaMap"), {
+                zoom: 10,
+                center: metroManila,
+            });
+    
+            // Create a circle covering Metro Manila
+            const circle = new google.maps.Circle({
+                strokeColor: '#FF0000',
+                strokeOpacity: 0.8,
+                strokeWeight: 2,
+                fillColor: '#FF0000',
+                fillOpacity: 0.35,
+                map,
+                center: metroManila,
+                radius: 20000, // Adjust the radius as needed (in meters)
+            });
+        }
+    
+        // Load the map
+        window.onload = initMap;
+    </script>
 </body>
 </html>

@@ -126,9 +126,11 @@
      var rowContainer = document.getElementById('customerReviewRow');
      var divCard = $('#customerReviewDivCard'); // jQuery selector
  
+    $(scrollLeftBtn).hide();
+
      if (!('ontouchstart' in window)) {
          $(scrollRightBtn).show();
-         $(scrollLeftBtn).show();
+        //  $(scrollLeftBtn).show();
      }
  
      // Listen for click events on the right button
