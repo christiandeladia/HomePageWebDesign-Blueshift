@@ -36,6 +36,7 @@
         }
     }
     </script>
+    <script src="../load-components.js" defer></script>
 </head>
 <style>
     /* Full-width background image */
@@ -145,8 +146,9 @@
 </style>
 
 <body>
+    <div id="navbar"></div>
  <!-- NAVBAR -->
- <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
+ <!-- <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
     <div class="container">
         <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
             <img src="../assets/img/icons/logo/main-logo.webp" style="width: 24px;" alt="Logo">
@@ -188,10 +190,10 @@
     </div>
 </nav>
 
-<div id="overlayBgIndex" class="overlayBgIndex"></div>
+<div id="overlayBgIndex" class="overlayBgIndex"></div> -->
 
 <!-- SIDEBAR -->
-<div class="sidebar" id="sidebar">
+<!-- <div class="sidebar" id="sidebar">
     <ul class="sidebar-nav me-auto">
         <li class="sidebar-item position-static dropdown">
             <a class="sidebar-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" aria-expanded="false">
@@ -233,10 +235,10 @@
         <li class="sidebar-item"><a class="sidebar-link text-dark" href="https://my.blueshift.ph">Login</a></li>
         <li class="sidebar-item"><a class="sidebar-link text-dark" href="design-studio/design.html">Get Started</a></li>
     </ul>
-</div>
+</div> -->
 
 <!-- NAVBAR DROPDOWN -->
-<div id="productsDisplay" class="px-0" style="background-color: white; width: 100%;">
+<!-- <div id="productsDisplay" class="px-0" style="background-color: white; width: 100%;">
     <div class="row row-1 row-md-2 align-items-stretch g-0">
         
         <div class="col-4 gap-4">
@@ -369,7 +371,7 @@
         </div>
 
     </div>
-</div>
+</div> -->
 
 
 <!-- Hero Section -->
@@ -605,7 +607,8 @@
 
 
     <!-- FOOTER SECTION -->
-    <footer>
+    <div id="footer"></div>
+    <!-- <footer>
         <div class="container py-4 py-lg-5">
             <div class="row g-0">
                 <div class="col-lg-3 d-flex flex-column item social">
@@ -652,7 +655,7 @@
                 </ul>
             </div>
         </div>
-    </footer>
+    </footer> -->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
