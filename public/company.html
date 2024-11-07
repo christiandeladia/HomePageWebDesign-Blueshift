@@ -41,7 +41,7 @@
 <style>
     /* Full-width background image */
     .companyHeroSection  {
-        background-image: url('../assets/img/backgrounds/banners/Blog-Hero.webp');
+        background-image: url('../assets/img/companies/companyHeader2.jpg');
         background-size: cover;
         background-position: center;
         height: auto;
@@ -58,7 +58,9 @@
 
     /* Media query for tablet screens and up */
     @media (min-width: 992px) {
-
+        .companyHeroSection .row .column1{
+            padding:30px 40px !important;
+        }
     }
     @media (min-width: 768px) {
         .border-md-bottom {
@@ -137,9 +139,31 @@
             max-width: 100%;
         }
     }
+
+    @media (max-width: 1200px) {
+        .normalSpacing {
+            letter-spacing: normal !important;
+            font-size: 60px !important;
+        }
+        .normalSpan {
+            font-size: 2rem !important;
+        }
+    }
+    @media (max-width: 992px) {
+        .normalSpacing {
+            letter-spacing: normal !important;
+            font-size: 30px !important;
+        }
+        .normalSpan {
+            font-size: 1.5rem !important;
+        }
+    }
     @media (max-width: 768px) {
         .normalSpacing {
             letter-spacing: normal !important; /* Adjust this value as necessary */
+        }
+        .normalSpan {
+            font-size: 1.5rem !important;
         }
     }
     
@@ -378,7 +402,7 @@
 <section class="d-flex align-items-center">
     <div class="companyHeroSection container align-items-center p-5">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="column1 col-lg-6">
                 <div class="bg-white" style="padding: 30px 20px; border-radius: 10px;">
                     <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">About Blueshift</span></h5>
                     <h1 class="mb-3 display-5 lead fw-semibold text-dark">Empowering businesses & local communities to generate their own electricity sustainably.</h1>
@@ -418,8 +442,16 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="h-100 p-0 rounded-3">
-                <img src="../assets/img/backgrounds/banners/Blog-Hero.webp" alt="Description of image" class="img-fluid w-100 object-fit-cover rounded-3" style="height: 30vh;">
+            <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
+                <div class="row h-100 g-0">
+                    <!-- Image Column -->
+                <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
+                    <img src="/assets/img/home/user.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
+                </div>
+                <!-- Empty Column -->
+                <div class="col-md-6">
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -434,8 +466,16 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="h-100 p-0 rounded-3">
-                <img src="../assets/img/backgrounds/banners/Blog-Hero.webp" alt="Description of image" class="img-fluid w-100 object-fit-cover rounded-3" style="height: 30vh;">
+            <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
+                <div class="row h-100 g-0">
+                    <!-- Image Column -->
+                <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
+                    <img src="/assets/img/home/hula-hoop-3.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
+                </div>
+                <!-- Empty Column -->
+                <div class="col-md-6">
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -449,8 +489,16 @@
             </div>
         </div>
         <div class="col-md-5">
-            <div class="h-100 p-0 rounded-3">
-                <img src="../assets/img/backgrounds/banners/Blog-Hero.webp" alt="Description of image" class="img-fluid w-100 object-fit-cover rounded-3" style="height: 30vh;">
+            <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
+                <div class="row h-100 g-0">
+                    <!-- Image Column -->
+                <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
+                    <img src="/assets/img/home/fireworks.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
+                </div>
+                <!-- Empty Column -->
+                <div class="col-md-6">
+                </div>
+                </div>
             </div>
         </div>
     </div>
@@ -460,27 +508,30 @@
 
     <!-- Number Section  -->
     <div class="container container-fluid-md py-5 my-5">
+    <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Our Numbers</span></h5>
+
         <div class="row text-start align-items-stretch">
             <div class="col-md-4 mx-auto d-flex flex-column">
                 <p class="my-0">Total lifetime awarded contract between our customers</p>
-                <h1 class="fw-bold display-1 mt-auto normalSpacing" style="letter-spacing: -5px;">P18m+</h1>
+                <h1 class="fw-bold display-1 mt-auto normalSpacing">P22m</h1>
             </div>
             <div class="col-md-4 mx-auto d-flex flex-column">
                 <p class="my-0">Since our business was in operation.</p>
-                <h1 class="fw-bold display-1 mt-auto normalSpacing" style="letter-spacing: -10px;">3+ <span class="fw-bolder fs-1" style="letter-spacing: 1px; white-space: nowrap;">years</span></h1>
+                <h1 class="fw-bold display-1 mt-auto normalSpacing">2+ <span class="fw-bolder normalSpan" style="letter-spacing: 1px; white-space: nowrap; font-size: 2.5rem;">years</span></h1>
             </div>
             <div class="col-md-4 mx-auto d-flex flex-column">
                 <p class="my-0">Number of clean renewable energy produced by our clients.</p>
-                <h1 class="fw-bold display-1 mt-auto normalSpacing" style="letter-spacing: -10px;">211k+ <span class="fw-bolder fs-1" style="letter-spacing: 1px; white-space: nowrap;">kWh</span></h1>
+                <h1 class="fw-bold display-1 mt-auto normalSpacing">211k+ <span class="fw-bolder normalSpan" style="letter-spacing: 1px; white-space: nowrap; font-size: 2.5rem;">kWh</span></h1>
             </div>
         </div>
     </div>
     
 
-    <!-- largest Clients Section -->
+    <!-- Best Clients Section -->
     <section data-aos="fade" data-aos-duration="300" data-aos-delay="300" style="margin-top: 100px;">
         <div class="container">
-            <h2>We serve some of the largest clients</h2>
+            <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Our Showcased Work</span></h5>
+            <h2>We serve some of the best clients</h2>
         </div>
         <div class="container-fluid px-0" style="position: relative;">
             <div class="row g-0 px-0" id="customerReviewRow" style="overflow-x: auto;flex-wrap: nowrap;display: flex;margin-top: 25px;padding: 0px 25px;">
@@ -522,11 +573,13 @@
     </section>
 
     <!-- Maps Section  -->
-    <section class="serviceArea">
-        <div class="container col-xxl-8 px-4 py-5">
+    <section class="serviceArea py-5">
+        <div class="container col-xxl-8 py-5">
             <div class="row align-items-center g-5 py-5">
 
             <div class="col-lg-6 container position-relative">
+                <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Find Us</span></h5>
+
                     <div class="row g-0 mb-5">
                         <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12 col-xxl-12 text-center mx-auto">
                             <h2 style="font-weight: bold;text-align: left;">Where We Serve</h2>
@@ -559,6 +612,14 @@
                                     </div>
                                     <div class="px-2" style="margin-left: 10px;">
                                         <h6 class="mb-0" style="font-weight: bold;">Location</h6><a href="https://www.google.com/maps/place/Blueshift+Energy/@14.646171,121.0221382,17z/data=!3m1!4b1!4m6!3m5!1s0x9e14dabb7c017c5:0xc2b3d70a4706f085!8m2!3d14.6461658!4d121.0243269!16s%2Fg%2F11k3c_hbhm" target="_blank" onclick="clickedDirections"><span style="text-decoration: underline; color: rgb(33, 37, 41);">22 Ilagan St, Quezon City, Metro Manila, 1105</span></a>
+                                    </div>
+                                </div>
+                                <div class="d-flex align-items-center my-3">
+                                    <div class="feature-icon d-flex align-items-center">
+                                        <i class="fas fa-clock" style="color: rgb(13, 110, 253); background-color: #ffff; box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); font-size: 20px; padding: 12px; width: 45px; height: 45px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
+                                    </div>
+                                    <div class="px-2" style="margin-left: 10px;">
+                                        <h6 class="mb-0" style="font-weight: bold;">Operating Hours</h6><a class="text-decoration-none" href="#"><span style="text-decoration: none; color: rgb(33, 37, 41);">Monday to Saturday - 8am to 6pm</span></a>
                                     </div>
                                 </div>
                             </div>
@@ -676,20 +737,20 @@
             // Create a map centered on Metro Manila
             const metroManila = { lat: 14.5995, lng: 120.9842 }; // Coordinates for Metro Manila
             const map = new google.maps.Map(document.getElementById("metroManilaMap"), {
-                zoom: 10,
+                zoom: 8.7,
                 center: metroManila,
             });
     
             // Create a circle covering Metro Manila
             const circle = new google.maps.Circle({
-                strokeColor: '#FF0000',
-                strokeOpacity: 0.8,
+                strokeColor: '#0000FF',
+                strokeOpacity: 0.6,
                 strokeWeight: 2,
-                fillColor: '#FF0000',
-                fillOpacity: 0.35,
+                fillColor: '#0000FF',
+                fillOpacity: 0.15,
                 map,
                 center: metroManila,
-                radius: 20000, // Adjust the radius as needed (in meters)
+                radius: 60000, // 20000
             });
         }
     

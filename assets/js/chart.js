@@ -650,7 +650,7 @@ let conversationTimeout;
             },
             plugins: {
                 legend: {
-                display: true,
+                display: false,
                 position: 'top',
                 },
                 tooltip: {
