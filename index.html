@@ -132,194 +132,7 @@
   }
 </script>
 </head>
-<style>
-    .animated-line {
-        stroke-dasharray: 2800; /* Length of the line */
-        stroke-dashoffset: 2800; /* Start with the dash offset equal to the dash array (not visible initially) */
-        animation: dash 20s linear forwards; /* Use standard animation property for compatibility */
-    }
-    .broken-vertical-line{
-        stroke-dasharray: 2800; /* Length of the line */
-        stroke-dashoffset: 2800; /* Start with the dash offset equal to the dash array (not visible initially) */
-        animation: dash 20s linear forwards; /* Use standard animation property for compatibility */
-        animation-delay: 1s;
-    }
-    
-    @keyframes dash { /* Standard @keyframes without vendor prefixes */
-        from {
-            stroke-dashoffset: 2800; /* Start with the full dash offset (hidden) */
-        }
-        to {
-            stroke-dashoffset: 0; /* End with the dash offset at zero (fully visible) */
-        }
-    }
 
-    .animated-triangle {
-        opacity: 0; /* Initially hidden */
-        animation: fadeIn 1s forwards; /* Animation to fade in */
-        animation-delay: 1.3s; /* Delay before starting the animation */
-    }
-    .delayParagraph {
-        opacity: 0; /* Initially hidden */
-        animation: fadeIn 0.5s forwards; /* Animation to fade in */
-        animation-delay: 1.3s; /* Delay before starting the animation */
-    }
-
-    @keyframes fadeIn {
-        0% {
-            opacity: 0;
-        }
-        100% {
-            opacity: 1;
-        }
-    }
-
-    .modalBannerImg {
-        background-image: url('assets/img/backgrounds/banners/Blog-Hero.webp'); /* Replace with your image path */
-        background-size: cover; /* Make background cover the full area */
-        background-position: center; /* Center the background image */
-        height: 600px;
-    }
-
-     .modalGradientOverlay {
-        position: absolute; /* Position it absolutely within the parent */
-        top: 0; /* Start from the top */
-        left: 0; /* Start from the left */
-        right: 0; /* Extend to the right */
-        bottom: 0; /* Extend to the bottom */
-        background: rgb(41,41,41);
-background: linear-gradient(180deg, rgba(41,41,41,1) 0%, rgba(55,54,54,0.9549136549150911) 19%, rgba(76,76,76,0.9297035708814776) 33%, rgba(110,110,110,0.9100957277442226) 46%, rgba(122,122,122,0.8400677165397409) 55%, rgba(141,141,141,0.5067343832064075) 67%, rgba(238,238,238,0.2518324224220938) 77%, rgba(255,255,255,0) 88%);
-        z-index: 1; /* Position it above the background image */
-        height: 300px;
-    }
-
-     .modalBtnClose {
-        z-index: 2; /* Ensure the close button is above the gradient */
-    }
-    
-    .modalRadioGrp {
-        position: relative; /* Ensure the button group is positioned relative for stacking */
-        z-index: 2; /* Ensure the button group is above the gradient */
-    }
-    
-    .timeline-with-icons {
-        border-left: 1px solid hsl(0, 0%, 90%);
-        position: relative;
-        list-style: none;
-      }
-      
-      .timeline-with-icons .timeline-item {
-        position: relative;
-      }
-      
-      .timeline-with-icons .timeline-item:after {
-        position: absolute;
-        display: block;
-        top: 0;
-      }
-      
-      .timeline-with-icons .timeline-icon {
-        position: absolute;
-        left: -48px;
-        background-color: rgb(232, 231, 231);
-        color: gray;
-        border-radius: 50%;
-        height: 35px;
-        width: 35px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: background-color 1s ease, color 1s ease; /* Add this line */
-      }
-
-    /* Style for highlighted line and icon */
-    .timeline-item.highlighted .timeline-icon {
-        background-color: blue;
-        color: white;
-    }
-
-    /* Highlight the line by coloring the border */
-    .timeline-item::before {
-        content: "";
-        position: absolute;
-        left: -32px; /* Adjust based on your design */
-        width: 2px;
-        height: 0; /* Full height of the line within the item */
-        background-color: blue;
-        transition: height 1s ease;
-    }
-    .timeline-item.highlighted::before {
-        height: 100%; /* Full height of the line within the item */
-    }
-
-    .timeline-item.highlighted .timelineTitle,
-    .timeline-item.highlighted .timelineDescription{
-        color: #212529 !important;
-        opacity: 1 !important;
-    }
-
-    .timeline-item.highlighted .timelineDescription a{
-        opacity: 1 !important;
-    }
-
-    #AfterServiceBtnGroup .btn:disabled {
-        background-color: #0d6efd !important; /* Change this to your desired active color */
-        color: white !important; /* Change text color */
-        pointer-events: none !important; /* Prevent interaction */
-        opacity: 1 !important;
-    }
-
-
-    @media (max-width: 576px) {
-        .companyEngagementSection{
-            border-radius: 0px !important;
-            padding: 3rem 1rem !important;
-        }
-    }
-
-
-
-    /* SOLAR 101 SECTION  */
-.solarArticlesCard {
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-}
-
-.solarArticlesCard .image-content {
-    position: relative;
-    row-gap: 5px;
-}
-
-.solarArticlesCard .card-content {
-    display: flex;
-    flex-direction: column;
-    padding: 10px 5px;
-}
-
-.solarArticlesCard .card-content .title {
-    font-size: 18px;
-    font-weight: 500;
-    color: #333;
-}
-
-.solarArticlesCard .card-content .description {
-    font-size: 14px;
-    color: #707070;
-    text-align: justify;
-    text-justify: inter-word;
-}
-
-/* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
-#solar101Row::-webkit-scrollbar {
-    display: none;
-}
-/* Hide scrollbar for other browsers (Firefox, IE, Edge, etc.) */
-#solar101Row {
-    -ms-overflow-style: none;
-    scrollbar-width: none;
-}
-</style>
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
@@ -754,69 +567,6 @@ Your browser does not support the video tag.
 
                 </div>                
             </div>
-            
-            <!-- supply&installation container -->
-            <!-- <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="container p-lg-3 p-0" style="margin-bottom: 120px; width: 100%; border-radius: 15px;">
-                <div class="row">
-                    <div class=""><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">Supply & Installation</span></h5></div>
-                    
-
-                    <div class="col-lg-12 text-left p-3 column-container">
-                        <div class="card h-100 bg-transparent rounded-4" style="background: rgb(8,63,141); background: radial-gradient(circle at bottom right, rgb(5, 52, 117) 0%, rgba(5,43,98,1) 15%, rgba(4,19,41,1) 39%, rgba(0,0,0,1) 94%);">
-                            <a href="" class="d-block">
-                                <img src="assets/img/home/supply&installation1.png" alt="Sample Image 1" style="position: absolute; bottom: 0; right: 0; width: clamp(150px, 20vw, 200px); height: auto; margin-right: 20px;">
-                            </a>
-                            <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title text-decoration-none text-white"> Direct to Manufacturer</h5>
-                                <p class="card-text text-white" style="line-height: normal; min-height: 75px;">Get the best products at the best deal in the market.</p>
-                                <button class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-1 fw-semibold mb-3 mx-1" 
-                                        style="border: 3px solid #0B5ED7; width: 150px;">
-                                    <span class="text-start me-2">Learn more</span>
-                                    <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 25px; height: 30px;">
-                                        <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                    </svg>
-                                </button>  
-                            </div>
-                        </div>
-                    </div>
-                   
-
-                    <div class="col-lg-6 col-md-6 col-12 p-3 column-container">
-                        <div class="card h-100 bg-transparent border-1 rounded-4" style="background: rgb(8,63,141); background: radial-gradient(circle at bottom right, rgb(5, 52, 117) 0%, rgba(5,43,98,1) 15%, rgba(4,19,41,1) 39%, rgba(0,0,0,1) 94%);">
-                            <a href="" class="d-block">
-                                <img src="assets/img/home/supply&installation2.png" alt="Sample Image 2" style="position: absolute; bottom: 0; right: 0;  width: clamp(170px, 20vw, 210px); height: auto;  margin-right: 20px;">
-                            </a>
-                            <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title text-decoration-none text-white"> Experienced Installers</h5>
-                                <p class="card-text text-white" style="line-height: normal; min-height: 75px;">Your project led by our experienced team members.</p>
-                            </div>
-                        </div>
-                    </div>
-            
-
-                    <div class="col-lg-6 col-md-6 col-12 p-3 column-container">
-                        <div class="card h-100 bg-transparent border-1 rounded-4" style="background: rgb(8,63,141); background: radial-gradient(circle at bottom right, rgb(5, 52, 117) 0%, rgba(5,43,98,1) 15%, rgba(4,19,41,1) 39%, rgba(0,0,0,1) 94%);">
-                            <a href="" class="d-block">
-                                <img src="assets/img/home/supply&installation3.png" alt="Sample Image 3" style="position: absolute; bottom: 0; right: 0;  width: clamp(100px, 20vw, 130px); height: auto;  margin-right: 20px;">
-                            </a>
-                            <div class="card-body p-lg-5 p-4" style="position: relative; z-index: 1; min-height: 300px;">
-                                <h5 class="card-title text-decoration-none text-white"> Industry Leading Warranty</h5>
-                                <p class="card-text text-white" style="line-height: normal; min-height: 75px;">Protect your system with our in-house warranty and from our direct partners.</p>
-                                <button class="btn designBtn d-flex align-items-center justify-content-between rounded-pill px-2 py-1 fw-semibold mb-3 mx-1" 
-                                        style="border: 3px solid #0B5ED7; width: 150px;">
-                                    <span class="text-start me-2">Learn more</span>
-                                    <svg fill="#ffff" viewBox="0 0 24 24" class="ms-auto" style="width: 25px; height: 30px;">
-                                        <circle cx="12" cy="12" r="10" stroke="#0B5ED7" stroke-width="2" fill="#0B5ED7"></circle>
-                                        <path fill-rule="evenodd" clip-rule="evenodd" d="M12 8.5a.75.75 0 0 1 .75.75v2.5h2.5a.75.75 0 0 1 0 1.5h-2.5v2.5a.75.75 0 0 1-1.5 0v-2.5h-2.5a.75.75 0 0 1 0-1.5h2.5v-2.5a.75.75 0 0 1 .75-.75z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div> -->
-            
 
             <!-- after service container -->
             <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="container p-lg-3 p-0" style="margin-bottom: 120px; width: 100%; border-radius: 15px;">
@@ -961,7 +711,6 @@ Your browser does not support the video tag.
                 </div>
             </div>
             
-
         </div>
     </section>
 
@@ -1445,146 +1194,7 @@ Your browser does not support the video tag.
     </section>
 
 
-    <!-- RESULTS FROM OUR CUSTOMER SECTION -->
-    <section data-aos="fade" data-aos-duration="300" data-aos-delay="300" style="margin-top: 100px; display:none;">
-    <div class="container">
-        <div class="row g-0">
-            <div class="col-md-6">
-                <h2>Results from our customers.</h2>
-            </div>
-            <div class="col-md-6 text-lg-end"><a class="text-primary text-decoration-none" href="https://www.google.com/maps/place/Blueshift+Energy/@14.6461658,121.021752,17z/data=!3m1!4b1!4m6!3m5!1s0x9e14dabb7c017c5:0xc2b3d70a4706f085!8m2!3d14.6461658!4d121.0243269!16s%2Fg%2F11k3c_hbhm?entry=ttu" target="&quot;_blank">Blueshift Energy Inc.</a>
-                <div class="d-flex align-items-center justify-content-lg-end"><span class="text-warning" style="margin-right: 10px;">5.0</span><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-                    </svg><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-star-fill text-warning">
-                        <path d="M3.612 15.443c-.386.198-.824-.149-.746-.592l.83-4.73L.173 6.765c-.329-.314-.158-.888.283-.95l4.898-.696L7.538.792c.197-.39.73-.39.927 0l2.184 4.327 4.898.696c.441.062.612.636.282.95l-3.522 3.356.83 4.73c.078.443-.36.79-.746.592L8 13.187l-4.389 2.256z"></path>
-                    </svg><img src="assets/img/icons/google_logo.webp" style="width: 20px;margin-left: 10px;height: 20px;" width="20" height="16" loading="lazy"></div>
-            </div>
-        </div>
-    </div>
-        <div class="container-fluid px-0" style="position: relative;">
-            <div class="row g-0" id="customerReviewRow" style="overflow-x: auto;flex-wrap: nowrap;display: flex;margin-top: 25px;padding: 0px;">
-                <div class="col-11 col-lg-5" style="flex: 0 0 auto;margin-left: 15px;">
-                    <div id="customerReviewDivCard" class="bg-success rounded" style="height: 100%;width: 100%;padding: 35px;">
-                        <p class="text-white h3">"Our bill from Meralco of 20k per month is now down to 3k per month. This has helped improve our cashflow as a business."</p>
-                        <p class="text-white" style="margin-top: 15px;">- Orex Health Solutions</p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-5" style="flex: 0 0 auto;margin-left: 15px;"><a href="/public/site.html?id=9L0cz5OtiQEMCHMkYBng" class="text-decoration-none">
-                        <div class="rounded" style="height: 60vh;background: url(&quot;assets/img/projects/hotel_kimberly.webp&quot;) center / cover;padding: 35px;">
-                            <div style="background: rgba(255,255,255,0.46);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255,255,255,0.39);border-radius: 10px;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding: 8px;">
-                                <p class="h5 text-white" style="margin: 0px;">Learn more about Hotel Kimberly Tagaytay's energy mix.</p>
-                            </div>
-                        </div>
-                    </a></div>
-                <div class="col-11 col-lg-5" style="flex: 0 0 auto;margin-left: 15px;">
-                    <div class="bg-success rounded" style="height: 100%;width: 100%;padding: 35px;"><img src="assets/img/companies/swanlake.webp" style="width: 80px;" loading="lazy">
-                        <p class="text-white h3">This restaurant is saving P2,000 per month without having to maintain anything from the system.</p>
-                    </div>
-                </div>
-                <div class="col-12 col-lg-5" style="flex: 0 0 auto;margin-left: 15px;">
-                    <div class="d-flex align-items-end rounded" style="height: 60vh;background: url(&quot;assets/img/projects/new_manila.webp&quot;) center / cover;padding: 35px;">
-                        <div style="background: rgba(255,255,255,0.46);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255,255,255,0.39);border-radius: 10px;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding: 8px;">
-                            <p class="h5 text-white" style="margin: 0px;">The residential project has achieved a completely zero peso bill with Meralco through Solar.</p>
-                        </div>
-                    </div>
-                </div>
-            </div><button class="btn btn-light rounded-circle" id="customerReviewRightBtn" type="button" style="margin-right: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;right: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short" style="width: 32px;height: 32px;">
-                    <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"></path>
-                </svg></button><button class="btn btn-light rounded-circle" id="customerReviewLeftBtn" type="button" style="margin-left: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;left: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-left-short" style="width: 32px;height: 32px;">
-                    <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"></path>
-                </svg></button>
-        </div>
-    </section>
-
-
-    <!-- BLUESHIFT BY THE NUMBERS SECTION -->
-    <!-- <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="container col-xxl-8 px-4 py-5" style="margin-top: 100px;">
-        <div class="row flex-lg-row align-items-center g-5 py-5">
-        
-        <div class="col-lg-7 my-0 px-lg-5">
-            <h1 class="display-5 fw-semibold lh-1 mb-3"><span style="color: #377ab0;">Blueshift</span> by the numbers</h1>
-            <p class="" style="text-align: justify; text-justify: inter-word;">Discover the impressive impact of Blueshift through key statistics that highlight our success and commitment. From the number of solar panels installed to the millions saved in energy costs, our achievements speak for themselves. Explore how our data-driven approach translates into real-world benefits for our customers and the environment.</p>
-        </div>
-        <div class="col-12 col-sm-12 col-lg-5 mt-0 px-lg-5">
-            <div class="row">
-                <div class="col-md-12">
-                <div class="about__skills">
-                    <div class="row no-gutters mb-0 mb-sm-4">
-                    <div class="mb-4 mb-sm-0 pr-sm-3 col-sm-6 col-6">
-                        <div class="media">
-                            <div class="feature-icon my-2">
-                                <i class="fas fa-solar-panel" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="fw-semibold"  data-number="9640">10,000+</h3>
-                                <p class="m-0 lh-1">Solar Panels Installed</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-4 mb-sm-0 pl-sm-3 col-sm-6 col-6">
-                        <div class="media">
-                            <div class="feature-icon my-2">
-                                <i class="fas fa-users" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="fw-semibold" data-number="3582">1,000+</h3>
-                                <p class="m-0 lh-1"> satisfied customers</p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-
-                    <div class="row no-gutters mb-0 mb-sm-4">
-                    <div class="mb-4 mb-sm-0 pr-sm-3 col-sm-6 col-6">
-                        <div class="media">
-                            <div class="feature-icon my-2">
-                                <i class="fas fa-money-bill-wave" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="fw-semibold"  data-number="570860" data-prefix="₱ "></h3>
-                                <p class="m-0 lh-1">invested in renewable energy projects</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="mb-0 pl-sm-3 col-sm-6 col-6">
-                        <div class="media">
-                            <div class="feature-icon my-2">
-                                <i class="fas fa-leaf" style="color: #377ab0; background-color: #ffff; border: 3px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center;"></i>
-                            </div>
-                            <div class="media-body">
-                                <h3 class="fw-semibold" data-number="83570" data-prefix="₱ ">$2M+</h3>
-                                <p class="m-0 lh-1">tons of CO2 emissions saved annually</p>
-                            </div>
-                        </div>
-                    </div>
-                    </div>
-                </div>
-                </div>
-            </div>
-        </div>
-        </div>
-    </div> -->
-
-
-    <!-- FREE SECTION -->
-    <!-- <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="px-4 py-5 my-5 text-center" style="background: rgb(8,63,141); background: radial-gradient(circle at bottom, rgba(8,63,141,1) 0%, rgba(5,43,98,1) 29%, rgba(4,19,41,1) 59%, rgba(0,0,0,1) 94%); color: white;">
-        <img class="d-block mx-auto" src="assets/img/home/cleaning-service.png" alt="" width="100" height="auto" style="filter: invert(90%);">
-        <h1 class="display-5 fw-semibold">Get 3x Free Cleaning for your first 3 years with us.</h1>
-        <div class="col-lg-7 mx-auto">
-            <p class="mb-5" style="text-align: justify;">At Blueshift, we’re dedicated to providing you with not only the best solar solutions but also exceptional customer care. As part of our commitment to ensuring your solar system operates at peak performance, we’re offering three complimentary cleanings during your first three years with us.</p>
-        </div>
-    </div> -->
-    
-
     <!-- About Blueshift Section  -->
-
-
     <div class="px-4 pt-5 my-5 text-center border-bottom" style="background-color: #212529;">
         <h1 class="display-4 fw-bold  text-white">About Blueshift</h1>
         <div class="col-lg-6 mx-auto">
@@ -1599,9 +1209,6 @@ Your browser does not support the video tag.
           </div>
         </div>
       </div>
-    
-    
-    
     
     <!-- Net Metering Section  -->
     <div class="container my-5" style="padding: 100px 0 40px 0">
@@ -1802,8 +1409,8 @@ Your browser does not support the video tag.
                                 </div>
                                 
                                 <div class="card-content">
-                                    <h3 class="">Custom Design & Recommendations Just for You</h3>
-                                    <p class="">We’ll help you choose the best solar setup based on your energy needs, monthly usage, and appliances to create a plan that fits your lifestyle.</p>
+                                    <h3 class="title">Custom Design & Recommendations Just for You</h3>
+                                    <p class="description">We’ll help you choose the best solar setup based on your energy needs, monthly usage, and appliances to create a plan that fits your lifestyle.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -1821,8 +1428,8 @@ Your browser does not support the video tag.
                                 </div>
 
                                 <div class="card-content">
-                                    <h3 class="">Enjoy the Savings While We Handle the Monitoring</h3>
-                                    <p class="">Relax and save with solar! We’ll keep your system running at its best, so you don’t have to worry about a thing.</p>
+                                    <h3 class="title">Enjoy the Savings While We Handle the Monitoring</h3>
+                                    <p class="description">Relax and save with solar! We’ll keep your system running at its best, so you don’t have to worry about a thing.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -1899,7 +1506,7 @@ Your browser does not support the video tag.
 
 
                                 <div class="container mb-5">
-                                    <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
+                                    <div class="homeEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
                                         <div class="col-lg-7">
                                             <div class="h-100">
                                                 <h1 class="mb-3 text-white display-3 fw-semibold text-capitalize">Your Home Powered By Solar Now.</h1>
@@ -1939,8 +1546,8 @@ Your browser does not support the video tag.
                                 </div>
                                 
                                 <div class="card-content">
-                                    <h3 class="text-capitalize">Find the Best Solar Solution for Your Family</h3>
-                                    <p class="">Whether you’re looking to stay powered during brownouts, lower your electricity bills, or achieve both, our advisors will provide you with transparent recommendations tailored to your needs.</p>
+                                    <h3 class="text-capitalize title">Find the Best Solar Solution for Your Family</h3>
+                                    <p class="description">Whether you’re looking to stay powered during brownouts, lower your electricity bills, or achieve both, our advisors will provide you with transparent recommendations tailored to your needs.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -1958,8 +1565,8 @@ Your browser does not support the video tag.
                                 </div>
 
                                 <div class="card-content">
-                                    <h3 class="text-capitalize">Prepare for Wires, Panels, and Regulations from the Start</h3>
-                                    <p class="">Ensure a clean and organized setup by planning the wiring and panel boxes during the early stages of your home construction. This approach not only keeps your home looking tidy but also follows the necessary guidelines for quicker approval.</p>
+                                    <h3 class="text-capitalize title">Prepare for Wires, Panels, and Regulations from the Start</h3>
+                                    <p class="description">Ensure a clean and organized setup by planning the wiring and panel boxes during the early stages of your home construction. This approach not only keeps your home looking tidy but also follows the necessary guidelines for quicker approval.</p>
                                     <a href="#" class="icon-link" style=" align-self: flex-start; display: inline-block;">
                                         Learn more
                                     </a>
@@ -2030,7 +1637,7 @@ Your browser does not support the video tag.
                                 </section>
 
                                 <div class="container mb-5">
-                                    <div class="companyEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
+                                    <div class="homeEngagementSection row align-items-md-stretch rounded-5 bg-black p-5">
                                         <div class="col-lg-7">
                                             <div class="h-100">
                                                 <h1 class="mb-3 text-white display-3 fw-semibold text-capitalize">Your future home powered by solar.</h1>
@@ -2216,7 +1823,7 @@ Your browser does not support the video tag.
     <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.5.0/firebase-analytics-compat.js"></script>
     <script src="../assets/js/aos.min.js"></script>
-    <script src="assets/js/company.js"></script>
+    <!-- <script src="assets/js/company.js"></script> -->
     
     <script src="assets/js/public/global.js"></script>
     <!-- <script src="assets/js/design-studio/solar-design.js"></script> -->

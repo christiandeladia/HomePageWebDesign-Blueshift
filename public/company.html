@@ -21,13 +21,10 @@
     <link rel="icon" type="image/png" sizes="500x500" href="../assets/img/icons/logo/512-white.png">
     <!-- <link rel="stylesheet" href="../assets/bootstrap/css/bootstrap.min.css"> -->
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=ABeeZee&amp;display=swap">
-
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <link rel="stylesheet" href="../assets/css/homepage.css">
-    <!-- <link rel="stylesheet" href="../assets/css/contact.css"> -->
-
+    <link rel="stylesheet" href="../assets/css/company.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-
     <script type="importmap">
     {
         "imports": {
@@ -35,476 +32,119 @@
         "three/addons/": "https://unpkg.com/three@v0.162.0/examples/jsm/"
         }
     }
-    </script>
-    <script src="../load-components.js" defer></script>
+    </script>  
 </head>
-<style>
-    /* Full-width background image */
-    .companyHeroSection  {
-        background-image: url('../assets/img/companies/companyHeader2.jpg');
-        background-size: cover;
-        background-position: center;
-        height: auto;
-        position: relative;
-        color: white;
-        display: flex;
-        align-items: center;
-        border-radius: 20px;
-    }
-    .companyHeroBtns .btn {
-        margin-right: 10px;
-        font-size: 16px;
-    }
 
-    /* Media query for tablet screens and up */
-    @media (min-width: 992px) {
-        .companyHeroSection .row .column1{
-            padding:30px 40px !important;
-        }
-    }
-    @media (min-width: 768px) {
-        .border-md-bottom {
-          border-bottom: 1px solid #dee2e6; /* Default Bootstrap border color */
-        }
-    }
-
-    /* Media query for tablet screens and below */
-    @media (max-width: 992px) {
-        .companyStorySection p{
-            font-size: 28px !important;
-        }
-    }
-
-    /* Media query for tablet screens and up */
-    @media (max-width: 768px) {
-        .companyHeroSection h1{
-            font-size: 28px;
-        }
-        .companyHeroSection p{
-            font-size: 18px;
-        }
-        .companyHeroBtns .btn{
-            font-size: 14px;
-            margin-right: 5px;
-        }
-        .companyStorySection p{
-            font-size: 22px !important;
-        }
-
-    }
-
-    /* Media query for mobile screens and up */
-    @media (max-width: 576px) {
-        .companyHeroSection{
-            border-radius: 0px !important;
-            padding: 35px !important;
-        }
-        .companyHeroSection h1{
-            font-size: 26px;
-        }
-        .companyHeroSection p{
-            font-size: 16px;
-        }
-        .companyHeroBtns .btn{
-            font-size: 12px;
-            margin-right: 3px;
-        }
-        .companyStorySection p{
-            font-size: 19px !important;
-        }
-        .companyBadge{
-            font-size: 12px !important;
-        }
-        .companyEngagementSection{
-            border-radius: 0px !important;
-            padding: 3rem 1rem !important;
-        }
-    }
-
-    
-    .map-container {
-        box-sizing: border-box;
-        padding: 20px;
-        border: 2px solid #dee2e6;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        height: 450px;
-        width: 100%;
-        border-radius: 10px;
-    }
-
-
-    @media (min-width: 768px) and (max-width: 992px) {
-        .container-fluid-md {
-            width: 100%;
-            max-width: 100%;
-        }
-    }
-
-    @media (max-width: 1200px) {
-        .normalSpacing {
-            letter-spacing: normal !important;
-            font-size: 60px !important;
-        }
-        .normalSpan {
-            font-size: 2rem !important;
-        }
-    }
-    @media (max-width: 992px) {
-        .normalSpacing {
-            letter-spacing: normal !important;
-            font-size: 30px !important;
-        }
-        .normalSpan {
-            font-size: 1.5rem !important;
-        }
-    }
-    @media (max-width: 768px) {
-        .normalSpacing {
-            letter-spacing: normal !important; /* Adjust this value as necessary */
-        }
-        .normalSpan {
-            font-size: 1.5rem !important;
-        }
-    }
-    
-</style>
 
 <body>
     <div id="navbar"></div>
- <!-- NAVBAR -->
- <!-- <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
-    <div class="container">
-        <a class="navbar-brand d-flex align-items-start" href="/" style="padding: 0;">
-            <img src="../assets/img/icons/logo/main-logo.webp" style="width: 24px;" alt="Logo">
-            <h5 style="margin: 0 8px;">Blueshift</h5>
-        </a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent" aria-controls="navbarContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div id="navbarContent" class="collapse navbar-collapse d-none d-lg-block">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item position-static dropdown">
-                    <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
-                        <span>Products</span>
-                        <span style="margin-left: 5px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item position-static dropdown">
-                    <a class="nav-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="padding-left: 12px; padding-right: 12px;">
-                        <span>Resources</span>
-                        <span style="margin-left: 5px;">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                                <polyline points="6 9 12 15 18 9"></polyline>
-                            </svg>
-                        </span>
-                    </a>
-                </li>
-                <li class="nav-item"><a class="nav-link text-dark" href="../public/company.html" style="padding-left: 12px; padding-right: 12px;">Company</a></li>
-                <li class="nav-item"><a class="nav-link text-dark" href="../public/contact.html" style="padding-left: 12px; padding-right: 12px;">Contact</a></li>
-            </ul>
-            <ul class="navbar-nav ms-auto align-items-center">
-                <li class="nav-item"><a href="https://my.blueshift.ph" class="btn btn-outline-primary me-sm-3 mb-2 mb-sm-0 rounded-1" style="padding: 8px 24px; font-size: 12px;">Login</a></li>
-                <li class="nav-item"><a href="../design-studio/design.html" class="btn btn-primary rounded-1" style="padding: 8px 24px; font-size: 12px;">Get started</a></li>
-            </ul>
-        </div>
-    </div>
-</nav>
 
-<div id="overlayBgIndex" class="overlayBgIndex"></div> -->
+    <!-- Hero Section -->
+    <section class="d-flex align-items-center">
+        <div class="companyHeroSection container align-items-center p-5">
+            <div class="row">
+                <div class="column1 col-lg-6">
+                    <div class="bg-white" style="padding: 30px 20px; border-radius: 10px;">
+                        <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">About Blueshift</span></h5>
+                        <h1 class="mb-3 display-5 lead fw-semibold text-dark">Empowering businesses & local communities to generate their own electricity sustainably.</h1>
+                        <p class="mb-4 lead small lh-sm text-dark">For the first time people can take charge of their own electricity. We are here to help you take advantage of that.</p>
+                        <div class="companyHeroBtns">
+                            <a href="#" class="btn btn-primary btn-lg rounded-pill">Get Started Today</a>
+                            <a href="../public/contact.html" class="btn btn-outline-primary btn-lg rounded-pill ">Contact</a>
+                        </div>
+                    </div>
+                </div>
 
-<!-- SIDEBAR -->
-<!-- <div class="sidebar" id="sidebar">
-    <ul class="sidebar-nav me-auto">
-        <li class="sidebar-item position-static dropdown">
-            <a class="sidebar-link text-dark d-flex justify-content-between align-items-center" href="#" id="productsNav" role="button" aria-expanded="false">
-                <span>Products</span>
-                <span style="margin-left: 5px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </span>     
-            </a>
-            <ul class="dropdown-menu border border-0 p-0" aria-labelledby="productsNav" style="display: none; padding-left: 0;">
-                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-solar-panel" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>All in one Solar Installation</a></li>
-                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-bolt" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Net Metering Processing</a></li>
-                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-hard-hat" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Pre-Construction Consultation</a></li>
-                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-tv" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Blueshift Monitoring</a></li>
-                <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#"><i class="fas fa-shopping-bag" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Shop equipment & materials</a></li>
-            </ul>
-        </li>
-        
-        <li class="sidebar-item position-static dropdown">
-            <a class="sidebar-link text-dark d-flex justify-content-between align-items-center" href="#" id="resourcesNav" role="button" aria-expanded="false">
-                <span>Resources</span>
-                <span style="margin-left: 5px;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" class="feather feather-chevron-down">
-                        <polyline points="6 9 12 15 18 9"></polyline>
-                    </svg>
-                </span>    
-            </a>
-            <ul class="dropdown-menu border border-0 p-0" aria-labelledby="resourcesNav" style="display: none; padding-left: 0;">
-                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-users" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Testimonials</a></li>
-                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-book-open" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Case studies</a></li>
-                <li><a class="dropdown-item" style="padding: 12px 20px;" href="#"><i class="fas fa-drafting-compass" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Solar Design Studio</a></li>
-                <li><a class="dropdown-item" style="padding: 12px 20px; border-bottom: 1px solid gray;" href="#"><i class="fas fa-newspaper" style="color: #377ab0;font-size: 15px; padding: 0 12px;"></i>Articles</a></li>
-            </ul>
-        </li>
-        
-        <li class="sidebar-item"><a class="sidebar-link text-dark" href="#">Company</a></li>
-        <li class="sidebar-item"><a class="sidebar-link text-dark" href="public/contact.html">Contact</a></li>
-        <li class="sidebar-item"><a class="sidebar-link text-dark" href="https://my.blueshift.ph">Login</a></li>
-        <li class="sidebar-item"><a class="sidebar-link text-dark" href="design-studio/design.html">Get Started</a></li>
-    </ul>
-</div> -->
-
-<!-- NAVBAR DROPDOWN -->
-<!-- <div id="productsDisplay" class="px-0" style="background-color: white; width: 100%;">
-    <div class="row row-1 row-md-2 align-items-stretch g-0">
-        
-        <div class="col-4 gap-4">
-            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
-                <div class="feature-icon d-flex align-items-center">
-                    <img src="../assets/img/home/all-in-one.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">All in one Solar Installation</p>
-                    <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
-        
-                    <button class="btn text-start" style="min-width: 150px;">
-                        Explore details
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
-                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                        </svg>
-                    </button>
-                </div>
-            </a>
-        </div>
-        
-
-        <div class="col-4 gap-4">
-            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center">
-                    <i class="fas fa-bolt" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Net Metering Processing</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Start exporting power when not in use. Get credited for energy you sell.</p>
-                </div>
-            </a>
-            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center">
-                    <i class="fas fa-hard-hat" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Pre-Construction Consultation</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Get help on designing for your new home before it's complete.</p>
-                </div>
-            </a>
-        </div>
-        
-        <div class="col-4 gap-4">
-            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center">
-                    <i class="fas fa-tv" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Blueshift Monitoring</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">In house monitoring so you don't have to worry about your system.</p>
-                </div>
-            </a>
-            <a href="#" id="#" class="productBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center">
-                    <i class="fas fa-shopping-bag" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Shop equipment & materials</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Are you an installer? Get the best products through our store.</p>
-                </div>
-            </a>
-        </div>
-
-    </div>
-</div>
-
-<div id="resourcesDisplay" class="px-0" style="background-color: white; width: 100%;">
-    <div class="row row-1 row-md-2 align-items-stretch g-0">
-        
-        <div class="col-4 gap-4">
-            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-100 text-decoration-none text-dark p-5">
-                <div class="feature-icon d-flex align-items-center">
-                    <img src="../assets/img/home/testimonials.jpg" alt="Solar Panel" class="img-fluid" style="border-radius: 25px; width: 200px; max-width: 100%; height: auto;">
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Testimonials</p>
-                    <p class="small mb-3" style="text-align: justify; text-justify: inter-word;">See what others have to say about us.</p>
-
-                    <button class="btn text-start" style="min-width: 150px;">
-                        Explore details
-                        <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right">
-                            <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
-                        </svg>
-                    </button>
-                </div>
-            </a>
-        </div>
-
-        <div class="col-4 gap-4">
-            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center">
-                    <i class="fas fa-book-open" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Case studies</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Learn more on how we have helped some of our customers.</p>
-                </div>
-            </a>
-            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center">
-                    <i class="fas fa-drafting-compass" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Solar Design Studio</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
-                </div>
-            </a>
-        </div>
-        
-        <div class="col-4 gap-4">
-            <a href="#" id="#" class="resourcesBtn d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center">
-                    <i class="fas fa-newspaper" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center">
-                    <p class="fw-semibold mb-1">Articles</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Browse helpful articles to help you understand.</p>
-                </div>
-            </a>
-            <div id="#" class="d-flex align-items-center gap-3 border border-1 h-50 p-5 text-decoration-none text-dark">
-                <div class="feature-icon d-flex align-items-center" style="visibility: hidden;">
-                    <i class="fas fa-solar-panel" style="color: #377ab0; background-color: #ffff; border: 1px solid #377ab0; font-size: 25px; padding: 12px; width: 50px; height: 50px; border-radius: 5px; display: flex; align-items: center; justify-content: center;"></i>
-                </div>
-                <div class="d-flex flex-column justify-content-center" style="visibility: hidden;">
-                    <p class="fw-semibold mb-1">Featured title</p>
-                    <p class="small mb-1" style="text-align: justify; text-justify: inter-word;">Paragraph of text beneath the heading to explain the heading.</p>
-                </div>
             </div>
         </div>
+    </section>
 
+    <!-- Our Story Section -->
+    <div class="companyStorySection container py-5 my-5 text-center">
+        <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Our Story</span></h5>
+        <div class="col-xl-10 col-lg-11 mx-auto">
+            <p class="lead fw-semibold" style=" font-size: 32px;">Blueshift is founded on the belief that sustainability should be easy, accessible, and affordable for everyone. Because of this, we pursued a business that benefits our customers, the country, the environment, and our employees—a win-win-win for all.</p>
+        </div>
     </div>
-</div> -->
 
+    <!-- Our Core Values Section -->
+    <div class="companyValuesSection container my-5 text-start">
+        <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Our Values</span></h5>
+        <h2 class="mb-3">Our Core Values</h2>
+        
 
-<!-- Hero Section -->
-<section class="d-flex align-items-center">
-    <div class="companyHeroSection container align-items-center p-5">
-        <div class="row">
-            <div class="column1 col-lg-6">
-                <div class="bg-white" style="padding: 30px 20px; border-radius: 10px;">
-                    <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">About Blueshift</span></h5>
-                    <h1 class="mb-3 display-5 lead fw-semibold text-dark">Empowering businesses & local communities to generate their own electricity sustainably.</h1>
-                    <p class="mb-4 lead small lh-sm text-dark">For the first time people can take charge of their own electricity. We are here to help you take advantage of that.</p>
-                    <div class="companyHeroBtns">
-                        <a href="#" class="btn btn-primary btn-lg rounded-pill">Get Started Today</a>
-                        <a href="../public/contact.html" class="btn btn-outline-primary btn-lg rounded-pill ">Contact</a>
+        <div class="row align-items-md-stretch my-4">
+            <div class="col-md-7">
+                <div class="h-100 border-top py-3">
+                    <h5 class="mb-2"><span class="small">Honesty first</span></h5>
+                    <h2 class="mb-3">Integrity</h2>
+                    <p class="col-md-10">We won’t promise you unicorns & all the money you can dream of. That is why you’ll find our sales team prioritizes on helping you understand the best options for you instead of pushing aggressive sales tactics.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
+                    <div class="row h-100 g-0">
+                        <!-- Image Column -->
+                    <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
+                        <img src="/assets/img/home/user.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
+                    </div>
+                    <!-- Empty Column -->
+                    <div class="col-md-6">
+                    </div>
                     </div>
                 </div>
             </div>
-
         </div>
+
+        <div class="row align-items-md-stretch mb-4">
+            <div class="col-md-7">
+                <div class="h-100 border-top py-3">
+                    <h5 class="mb-2"><span class="small">People first</span></h5>
+                    <h2 class="mb-3">Community</h2>
+                    <p class="col-md-10">We understand the shady business practices people do to make a little more. Our main priority is to build long term relationship & put your needs over profits.
+                    </p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
+                    <div class="row h-100 g-0">
+                        <!-- Image Column -->
+                    <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
+                        <img src="/assets/img/home/hula-hoop-3.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
+                    </div>
+                    <!-- Empty Column -->
+                    <div class="col-md-6">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row align-items-md-stretch mb-4">
+            <div class="col-md-7">
+                <div class="h-100 border-top border-md-bottom py-3">
+                    <h5 class="mb-2"><span class="small">Innovation first</span></h5>
+                    <h2 class="mb-3">Innovation</h2>
+                    <p class="col-md-10">At Blueshift we prioritize bringing customer value vs bringing shareholders value. We promise to keep pushing boundaries & improve for past, present & future customers.</p>
+                </div>
+            </div>
+            <div class="col-md-5">
+                <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
+                    <div class="row h-100 g-0">
+                        <!-- Image Column -->
+                    <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
+                        <img src="/assets/img/home/fireworks.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
+                    </div>
+                    <!-- Empty Column -->
+                    <div class="col-md-6">
+                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        
     </div>
-</section>
-
-<!-- Our Story Section -->
-<div class="companyStorySection container py-5 my-5 text-center">
-    <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Our Story</span></h5>
-    <div class="col-xl-10 col-lg-11 mx-auto">
-        <p class="lead fw-semibold" style=" font-size: 32px;">Blueshift is founded on the belief that sustainability should be easy, accessible, and affordable for everyone. Because of this, we pursued a business that benefits our customers, the country, the environment, and our employees—a win-win-win for all.</p>
-    </div>
-</div>
-
-
-<!-- Our Core Values Section -->
-<div class="companyValuesSection container my-5 text-start">
-    <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Our Values</span></h5>
-    <h2 class="mb-3">Our Core Values</h2>
-    
-
-    <div class="row align-items-md-stretch my-4">
-        <div class="col-md-7">
-            <div class="h-100 border-top py-3">
-                <h5 class="mb-2"><span class="small">Honesty first</span></h5>
-                <h2 class="mb-3">Integrity</h2>
-                <p class="col-md-10">We won’t promise you unicorns & all the money you can dream of. That is why you’ll find our sales team prioritizes on helping you understand the best options for you instead of pushing aggressive sales tactics.</p>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
-                <div class="row h-100 g-0">
-                    <!-- Image Column -->
-                <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
-                    <img src="/assets/img/home/user.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
-                </div>
-                <!-- Empty Column -->
-                <div class="col-md-6">
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row align-items-md-stretch mb-4">
-        <div class="col-md-7">
-            <div class="h-100 border-top py-3">
-                <h5 class="mb-2"><span class="small">People first</span></h5>
-                <h2 class="mb-3">Community</h2>
-                <p class="col-md-10">We understand the shady business practices people do to make a little more. Our main priority is to build long term relationship & put your needs over profits.
-                </p>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
-                <div class="row h-100 g-0">
-                    <!-- Image Column -->
-                <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
-                    <img src="/assets/img/home/hula-hoop-3.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
-                </div>
-                <!-- Empty Column -->
-                <div class="col-md-6">
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="row align-items-md-stretch mb-4">
-        <div class="col-md-7">
-            <div class="h-100 border-top border-md-bottom py-3">
-                <h5 class="mb-2"><span class="small">Innovation first</span></h5>
-                <h2 class="mb-3">Innovation</h2>
-                <p class="col-md-10">At Blueshift we prioritize bringing customer value vs bringing shareholders value. We promise to keep pushing boundaries & improve for past, present & future customers.</p>
-            </div>
-        </div>
-        <div class="col-md-5">
-            <div class="card h-100 border-0 shadow rounded-4" style="min-height: 250px;">
-                <div class="row h-100 g-0">
-                    <!-- Image Column -->
-                <div class="col-md-6 d-flex align-items-center justify-content-center h-100 ">
-                    <img src="/assets/img/home/fireworks.png" alt="Centered Image" class="float-start" style="width: 200px; height:auto;">
-                </div>
-                <!-- Empty Column -->
-                <div class="col-md-6">
-                </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    
-</div>
 
     <!-- Number Section  -->
     <div class="container container-fluid-md py-5 my-5">
@@ -526,7 +166,6 @@
         </div>
     </div>
     
-
     <!-- Best Clients Section -->
     <section data-aos="fade" data-aos-duration="300" data-aos-delay="300" style="margin-top: 100px;">
         <div class="container">
@@ -534,10 +173,10 @@
             <h2>We serve some of the best clients</h2>
         </div>
         <div class="container-fluid px-0" style="position: relative;">
-            <div class="row g-0 px-0" id="customerReviewRow" style="overflow-x: auto;flex-wrap: nowrap;display: flex;margin-top: 25px;padding: 0px 25px;">
+            <div class="row g-0 px-0" id="companyClientsRow" style="overflow-x: auto;flex-wrap: nowrap;display: flex;margin-top: 25px;padding: 0px 25px;">
                 <div class="col-11 col-lg-5" style="flex: 0 0 auto;margin-left: 15px;">
 
-                    <div id="customerReviewDivCard" class="d-flex align-items-end rounded" style="height: 60vh;background: url(&quot;../assets/img/home/design.jpg&quot;) center / cover;padding: 35px;">
+                    <div id="companyClientsDivCard" class="d-flex align-items-end rounded" style="height: 60vh;background: url(&quot;../assets/img/home/design.jpg&quot;) center / cover;padding: 35px;">
                         <div style="background: rgba(255,255,255,0.46);backdrop-filter: blur(5px);-webkit-backdrop-filter: blur(5px);border: 1px solid rgba(255,255,255,0.39);border-radius: 10px;box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);padding: 8px;">
                             <p class="h5 text-white" style="margin: 0px;">This home started with 30k/monthly down to 5k by going hybrid with us.</p>
                         </div>
@@ -564,9 +203,9 @@
                         </div>
                     </div>
                 </div>
-            </div><button class="btn btn-light rounded-circle" id="customerReviewRightBtn" type="button" style="margin-right: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;right: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short" style="width: 32px;height: 32px;">
+            </div><button class="btn btn-light rounded-circle" id="companyClientsRightBtn" type="button" style="margin-right: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;right: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-right-short" style="width: 32px;height: 32px;">
                     <path fill-rule="evenodd" d="M4 8a.5.5 0 0 1 .5-.5h5.793L8.146 5.354a.5.5 0 1 1 .708-.708l3 3a.5.5 0 0 1 0 .708l-3 3a.5.5 0 0 1-.708-.708L10.293 8.5H4.5A.5.5 0 0 1 4 8"></path>
-                </svg></button><button class="btn btn-light rounded-circle" id="customerReviewLeftBtn" type="button" style="margin-left: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;left: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-left-short" style="width: 32px;height: 32px;">
+                </svg></button><button class="btn btn-light rounded-circle" id="companyClientsLeftBtn" type="button" style="margin-left: 15px;width: 50px;height: 50px;padding: 0px;position: absolute;left: 20px;top: 50%;transform: translateY(-50%);z-index: 1;display: none;" aria-expanded="false" aria-controls="faqCollapse2"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-arrow-left-short" style="width: 32px;height: 32px;">
                     <path fill-rule="evenodd" d="M12 8a.5.5 0 0 1-.5.5H5.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L5.707 7.5H11.5a.5.5 0 0 1 .5.5"></path>
                 </svg></button>
         </div>
@@ -666,57 +305,8 @@
         </div>
     </div>
 
-
     <!-- FOOTER SECTION -->
     <div id="footer"></div>
-    <!-- <footer>
-        <div class="container py-4 py-lg-5">
-            <div class="row g-0">
-                <div class="col-lg-3 d-flex flex-column item social">
-                    <div class="fw-bold d-flex align-items-center mb-2"><img src="../assets/img/icons/logo/main-logo.webp" style="width: 24px;margin-right: 10px;"><span>Blueshift Energy Inc.</span></div>
-                    <p class="text-muted copyright small" style="max-width: 80%;">Created to help transition Philippines into a sustainable country.</p>
-                </div>
-                <div class="col-lg-3 d-flex flex-column item social">
-                    <div class="fw-bold d-flex align-items-center mb-2">
-                        <h3 class="fs-6">OFFICE</h3>
-                    </div>
-                    <p class="text-muted copyright small">22 Ilagan St,<br>Quezon City 1105<br>Philippines<br><br>Office hours:<br>M to S - 9AM to 5PM</p>
-                </div>
-                <div class="col-lg-3 d-flex flex-column item social">
-                    <div class="fw-bold d-flex align-items-center mb-2">
-                        <h3 class="fs-6">SALES</h3>
-                    </div>
-                    <p class="text-muted copyright small">sales@blueshift.ph<br>Phone:&nbsp;+63 908 578 1707</p>
-                    <div class="fw-bold d-flex align-items-center mb-2">
-                        <h3 class="fs-6">SUPPORT</h3>
-                    </div>
-                    <p class="text-muted copyright small">support@blueshift.ph<br>Phone:&nbsp;+63 908 578 1707</p>
-                </div>
-                <div class="col-sm-4 col-md-3 d-flex flex-column item">
-                    <div class="fw-bold d-flex align-items-center mb-2">
-                        <h3 class="fs-6">QUICK LINKS</h3>
-                    </div>
-                    <ul class="list-unstyled">
-                        <li class="small"><a class="link-secondary" href="../index.html">Home</a></li>
-                        <li class="small"><a class="link-secondary" href="../design-studio/design.html">Design Studio</a></li>
-                        <li class="small"><a class="link-secondary" href="../public/articles.html">Articles</a></li>
-                        <li class="small"><a class="link-secondary" href="https://my.blueshift.ph">Sign in</a></li>
-                    </ul>
-                </div>
-            </div>
-            <hr>
-            <div class="d-flex justify-content-between align-items-center pt-3">
-                <p class="text-muted mb-0">Copyright © 2024 Blueshift Energy Inc.</p>
-                <ul class="list-inline mb-0">
-                    <li class="list-inline-item"><a href="https://www.facebook.com/blueshiftpower/"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-facebook" style="margin-right: 10px;">
-                                <path d="M16 8.049c0-4.446-3.582-8.05-8-8.05C3.58 0-.002 3.603-.002 8.05c0 4.017 2.926 7.347 6.75 7.951v-5.625h-2.03V8.05H6.75V6.275c0-2.017 1.195-3.131 3.022-3.131.876 0 1.791.157 1.791.157v1.98h-1.009c-.993 0-1.303.621-1.303 1.258v1.51h2.218l-.354 2.326H9.25V16c3.824-.604 6.75-3.934 6.75-7.951"></path>
-                            </svg></a><a href="https://www.linkedin.com/company/blueshift-energy-inc"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-linkedin">
-                                <path d="M0 1.146C0 .513.526 0 1.175 0h13.65C15.474 0 16 .513 16 1.146v13.708c0 .633-.526 1.146-1.175 1.146H1.175C.526 16 0 15.487 0 14.854V1.146zm4.943 12.248V6.169H2.542v7.225h2.401m-1.2-8.212c.837 0 1.358-.554 1.358-1.248-.015-.709-.52-1.248-1.342-1.248-.822 0-1.359.54-1.359 1.248 0 .694.521 1.248 1.327 1.248h.016zm4.908 8.212V9.359c0-.216.016-.432.08-.586.173-.431.568-.878 1.232-.878.869 0 1.216.662 1.216 1.634v3.865h2.401V9.25c0-2.22-1.184-3.252-2.764-3.252-1.274 0-1.845.7-2.165 1.193v.025h-.016a5.54 5.54 0 0 1 .016-.025V6.169h-2.4c.03.678 0 7.225 0 7.225h2.4"></path>
-                            </svg></a></li>
-                </ul>
-            </div>
-        </div>
-    </footer> -->
 
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
@@ -729,33 +319,7 @@
     <script src="../assets/js/aos.min.js"></script> -->
     <!-- <script src="../assets/js/public/global.js"></script> -->
     <script src="../assets/js/company.js"></script>
+    <script src="../load-components.js" defer></script>
 
-
-    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCz8uwySRi7b4cG9a0MsC5sEB7rmsPxe4o&libraries=places&callback=initMap"></script>
-    <script>
-        function initMap() {
-            // Create a map centered on Metro Manila
-            const metroManila = { lat: 14.5995, lng: 120.9842 }; // Coordinates for Metro Manila
-            const map = new google.maps.Map(document.getElementById("metroManilaMap"), {
-                zoom: 8.7,
-                center: metroManila,
-            });
-    
-            // Create a circle covering Metro Manila
-            const circle = new google.maps.Circle({
-                strokeColor: '#0000FF',
-                strokeOpacity: 0.6,
-                strokeWeight: 2,
-                fillColor: '#0000FF',
-                fillOpacity: 0.15,
-                map,
-                center: metroManila,
-                radius: 60000, // 20000
-            });
-        }
-    
-        // Load the map
-        window.onload = initMap;
-    </script>
 </body>
 </html>

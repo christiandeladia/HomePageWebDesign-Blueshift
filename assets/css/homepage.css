@@ -280,6 +280,55 @@
     border-radius: 5px;
 }
 
+.animated-line {
+    stroke-dasharray: 2800; /* Length of the line */
+    stroke-dashoffset: 2800; /* Start with the dash offset equal to the dash array (not visible initially) */
+    animation: dash 20s linear forwards; /* Use standard animation property for compatibility */
+}
+.broken-vertical-line{
+    stroke-dasharray: 2800; /* Length of the line */
+    stroke-dashoffset: 2800; /* Start with the dash offset equal to the dash array (not visible initially) */
+    animation: dash 20s linear forwards; /* Use standard animation property for compatibility */
+    animation-delay: 1s;
+}
+
+@keyframes dash { /* Standard @keyframes without vendor prefixes */
+    from {
+        stroke-dashoffset: 2800; /* Start with the full dash offset (hidden) */
+    }
+    to {
+        stroke-dashoffset: 0; /* End with the dash offset at zero (fully visible) */
+    }
+}
+
+.animated-triangle {
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 1s forwards; /* Animation to fade in */
+    animation-delay: 1.3s; /* Delay before starting the animation */
+}
+.delayParagraph {
+    opacity: 0; /* Initially hidden */
+    animation: fadeIn 0.5s forwards; /* Animation to fade in */
+    animation-delay: 1.3s; /* Delay before starting the animation */
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+#AfterServiceBtnGroup .btn:disabled {
+    background-color: #0d6efd !important; /* Change this to your desired active color */
+    color: white !important; /* Change text color */
+    pointer-events: none !important; /* Prevent interaction */
+    opacity: 1 !important;
+}
+
+
 
 /* DESIGN CONTAINER */
 .designBtn {
@@ -396,8 +445,7 @@
   
 
 
-/* OUR PRODUCTS SECTION  */
-
+/* OUR PRODUCTS SECTION-------------------------------------  */
 .product-img {
     width: 100%;
     max-width: 180px; 
@@ -479,97 +527,43 @@
 
 
 
-/* SOLAR 101 SECTION  */
-.slide-container {
-    /* max-width: 1120px; */
-    width: 100%;
-    /* padding: 10px 30px; */
+/* SOLAR 101 SECTION-------------------------------------  */
+.solarArticlesCard {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
-.slide-content {
-    /* margin: 0 40px; */
-    overflow: hidden;
+.solarArticlesCard .image-content {
+    position: relative;
+    row-gap: 5px;
 }
 
-.card-content {
+.solarArticlesCard .card-content {
     display: flex;
     flex-direction: column;
     padding: 10px 5px;
 }
 
-.image-content {
-    position: relative;
-    row-gap: 5px;
-}
-
-.card-content .title {
+.solarArticlesCard .card-content .title {
     font-size: 18px;
     font-weight: 500;
     color: #333;
 }
 
-.card-content .description {
+.solarArticlesCard .card-content .description {
     font-size: 14px;
     color: #707070;
     text-align: justify;
     text-justify: inter-word;
 }
 
-.swiper-navBtn {
-    color: #6E93f7;
-    transition: color 0.3s ease;
-}
-
-.swiper-navBtn:hover {
-    color: #4070F4;
-}
-
-.swiper-navBtn::before,
-.swiper-navBtn::after {
-    font-size: 35px;
-}
-.swiper-button-next::after, .swiper-button-prev::after {
-    content: "";
-    display: none;
-}
-.swiper-button-next {
-    right: 0;
-    margin: 0 37.5px;
-}
-
-.swiper-button-prev {
-    left: 0;
-    margin: 0 37.5px;
-}
-
-.swiper-pagination-bullet {
-    background-color: #6E93f7;
-    opacity: 1;
-}
-
-.swiper-pagination-bullet-active {
-    background-color: #4070F4;
-}
-
-@media screen and (max-width: 768px) {
-    .slide-content {
-        margin: 0 10px;
-    }
-
-    .swiper-navBtn {
-        display: none;
-    }
-}
-
-
-
-
 /* Hide scrollbar for WebKit browsers (Chrome, Safari, etc.) */
-#customerReviewRow::-webkit-scrollbar {
+#solar101Row::-webkit-scrollbar {
     display: none;
 }
 /* Hide scrollbar for other browsers (Firefox, IE, Edge, etc.) */
-#customerReviewRow {
+#solar101Row {
     -ms-overflow-style: none;
     scrollbar-width: none;
 }
@@ -577,7 +571,120 @@
 
 
 
-/* MODALS  */
+/* MODALS-------------------------------------  */
+.modalBannerImg {
+    background-image: url('../img/backgrounds/banners/Blog-Hero.webp'); /* Replace with your image path */
+    background-size: cover; /* Make background cover the full area */
+    background-position: center; /* Center the background image */
+    height: 600px;
+}
+
+ .modalGradientOverlay {
+    position: absolute; /* Position it absolutely within the parent */
+    top: 0; /* Start from the top */
+    left: 0; /* Start from the left */
+    right: 0; /* Extend to the right */
+    bottom: 0; /* Extend to the bottom */
+    background: rgb(41,41,41);
+background: linear-gradient(180deg, rgba(41,41,41,1) 0%, rgba(55,54,54,0.9549136549150911) 19%, rgba(76,76,76,0.9297035708814776) 33%, rgba(110,110,110,0.9100957277442226) 46%, rgba(122,122,122,0.8400677165397409) 55%, rgba(141,141,141,0.5067343832064075) 67%, rgba(238,238,238,0.2518324224220938) 77%, rgba(255,255,255,0) 88%);
+    z-index: 1; /* Position it above the background image */
+    height: 300px;
+}
+
+ .modalBtnClose {
+    z-index: 2; /* Ensure the close button is above the gradient */
+}
+
+.modalRadioGrp {
+    position: relative; /* Ensure the button group is positioned relative for stacking */
+    z-index: 2; /* Ensure the button group is above the gradient */
+}
+
+.modalCard .card-content {
+    display: flex;
+    flex-direction: column;
+    padding: 10px 5px;
+}
+
+.modalCard .image-content {
+    position: relative;
+    row-gap: 5px;
+}
+
+.modalCard .card-content .title {
+    /* font-size: 18px; */
+    font-weight: 500;
+    color: #333;
+}
+
+.modalCard .card-content .description {
+    /* font-size: 14px; */
+    color: #707070;
+    text-align: justify;
+    text-justify: inter-word;
+}
+
+.timeline-with-icons {
+    border-left: 1px solid hsl(0, 0%, 90%);
+    position: relative;
+    list-style: none;
+}
+  
+.timeline-with-icons .timeline-item {
+    position: relative;
+}
+
+.timeline-with-icons .timeline-item:after {
+    position: absolute;
+    display: block;
+    top: 0;
+}
+
+.timeline-with-icons .timeline-icon {
+    position: absolute;
+    left: -48px;
+    background-color: rgb(232, 231, 231);
+    color: gray;
+    border-radius: 50%;
+    height: 35px;
+    width: 35px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background-color 1s ease, color 1s ease; /* Add this line */
+}
+
+/* Style for highlighted line and icon */
+.timeline-item.highlighted .timeline-icon {
+    background-color: blue;
+    color: white;
+}
+
+/* Highlight the line by coloring the border */
+.timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -32px; /* Adjust based on your design */
+    width: 2px;
+    height: 0; /* Full height of the line within the item */
+    background-color: blue;
+    transition: height 1s ease;
+}
+.timeline-item.highlighted::before {
+    height: 100%; /* Full height of the line within the item */
+}
+
+.timeline-item.highlighted .timelineTitle,
+.timeline-item.highlighted .timelineDescription{
+    color: #333 !important; /*#212529*/
+    opacity: 1 !important;
+}
+
+.timeline-item.highlighted .timelineDescription a{
+    opacity: 1 !important;
+}
+
+
 @media (max-width: 768px){
     .modalBannerImg .btn-group {
         width: 75% !important;
@@ -598,7 +705,10 @@
         padding-right: 1.5rem !important;
         padding-bottom: 1.5rem !important;
     }
+    .homeEngagementSection{
+        border-radius: 0px !important;
+        padding: 3rem 1rem !important;
+    }
 }
-
 
 

@@ -1,79 +1,73 @@
 
-     //Customer Reivew Section-------------------------------------
-     var scrollRightBtn = document.getElementById('customerReviewRightBtn');
-     var scrollLeftBtn = document.getElementById('customerReviewLeftBtn');
-     var rowContainer = document.getElementById('customerReviewRow');
-     var divCard = $('#customerReviewDivCard'); // jQuery selector
+     //Best Clients Section -------------------------------------
+     var companyRightBtn = document.getElementById('companyClientsRightBtn');
+     var companyLeftBtn = document.getElementById('companyClientsLeftBtn');
+     var companyRowContainer = document.getElementById('companyClientsRow');
+     var companyDivCard = $('#companyClientsDivCard');
  
-    $(scrollLeftBtn).hide();
+    $(companyLeftBtn).hide();
 
      if (!('ontouchstart' in window)) {
-         $(scrollRightBtn).show();
-        //  $(scrollLeftBtn).show();
+         $(companyRightBtn).show();
      }
  
      // Listen for click events on the right button
-     scrollRightBtn.addEventListener('click', function () {
-         // Calculate the new scroll position
-         var newScrollPosition = rowContainer.scrollLeft + divCard.width(); // Adjust to the div card width
+     companyRightBtn.addEventListener('click', function () {
+         var newScrollPosition = companyRowContainer.scrollLeft + companyDivCard.width();
  
-         if (newScrollPosition + rowContainer.offsetWidth >= rowContainer.scrollWidth) {
-         // If we're at the end, hide the right arrow
-         $(scrollRightBtn).hide();
+         if (newScrollPosition + companyRowContainer.offsetWidth >= companyRowContainer.scrollWidth) {
+         $(companyRightBtn).hide();
          }
  
-         // Animate the scroll position
-         $(rowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
-         // Show the left arrow in case it was hidden
-         $(scrollLeftBtn).show();
+         $(companyRowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
+         $(companyLeftBtn).show();
          });
      });
  
      // Listen for click events on the left button
-     scrollLeftBtn.addEventListener('click', function () {
-         // Calculate the new scroll position
-         var newScrollPosition = rowContainer.scrollLeft - divCard.width(); // Adjust to the div card width
+     companyLeftBtn.addEventListener('click', function () {
+         var newScrollPosition = companyRowContainer.scrollLeft - companyDivCard.width();
  
-         console.log(rowContainer.scrollLeft - divCard.width())
+         console.log(companyRowContainer.scrollLeft - companyDivCard.width())
  
-         if (rowContainer.scrollLeft - divCard.width() <= 0) {
-         // If we're at the start, hide the left arrow
-         $(scrollLeftBtn).hide();
+         if (companyRowContainer.scrollLeft - companyDivCard.width() <= 0) {
+            $(companyLeftBtn).hide();
          }
  
-         // Animate the scroll position
-         $(rowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
-         // After the animation completes, check the scroll position
-         // Show the right arrow in case it was hidden
-         $(scrollRightBtn).show();
+         $(companyRowContainer).animate({ scrollLeft: newScrollPosition }, 500, function () {
+            $(companyRightBtn).show();
          });
      });
 
-     // Select all timeline items
-        const timelineItems = document.querySelectorAll('.timeline-item');
+     
 
-        // Intersection Observer options
-        const options = {
-            root: null, // Use viewport as root
-            threshold: 0.20, // Trigger when 75% of the element is visible
-            rootMargin: '0px 0px -30% 0px' // Trigger when the element reaches slightly above the center
-        };
+    // Maps Section -------------------------------------
+    function loadMaps(apiKey) {
+        const script = document.createElement('script');
+        script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyCz8uwySRi7b4cG9a0MsC5sEB7rmsPxe4o&libraries=places&callback=initMap`;
+        script.async = true;
+        document.head.appendChild(script);
+    }
 
-        // Function to handle intersection
-        function handleIntersection(entries) {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    // Add the highlighted class when the element reaches the desired viewport position
-                    entry.target.classList.add('highlighted');
-                } else {
-                    // Remove the highlighted class when the element leaves the viewport position
-                    entry.target.classList.remove('highlighted');
-                }
-            });
-        }
+    function initMap() {
+        const metroManila = { lat: 14.5995, lng: 120.9842 };
+        const map = new google.maps.Map(document.getElementById("metroManilaMap"), {
+            zoom: 8.7,
+            center: metroManila,
+        });
 
-        // Create Intersection Observer
-        const observer = new IntersectionObserver(handleIntersection, options);
+        const circle = new google.maps.Circle({
+            strokeColor: '#0000FF',
+            strokeOpacity: 0.6,
+            strokeWeight: 2,
+            fillColor: '#0000FF',
+            fillOpacity: 0.15,
+            map,
+            center: metroManila,
+            radius: 60000,
+        });
+    }
 
-        // Observe each timeline item
-        timelineItems.forEach(item => observer.observe(item));
+    // Load the map
+    window.onload = initMap;
+    loadMaps('AIzaSyCz8uwySRi7b4cG9a0MsC5sEB7rmsPxe4o&libraries=places');

@@ -28,7 +28,16 @@ function loadComponent(url, elementId, callback) {
     document.head.appendChild(script);
   }
   
+  // Function to adjust navigation links based on data-path
+function adjustNavLinks() {
+  const pathPrefix = window.location.pathname.includes("/public/") ? "../public/" : "";
   
+  document.querySelectorAll("#mainNav a[data-path]").forEach(link => {
+    const path = link.getAttribute("data-path");
+    link.href = pathPrefix + path;
+  });
+}
+
   // Load navbar and footer with their specific paths
   document.addEventListener("DOMContentLoaded", function () {
     const path = window.location.pathname;
