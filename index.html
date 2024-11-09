@@ -132,7 +132,55 @@
   }
 </script>
 </head>
+<style>
+/* Up to 992px (large devices and below) */
+@media (max-width: 992px) {
+    .fixedSize {
+        max-height: 280px;
+    }
+}
 
+/* Up to 768px (medium devices and below) */
+@media (max-width: 768px) {
+    .fixedSize {
+        max-height: 280px;
+    }
+}
+
+/* Up to 576px (small devices and below) */
+@media (max-width: 576px) {
+    .fixedSize {
+        max-height: 220px;
+    }
+}
+
+@media (max-width: 425px) {
+    .fixedSize {
+        max-height: 200px;
+    }
+}
+
+    /* Container to hold the image and SVG overlay */
+    .netMeteringContainer {
+        position: relative;
+        width: 100%;
+        max-width: 800px; /* Adjust max-width as needed */
+      }
+      
+      .netMeteringImg {
+        width: 100%;
+        display: block;
+      }
+      
+      .svg-curve {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+      }
+</style>
 <body>
     <!-- NAVBAR -->
     <nav class="navbar navbar-expand-lg navbar-light py-3" id="mainNav" style="border-style: none; position: relative; z-index: 2000;">
@@ -482,18 +530,18 @@ Your browser does not support the video tag.
     </section>
 
     <!-- Call To Action -->
-    <div id="customizedClientToolBar" class="pb-4">
+    <div id="customizedClientToolBar" class="pb-4 ps-2">
         <div class="container text-left">
             <a href="#" class="mb-0" style="color:#464646; text-decoration: none;">Learn More</a>
         </div>
-        <div class="container d-flex flex-column flex-md-row align-items-center">
+        <div class="container d-flex flex-column flex-md-row align-items-md-center">
             <div class="d-flex mb-3 mb-md-0 me-3">
                 <h5 class="mb-0">A full solar service solution for&nbsp;</h5>
                 <svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" class="bi bi-arrow-right mt-1">
                     <path fill-rule="evenodd" d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"></path>
                 </svg>
             </div>
-            <div class="d-flex flex-wrap justify-content-center">
+            <div class="d-flex flex-wrap justify-content-md-center">
                 <button id="toolbar-allBtn" class="filter-btn btn active btn-outline-primary rounded-pill customizedBtn me-2" data-category="All" style="min-width: 75px;">All</button>
                 <button id="toolbar-homesBtn" class="filter-btn btn btn-outline-primary rounded-pill customizedBtn me-2" data-category="Homes" style="min-width: 75px;">Homes</button>
                 <button id="toolbar-commercialBtn" class="filter-btn btn btn-outline-primary rounded-pill customizedBtn" data-category="Commercial" style="min-width: 75px;">Commercial</button>
@@ -510,10 +558,10 @@ Your browser does not support the video tag.
             <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="container p-lg-3 p-0" style="margin-bottom: 120px; width: 100%; border-radius: 15px;">
                 <div class="row section1">
                     <!-- <div><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">Design</span></h5></div> -->
-                    <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Design</span></h5>
+                    <h5 class="mb-3"><span class="badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">Design</span></h5>
                     <h4 class="py-2">Custom system designs for every home or business type.</h4>
                     
-                    <div class="col-lg-9 col-md-8 col-12">
+                    <div class="designImgColumn col-lg-9 col-md-8 col-12">
                         <!-- <img id="defaultDesign" src="assets/img/backgrounds/banners/residential-main.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize active defaultDesign"> -->
                         <img id="homes" src="assets/img/home/design.jpg" alt="Solar Image" class="img-fluid rounded-4 fixedSize defaultDesign">
                         <img id="offices" src="assets/img/projects/new_manila.webp" alt="Solar Image" class="img-fluid rounded-4 fixedSize">
@@ -572,7 +620,7 @@ Your browser does not support the video tag.
             <div data-aos="fade" data-aos-duration="300" data-aos-delay="300" class="container p-lg-3 p-0" style="margin-bottom: 120px; width: 100%; border-radius: 15px;">
                 <div class="row m-lg-0 m-md-0 m-2">
                     <!-- <div><h5><span class="badge rounded-pill fw-semibold text-dark" style="background-color:#f4f4f4;">After Service Monitoring</span></h5></div> -->
-                    <h5 class="mb-3"><span class="companyBadge badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">After Service Monitoring</span></h5>
+                    <h5 class="mb-3"><span class="badge rounded-pill fw-semibold text-secondary border border-1" style="background-color:#f4f4f4;">After Service Monitoring</span></h5>
 
             
                     <!-- Button Group -->
@@ -592,7 +640,7 @@ Your browser does not support the video tag.
                                     <div class="canvas-container" style="position: relative; width: 100%; height: 500px;">
                                         <canvas id="systemDisconnectedChart" class="mt-5 bg-white"></canvas>
                                         <div id="disconnectedText" class="text-overlay">
-                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; z-index: 0; overflow: visible; top:-75px; left:-11px;">
+                                            <svg height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" style="position: absolute; z-index: 0; overflow: visible; top:-75px; left:-11px;">
                                                 <circle class="animated-circle" cx="0" cy="20" r="6" fill="#f85149" />
                                                 <line class="animated-line" x1="0" y1="20" x2="110" y2="20" style="stroke:#f85149; stroke-width: 2;" />
                                                 <line class="broken-vertical-line" x1="110" y1="20" x2="110" y2="80" style="stroke:#f85149; stroke-width: 2; " />
@@ -609,7 +657,7 @@ Your browser does not support the video tag.
                                         
                                         <canvas id="systemDeratingChart" class="mt-5 bg-white"></canvas>
                                         <div id="deratingText" class="text-overlay-derating">
-                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
+                                            <svg  height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top:-73px; left:-11px;">
                                                 <circle class="animated-circle" cx="0" cy="20" r="6" fill="#f85149" />
                                                 <line class="animated-line" x1="0" y1="20" x2="120" y2="20" style="stroke:#f85149; stroke-width: 2;"/>
                                                 <line class="broken-vertical-line" x1="120" y1="20" x2="120" y2="80" style="stroke:#f85149; stroke-width: 2;"/>
@@ -626,7 +674,7 @@ Your browser does not support the video tag.
                                         </div>
                                         <canvas id="stringPerformanceChart" class="mt-5 bg-white"></canvas>
                                         <div id="stringPerformanceText" class="text-overlay-string">
-                                            <svg height="300" width="300" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top: 95px; left: -20px;">
+                                            <svg  height="100%" width="100%" xmlns="http://www.w3.org/2000/svg" style="position: absolute; overflow: visible; top: 95px; left: -20px;">
                                                 <circle class="animated-circle" cx="0" cy="40" r="6" fill="#f85149" />
                                                 <line class="animated-line" x1="0" y1="40" x2="130" y2="40" style="stroke:#f85149; stroke-width: 2;" />
                                                 <line class="broken-vertical-line" x1="130" y1="40" x2="130" y2="-21" style="stroke:#f85149; stroke-width: 2; " />
@@ -1195,24 +1243,19 @@ Your browser does not support the video tag.
 
 
     <!-- About Blueshift Section  -->
-    <div class="px-4 pt-5 my-5 text-center border-bottom" style="background-color: #212529;">
-        <h1 class="display-4 fw-bold  text-white">About Blueshift</h1>
-        <div class="col-lg-6 mx-auto">
-          <p class="lead mb-4 text-white">Lorem ipsum dolor sit amet consectetur adipisicing elit. Nemo temporibus doloremque est! Accusamus dolor molestiae similique officiis quos deleniti accusantium?</p>
+    <div class="px-4 py-5 my-5 text-center border-bottom" style="background-color: #212529;">
+        <img src="assets/img/icons/logo/logo.png" alt="Blueshift-Logo" class="pt-3" style="width: 100px; height:auto;">
+        <div class="col-lg-9 mx-auto pb-3">
+          <h1 class="display-2 fw-semibold mb-4 text-white">Join our journey as we transition the country into sustainable energy.</h1>
           <div class="d-grid gap-2 d-sm-flex justify-content-sm-center mb-1">
             <a href="/public/company.html"><button type="button" class="btn btn-primary btn px-4 me-md-2">Learn More</button></a>
           </div>
         </div>
-        <div class="overflow-hidden" style="max-height: 30vh;">
-          <div class="container px-5">
-            <img src="assets/img/home/companyPage.png" class="img-fluid mb-4" alt="Example image" width="700" height="500" loading="lazy">
-          </div>
-        </div>
-      </div>
+    </div>
     
     <!-- Net Metering Section  -->
     <div class="container my-5" style="padding-top: 100px; padding-bottom: 40px;">
-        <div class="row p-4 pb-0 pe-lg-0 pt-lg-5 align-items-center rounded-3 border shadow-lg">
+        <div class="row p-5 align-items-center rounded-3 border shadow-lg">
           <div class="col-lg-7 p-3 p-lg-5 pt-lg-3">
             <h1 class="display-4 fw-bold lh-1 text-body-emphasis">Net Metering System</h1>
             <p class="lead">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eligendi autem explicabo deleniti fugit numquam eveniet, maxime velit ex incidunt amet!</p>
@@ -1220,8 +1263,41 @@ Your browser does not support the video tag.
               <button type="button" class="btn btn-primary btn px-4 me-md-2">Learn More</button>
             </div>
           </div>
-          <div class="col-lg-4 offset-lg-1 p-0 overflow-hidden shadow-lg">
-              <img class="rounded-lg-3" src="assets/img/home/SolarDashboard.jpg" alt="" width="720">
+          <div class="col-lg-5">
+            <div class="netMeteringContainer">
+                <!-- Background image -->
+                <img src="/assets/img/home/netMeteringImg.png" alt="Net Metering Diagram" class="netMeteringImg rounded-3 ">
+              
+                <!-- SVG overlay with path, shadow, and animated circle -->
+                <svg class="svg-curve" viewBox="0 0 800 400" xmlns="http://www.w3.org/2000/svg">
+                  <!-- Shadow for the path (slightly offset and blurred) -->
+                  <defs>
+                    <filter id="blur" x="0" y="0">
+                      <feGaussianBlur in="SourceGraphic" stdDeviation="2" />
+                    </filter>
+                  </defs>
+              
+                  <!-- Path shadow with blur and opacity for perspective -->
+                  <path 
+                    d="M 290 280 Q 400 180, 512 212" 
+                    stroke="rgba(0, 0, 0, 0.3)" 
+                    stroke-width="2" 
+                    fill="none" 
+                    filter="url(#blur)"
+                    transform="translate(5, 5)"
+                  />
+              
+                  <!-- Main path with the animated circle -->
+                  <path id="curvePath" d="M 290 280 Q 400 180, 520 210" stroke="#444444" stroke-width="2" fill="none" />
+                  
+                  <!-- Circle that travels along the path -->
+                  <circle r="5" fill="yellow">
+                    <animateMotion repeatCount="indefinite" dur="3s">
+                      <mpath href="#curvePath" />
+                    </animateMotion>
+                  </circle>
+                </svg>
+              </div>
           </div>
         </div>
       </div>
