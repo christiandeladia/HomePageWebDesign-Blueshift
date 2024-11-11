@@ -166,6 +166,38 @@ document.addEventListener('DOMContentLoaded', function () {
     });
 
 
+    // Mapping object for title and description text
+    const solar101Title = document.querySelector(".solar101Title h2");
+    const solar101Description = document.querySelector(".solar101Title p");
+    const content = {
+        "All": { 
+            title: "For All:",
+            description: "Browse Insightful Articles"
+        },
+        "Homes": {
+            title: "Homes:",
+            description: "Browse Articles For Your Home"
+        },
+        "Commercial": {
+            title: "Commercial:",
+            description: "Latest Info On The Industry Standard"
+        }
+    };
+
+    function updateContent(category) {
+        solar101Title.textContent = content[category]?.title || content["All"].title;
+        solar101Description.textContent = content[category]?.description || content["All"].description;
+    }
+    updateContent("All");
+
+    const filterButtons = document.querySelectorAll(".filter-btn");
+    filterButtons.forEach(button => {
+        button.addEventListener("click", () => {
+            const category = button.getAttribute("data-category");
+            updateContent(category);
+        });
+    });
+
 
     function setupSection(sectionClass, imageOrder) {
         let autoChangeInterval;
